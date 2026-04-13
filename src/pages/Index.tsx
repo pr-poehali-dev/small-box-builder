@@ -31,7 +31,7 @@ export default function Index() {
             </div>
             <div className="text-left">
               <div className="font-oswald font-bold text-white text-lg leading-none tracking-widest">EVRAZ</div>
-              <div className="font-ibm text-xs text-gray-400 tracking-wider uppercase">Steel Buildings</div>
+              <div className="font-ibm text-xs text-gray-400 tracking-wider uppercase">SteelBox</div>
             </div>
           </button>
 

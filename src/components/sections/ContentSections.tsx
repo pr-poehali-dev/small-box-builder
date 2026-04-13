@@ -705,7 +705,7 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
                 </div>
                 <div>
                   <div className="font-oswald font-bold text-white text-lg leading-none tracking-widest">EVRAZ</div>
-                  <div className="font-ibm text-xs text-gray-400 tracking-wider uppercase">Steel Buildings</div>
+                  <div className="font-ibm text-xs text-gray-400 tracking-wider uppercase">SteelBox</div>
                 </div>
               </div>
               <p className="font-ibm text-sm text-gray-400 leading-relaxed">
