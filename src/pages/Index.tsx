@@ -236,8 +236,9 @@ export default function Index() {
         <div className="absolute inset-0 bg-gradient-to-t from-evraz-dark/60 via-transparent to-transparent" />
         <div className="absolute left-0 top-0 bottom-0 w-1 bg-evraz-red" />
 
-        <div className="container mx-auto relative z-10 pt-24 pb-16">
-          <div className="max-w-3xl">
+        <div className="container mx-auto relative z-10 pt-24 pb-0 flex flex-col min-h-screen">
+          {/* Верхняя часть — заголовок */}
+          <div className="flex-1 flex flex-col justify-center max-w-3xl py-12">
             <div className="animate-fade-in-up">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-0.5 bg-evraz-red" />
@@ -255,40 +256,95 @@ export default function Index() {
               ПОД КЛЮЧ
             </h1>
 
-            <p className="font-ibm text-lg text-gray-300 max-w-xl mb-8 leading-relaxed animate-fade-in-up delay-200">
-              Быстровозводимые металлические конструкции для промышленности, торговли, агро и спорта. Сталь EVRAZ —
-              гарантия надёжности на десятилетия.
+            <p className="font-ibm text-lg text-gray-300 max-w-xl leading-relaxed animate-fade-in-up delay-200">
+              Быстровозводимые металлические конструкции на базе стали EVRAZ. Выберите своё решение:
             </p>
-
-            <div className="flex flex-wrap gap-4 mb-12 animate-fade-in-up delay-300">
-              <button onClick={() => scrollTo("calculator")} className="btn-primary">
-                Рассчитать стоимость
-              </button>
-              <button onClick={() => scrollTo("cases")} className="btn-outline">
-                Смотреть проекты
-              </button>
-            </div>
-
-            <div className="flex flex-wrap gap-8 animate-fade-in-up delay-400">
-              {[
-                { value: "850+", label: "Объектов сдано" },
-                { value: "25 лет", label: "Гарантия" },
-                { value: "45", label: "Регионов" },
-                { value: "1991", label: "Год основания" },
-              ].map((s) => (
-                <div key={s.label}>
-                  <div className="font-oswald text-3xl text-white font-bold">{s.value}</div>
-                  <div className="font-ibm text-xs text-gray-400 uppercase tracking-wider mt-1">{s.label}</div>
-                </div>
-              ))}
-            </div>
           </div>
-        </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-fade-in">
-          <span className="font-ibm text-xs text-gray-400 uppercase tracking-widest">Прокрутить</span>
-          <div className="w-0.5 h-8 bg-gray-600 relative overflow-hidden">
-            <div className="absolute top-0 w-full bg-evraz-red animate-bounce" style={{ height: "40%" }} />
+          {/* Нижняя часть — три карточки аудитории */}
+          <div className="grid grid-cols-1 md:grid-cols-3 animate-fade-in-up delay-300">
+            {[
+              {
+                icon: "Package",
+                tag: "Серийные здания",
+                title: "Готовые решения",
+                desc: "Типовые складские, производственные и агропромышленные здания из каталога. Минимальные сроки и предсказуемая цена.",
+                cta: "Смотреть каталог",
+                target: "solutions",
+                accent: false,
+              },
+              {
+                icon: "PenRuler",
+                tag: "Индивидуальный проект",
+                title: "Под ваши задачи",
+                desc: "Проектируем с нуля под технологию, нагрузки и архитектуру. Уникальные пролёты, кровля, фасад — любая геометрия.",
+                cta: "Обсудить проект",
+                target: "contacts",
+                accent: true,
+              },
+              {
+                icon: "Car",
+                tag: "Парковки",
+                title: "Многоуровневые паркинги",
+                desc: "Наземные и многоуровневые металлические паркинги для жилых комплексов, торговых центров и аэропортов.",
+                cta: "Узнать подробнее",
+                target: "calculator",
+                accent: false,
+              },
+            ].map((card) => (
+              <div
+                key={card.tag}
+                className={`group relative p-8 md:p-10 border-t-2 cursor-pointer transition-all duration-300 ${
+                  card.accent
+                    ? "bg-evraz-red border-evraz-red"
+                    : "bg-evraz-dark/80 border-white/10 hover:bg-white/10 hover:border-evraz-red"
+                }`}
+                onClick={() => scrollTo(card.target)}
+              >
+                {/* Top */}
+                <div className="flex items-center justify-between mb-6">
+                  <span
+                    className={`font-oswald text-xs tracking-[0.2em] uppercase px-2 py-1 ${
+                      card.accent ? "bg-white/20 text-white" : "bg-white/5 text-evraz-red"
+                    }`}
+                  >
+                    {card.tag}
+                  </span>
+                  <div
+                    className={`w-10 h-10 flex items-center justify-center border ${
+                      card.accent ? "border-white/30" : "border-white/10 group-hover:border-evraz-red"
+                    } transition-colors`}
+                  >
+                    <Icon name={card.icon} size={18} className={card.accent ? "text-white" : "text-gray-400 group-hover:text-evraz-red"} />
+                  </div>
+                </div>
+
+                {/* Content */}
+                <h3 className="font-oswald text-2xl text-white font-semibold mb-3 leading-tight">
+                  {card.title}
+                </h3>
+                <p className={`font-ibm text-sm leading-relaxed mb-8 ${card.accent ? "text-white/80" : "text-gray-400"}`}>
+                  {card.desc}
+                </p>
+
+                {/* CTA */}
+                <div className={`flex items-center gap-2 font-oswald text-sm tracking-wider uppercase transition-all ${
+                  card.accent ? "text-white" : "text-gray-400 group-hover:text-white"
+                }`}>
+                  {card.cta}
+                  <Icon
+                    name="ArrowRight"
+                    size={16}
+                    className={`transition-transform duration-300 group-hover:translate-x-1 ${card.accent ? "text-white" : ""}`}
+                  />
+                </div>
+
+                {/* Bottom accent line */}
+                {!card.accent && (
+                  <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-evraz-red group-hover:w-full transition-all duration-500" />
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
