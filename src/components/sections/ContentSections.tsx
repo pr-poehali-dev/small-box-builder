@@ -11,6 +11,9 @@ const CASES = [
     year: "2023",
     image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/5b4508f9-9d77-48fd-8352-9fba826f4269.jpg",
     tag: "Склад",
+    dims: { width: "120 м", length: "400 м", height: "14 м" },
+    partner: "СтальСтрой",
+    review: "https://ozon.ru",
   },
   {
     title: "Ледовая арена «Металлург»",
@@ -19,6 +22,9 @@ const CASES = [
     year: "2022",
     image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/9e32b242-943e-4e57-a73b-230740b0ac72.jpg",
     tag: "Спорт",
+    dims: { width: "80 м", length: "150 м", height: "18 м" },
+    partner: "УралМеталлМонтаж",
+    review: "https://metallurg.ru",
   },
   {
     title: "Производственный корпус НТМК",
@@ -27,6 +33,9 @@ const CASES = [
     year: "2023",
     image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/2f1137ee-0472-4df9-ad4a-581bcc729974.jpg",
     tag: "Производство",
+    dims: { width: "54 м", length: "416 м", height: "16 м" },
+    partner: "СибирьСталь",
+    review: null,
   },
 ];
 
@@ -124,14 +133,15 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
             </div>
           </AnimSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {CASES.map((c, i) => (
               <AnimSection key={c.title}>
                 <div
-                  className="steel-card bg-white border border-evraz-border overflow-hidden cursor-pointer group"
+                  className="steel-card bg-white border border-evraz-border overflow-hidden group flex flex-col"
                   style={{ transitionDelay: `${i * 120}ms` }}
                 >
-                  <div className="relative h-56 overflow-hidden">
+                  {/* Image */}
+                  <div className="relative h-64 overflow-hidden shrink-0">
                     <img
                       src={c.image}
                       alt={c.title}
@@ -141,25 +151,61 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
                     <span className="absolute top-4 left-4 font-oswald text-xs tracking-widest text-white uppercase bg-evraz-red px-3 py-1">
                       {c.tag}
                     </span>
-                    <span className="absolute top-4 right-4 font-oswald text-xs tracking-widest text-white">
+                    <span className="absolute top-4 right-4 font-oswald text-xs tracking-widest text-white bg-evraz-dark/50 px-2 py-0.5">
                       {c.year}
                     </span>
                   </div>
-                  <div className="p-6">
-                    <h3 className="font-oswald text-lg text-evraz-dark font-semibold mb-1">{c.title}</h3>
-                    <div className="flex items-center gap-2 text-evraz-gray mb-4">
-                      <Icon name="MapPin" size={14} className="text-evraz-red" />
+
+                  {/* Body */}
+                  <div className="p-6 flex flex-col flex-1">
+                    <h3 className="font-oswald text-xl text-evraz-dark font-semibold mb-2">{c.title}</h3>
+                    <div className="flex items-center gap-2 text-evraz-gray mb-5">
+                      <Icon name="MapPin" size={13} className="text-evraz-red shrink-0" />
                       <span className="font-ibm text-sm">{c.location}</span>
                     </div>
-                    <div className="flex items-center justify-between border-t border-evraz-border pt-4">
-                      <div>
-                        <div className="font-oswald text-evraz-dark font-semibold text-lg">{c.area}</div>
-                        <div className="font-ibm text-xs text-evraz-gray">Общая площадь</div>
-                      </div>
-                      <div className="w-8 h-8 bg-red-50 flex items-center justify-center group-hover:bg-evraz-red transition-colors">
+
+                    {/* Габариты */}
+                    <div className="grid grid-cols-4 gap-2 mb-5">
+                      {[
+                        { label: "Площадь", value: c.area },
+                        { label: "Ширина", value: c.dims.width },
+                        { label: "Длина", value: c.dims.length },
+                        { label: "Высота", value: c.dims.height },
+                      ].map((d) => (
+                        <div key={d.label} className="bg-evraz-light px-2 py-2.5 text-center">
+                          <div className="font-oswald text-sm text-evraz-dark font-semibold leading-none">{d.value}</div>
+                          <div className="font-ibm text-xs text-evraz-gray mt-1">{d.label}</div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Партнёр */}
+                    <div className="flex items-center gap-2 mb-5">
+                      <Icon name="HardHat" size={13} className="text-evraz-gray shrink-0" />
+                      <span className="font-ibm text-xs text-evraz-gray">Монтаж:</span>
+                      <span className="font-ibm text-xs text-evraz-dark font-medium">{c.partner}</span>
+                    </div>
+
+                    {/* Отзыв + стрелка */}
+                    <div className="flex items-center justify-between mt-auto pt-4 border-t border-evraz-border">
+                      {c.review ? (
+                        <a
+                          href={c.review}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1.5 font-oswald text-xs tracking-wider uppercase text-evraz-red hover:text-evraz-dark transition-colors"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <Icon name="MessageSquareQuote" size={13} />
+                          Отзыв клиента
+                        </a>
+                      ) : (
+                        <div />
+                      )}
+                      <div className="w-8 h-8 bg-red-50 flex items-center justify-center group-hover:bg-evraz-red transition-colors cursor-pointer">
                         <Icon
                           name="ArrowRight"
-                          size={16}
+                          size={15}
                           className="text-evraz-red group-hover:text-white transition-colors"
                         />
                       </div>
