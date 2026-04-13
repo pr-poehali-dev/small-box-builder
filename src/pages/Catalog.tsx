@@ -214,8 +214,7 @@ export default function Catalog() {
           {/* Quick stats */}
           <div className="flex flex-wrap gap-8">
             {[
-              { v: `${CATALOG.length}`, l: "Готовых проектов" },
-              { v: "от 28 дн.", l: "Срок монтажа" },
+              { v: "до 45 дн.", l: "Срок монтажа" },
               { v: "25 лет", l: "Гарантия" },
               { v: "Фикс. цена", l: "Без скрытых доплат" },
             ].map((s) => (
