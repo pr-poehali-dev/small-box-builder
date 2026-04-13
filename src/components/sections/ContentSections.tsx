@@ -93,6 +93,9 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
   const [length, setLength] = useState(48);
   const [height, setHeight] = useState(6);
   const [buildingType, setBuildingType] = useState("warehouse");
+  const [gates, setGates] = useState(1);
+  const [windows, setWindows] = useState(0);
+  const [hasCrane, setHasCrane] = useState(false);
 
   const calcPrice = () => {
     const area = width * length;
@@ -105,7 +108,12 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
     };
     const base = basePricePerSqm[buildingType] || 12500;
     const heightCoef = height > 8 ? 1.15 : height > 6 ? 1.08 : 1;
-    return Math.round((area * base * heightCoef) / 1000) * 1000;
+    const gatesCount = gates === 5 ? 6 : gates;
+    const windowsCount = windows === 5 ? 8 : windows;
+    const gatesCost = gatesCount * 185000;
+    const windowsCost = windowsCount * 42000;
+    const craneCost = hasCrane ? area * 3200 : 0;
+    return Math.round((area * base * heightCoef + gatesCost + windowsCost + craneCost) / 1000) * 1000;
   };
 
   const formatPrice = (n: number) =>
@@ -298,6 +306,87 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
                       </div>
                     </div>
                   ))}
+                </div>
+
+                {/* Опции */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 pt-8 border-t border-white/10">
+                  {/* Ворота */}
+                  <div>
+                    <label className="font-oswald text-sm tracking-widest text-gray-300 uppercase mb-4 block">
+                      Ворота
+                    </label>
+                    <div className="flex gap-2">
+                      {[1, 2, 3, 4, 5].map((v) => (
+                        <button
+                          key={v}
+                          onClick={() => setGates(v)}
+                          className={`flex-1 py-2.5 font-oswald text-sm border transition-all ${
+                            gates === v
+                              ? "bg-evraz-red border-evraz-red text-white"
+                              : "border-white/20 text-gray-300 hover:border-evraz-red hover:text-white"
+                          }`}
+                        >
+                          {v === 5 ? "5+" : v}
+                        </button>
+                      ))}
+                    </div>
+                    <div className="font-ibm text-xs text-gray-500 mt-2">
+                      +{((gates === 5 ? 6 : gates) * 185000).toLocaleString("ru-RU")} ₽
+                    </div>
+                  </div>
+
+                  {/* Окна */}
+                  <div>
+                    <label className="font-oswald text-sm tracking-widest text-gray-300 uppercase mb-4 block">
+                      Оконные блоки
+                    </label>
+                    <div className="flex gap-2">
+                      {[0, 2, 4, 6, 5].map((v, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setWindows(v === 5 ? 5 : v)}
+                          className={`flex-1 py-2.5 font-oswald text-sm border transition-all ${
+                            windows === (v === 5 ? 5 : v)
+                              ? "bg-evraz-red border-evraz-red text-white"
+                              : "border-white/20 text-gray-300 hover:border-evraz-red hover:text-white"
+                          }`}
+                        >
+                          {idx === 4 ? "8+" : v}
+                        </button>
+                      ))}
+                    </div>
+                    <div className="font-ibm text-xs text-gray-500 mt-2">
+                      +{((windows === 5 ? 8 : windows) * 42000).toLocaleString("ru-RU")} ₽
+                    </div>
+                  </div>
+
+                  {/* Кран */}
+                  <div>
+                    <label className="font-oswald text-sm tracking-widest text-gray-300 uppercase mb-4 block">
+                      Мостовой кран
+                    </label>
+                    <div className="flex gap-2">
+                      {[
+                        { val: false, label: "Нет" },
+                        { val: true, label: "Да" },
+                      ].map((opt) => (
+                        <button
+                          key={String(opt.val)}
+                          onClick={() => setHasCrane(opt.val)}
+                          className={`flex-1 py-2.5 font-oswald text-sm border transition-all ${
+                            hasCrane === opt.val
+                              ? "bg-evraz-red border-evraz-red text-white"
+                              : "border-white/20 text-gray-300 hover:border-evraz-red hover:text-white"
+                          }`}
+                        >
+                          {opt.label}
+                        </button>
+                      ))}
+                    </div>
+                    <div className="font-ibm text-xs text-gray-500 mt-2">
+                      {hasCrane ? `+${(width * length * 3200).toLocaleString("ru-RU")} ₽` : "Без доплаты"}
+                    </div>
+                  </div>
                 </div>
 
                 <div className="bg-evraz-red/10 border border-evraz-red/30 p-6 flex flex-col md:flex-row items-center justify-between gap-6">
