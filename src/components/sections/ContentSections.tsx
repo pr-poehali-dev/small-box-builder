@@ -268,7 +268,7 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
                     ].map((t) => (
                       <button
                         key={t.key}
-                        onClick={() => setBuildingType(t.key)}
+                        onClick={() => { setBuildingType(t.key); if (t.key !== "production") setHasCrane(false); }}
                         className={`font-oswald text-sm tracking-wider uppercase py-3 px-4 border transition-all ${
                           buildingType === t.key
                             ? "bg-evraz-red border-evraz-red text-white"
@@ -309,7 +309,7 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
                 </div>
 
                 {/* Опции */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 pt-8 border-t border-white/10">
+                <div className={`grid grid-cols-1 gap-6 mb-10 pt-8 border-t border-white/10 ${buildingType === "production" ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
                   {/* Ворота */}
                   <div>
                     <label className="font-oswald text-sm tracking-widest text-gray-300 uppercase mb-4 block">
@@ -360,33 +360,35 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
                     </div>
                   </div>
 
-                  {/* Кран */}
-                  <div>
-                    <label className="font-oswald text-sm tracking-widest text-gray-300 uppercase mb-4 block">
-                      Мостовой кран
-                    </label>
-                    <div className="flex gap-2">
-                      {[
-                        { val: false, label: "Нет" },
-                        { val: true, label: "Да" },
-                      ].map((opt) => (
-                        <button
-                          key={String(opt.val)}
-                          onClick={() => setHasCrane(opt.val)}
-                          className={`flex-1 py-2.5 font-oswald text-sm border transition-all ${
-                            hasCrane === opt.val
-                              ? "bg-evraz-red border-evraz-red text-white"
-                              : "border-white/20 text-gray-300 hover:border-evraz-red hover:text-white"
-                          }`}
-                        >
-                          {opt.label}
-                        </button>
-                      ))}
+                  {/* Кран — только для производства */}
+                  {buildingType === "production" && (
+                    <div>
+                      <label className="font-oswald text-sm tracking-widest text-gray-300 uppercase mb-4 block">
+                        Мостовой кран
+                      </label>
+                      <div className="flex gap-2">
+                        {[
+                          { val: false, label: "Нет" },
+                          { val: true, label: "Да" },
+                        ].map((opt) => (
+                          <button
+                            key={String(opt.val)}
+                            onClick={() => setHasCrane(opt.val)}
+                            className={`flex-1 py-2.5 font-oswald text-sm border transition-all ${
+                              hasCrane === opt.val
+                                ? "bg-evraz-red border-evraz-red text-white"
+                                : "border-white/20 text-gray-300 hover:border-evraz-red hover:text-white"
+                            }`}
+                          >
+                            {opt.label}
+                          </button>
+                        ))}
+                      </div>
+                      <div className="font-ibm text-xs text-gray-500 mt-2">
+                        {hasCrane ? `+${(width * length * 3200).toLocaleString("ru-RU")} ₽` : "Без доплаты"}
+                      </div>
                     </div>
-                    <div className="font-ibm text-xs text-gray-500 mt-2">
-                      {hasCrane ? `+${(width * length * 3200).toLocaleString("ru-RU")} ₽` : "Без доплаты"}
-                    </div>
-                  </div>
+                  )}
                 </div>
 
                 <div className="bg-evraz-red/10 border border-evraz-red/30 p-6 flex flex-col md:flex-row items-center justify-between gap-6">
