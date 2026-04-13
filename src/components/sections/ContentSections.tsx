@@ -2,48 +2,6 @@ import { useState } from "react";
 import Icon from "@/components/ui/icon";
 import { AnimSection } from "@/components/shared/AnimSection";
 
-const SOLUTIONS = [
-  {
-    icon: "Warehouse",
-    title: "Складские комплексы",
-    desc: "Логистические и распределительные центры пролётом до 60 м. Оптимальная высота, нагрузки, вентиляция.",
-    area: "от 500 м²",
-    time: "от 3 мес.",
-    tag: "Склад",
-  },
-  {
-    icon: "Factory",
-    title: "Производственные корпуса",
-    desc: "Цеха с мостовыми кранами, многопролётные корпуса, объекты под тяжёлое производство и машиностроение.",
-    area: "от 1000 м²",
-    time: "от 4 мес.",
-    tag: "Производство",
-  },
-  {
-    icon: "ShoppingBag",
-    title: "Торговые центры",
-    desc: "Гипермаркеты, торговые парки, коммерческие центры. Свободная планировка, естественное освещение.",
-    area: "от 800 м²",
-    time: "от 4 мес.",
-    tag: "Торговля",
-  },
-  {
-    icon: "Tractor",
-    title: "Агропромышленные объекты",
-    desc: "Зернохранилища, животноводческие комплексы, теплицы, элеваторы. Учёт агрессивной среды и нагрузок.",
-    area: "от 300 м²",
-    time: "от 2 мес.",
-    tag: "Агро",
-  },
-  {
-    icon: "Dumbbell",
-    title: "Спортивные сооружения",
-    desc: "Ледовые арены, стадионы, крытые манежи, бассейны. Большие пролёты без промежуточных опор.",
-    area: "от 1500 м²",
-    time: "от 6 мес.",
-    tag: "Спорт",
-  },
-];
 
 const CASES = [
   {
@@ -150,45 +108,61 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
 
   return (
     <>
-      {/* SOLUTIONS */}
-      <section id="solutions" className="py-24 bg-white">
+      {/* CASES */}
+      <section id="cases" className="py-24 bg-evraz-light">
         <div className="container mx-auto">
           <AnimSection>
-            <div className="mb-16">
-              <div className="accent-line" />
-              <h2 className="font-oswald text-4xl md:text-5xl text-evraz-dark font-semibold">РЕШЕНИЯ ПО ОТРАСЛЯМ</h2>
-              <p className="font-ibm text-evraz-gray mt-4 max-w-2xl text-base leading-relaxed">
-                Проектируем и возводим стальные здания для любых задач — с учётом специфики отрасли, климатической зоны
-                и технологических требований.
-              </p>
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+              <div>
+                <div className="accent-line" />
+                <h2 className="font-oswald text-4xl md:text-5xl text-evraz-dark font-semibold">КЕЙСЫ И ПРОЕКТЫ</h2>
+                <p className="font-ibm text-evraz-gray mt-4 max-w-xl text-base leading-relaxed">
+                  Реальные объекты, сданные в срок. Более 850 реализованных проектов по всей России и СНГ.
+                </p>
+              </div>
+              <button className="btn-outline-dark self-start md:self-auto">Все проекты</button>
             </div>
           </AnimSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {SOLUTIONS.map((sol, i) => (
-              <AnimSection key={sol.title}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {CASES.map((c, i) => (
+              <AnimSection key={c.title}>
                 <div
-                  className="steel-card bg-white border border-evraz-border p-8 h-full flex flex-col cursor-pointer"
-                  style={{ transitionDelay: `${i * 80}ms` }}
+                  className="steel-card bg-white border border-evraz-border overflow-hidden cursor-pointer group"
+                  style={{ transitionDelay: `${i * 120}ms` }}
                 >
-                  <div className="w-12 h-12 bg-red-50 flex items-center justify-center mb-6">
-                    <Icon name={sol.icon} size={24} className="text-evraz-red" />
-                  </div>
-                  <div className="mb-2">
-                    <span className="font-oswald text-xs tracking-widest text-evraz-red uppercase bg-red-50 px-2 py-1">
-                      {sol.tag}
+                  <div className="relative h-56 overflow-hidden">
+                    <img
+                      src={c.image}
+                      alt={c.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-evraz-dark/30 group-hover:bg-evraz-dark/20 transition-all duration-300" />
+                    <span className="absolute top-4 left-4 font-oswald text-xs tracking-widest text-white uppercase bg-evraz-red px-3 py-1">
+                      {c.tag}
+                    </span>
+                    <span className="absolute top-4 right-4 font-oswald text-xs tracking-widest text-white">
+                      {c.year}
                     </span>
                   </div>
-                  <h3 className="font-oswald text-xl text-evraz-dark font-semibold mt-3 mb-3">{sol.title}</h3>
-                  <p className="font-ibm text-evraz-gray text-sm leading-relaxed flex-1 mb-6">{sol.desc}</p>
-                  <div className="flex gap-6 border-t border-evraz-border pt-5">
-                    <div>
-                      <div className="font-oswald text-evraz-dark font-semibold">{sol.area}</div>
-                      <div className="font-ibm text-xs text-evraz-gray mt-0.5">Площадь</div>
+                  <div className="p-6">
+                    <h3 className="font-oswald text-lg text-evraz-dark font-semibold mb-1">{c.title}</h3>
+                    <div className="flex items-center gap-2 text-evraz-gray mb-4">
+                      <Icon name="MapPin" size={14} className="text-evraz-red" />
+                      <span className="font-ibm text-sm">{c.location}</span>
                     </div>
-                    <div>
-                      <div className="font-oswald text-evraz-dark font-semibold">{sol.time}</div>
-                      <div className="font-ibm text-xs text-evraz-gray mt-0.5">Срок монтажа</div>
+                    <div className="flex items-center justify-between border-t border-evraz-border pt-4">
+                      <div>
+                        <div className="font-oswald text-evraz-dark font-semibold text-lg">{c.area}</div>
+                        <div className="font-ibm text-xs text-evraz-gray">Общая площадь</div>
+                      </div>
+                      <div className="w-8 h-8 bg-red-50 flex items-center justify-center group-hover:bg-evraz-red transition-colors">
+                        <Icon
+                          name="ArrowRight"
+                          size={16}
+                          className="text-evraz-red group-hover:text-white transition-colors"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -298,70 +272,6 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
                 </div>
               </div>
             </AnimSection>
-          </div>
-        </div>
-      </section>
-
-      {/* CASES */}
-      <section id="cases" className="py-24 bg-evraz-light">
-        <div className="container mx-auto">
-          <AnimSection>
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-              <div>
-                <div className="accent-line" />
-                <h2 className="font-oswald text-4xl md:text-5xl text-evraz-dark font-semibold">КЕЙСЫ И ПРОЕКТЫ</h2>
-                <p className="font-ibm text-evraz-gray mt-4 max-w-xl text-base leading-relaxed">
-                  Реальные объекты, сданные в срок. Более 850 реализованных проектов по всей России и СНГ.
-                </p>
-              </div>
-              <button className="btn-outline-dark self-start md:self-auto">Все проекты</button>
-            </div>
-          </AnimSection>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {CASES.map((c, i) => (
-              <AnimSection key={c.title}>
-                <div
-                  className="steel-card bg-white border border-evraz-border overflow-hidden cursor-pointer group"
-                  style={{ transitionDelay: `${i * 120}ms` }}
-                >
-                  <div className="relative h-56 overflow-hidden">
-                    <img
-                      src={c.image}
-                      alt={c.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-evraz-dark/30 group-hover:bg-evraz-dark/20 transition-all duration-300" />
-                    <span className="absolute top-4 left-4 font-oswald text-xs tracking-widest text-white uppercase bg-evraz-red px-3 py-1">
-                      {c.tag}
-                    </span>
-                    <span className="absolute top-4 right-4 font-oswald text-xs tracking-widest text-white">
-                      {c.year}
-                    </span>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="font-oswald text-lg text-evraz-dark font-semibold mb-1">{c.title}</h3>
-                    <div className="flex items-center gap-2 text-evraz-gray mb-4">
-                      <Icon name="MapPin" size={14} className="text-evraz-red" />
-                      <span className="font-ibm text-sm">{c.location}</span>
-                    </div>
-                    <div className="flex items-center justify-between border-t border-evraz-border pt-4">
-                      <div>
-                        <div className="font-oswald text-evraz-dark font-semibold text-lg">{c.area}</div>
-                        <div className="font-ibm text-xs text-evraz-gray">Общая площадь</div>
-                      </div>
-                      <div className="w-8 h-8 bg-red-50 flex items-center justify-center group-hover:bg-evraz-red transition-colors">
-                        <Icon
-                          name="ArrowRight"
-                          size={16}
-                          className="text-evraz-red group-hover:text-white transition-colors"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </AnimSection>
-            ))}
           </div>
         </div>
       </section>
