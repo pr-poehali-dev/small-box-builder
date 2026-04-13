@@ -1,17 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Icon from "@/components/ui/icon";
 
-const NAV_ITEMS = [
-  { id: "home", label: "Главная" },
-  { id: "solutions", label: "Решения" },
-  { id: "calculator", label: "Калькулятор" },
-  { id: "cases", label: "Кейсы" },
-  { id: "about", label: "О компании" },
-  { id: "partners", label: "Партнёры" },
-  { id: "blog", label: "Блог" },
-  { id: "contacts", label: "Контакты" },
-];
-
 const SOLUTIONS = [
   {
     icon: "Warehouse",
@@ -167,8 +156,6 @@ function AnimSection({ children, className = "" }: { children: React.ReactNode; 
 }
 
 export default function Index() {
-  const [activeSection, setActiveSection] = useState("home");
-  const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   const [width, setWidth] = useState(24);
@@ -198,22 +185,13 @@ export default function Index() {
     }).format(n);
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 60);
-      const sections = NAV_ITEMS.map((i) => document.getElementById(i.id));
-      const current = sections
-        .filter(Boolean)
-        .reverse()
-        .find((s) => s && window.scrollY >= s.offsetTop - 120);
-      if (current) setActiveSection(current.id);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    setMenuOpen(false);
   };
 
   return (
@@ -235,57 +213,15 @@ export default function Index() {
             </div>
           </button>
 
-          <nav className="hidden lg:flex items-center gap-8">
-            {NAV_ITEMS.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollTo(item.id)}
-                className={`nav-link font-oswald text-sm tracking-wider uppercase transition-colors ${
-                  activeSection === item.id ? "text-evraz-red active" : "text-gray-300 hover:text-white"
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-          </nav>
-
-          <div className="hidden lg:flex items-center gap-4">
-            <a href="tel:+78001234567" className="text-white font-ibm text-sm font-medium hover:text-evraz-red transition-colors">
+          <div className="flex items-center gap-4">
+            <a href="tel:+78001234567" className="hidden sm:block text-white font-ibm text-sm font-medium hover:text-evraz-red transition-colors">
               8 800 123-45-67
             </a>
             <button onClick={() => scrollTo("contacts")} className="btn-primary text-sm">
               Заказать проект
             </button>
           </div>
-
-          <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden text-white p-2">
-            <Icon name={menuOpen ? "X" : "Menu"} size={24} />
-          </button>
         </div>
-
-        {menuOpen && (
-          <div className="lg:hidden bg-evraz-dark border-t border-white/10 py-4">
-            <div className="container mx-auto flex flex-col gap-2">
-              {NAV_ITEMS.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollTo(item.id)}
-                  className="font-oswald text-sm tracking-wider uppercase text-gray-300 hover:text-white py-2 text-left transition-colors"
-                >
-                  {item.label}
-                </button>
-              ))}
-              <div className="pt-3 border-t border-white/10 mt-2">
-                <a href="tel:+78001234567" className="block text-white font-ibm text-sm font-medium py-2">
-                  8 800 123-45-67
-                </a>
-                <button onClick={() => scrollTo("contacts")} className="btn-primary text-sm w-full mt-2">
-                  Заказать проект
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
       </header>
 
       {/* HERO */}
