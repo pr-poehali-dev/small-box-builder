@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Icon from "@/components/ui/icon";
+import { PriceCalculator } from "@/components/shared/PriceCalculator";
 
 // ─── Данные каталога ────────────────────────────────────────────────────────
 
@@ -391,7 +392,7 @@ export default function Catalog() {
               Введите свои параметры — получите мгновенную оценку стоимости.
             </p>
           </div>
-          <MiniCalculator />
+          <PriceCalculator onGetQuote={() => document.getElementById("contacts-section")?.scrollIntoView({ behavior: "smooth" })} />
         </div>
       </section>
 
@@ -487,75 +488,3 @@ export default function Catalog() {
   );
 }
 
-// ─── Мини-калькулятор внутри страницы ───────────────────────────────────────
-
-function MiniCalculator() {
-  const [width, setWidth] = useState(24);
-  const [length, setLength] = useState(48);
-  const [height, setHeight] = useState(6);
-  const [type, setType] = useState("warehouse");
-
-  const calc = () => {
-    const area = width * length;
-    const base: Record<string, number> = { warehouse: 12500, production: 16000, trade: 18500, agro: 10800, sport: 22000, parking: 9700 };
-    const coef = height > 8 ? 1.15 : height > 6 ? 1.08 : 1;
-    return Math.round((area * (base[type] || 12500) * coef) / 1000) * 1000;
-  };
-
-  return (
-    <div className="bg-white/5 border border-white/10 p-8 max-w-3xl mx-auto">
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
-        {[
-          { key: "warehouse", label: "Склад" },
-          { key: "production", label: "Производство" },
-          { key: "trade", label: "Торговля" },
-          { key: "agro", label: "Агро" },
-          { key: "sport", label: "Спорт" },
-          { key: "parking", label: "Паркинг" },
-        ].map((t) => (
-          <button
-            key={t.key}
-            onClick={() => setType(t.key)}
-            className={`font-oswald text-sm tracking-wider uppercase py-2.5 border transition-all ${
-              type === t.key ? "bg-evraz-red border-evraz-red text-white" : "border-white/20 text-gray-300 hover:border-evraz-red hover:text-white"
-            }`}
-          >
-            {t.label}
-          </button>
-        ))}
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        {[
-          { label: "Ширина", val: width, set: setWidth, min: 12, max: 60 },
-          { label: "Длина", val: length, set: setLength, min: 18, max: 200 },
-          { label: "Высота", val: height, set: setHeight, min: 4, max: 20 },
-        ].map((s) => (
-          <div key={s.label}>
-            <div className="flex justify-between mb-2">
-              <label className="font-oswald text-xs tracking-widest text-gray-400 uppercase">{s.label}</label>
-              <span className="font-oswald text-evraz-red text-sm font-semibold">{s.val} м</span>
-            </div>
-            <input type="range" min={s.min} max={s.max} value={s.val} onChange={(e) => s.set(+e.target.value)} className="w-full" />
-          </div>
-        ))}
-      </div>
-      <div className="flex flex-col md:flex-row items-center justify-between gap-4 bg-evraz-red/10 border border-evraz-red/30 p-5">
-        <div>
-          <div className="font-ibm text-xs text-gray-400 uppercase tracking-wider">Площадь</div>
-          <div className="font-oswald text-xl text-white">{(width * length).toLocaleString("ru-RU")} м²</div>
-        </div>
-        <div className="text-center md:text-right">
-          <div className="font-ibm text-xs text-gray-400 uppercase tracking-wider">Ориентировочная стоимость</div>
-          <div className="font-oswald text-3xl text-evraz-red font-bold">{FORMAT_RUB(calc())}</div>
-          <div className="font-ibm text-xs text-gray-500 mt-0.5">*без фундамента и инженерных сетей</div>
-        </div>
-        <button
-          onClick={() => document.getElementById("contacts-section")?.scrollIntoView({ behavior: "smooth" })}
-          className="btn-primary whitespace-nowrap"
-        >
-          Получить смету
-        </button>
-      </div>
-    </div>
-  );
-}
