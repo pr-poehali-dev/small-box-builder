@@ -301,19 +301,20 @@ export default function Catalog() {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
               {filtered.map((item) => (
-                <div key={item.id} className="steel-card bg-white border border-evraz-border flex flex-col group cursor-pointer relative">
-                  {item.popular && (
-                    <div className="absolute top-4 right-4 bg-evraz-red font-oswald text-xs text-white tracking-widest uppercase px-3 py-1 z-10">
-                      Популярный
-                    </div>
-                  )}
-
+                <div key={item.id} className="steel-card bg-white border border-evraz-border flex flex-col group cursor-pointer">
                   {/* Header */}
                   <div className="bg-evraz-dark px-6 py-5 flex items-start justify-between">
                     <div>
-                      <span className="font-oswald text-xs tracking-widest text-evraz-red uppercase bg-white/5 px-2 py-0.5">
-                        {item.tag}
-                      </span>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="font-oswald text-xs tracking-widest text-evraz-red uppercase bg-white/5 px-2 py-0.5">
+                          {item.tag}
+                        </span>
+                        {item.popular && (
+                          <span className="font-oswald text-xs text-white tracking-widest uppercase bg-evraz-red px-2 py-0.5">
+                            Популярный
+                          </span>
+                        )}
+                      </div>
                       <h3 className="font-oswald text-xl text-white font-semibold mt-2">{item.name}</h3>
                     </div>
                     <div className="text-right shrink-0 ml-4">
