@@ -155,8 +155,19 @@ function AnimSection({ children, className = "" }: { children: React.ReactNode; 
   );
 }
 
+const BUILDING_TYPES = [
+  "склад",
+  "производство",
+  "паркинг",
+  "торговый центр",
+  "спортарену",
+  "агрокомплекс",
+];
+
 export default function Index() {
   const [scrolled, setScrolled] = useState(false);
+  const [typeIndex, setTypeIndex] = useState(0);
+  const [typeFading, setTypeFading] = useState(false);
 
   const [width, setWidth] = useState(24);
   const [length, setLength] = useState(48);
@@ -188,6 +199,17 @@ export default function Index() {
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTypeFading(true);
+      setTimeout(() => {
+        setTypeIndex((i) => (i + 1) % BUILDING_TYPES.length);
+        setTypeFading(false);
+      }, 350);
+    }, 2500);
+    return () => clearInterval(interval);
   }, []);
 
   const scrollTo = (id: string) => {
@@ -239,26 +261,31 @@ export default function Index() {
         <div className="container mx-auto relative z-10 pt-24 pb-0 flex flex-col min-h-screen">
           {/* Верхняя часть — заголовок */}
           <div className="flex-1 flex flex-col justify-center max-w-3xl py-12">
-            <div className="animate-fade-in-up">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-0.5 bg-evraz-red" />
-                <span className="font-oswald text-evraz-red text-sm tracking-[0.25em] uppercase">
-                  Официальный партнёр EVRAZ
-                </span>
-              </div>
-            </div>
-
-            <h1 className="font-oswald text-5xl md:text-7xl text-white font-bold leading-none mb-6 animate-fade-in-up">
-              СТАЛЬНЫЕ
+            <h1 className="font-oswald text-4xl md:text-6xl text-white font-bold leading-tight mb-6 animate-fade-in-up">
+              <span className="text-gray-300 font-light">Спроектируем, изготовим</span>
               <br />
-              <span className="text-evraz-red">ЗДАНИЯ</span>
+              <span className="text-gray-300 font-light">и построим</span>{" "}
+              <span
+                className="text-evraz-red inline-block transition-all duration-300"
+                style={{
+                  opacity: typeFading ? 0 : 1,
+                  transform: typeFading ? "translateY(8px)" : "translateY(0)",
+                }}
+              >
+                {BUILDING_TYPES[typeIndex]}
+              </span>
               <br />
-              ПОД КЛЮЧ
+              <span className="text-white">под ключ за 40 дней</span>
             </h1>
 
-            <p className="font-ibm text-lg text-gray-300 max-w-xl leading-relaxed animate-fade-in-up delay-200">
-              Быстровозводимые металлические конструкции на базе стали EVRAZ. Выберите своё решение:
-            </p>
+            <div className="flex items-center gap-3 animate-fade-in-up delay-200">
+              <div className="w-8 h-8 bg-evraz-red flex items-center justify-center shrink-0">
+                <div className="w-3.5 h-3.5 border-2 border-white rotate-45" />
+              </div>
+              <span className="font-oswald text-white text-lg tracking-widest uppercase">
+                Гарантия EVRAZ
+              </span>
+            </div>
           </div>
 
           {/* Нижняя часть — три карточки аудитории */}
