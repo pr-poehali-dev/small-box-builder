@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 
 const BUILDING_TYPES = [
@@ -15,6 +16,7 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ scrollTo }: HeroSectionProps) {
+  const navigate = useNavigate();
   const [typeIndex, setTypeIndex] = useState(0);
   const [typeFading, setTypeFading] = useState(false);
 
@@ -82,6 +84,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
               cta: "Смотреть каталог",
               target: "solutions",
               accent: false,
+              route: "/catalog",
             },
             {
               icon: "PenRuler",
@@ -91,6 +94,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
               cta: "Обсудить проект",
               target: "contacts",
               accent: true,
+              route: null,
             },
             {
               icon: "Car",
@@ -100,6 +104,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
               cta: "Узнать подробнее",
               target: "calculator",
               accent: false,
+              route: null,
             },
           ].map((card) => (
             <div
@@ -109,7 +114,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
                   ? "bg-evraz-red border-evraz-red"
                   : "bg-evraz-dark/80 border-white/10 hover:bg-white/10 hover:border-evraz-red"
               }`}
-              onClick={() => scrollTo(card.target)}
+              onClick={() => card.route ? navigate(card.route) : scrollTo(card.target)}
             >
               {/* Top */}
               <div className="flex items-center justify-between mb-6">
