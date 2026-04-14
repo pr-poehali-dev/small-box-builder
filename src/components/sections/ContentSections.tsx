@@ -1,9 +1,16 @@
+import { useState } from "react";
 import Icon from "@/components/ui/icon";
 import { AnimSection } from "@/components/shared/AnimSection";
 import { PriceCalculator } from "@/components/shared/PriceCalculator";
 
 
-const CASES = [
+type CaseCategory = "Серийные здания" | "Индивидуальные проекты" | "Парковки";
+
+const CASES: {
+  title: string; location: string; area: string; year: string; image: string;
+  tag: string; dims: { width: string; length: string; height: string };
+  partner: string; review: string | null; category: CaseCategory;
+}[] = [
   {
     title: "Логистический центр OZON",
     location: "Московская обл., Домодедово",
@@ -14,6 +21,7 @@ const CASES = [
     dims: { width: "120 м", length: "400 м", height: "14 м" },
     partner: "СтальСтрой",
     review: "https://ozon.ru",
+    category: "Серийные здания",
   },
   {
     title: "Ледовая арена «Металлург»",
@@ -25,6 +33,7 @@ const CASES = [
     dims: { width: "80 м", length: "150 м", height: "18 м" },
     partner: "УралМеталлМонтаж",
     review: "https://metallurg.ru",
+    category: "Индивидуальные проекты",
   },
   {
     title: "Производственный корпус НТМК",
@@ -36,6 +45,19 @@ const CASES = [
     dims: { width: "54 м", length: "416 м", height: "16 м" },
     partner: "СибирьСталь",
     review: null,
+    category: "Индивидуальные проекты",
+  },
+  {
+    title: "Многоуровневая парковка ТЦ «Галерея»",
+    location: "Санкт-Петербург",
+    area: "9 800 м²",
+    year: "2023",
+    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/5b4508f9-9d77-48fd-8352-9fba826f4269.jpg",
+    tag: "Паркинг",
+    dims: { width: "48 м", length: "204 м", height: "6 м" },
+    partner: "СтальСтрой",
+    review: null,
+    category: "Парковки",
   },
 ];
 
@@ -88,7 +110,15 @@ const BLOG_POSTS = [
   },
 ];
 
+const CASE_CATEGORIES: CaseCategory[] = ["Серийные здания", "Индивидуальные проекты", "Парковки"];
+
 export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }) {
+  const [caseFilter, setCaseFilter] = useState<CaseCategory | "Все">("Все");
+
+  const filteredCases = caseFilter === "Все"
+    ? CASES
+    : CASES.filter((c) => c.category === caseFilter);
+
   return (
     <>
       {/* CASES */}
@@ -107,8 +137,27 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
             </div>
           </AnimSection>
 
+          {/* Переключатель категорий */}
+          <AnimSection>
+            <div className="flex flex-wrap gap-2 mb-10">
+              {(["Все", ...CASE_CATEGORIES] as (CaseCategory | "Все")[]).map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setCaseFilter(cat)}
+                  className={`font-oswald text-sm tracking-wider uppercase px-5 py-2.5 border transition-all ${
+                    caseFilter === cat
+                      ? "bg-evraz-red border-evraz-red text-white"
+                      : "border-evraz-border bg-white text-evraz-steel hover:border-evraz-red hover:text-evraz-red"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </AnimSection>
+
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {CASES.map((c, i) => (
+            {filteredCases.map((c, i) => (
               <AnimSection key={c.title}>
                 <div
                   className="steel-card bg-white border border-evraz-border overflow-hidden group flex flex-col"
