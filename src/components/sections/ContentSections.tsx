@@ -71,12 +71,36 @@ const ADVANTAGES = [
 ];
 
 const PARTNERS = [
-  { name: "СтальСтрой", region: "Москва и МО", projects: 48, rating: 5 },
-  { name: "УралМеталлМонтаж", region: "Урал, Сибирь", projects: 62, rating: 5 },
-  { name: "СибирьСталь", region: "Новосибирск, Красноярск", projects: 35, rating: 4 },
-  { name: "ЮгМонтаж", region: "Краснодар, Ростов", projects: 29, rating: 5 },
-  { name: "ВолгаПром", region: "Поволжье", projects: 41, rating: 4 },
-  { name: "СеверСтройПроект", region: "СЗФО", projects: 23, rating: 5 },
+  {
+    name: "СтальСтрой", region: "Москва и МО", projects: 48, rating: 5,
+    services: ["Монтаж", "Проектирование"],
+    review: { text: "Сдали объект на 2 недели раньше срока. Качество монтажа — без нареканий.", author: "Алексей К., директор ООО «ЛогоПарк»" },
+  },
+  {
+    name: "УралМеталлМонтаж", region: "Урал, Сибирь", projects: 62, rating: 5,
+    services: ["Монтаж"],
+    review: { text: "Работаем с ними на трёх объектах подряд. Надёжная команда, чёткое соблюдение смет.", author: "Игорь Р., технический директор НТМК" },
+  },
+  {
+    name: "СибирьСталь", region: "Новосибирск, Красноярск", projects: 35, rating: 4,
+    services: ["Монтаж", "Проектирование"],
+    review: { text: "Профессиональный подход к проекту, грамотная проектная документация.", author: "Светлана М., АгроХолдинг «Восток»" },
+  },
+  {
+    name: "ЮгМонтаж", region: "Краснодар, Ростов", projects: 29, rating: 5,
+    services: ["Монтаж"],
+    review: { text: "Быстро развернули бригаду, уложились в 28 дней под ключ.", author: "Дмитрий П., ИП Павлов" },
+  },
+  {
+    name: "ВолгаПром", region: "Поволжье", projects: 41, rating: 4,
+    services: ["Монтаж", "Проектирование"],
+    review: null,
+  },
+  {
+    name: "СеверСтройПроект", region: "СЗФО", projects: 23, rating: 5,
+    services: ["Проектирование"],
+    review: { text: "Разработали проект с учётом северных снеговых нагрузок — всё соответствует нормативам.", author: "Николай В., «Северлес»" },
+  },
 ];
 
 const BLOG_POSTS = [
@@ -346,7 +370,8 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {PARTNERS.map((p) => (
               <AnimSection key={p.name}>
-                <div className="bg-white/5 border border-white/10 p-6 hover:border-evraz-red/50 transition-all duration-300">
+                <div className="bg-white/5 border border-white/10 p-6 hover:border-evraz-red/50 transition-all duration-300 flex flex-col h-full">
+                  {/* Шапка */}
                   <div className="flex items-start justify-between mb-4">
                     <div>
                       <h4 className="font-oswald text-lg text-white font-semibold">{p.name}</h4>
@@ -355,17 +380,36 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
                         <span className="font-ibm text-sm text-gray-400">{p.region}</span>
                       </div>
                     </div>
-                    <div className="flex gap-0.5">
+                    <div className="flex gap-0.5 shrink-0">
                       {Array.from({ length: 5 }).map((_, j) => (
-                        <Icon
-                          key={j}
-                          name="Star"
-                          size={12}
-                          className={j < p.rating ? "text-evraz-red" : "text-gray-600"}
-                        />
+                        <Icon key={j} name="Star" size={12} className={j < p.rating ? "text-evraz-red" : "text-gray-600"} />
                       ))}
                     </div>
                   </div>
+
+                  {/* Услуги */}
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {p.services.map((s) => (
+                      <span key={s} className={`font-oswald text-xs tracking-wider uppercase px-2.5 py-1 ${
+                        s === "Проектирование"
+                          ? "bg-white/10 text-gray-300 border border-white/20"
+                          : "bg-evraz-red/15 text-evraz-red border border-evraz-red/30"
+                      }`}>
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Отзыв */}
+                  {p.review && (
+                    <div className="bg-white/5 border-l-2 border-evraz-red px-4 py-3 mb-4 flex-1">
+                      <p className="font-ibm text-xs text-gray-300 leading-relaxed italic">«{p.review.text}»</p>
+                      <p className="font-ibm text-xs text-gray-500 mt-2">— {p.review.author}</p>
+                    </div>
+                  )}
+                  {!p.review && <div className="flex-1" />}
+
+                  {/* Футер */}
                   <div className="border-t border-white/10 pt-4 flex items-center justify-between">
                     <span className="font-ibm text-sm text-gray-400">{p.projects} проектов</span>
                     <span className="font-oswald text-xs tracking-widest text-evraz-red uppercase bg-evraz-red/10 px-2 py-1">
