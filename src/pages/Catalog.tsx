@@ -25,6 +25,7 @@ interface CatalogItem {
   days: number;
   features: string[];
   popular?: boolean;
+  designers?: string[];
 }
 
 const CATALOG: CatalogItem[] = [
@@ -39,6 +40,7 @@ const CATALOG: CatalogItem[] = [
     pricePerSqm: 12_500,
     days: 30,
     features: ["2 ворот", "Утеплённые сэндвич-панели", "Рулонная кровля"],
+    designers: ["СтальПроект", "ГрупПром"],
   },
   {
     id: "s-24-48-7",
@@ -52,6 +54,7 @@ const CATALOG: CatalogItem[] = [
     days: 35,
     features: ["2 ворот", "4 окна", "Антикор покрытие"],
     popular: true,
+    designers: ["МеталлДизайн", "СтальПроект"],
   },
   {
     id: "s-36-72-8",
@@ -64,6 +67,7 @@ const CATALOG: CatalogItem[] = [
     pricePerSqm: 12_500,
     days: 45,
     features: ["4 ворот", "6 окон", "Дымовые люки"],
+    designers: ["ПромАрхитектура"],
   },
   {
     id: "p-24-48-10",
@@ -77,6 +81,7 @@ const CATALOG: CatalogItem[] = [
     days: 40,
     features: ["2 ворот", "Мостовой кран 10т", "Усиленный каркас"],
     popular: true,
+    designers: ["ИндустриалПроект", "ТехноСталь"],
   },
   {
     id: "p-36-72-12",
@@ -89,6 +94,7 @@ const CATALOG: CatalogItem[] = [
     pricePerSqm: 17_500,
     days: 55,
     features: ["4 ворот", "Мостовой кран 20т", "Технические галереи"],
+    designers: ["ИндустриалПроект", "МеталлДизайн", "ПромАрхитектура"],
   },
   {
     id: "a-18-36-5",
@@ -101,6 +107,7 @@ const CATALOG: CatalogItem[] = [
     pricePerSqm: 10_800,
     days: 28,
     features: ["1 ворота", "Вентиляционные решётки", "Антикор каркас"],
+    designers: ["АгроСтрой"],
   },
   {
     id: "a-24-60-6",
@@ -114,6 +121,7 @@ const CATALOG: CatalogItem[] = [
     days: 35,
     features: ["2 ворот", "Принудительная вентиляция", "Аттестован под зерно"],
     popular: true,
+    designers: ["АгроСтрой", "ГрупПром"],
   },
   {
     id: "t-30-60-8",
@@ -127,6 +135,7 @@ const CATALOG: CatalogItem[] = [
     days: 50,
     features: ["6 входных групп", "Витражное остекление", "Фасадные кассеты"],
     popular: true,
+    designers: ["АрхибюроПлюс", "МеталлДизайн"],
   },
   {
     id: "sp-48-72-14",
@@ -143,6 +152,7 @@ const CATALOG: CatalogItem[] = [
       "Естественное освещение",
       "Трибуны 500 мест",
     ],
+    designers: ["СпортАрхПроект", "ПромАрхитектура"],
   },
   {
     id: "pk-18-54-3",
@@ -155,6 +165,7 @@ const CATALOG: CatalogItem[] = [
     pricePerSqm: 9_700,
     days: 30,
     features: ["54 машиноместа", "Открытый тип", "Быстрый монтаж"],
+    designers: ["ГрупПром"],
   },
   {
     id: "pk-24-72-6",
@@ -168,6 +179,7 @@ const CATALOG: CatalogItem[] = [
     days: 45,
     features: ["144 машиноместа", "2 уровня", "Антикор покрытие"],
     popular: true,
+    designers: ["ГрупПром", "АрхибюроПлюс"],
   },
 ];
 
@@ -478,6 +490,25 @@ export default function Catalog() {
                         {item.days} дней
                       </span>
                     </div>
+
+                    {/* Подрядчики проектирования */}
+                    {item.designers && item.designers.length > 0 && (
+                      <div className="mb-5">
+                        <div className="font-ibm text-xs text-evraz-gray uppercase tracking-widest mb-2">
+                          Проектирование
+                        </div>
+                        <div className="flex flex-wrap gap-1.5">
+                          {item.designers.map((d) => (
+                            <span
+                              key={d}
+                              className="font-ibm text-xs text-evraz-dark bg-evraz-light border border-evraz-border px-2.5 py-1"
+                            >
+                              {d}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
 
                     {/* CTA */}
                     <div className="flex gap-3">
