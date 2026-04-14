@@ -13,6 +13,8 @@ type BuildingTag =
   | "Спорт"
   | "Паркинг";
 
+type AreaRange = "до 1000 м²" | "1000–3000 м²" | "свыше 3000 м²";
+
 interface CatalogItem {
   id: string;
   tag: BuildingTag;
@@ -26,6 +28,8 @@ interface CatalogItem {
   features: string[];
   popular?: boolean;
   designers?: string[];
+  city: string;
+  capital: boolean;
 }
 
 const CATALOG: CatalogItem[] = [
@@ -33,163 +37,127 @@ const CATALOG: CatalogItem[] = [
     id: "s-18-36-6",
     tag: "Склад",
     name: "Склад S-18",
-    width: 18,
-    length: 36,
-    height: 6,
-    price: 8_100_000,
-    pricePerSqm: 12_500,
-    days: 30,
+    width: 18, length: 36, height: 6,
+    price: 8_100_000, pricePerSqm: 12_500, days: 30,
     features: ["2 ворот", "Утеплённые сэндвич-панели", "Рулонная кровля"],
     designers: ["СтальПроект", "ГрупПром"],
+    city: "Москва", capital: false,
   },
   {
     id: "s-24-48-7",
     tag: "Склад",
     name: "Склад S-24",
-    width: 24,
-    length: 48,
-    height: 7,
-    price: 14_400_000,
-    pricePerSqm: 12_500,
-    days: 35,
+    width: 24, length: 48, height: 7,
+    price: 14_400_000, pricePerSqm: 12_500, days: 35,
     features: ["2 ворот", "4 окна", "Антикор покрытие"],
     popular: true,
     designers: ["МеталлДизайн", "СтальПроект"],
+    city: "Екатеринбург", capital: true,
   },
   {
     id: "s-36-72-8",
     tag: "Склад",
     name: "Склад S-36",
-    width: 36,
-    length: 72,
-    height: 8,
-    price: 32_400_000,
-    pricePerSqm: 12_500,
-    days: 45,
+    width: 36, length: 72, height: 8,
+    price: 32_400_000, pricePerSqm: 12_500, days: 45,
     features: ["4 ворот", "6 окон", "Дымовые люки"],
     designers: ["ПромАрхитектура"],
+    city: "Новосибирск", capital: true,
   },
   {
     id: "p-24-48-10",
     tag: "Производство",
     name: "Цех P-24",
-    width: 24,
-    length: 48,
-    height: 10,
-    price: 20_160_000,
-    pricePerSqm: 17_500,
-    days: 40,
+    width: 24, length: 48, height: 10,
+    price: 20_160_000, pricePerSqm: 17_500, days: 40,
     features: ["2 ворот", "Мостовой кран 10т", "Усиленный каркас"],
     popular: true,
     designers: ["ИндустриалПроект", "ТехноСталь"],
+    city: "Челябинск", capital: true,
   },
   {
     id: "p-36-72-12",
     tag: "Производство",
     name: "Цех P-36",
-    width: 36,
-    length: 72,
-    height: 12,
-    price: 45_360_000,
-    pricePerSqm: 17_500,
-    days: 55,
+    width: 36, length: 72, height: 12,
+    price: 45_360_000, pricePerSqm: 17_500, days: 55,
     features: ["4 ворот", "Мостовой кран 20т", "Технические галереи"],
     designers: ["ИндустриалПроект", "МеталлДизайн", "ПромАрхитектура"],
+    city: "Москва", capital: true,
   },
   {
     id: "a-18-36-5",
     tag: "Агро",
     name: "Агро A-18",
-    width: 18,
-    length: 36,
-    height: 5,
-    price: 7_000_000,
-    pricePerSqm: 10_800,
-    days: 28,
+    width: 18, length: 36, height: 5,
+    price: 7_000_000, pricePerSqm: 10_800, days: 28,
     features: ["1 ворота", "Вентиляционные решётки", "Антикор каркас"],
     designers: ["АгроСтрой"],
+    city: "Краснодар", capital: false,
   },
   {
     id: "a-24-60-6",
     tag: "Агро",
     name: "Агро A-24",
-    width: 24,
-    length: 60,
-    height: 6,
-    price: 15_552_000,
-    pricePerSqm: 10_800,
-    days: 35,
+    width: 24, length: 60, height: 6,
+    price: 15_552_000, pricePerSqm: 10_800, days: 35,
     features: ["2 ворот", "Принудительная вентиляция", "Аттестован под зерно"],
     popular: true,
     designers: ["АгроСтрой", "ГрупПром"],
+    city: "Ростов-на-Дону", capital: false,
   },
   {
     id: "t-30-60-8",
     tag: "Торговля",
     name: "ТЦ T-30",
-    width: 30,
-    length: 60,
-    height: 8,
-    price: 33_300_000,
-    pricePerSqm: 18_500,
-    days: 50,
+    width: 30, length: 60, height: 8,
+    price: 33_300_000, pricePerSqm: 18_500, days: 50,
     features: ["6 входных групп", "Витражное остекление", "Фасадные кассеты"],
     popular: true,
     designers: ["АрхибюроПлюс", "МеталлДизайн"],
+    city: "Екатеринбург", capital: true,
   },
   {
     id: "sp-48-72-14",
     tag: "Спорт",
     name: "Арена SP-48",
-    width: 48,
-    length: 72,
-    height: 14,
-    price: 76_204_800,
-    pricePerSqm: 22_000,
-    days: 70,
-    features: [
-      "Пролёт 48 м без опор",
-      "Естественное освещение",
-      "Трибуны 500 мест",
-    ],
+    width: 48, length: 72, height: 14,
+    price: 76_204_800, pricePerSqm: 22_000, days: 70,
+    features: ["Пролёт 48 м без опор", "Естественное освещение", "Трибуны 500 мест"],
     designers: ["СпортАрхПроект", "ПромАрхитектура"],
+    city: "Челябинск", capital: true,
   },
   {
     id: "pk-18-54-3",
     tag: "Паркинг",
     name: "Паркинг PK-18",
-    width: 18,
-    length: 54,
-    height: 3,
-    price: 9_450_000,
-    pricePerSqm: 9_700,
-    days: 30,
+    width: 18, length: 54, height: 3,
+    price: 9_450_000, pricePerSqm: 9_700, days: 30,
     features: ["54 машиноместа", "Открытый тип", "Быстрый монтаж"],
     designers: ["ГрупПром"],
+    city: "Новосибирск", capital: false,
   },
   {
     id: "pk-24-72-6",
     tag: "Паркинг",
     name: "Паркинг PK-24 (2 уровня)",
-    width: 24,
-    length: 72,
-    height: 6,
-    price: 21_600_000,
-    pricePerSqm: 12_500,
-    days: 45,
+    width: 24, length: 72, height: 6,
+    price: 21_600_000, pricePerSqm: 12_500, days: 45,
     features: ["144 машиноместа", "2 уровня", "Антикор покрытие"],
     popular: true,
     designers: ["ГрупПром", "АрхибюроПлюс"],
+    city: "Москва", capital: false,
   },
 ];
 
-const TAGS: BuildingTag[] = [
-  "Склад",
-  "Производство",
-  "Агро",
-  "Торговля",
-  "Спорт",
-  "Паркинг",
+const TAGS: BuildingTag[] = ["Склад", "Производство", "Агро", "Торговля", "Спорт", "Паркинг"];
+
+const CITIES = [...new Set(CATALOG.map((c) => c.city))].sort();
+
+const AREA_RANGES: { label: AreaRange; test: (a: number) => boolean }[] = [
+  { label: "до 1000 м²", test: (a) => a < 1000 },
+  { label: "1000–3000 м²", test: (a) => a >= 1000 && a <= 3000 },
+  { label: "свыше 3000 м²", test: (a) => a > 3000 },
 ];
 
 const FORMAT_RUB = (n: number) =>
@@ -204,19 +172,25 @@ const FORMAT_RUB = (n: number) =>
 export default function Catalog() {
   const navigate = useNavigate();
   const [activeTag, setActiveTag] = useState<BuildingTag | "Все">("Все");
-  const [sortBy, setSortBy] = useState<"price" | "area" | "days">("price");
-  const [maxPrice, setMaxPrice] = useState(100_000_000);
+  const [activeCity, setActiveCity] = useState<string>("Все");
+  const [activeArea, setActiveArea] = useState<AreaRange | "Все">("Все");
+  const [capitalFilter, setCapitalFilter] = useState<"all" | "capital" | "noncapital">("all");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  const filtered = CATALOG.filter(
-    (item) => activeTag === "Все" || item.tag === activeTag,
-  )
-    .filter((item) => item.price <= maxPrice)
-    .sort((a, b) => {
-      if (sortBy === "price") return a.price - b.price;
-      if (sortBy === "area") return a.width * a.length - b.width * b.length;
-      return a.days - b.days;
-    });
+  const filtered = CATALOG
+    .filter((item) => activeTag === "Все" || item.tag === activeTag)
+    .filter((item) => activeCity === "Все" || item.city === activeCity)
+    .filter((item) => {
+      if (activeArea === "Все") return true;
+      const range = AREA_RANGES.find((r) => r.label === activeArea);
+      return range ? range.test(item.width * item.length) : true;
+    })
+    .filter((item) => {
+      if (capitalFilter === "capital") return item.capital;
+      if (capitalFilter === "noncapital") return !item.capital;
+      return true;
+    })
+    .sort((a, b) => a.price - b.price);
 
   const faqs = [
     {
@@ -317,15 +291,17 @@ export default function Catalog() {
 
       {/* FILTER BAR */}
       <section className="bg-evraz-light border-b border-evraz-border py-5 sticky top-16 z-40">
-        <div className="container mx-auto">
-          <div className="flex flex-wrap items-center gap-3 justify-between">
-            {/* Теги */}
-            <div className="flex flex-wrap gap-2">
+        <div className="container mx-auto space-y-4">
+
+          {/* Строка 1: Назначение здания */}
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="font-ibm text-xs text-evraz-gray w-36 shrink-0">Назначение:</span>
+            <div className="flex flex-wrap gap-1.5">
               {(["Все", ...TAGS] as (BuildingTag | "Все")[]).map((tag) => (
                 <button
                   key={tag}
                   onClick={() => setActiveTag(tag)}
-                  className={`font-oswald text-xs tracking-widest uppercase px-4 py-2 border transition-all ${
+                  className={`font-oswald text-xs tracking-widest uppercase px-3 py-1.5 border transition-all ${
                     activeTag === tag
                       ? "bg-evraz-red border-evraz-red text-white"
                       : "border-evraz-border text-evraz-steel hover:border-evraz-red hover:text-evraz-red bg-white"
@@ -335,52 +311,80 @@ export default function Catalog() {
                 </button>
               ))}
             </div>
-            {/* Сортировка */}
-            <div className="flex items-center gap-2">
-              <span className="font-ibm text-xs text-evraz-gray">
-                Сортировка:
-              </span>
-              {[
-                { key: "price", label: "По цене" },
-                { key: "area", label: "По площади" },
-                { key: "days", label: "По срокам" },
-              ].map((s) => (
+          </div>
+
+          {/* Строка 2: Город */}
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="font-ibm text-xs text-evraz-gray w-36 shrink-0">Город строительства:</span>
+            <div className="flex flex-wrap gap-1.5">
+              {(["Все", ...CITIES]).map((city) => (
                 <button
-                  key={s.key}
-                  onClick={() => setSortBy(s.key as "price" | "area" | "days")}
+                  key={city}
+                  onClick={() => setActiveCity(city)}
                   className={`font-ibm text-xs px-3 py-1.5 border transition-all ${
-                    sortBy === s.key
+                    activeCity === city
                       ? "bg-evraz-dark border-evraz-dark text-white"
                       : "border-evraz-border text-evraz-steel hover:border-evraz-dark bg-white"
                   }`}
                 >
-                  {s.label}
+                  {city}
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Слайдер цены */}
-          <div className="mt-4 flex items-center gap-4">
-            <span className="font-ibm text-xs text-evraz-gray whitespace-nowrap">
-              До:{" "}
-              <span className="font-medium text-evraz-dark">
-                {FORMAT_RUB(maxPrice)}
-              </span>
-            </span>
-            <input
-              type="range"
-              min={5_000_000}
-              max={100_000_000}
-              step={1_000_000}
-              value={maxPrice}
-              onChange={(e) => setMaxPrice(+e.target.value)}
-              className="w-48"
-            />
-            <span className="font-ibm text-xs text-evraz-gray">
+          {/* Строка 3: Площадь + Капитальность */}
+          <div className="flex flex-wrap items-center gap-6">
+            {/* Площадь */}
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="font-ibm text-xs text-evraz-gray w-36 shrink-0">Площадь здания:</span>
+              <div className="flex gap-1.5">
+                {(["Все", ...AREA_RANGES.map((r) => r.label)] as (AreaRange | "Все")[]).map((a) => (
+                  <button
+                    key={a}
+                    onClick={() => setActiveArea(a)}
+                    className={`font-ibm text-xs px-3 py-1.5 border transition-all whitespace-nowrap ${
+                      activeArea === a
+                        ? "bg-evraz-dark border-evraz-dark text-white"
+                        : "border-evraz-border text-evraz-steel hover:border-evraz-dark bg-white"
+                    }`}
+                  >
+                    {a}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Капитальность */}
+            <div className="flex items-center gap-2">
+              <span className="font-ibm text-xs text-evraz-gray shrink-0">Тип:</span>
+              <div className="flex border border-evraz-border overflow-hidden">
+                {([
+                  { key: "all", label: "Все" },
+                  { key: "capital", label: "Капитальное" },
+                  { key: "noncapital", label: "Не капитальное" },
+                ] as { key: "all" | "capital" | "noncapital"; label: string }[]).map((opt) => (
+                  <button
+                    key={opt.key}
+                    onClick={() => setCapitalFilter(opt.key)}
+                    className={`font-ibm text-xs px-3 py-1.5 transition-all border-r border-evraz-border last:border-r-0 ${
+                      capitalFilter === opt.key
+                        ? "bg-evraz-dark text-white"
+                        : "bg-white text-evraz-steel hover:bg-evraz-light"
+                    }`}
+                  >
+                    {opt.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Счётчик */}
+            <span className="font-ibm text-xs text-evraz-gray ml-auto">
               {filtered.length} проектов
             </span>
           </div>
+
         </div>
       </section>
 
