@@ -542,7 +542,110 @@ export default function BigBox2() {
           </div>
         </div>
       </section>
+      {/* ── КАК МЫ РАБОТАЕМ ── */}
+      <section id="how" className="py-20 bg-white">
+        <div className="container mx-auto">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-10 h-0.5 bg-evraz-red" />
+            <span className="font-oswald text-evraz-red text-xs tracking-[0.25em] uppercase">
+              Процесс
+            </span>
+          </div>
+          <h2 className="font-oswald text-3xl md:text-4xl text-evraz-dark font-semibold mb-2">
+            КАК ДОСТИГАЕТСЯ СКОРОСТЬ 5 000 М²/МЕС.
+          </h2>
+          <p className="font-ibm text-evraz-gray text-sm mb-10 max-w-xl leading-relaxed">
+            Не за счёт аврала — за счёт параллельных процессов и единого
+            управления.
+          </p>
 
+          <div className="max-w-4xl space-y-0 border-l-2 border-evraz-border ml-7">
+            {[
+              {
+                num: "01",
+                icon: "Lightbulb",
+                title: "Техническое задание",
+                duration: "1–3 дня",
+                desc: "Разбираемся в вашей задаче: требования производства, площадка, ограничения по срокам. Фиксируем в ТЗ — основа для точного расчёта.",
+                parallel: null,
+              },
+              {
+                num: "02",
+                icon: "FileText",
+                title: "Проектирование",
+                duration: "2–4 недели",
+                desc: "Готовим рабочую документацию по ГОСТ. Вы согласовываете решения до производства — никаких переделок в процессе.",
+                parallel:
+                  "Параллельно: запускаем заготовительное производство на собственном заводе",
+              },
+              {
+                num: "03",
+                icon: "Factory",
+                title: "Производство конструкций",
+                duration: "4–8 недель",
+                desc: "Металлоконструкции изготавливаем на заводах EVRAZ. Пооперационный контроль, маркировка каждого элемента.",
+                parallel:
+                  "Параллельно: подготовка площадки и фундаментные работы на объекте",
+              },
+              {
+                num: "04",
+                icon: "Truck",
+                title: "Доставка на площадку",
+                duration: "По графику",
+                desc: "Поставляем точно по монтажному графику — конструкции приходят в той очерёдности, в которой нужны бригаде. Без склада на площадке.",
+                parallel: null,
+              },
+              {
+                num: "05",
+                icon: "HardHat",
+                title: "Монтаж и сдача",
+                duration: "6–16 недель",
+                desc: "Аккредитованная бригада, поэтапная приёмка. Сдаём с исполнительной документацией и гарантийным письмом.",
+                parallel: null,
+              },
+            ].map((s, i, arr) => (
+              <div
+                key={s.num}
+                className="flex gap-6 relative pl-8 pb-10 last:pb-0"
+              >
+                {/* Точка на линии */}
+                <div className="absolute -left-[9px] top-0 w-4 h-4 bg-evraz-red border-2 border-white" />
+                <div className="flex-1">
+                  <div className="flex flex-wrap items-center gap-3 mb-2">
+                    <div className="w-8 h-8 bg-evraz-dark flex items-center justify-center">
+                      <Icon name={s.icon} size={14} className="text-white" />
+                    </div>
+                    <span className="font-oswald text-xs text-evraz-gray tracking-widest">
+                      ЭТАП {s.num}
+                    </span>
+                    <span className="font-ibm text-xs text-evraz-red font-medium">
+                      {s.duration}
+                    </span>
+                  </div>
+                  <h4 className="font-oswald text-lg text-evraz-dark font-semibold mb-1">
+                    {s.title}
+                  </h4>
+                  <p className="font-ibm text-sm text-evraz-gray leading-relaxed mb-2">
+                    {s.desc}
+                  </p>
+                  {s.parallel && (
+                    <div className="flex items-center gap-2 bg-evraz-red/5 border border-evraz-red/20 px-3 py-2 w-fit">
+                      <Icon
+                        name="Zap"
+                        size={11}
+                        className="text-evraz-red shrink-0"
+                      />
+                      <span className="font-ibm text-xs text-evraz-dark leading-relaxed">
+                        {s.parallel}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
       {/* ── АНТИПРОСТРАНСТВО: РИСКИ БЕЗ BIG BOX ── */}
       <section
         id="challenge"
@@ -676,111 +779,6 @@ export default function BigBox2() {
                 </p>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── КАК МЫ РАБОТАЕМ ── */}
-      <section id="how" className="py-20 bg-white">
-        <div className="container mx-auto">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-0.5 bg-evraz-red" />
-            <span className="font-oswald text-evraz-red text-xs tracking-[0.25em] uppercase">
-              Процесс
-            </span>
-          </div>
-          <h2 className="font-oswald text-3xl md:text-4xl text-evraz-dark font-semibold mb-2">
-            КАК ДОСТИГАЕТСЯ СКОРОСТЬ 5 000 М²/МЕС.
-          </h2>
-          <p className="font-ibm text-evraz-gray text-sm mb-10 max-w-xl leading-relaxed">
-            Не за счёт аврала — за счёт параллельных процессов и единого
-            управления.
-          </p>
-
-          <div className="max-w-4xl space-y-0 border-l-2 border-evraz-border ml-7">
-            {[
-              {
-                num: "01",
-                icon: "Lightbulb",
-                title: "Техническое задание",
-                duration: "1–3 дня",
-                desc: "Разбираемся в вашей задаче: требования производства, площадка, ограничения по срокам. Фиксируем в ТЗ — основа для точного расчёта.",
-                parallel: null,
-              },
-              {
-                num: "02",
-                icon: "FileText",
-                title: "Проектирование",
-                duration: "2–4 недели",
-                desc: "Готовим рабочую документацию по ГОСТ. Вы согласовываете решения до производства — никаких переделок в процессе.",
-                parallel:
-                  "Параллельно: запускаем заготовительное производство на собственном заводе",
-              },
-              {
-                num: "03",
-                icon: "Factory",
-                title: "Производство конструкций",
-                duration: "4–8 недель",
-                desc: "Металлоконструкции изготавливаем на заводах EVRAZ. Пооперационный контроль, маркировка каждого элемента.",
-                parallel:
-                  "Параллельно: подготовка площадки и фундаментные работы на объекте",
-              },
-              {
-                num: "04",
-                icon: "Truck",
-                title: "Доставка на площадку",
-                duration: "По графику",
-                desc: "Поставляем точно по монтажному графику — конструкции приходят в той очерёдности, в которой нужны бригаде. Без склада на площадке.",
-                parallel: null,
-              },
-              {
-                num: "05",
-                icon: "HardHat",
-                title: "Монтаж и сдача",
-                duration: "6–16 недель",
-                desc: "Аккредитованная бригада, поэтапная приёмка. Сдаём с исполнительной документацией и гарантийным письмом.",
-                parallel: null,
-              },
-            ].map((s, i, arr) => (
-              <div
-                key={s.num}
-                className="flex gap-6 relative pl-8 pb-10 last:pb-0"
-              >
-                {/* Точка на линии */}
-                <div className="absolute -left-[9px] top-0 w-4 h-4 bg-evraz-red border-2 border-white" />
-                <div className="flex-1">
-                  <div className="flex flex-wrap items-center gap-3 mb-2">
-                    <div className="w-8 h-8 bg-evraz-dark flex items-center justify-center">
-                      <Icon name={s.icon} size={14} className="text-white" />
-                    </div>
-                    <span className="font-oswald text-xs text-evraz-gray tracking-widest">
-                      ЭТАП {s.num}
-                    </span>
-                    <span className="font-ibm text-xs text-evraz-red font-medium">
-                      {s.duration}
-                    </span>
-                  </div>
-                  <h4 className="font-oswald text-lg text-evraz-dark font-semibold mb-1">
-                    {s.title}
-                  </h4>
-                  <p className="font-ibm text-sm text-evraz-gray leading-relaxed mb-2">
-                    {s.desc}
-                  </p>
-                  {s.parallel && (
-                    <div className="flex items-center gap-2 bg-evraz-red/5 border border-evraz-red/20 px-3 py-2 w-fit">
-                      <Icon
-                        name="Zap"
-                        size={11}
-                        className="text-evraz-red shrink-0"
-                      />
-                      <span className="font-ibm text-xs text-evraz-dark leading-relaxed">
-                        {s.parallel}
-                      </span>
-                    </div>
-                  )}
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
