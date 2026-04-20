@@ -32,7 +32,10 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center overflow-hidden"
+    >
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
@@ -47,7 +50,9 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
         {/* Верхняя часть — заголовок */}
         <div className="flex-1 flex flex-col justify-center max-w-3xl py-12">
           <h1 className="font-oswald text-4xl md:text-6xl text-white font-bold leading-tight mb-6 animate-fade-in-up">
-            <span className="text-gray-300 font-light">Спроектируем, изготовим</span>
+            <span className="text-gray-300 font-light">
+              Спроектируем, изготовим
+            </span>
             <br />
             <span className="text-gray-300 font-light">и построим</span>{" "}
             <span
@@ -94,7 +99,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
               cta: "Обсудить проект",
               target: "contacts",
               accent: true,
-              route: null,
+              route: "/BigBox",
             },
             {
               icon: "Car",
@@ -114,23 +119,37 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
                   ? "bg-evraz-red border-evraz-red"
                   : "bg-evraz-dark/80 border-white/10 hover:bg-white/10 hover:border-evraz-red"
               }`}
-              onClick={() => card.route ? navigate(card.route) : scrollTo(card.target)}
+              onClick={() =>
+                card.route ? navigate(card.route) : scrollTo(card.target)
+              }
             >
               {/* Top */}
               <div className="flex items-center justify-between mb-6">
                 <span
                   className={`font-oswald text-xs tracking-[0.2em] uppercase px-2 py-1 ${
-                    card.accent ? "bg-white/20 text-white" : "bg-white/5 text-evraz-red"
+                    card.accent
+                      ? "bg-white/20 text-white"
+                      : "bg-white/5 text-evraz-red"
                   }`}
                 >
                   {card.tag}
                 </span>
                 <div
                   className={`w-10 h-10 flex items-center justify-center border ${
-                    card.accent ? "border-white/30" : "border-white/10 group-hover:border-evraz-red"
+                    card.accent
+                      ? "border-white/30"
+                      : "border-white/10 group-hover:border-evraz-red"
                   } transition-colors`}
                 >
-                  <Icon name={card.icon} size={18} className={card.accent ? "text-white" : "text-gray-400 group-hover:text-evraz-red"} />
+                  <Icon
+                    name={card.icon}
+                    size={18}
+                    className={
+                      card.accent
+                        ? "text-white"
+                        : "text-gray-400 group-hover:text-evraz-red"
+                    }
+                  />
                 </div>
               </div>
 
@@ -138,14 +157,20 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
               <h3 className="font-oswald text-2xl text-white font-semibold mb-3 leading-tight">
                 {card.title}
               </h3>
-              <p className={`font-ibm text-sm leading-relaxed mb-8 ${card.accent ? "text-white/80" : "text-gray-400"}`}>
+              <p
+                className={`font-ibm text-sm leading-relaxed mb-8 ${card.accent ? "text-white/80" : "text-gray-400"}`}
+              >
                 {card.desc}
               </p>
 
               {/* CTA */}
-              <div className={`flex items-center gap-2 font-oswald text-sm tracking-wider uppercase transition-all ${
-                card.accent ? "text-white" : "text-gray-400 group-hover:text-white"
-              }`}>
+              <div
+                className={`flex items-center gap-2 font-oswald text-sm tracking-wider uppercase transition-all ${
+                  card.accent
+                    ? "text-white"
+                    : "text-gray-400 group-hover:text-white"
+                }`}
+              >
                 {card.cta}
                 <Icon
                   name="ArrowRight"
