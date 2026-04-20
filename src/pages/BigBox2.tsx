@@ -148,8 +148,6 @@ export default function BigBox2() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeForm, setActiveForm] = useState<FormType>(null);
-  const [expandedCase, setExpandedCase] = useState<number | null>(null);
-
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll);
@@ -304,88 +302,76 @@ export default function BigBox2() {
           </p>
 
           <div className="space-y-6">
-            {CASES.map((c) => {
-              const isExpanded = expandedCase === c.id;
-              return (
-                <div key={c.id} className="bg-white border border-evraz-border overflow-hidden">
-                  <div className="grid grid-cols-1 lg:grid-cols-2">
-                    {/* Фото */}
-                    <div className="relative h-64 lg:h-auto overflow-hidden">
-                      <img src={c.img} alt={c.title}
-                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
-                      <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent" />
-                      <span className="absolute top-4 left-4 bg-evraz-red text-white font-oswald text-xs tracking-widest uppercase px-3 py-1">
-                        {c.tag}
-                      </span>
-                    </div>
+            {CASES.map((c) => (
+              <div key={c.id} className="bg-white border border-evraz-border overflow-hidden">
+                {/* Верхняя часть: фото + контент */}
+                <div className="grid grid-cols-1 lg:grid-cols-2">
+                  {/* Фото */}
+                  <div className="relative h-64 lg:h-auto overflow-hidden">
+                    <img src={c.img} alt={c.title}
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent" />
+                    <span className="absolute top-4 left-4 bg-evraz-red text-white font-oswald text-xs tracking-widest uppercase px-3 py-1">
+                      {c.tag}
+                    </span>
+                  </div>
 
-                    {/* Контент */}
-                    <div className="p-6 lg:p-8 flex flex-col justify-between">
-                      <div>
-                        <h3 className="font-oswald text-xl text-evraz-dark font-semibold mb-4 leading-snug">{c.title}</h3>
+                  {/* Контент */}
+                  <div className="p-6 lg:p-8 flex flex-col justify-between">
+                    <div>
+                      <h3 className="font-oswald text-xl text-evraz-dark font-semibold mb-4 leading-snug">{c.title}</h3>
 
-                        {/* Факты */}
-                        <div className="grid grid-cols-2 gap-3 mb-5">
-                          <div className="bg-evraz-light p-3">
-                            <div className="font-ibm text-xs text-evraz-gray uppercase tracking-wider mb-1">Площадь</div>
-                            <div className="font-oswald text-lg text-evraz-dark font-semibold">{c.area}</div>
-                          </div>
-                          <div className="bg-evraz-light p-3">
-                            <div className="font-ibm text-xs text-evraz-gray uppercase tracking-wider mb-1">Адрес</div>
-                            <div className="font-ibm text-xs text-evraz-dark leading-relaxed">{c.region}</div>
-                          </div>
+                      {/* Факты */}
+                      <div className="grid grid-cols-2 gap-3 mb-5">
+                        <div className="bg-evraz-light p-3">
+                          <div className="font-ibm text-xs text-evraz-gray uppercase tracking-wider mb-1">Площадь</div>
+                          <div className="font-oswald text-lg text-evraz-dark font-semibold">{c.area}</div>
                         </div>
-
-                        {/* Метрики */}
-                        <div className="flex flex-wrap gap-2 mb-5">
-                          {c.metrics.map((m) => (
-                            <span key={m} className="flex items-center gap-1.5 bg-evraz-red/10 border border-evraz-red/20 px-3 py-1">
-                              <Icon name="Check" size={11} className="text-evraz-red" />
-                              <span className="font-ibm text-xs text-evraz-dark">{m}</span>
-                            </span>
-                          ))}
+                        <div className="bg-evraz-light p-3">
+                          <div className="font-ibm text-xs text-evraz-gray uppercase tracking-wider mb-1">Адрес</div>
+                          <div className="font-ibm text-xs text-evraz-dark leading-relaxed">{c.region}</div>
                         </div>
                       </div>
 
-                      {/* Кнопка раскрыть тайминг */}
-                      <button onClick={() => setExpandedCase(isExpanded ? null : c.id)}
-                        className="flex items-center gap-2 font-ibm text-xs text-evraz-red hover:text-red-700 transition-colors font-medium">
-                        <Icon name={isExpanded ? "ChevronUp" : "ChevronDown"} size={14} />
-                        {isExpanded ? "Скрыть хронологию" : "Показать хронологию проекта"}
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Тайминг — раскрывается */}
-                  {isExpanded && (
-                    <div className="border-t border-evraz-border bg-evraz-dark px-6 lg:px-8 py-6">
-                      <p className="font-oswald text-xs text-gray-400 uppercase tracking-widest mb-4">
-                        Хронология — {c.client}
-                      </p>
-                      <div className="flex flex-col sm:flex-row gap-0">
-                        {c.timeline.map((t, i) => (
-                          <div key={t.label} className="flex sm:flex-col items-start sm:items-center flex-1 relative">
-                            {/* Линия */}
-                            {i < c.timeline.length - 1 && (
-                              <div className="hidden sm:block absolute top-3 left-1/2 right-0 h-px bg-evraz-red/30 z-0" />
-                            )}
-                            <div className="flex sm:flex-col items-center gap-3 sm:gap-2 relative z-10 w-full sm:text-center pb-4 sm:pb-0">
-                              <div className="w-6 h-6 bg-evraz-red flex items-center justify-center shrink-0">
-                                <div className="w-2 h-2 bg-white rounded-full" />
-                              </div>
-                              <div>
-                                <div className="font-oswald text-xs text-white uppercase tracking-wider">{t.date}</div>
-                                <div className="font-ibm text-xs text-gray-400 mt-0.5 leading-relaxed max-w-[120px]">{t.label}</div>
-                              </div>
-                            </div>
-                          </div>
+                      {/* Метрики */}
+                      <div className="flex flex-wrap gap-2">
+                        {c.metrics.map((m) => (
+                          <span key={m} className="flex items-center gap-1.5 bg-evraz-red/10 border border-evraz-red/20 px-3 py-1">
+                            <Icon name="Check" size={11} className="text-evraz-red" />
+                            <span className="font-ibm text-xs text-evraz-dark">{m}</span>
+                          </span>
                         ))}
                       </div>
                     </div>
-                  )}
+                  </div>
                 </div>
-              );
-            })}
+
+                {/* Хронология — всегда видна */}
+                <div className="border-t border-evraz-border bg-evraz-dark px-6 lg:px-8 py-6">
+                  <p className="font-oswald text-xs text-gray-400 uppercase tracking-widest mb-5">
+                    Хронология — {c.client}
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-0">
+                    {c.timeline.map((t, i) => (
+                      <div key={t.label} className="flex sm:flex-col items-start sm:items-center flex-1 relative">
+                        {i < c.timeline.length - 1 && (
+                          <div className="hidden sm:block absolute top-3 left-1/2 right-0 h-px bg-evraz-red/30 z-0" />
+                        )}
+                        <div className="flex sm:flex-col items-center gap-3 sm:gap-2 relative z-10 w-full sm:text-center pb-4 sm:pb-0">
+                          <div className="w-6 h-6 bg-evraz-red flex items-center justify-center shrink-0">
+                            <div className="w-2 h-2 bg-white rounded-full" />
+                          </div>
+                          <div>
+                            <div className="font-oswald text-xs text-white uppercase tracking-wider">{t.date}</div>
+                            <div className="font-ibm text-xs text-gray-400 mt-0.5 leading-relaxed max-w-[120px]">{t.label}</div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
 
           <div className="mt-8 bg-white border border-evraz-border p-5 flex items-start gap-3">
