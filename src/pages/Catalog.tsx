@@ -616,7 +616,7 @@ export default function Catalog() {
       {/* WHAT'S NEEDED FROM CLIENT */}
       <section className="py-16 bg-white">
         <div className="container mx-auto">
-          <div className="mb-10 text-center">
+          <div className="mb-12 text-center">
             <div className="flex justify-center mb-4">
               <div className="accent-line mx-auto" />
             </div>
@@ -624,54 +624,95 @@ export default function Catalog() {
               ЧТО НУЖНО ОТ ВАС
             </h2>
             <p className="font-ibm text-evraz-gray mt-3 max-w-xl mx-auto text-sm leading-relaxed">
-              Мы берём на себя максимум. От заказчика требуется только это:
+              Мы берём на себя максимум. Ниже — таймлайн стройки и что требуется от вас на каждом этапе.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+
+          {/* Таймлайн */}
+          <div className="max-w-4xl mx-auto">
             {[
               {
                 step: "01",
+                phase: "Недели 1–2",
                 icon: "FileText",
-                title: "Геология участка",
-                desc: "Отчёт по геологии — основа для расчёта фундамента. Можем порекомендовать подрядчика.",
+                title: "Геология и проектирование",
+                client: "Предоставить отчёт по геологии участка (или заказать через нас). Согласовать планировочное решение и подписать проект.",
+                us: "Разрабатываем рабочую документацию, рассчитываем фундамент под геологию участка.",
               },
               {
                 step: "02",
-                icon: "Zap",
-                title: "Электричество 380В",
-                desc: "Для работы монтажного оборудования. Временный ввод на период строительства.",
+                phase: "Недели 3–4",
+                icon: "Layers",
+                title: "Фундамент",
+                client: "Обеспечить доступ спецтехники на участок. Назначить ответственного представителя для приёмки фундамента.",
+                us: "Устройство фундамента по проекту. Приёмка — только после соответствия геометрии допускам.",
               },
               {
                 step: "03",
-                icon: "User",
-                title: "Ответственный",
-                desc: "Представитель заказчика на объекте — для приёмки работ по этапам.",
+                phase: "Недели 5–6",
+                icon: "Zap",
+                title: "Монтаж каркаса",
+                client: "Подвести временное электричество 380В для монтажного оборудования на площадку.",
+                us: "Монтаж металлокаркаса из стали EVRAZ. Сварка, болтовые соединения, контроль качества.",
               },
               {
                 step: "04",
-                icon: "CheckSquare",
-                title: "Согласованный проект",
-                desc: "Мы готовим проект и согласовываем с вами. Подпись — и в производство.",
+                phase: "Недели 7–8",
+                icon: "Package",
+                title: "Ограждающие конструкции",
+                client: "Промежуточная приёмка каркаса — подпись акта выполненных работ.",
+                us: "Монтаж сэндвич-панелей, кровли, ворот, окон и фасадных элементов.",
               },
-            ].map((s) => (
-              <div
-                key={s.step}
-                className="steel-card p-6 border border-evraz-border"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="font-oswald text-3xl text-evraz-border font-bold leading-none">
-                    {s.step}
-                  </span>
-                  <div className="w-9 h-9 bg-red-50 flex items-center justify-center">
-                    <Icon name={s.icon} size={18} className="text-evraz-red" />
+              {
+                step: "05",
+                phase: "Неделя 9+",
+                icon: "CheckSquare",
+                title: "Сдача объекта",
+                client: "Финальная приёмка: проверка комплектности, подписание акта КС-2/КС-3, оплата оставшейся части по договору.",
+                us: "Передаём исполнительную документацию, паспорта на конструкции и гарантийное письмо на 25 лет.",
+              },
+            ].map((s, i, arr) => (
+              <div key={s.step} className="flex gap-6 relative">
+                {/* Вертикальная линия */}
+                {i < arr.length - 1 && (
+                  <div className="absolute left-[27px] top-[56px] bottom-0 w-px bg-evraz-border" />
+                )}
+                {/* Иконка-маркер */}
+                <div className="shrink-0 flex flex-col items-center">
+                  <div className="w-14 h-14 bg-evraz-dark flex items-center justify-center relative z-10">
+                    <Icon name={s.icon} size={20} className="text-white" />
                   </div>
                 </div>
-                <h4 className="font-oswald text-base text-evraz-dark font-semibold mb-2">
-                  {s.title}
-                </h4>
-                <p className="font-ibm text-xs text-evraz-gray leading-relaxed">
-                  {s.desc}
-                </p>
+                {/* Контент */}
+                <div className={`pb-10 flex-1 ${i === arr.length - 1 ? "pb-0" : ""}`}>
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="font-ibm text-xs text-evraz-red font-medium tracking-widest uppercase">
+                      {s.phase}
+                    </span>
+                    <span className="font-oswald text-xs text-evraz-border tracking-widest">
+                      ЭТАП {s.step}
+                    </span>
+                  </div>
+                  <h4 className="font-oswald text-lg text-evraz-dark font-semibold mb-3">
+                    {s.title}
+                  </h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div className="bg-red-50 border border-red-100 p-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Icon name="User" size={13} className="text-evraz-red" />
+                        <span className="font-oswald text-xs text-evraz-red tracking-wider uppercase">От вас</span>
+                      </div>
+                      <p className="font-ibm text-xs text-evraz-dark leading-relaxed">{s.client}</p>
+                    </div>
+                    <div className="bg-evraz-light border border-evraz-border p-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Icon name="Building2" size={13} className="text-evraz-steel" />
+                        <span className="font-oswald text-xs text-evraz-steel tracking-wider uppercase">Мы делаем</span>
+                      </div>
+                      <p className="font-ibm text-xs text-evraz-gray leading-relaxed">{s.us}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
