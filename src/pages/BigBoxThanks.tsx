@@ -48,9 +48,9 @@ export default function BigBoxThanks() {
             <span className="text-evraz-red">ЗА ОБРАЩЕНИЕ!</span>
           </h1>
           <p className="font-ibm text-gray-300 text-base leading-relaxed mb-8">
-            Мы свяжемся с вами в течение 1 часа, чтобы подробно обсудить вашу задачу.
+            Мы перезвоним в течение 1 часа и разберём вашу задачу.
             <br />
-            А пока предлагаем:
+            А пока — подпишитесь на нас или скачайте каталог:
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
