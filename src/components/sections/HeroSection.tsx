@@ -109,7 +109,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
               cta: "Узнать подробнее",
               target: "calculator",
               accent: false,
-              route: null,
+              route: "/parking",
             },
           ].map((card) => (
             <div
