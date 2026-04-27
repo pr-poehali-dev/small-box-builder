@@ -167,6 +167,18 @@ const FORMAT_RUB = (n: number) =>
     maximumFractionDigits: 0,
   }).format(n);
 
+const LEASING_ADVANCE = 0.20;
+const LEASING_MONTHS = 36;
+const LEASING_RATE = 0.165;
+
+function calcLeasing(price: number) {
+  const advance = price * LEASING_ADVANCE;
+  const body = price - advance;
+  const monthlyRate = LEASING_RATE / 12;
+  const payment = (body * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -LEASING_MONTHS));
+  return { advance, payment };
+}
+
 // ─── Компонент ──────────────────────────────────────────────────────────────
 
 export default function Catalog() {
@@ -481,7 +493,7 @@ export default function Catalog() {
                     </ul>
 
                     {/* Срок */}
-                    <div className="flex items-center gap-2 bg-evraz-light px-4 py-2.5 mb-5">
+                    <div className="flex items-center gap-2 bg-evraz-light px-4 py-2.5 mb-3">
                       <Icon
                         name="Clock"
                         size={14}
@@ -494,6 +506,31 @@ export default function Catalog() {
                         {item.days} дней
                       </span>
                     </div>
+
+                    {/* Лизинг */}
+                    {(() => {
+                      const { advance, payment } = calcLeasing(item.price);
+                      return (
+                        <div className="border border-evraz-red/20 bg-evraz-red/5 px-4 py-3 mb-5">
+                          <div className="flex items-center gap-1.5 mb-2">
+                            <Icon name="CreditCard" size={13} className="text-evraz-red shrink-0" />
+                            <span className="font-oswald text-xs tracking-widest uppercase text-evraz-red">
+                              Лизинг
+                            </span>
+                          </div>
+                          <div className="flex items-end justify-between gap-2">
+                            <div>
+                              <div className="font-oswald text-lg text-evraz-dark font-bold leading-none">
+                                {FORMAT_RUB(Math.round(payment))}/мес.
+                              </div>
+                              <div className="font-ibm text-xs text-evraz-gray mt-1">
+                                Аванс {FORMAT_RUB(Math.round(advance))} · 36 мес. · 16,5%
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })()}
 
                     {/* Подрядчики проектирования */}
                     {item.designers && item.designers.length > 0 && (
