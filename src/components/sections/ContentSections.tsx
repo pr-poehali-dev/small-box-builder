@@ -60,7 +60,7 @@ const CASES: {
 const ADVANTAGES = [
   {
     icon: "Shield",
-    title: "Гарантия 25 лет",
+    title: "Гарантия 5 лет",
     desc: "На несущие конструкции из стали EVRAZ",
   },
   {
@@ -827,7 +827,7 @@ export function ContentSections({
 
           <div className="border-t border-evraz-border pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="font-ibm text-xs text-evraz-gray">
-              © 2026 EVRAZ Steel Buildings. Все права защищены.
+              © 2026 EVRAZ Steel BOX. Все права защищены.
             </p>
             <div className="flex gap-6">
               <span className="font-ibm text-xs text-evraz-gray hover:text-evraz-dark cursor-pointer transition-colors">
