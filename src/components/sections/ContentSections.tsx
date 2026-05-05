@@ -3,20 +3,27 @@ import Icon from "@/components/ui/icon";
 import { AnimSection } from "@/components/shared/AnimSection";
 import { PriceCalculator } from "@/components/shared/PriceCalculator";
 
-
 type CaseCategory = "Серийные здания" | "Индивидуальные проекты" | "Парковки";
 
 const CASES: {
-  title: string; location: string; area: string; year: string; image: string;
-  tag: string; dims: { width: string; length: string; height: string };
-  partner: string; review: string | null; category: CaseCategory;
+  title: string;
+  location: string;
+  area: string;
+  year: string;
+  image: string;
+  tag: string;
+  dims: { width: string; length: string; height: string };
+  partner: string;
+  review: string | null;
+  category: CaseCategory;
 }[] = [
   {
     title: "Логистический центр OZON",
     location: "Московская обл., Домодедово",
     area: "48 000 м²",
     year: "2023",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/5b4508f9-9d77-48fd-8352-9fba826f4269.jpg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/5b4508f9-9d77-48fd-8352-9fba826f4269.jpg",
     tag: "Склад",
     dims: { width: "120 м", length: "400 м", height: "14 м" },
     partner: "СтальСтрой",
@@ -28,7 +35,8 @@ const CASES: {
     location: "Челябинск",
     area: "12 000 м²",
     year: "2022",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/9e32b242-943e-4e57-a73b-230740b0ac72.jpg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/9e32b242-943e-4e57-a73b-230740b0ac72.jpg",
     tag: "Спорт",
     dims: { width: "80 м", length: "150 м", height: "18 м" },
     partner: "УралМеталлМонтаж",
@@ -40,66 +48,112 @@ const CASES: {
     location: "Нижний Тагил",
     area: "22 500 м²",
     year: "2023",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/2f1137ee-0472-4df9-ad4a-581bcc729974.jpg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/2f1137ee-0472-4df9-ad4a-581bcc729974.jpg",
     tag: "Производство",
     dims: { width: "54 м", length: "416 м", height: "16 м" },
     partner: "СибирьСталь",
     review: null,
     category: "Индивидуальные проекты",
   },
-  {
-    title: "Многоуровневая парковка ТЦ «Галерея»",
-    location: "Санкт-Петербург",
-    area: "9 800 м²",
-    year: "2023",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/5b4508f9-9d77-48fd-8352-9fba826f4269.jpg",
-    tag: "Паркинг",
-    dims: { width: "48 м", length: "204 м", height: "6 м" },
-    partner: "СтальСтрой",
-    review: null,
-    category: "Парковки",
-  },
 ];
 
 const ADVANTAGES = [
-  { icon: "Shield", title: "Гарантия 25 лет", desc: "На несущие конструкции из стали EVRAZ" },
-  { icon: "Zap", title: "Скорость монтажа", desc: "В 3–4 раза быстрее традиционного строительства" },
-  { icon: "Award", title: "Сталь EVRAZ", desc: "Собственное производство стали высшего качества" },
-  { icon: "FileCheck", title: "Проектирование", desc: "Полный цикл от концепции до ввода в эксплуатацию" },
-  { icon: "Wrench", title: "Техподдержка", desc: "Сервисное обслуживание по всей России и СНГ" },
-  { icon: "Globe", title: "Сеть партнёров", desc: "Более 120 аккредитованных исполнителей в 45 регионах" },
+  {
+    icon: "Shield",
+    title: "Гарантия 25 лет",
+    desc: "На несущие конструкции из стали EVRAZ",
+  },
+  {
+    icon: "Zap",
+    title: "Скорость монтажа",
+    desc: "В 3–4 раза быстрее традиционного строительства",
+  },
+  {
+    icon: "Award",
+    title: "Сталь EVRAZ",
+    desc: "Собственное производство стали высшего качества",
+  },
+  {
+    icon: "FileCheck",
+    title: "Проектирование",
+    desc: "Полный цикл от концепции до ввода в эксплуатацию",
+  },
+  {
+    icon: "Wrench",
+    title: "Техподдержка",
+    desc: "Сервисное обслуживание по всей России и СНГ",
+  },
+  {
+    icon: "Globe",
+    title: "Сеть партнёров",
+    desc: "Более 120 аккредитованных исполнителей в 45 регионах",
+  },
 ];
 
 const PARTNERS = [
   {
-    name: "СтальСтрой", region: "Москва и МО", projects: 48, rating: 5,
+    name: "СтальСтрой",
+    region: "Москва и МО",
+    projects: 48,
+    rating: 5,
     services: ["Монтаж", "Проектирование"],
-    review: { text: "Сдали объект на 2 недели раньше срока. Качество монтажа — без нареканий.", author: "Алексей К., директор ООО «ЛогоПарк»" },
+    review: {
+      text: "Сдали объект на 2 недели раньше срока. Качество монтажа — без нареканий.",
+      author: "Алексей К., директор ООО «ЛогоПарк»",
+    },
   },
   {
-    name: "УралМеталлМонтаж", region: "Урал, Сибирь", projects: 62, rating: 5,
+    name: "УралМеталлМонтаж",
+    region: "Урал, Сибирь",
+    projects: 62,
+    rating: 5,
     services: ["Монтаж"],
-    review: { text: "Работаем с ними на трёх объектах подряд. Надёжная команда, чёткое соблюдение смет.", author: "Игорь Р., технический директор НТМК" },
+    review: {
+      text: "Работаем с ними на трёх объектах подряд. Надёжная команда, чёткое соблюдение смет.",
+      author: "Игорь Р., технический директор НТМК",
+    },
   },
   {
-    name: "СибирьСталь", region: "Новосибирск, Красноярск", projects: 35, rating: 4,
+    name: "СибирьСталь",
+    region: "Новосибирск, Красноярск",
+    projects: 35,
+    rating: 4,
     services: ["Монтаж", "Проектирование"],
-    review: { text: "Профессиональный подход к проекту, грамотная проектная документация.", author: "Светлана М., АгроХолдинг «Восток»" },
+    review: {
+      text: "Профессиональный подход к проекту, грамотная проектная документация.",
+      author: "Светлана М., АгроХолдинг «Восток»",
+    },
   },
   {
-    name: "ЮгМонтаж", region: "Краснодар, Ростов", projects: 29, rating: 5,
+    name: "ЮгМонтаж",
+    region: "Краснодар, Ростов",
+    projects: 29,
+    rating: 5,
     services: ["Монтаж"],
-    review: { text: "Быстро развернули бригаду, уложились в 28 дней под ключ.", author: "Дмитрий П., ИП Павлов" },
+    review: {
+      text: "Быстро развернули бригаду, уложились в 28 дней под ключ.",
+      author: "Дмитрий П., ИП Павлов",
+    },
   },
   {
-    name: "ВолгаПром", region: "Поволжье", projects: 41, rating: 4,
+    name: "ВолгаПром",
+    region: "Поволжье",
+    projects: 41,
+    rating: 4,
     services: ["Монтаж", "Проектирование"],
     review: null,
   },
   {
-    name: "СеверСтройПроект", region: "СЗФО", projects: 23, rating: 5,
+    name: "СеверСтройПроект",
+    region: "СЗФО",
+    projects: 23,
+    rating: 5,
     services: ["Проектирование"],
-    review: { text: "Разработали проект с учётом северных снеговых нагрузок — всё соответствует нормативам.", author: "Николай В., «Северлес»" },
+    review: {
+      text: "Разработали проект с учётом северных снеговых нагрузок — всё соответствует нормативам.",
+      author: "Николай В., «Северлес»",
+    },
   },
 ];
 
@@ -134,14 +188,23 @@ const BLOG_POSTS = [
   },
 ];
 
-const CASE_CATEGORIES: CaseCategory[] = ["Серийные здания", "Индивидуальные проекты", "Парковки"];
+const CASE_CATEGORIES: CaseCategory[] = [
+  "Серийные здания",
+  "Индивидуальные проекты",
+  "Парковки",
+];
 
-export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }) {
+export function ContentSections({
+  scrollTo,
+}: {
+  scrollTo: (id: string) => void;
+}) {
   const [caseFilter, setCaseFilter] = useState<CaseCategory | "Все">("Все");
 
-  const filteredCases = caseFilter === "Все"
-    ? CASES
-    : CASES.filter((c) => c.category === caseFilter);
+  const filteredCases =
+    caseFilter === "Все"
+      ? CASES
+      : CASES.filter((c) => c.category === caseFilter);
 
   return (
     <>
@@ -152,31 +215,38 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
               <div>
                 <div className="accent-line" />
-                <h2 className="font-oswald text-4xl md:text-5xl text-evraz-dark font-semibold">КЕЙСЫ И ПРОЕКТЫ</h2>
+                <h2 className="font-oswald text-4xl md:text-5xl text-evraz-dark font-semibold">
+                  КЕЙСЫ И ПРОЕКТЫ
+                </h2>
                 <p className="font-ibm text-evraz-gray mt-4 max-w-xl text-base leading-relaxed">
-                  Реальные объекты, сданные в срок. Более 850 реализованных проектов по всей России и СНГ.
+                  Реальные объекты, сданные в срок. Более 850 реализованных
+                  проектов по всей России и СНГ.
                 </p>
               </div>
-              <button className="btn-outline-dark self-start md:self-auto">Все проекты</button>
+              <button className="btn-outline-dark self-start md:self-auto">
+                Все проекты
+              </button>
             </div>
           </AnimSection>
 
           {/* Переключатель категорий */}
           <AnimSection>
             <div className="flex flex-wrap gap-2 mb-10">
-              {(["Все", ...CASE_CATEGORIES] as (CaseCategory | "Все")[]).map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setCaseFilter(cat)}
-                  className={`font-oswald text-sm tracking-wider uppercase px-5 py-2.5 border transition-all ${
-                    caseFilter === cat
-                      ? "bg-evraz-red border-evraz-red text-white"
-                      : "border-evraz-border bg-white text-evraz-steel hover:border-evraz-red hover:text-evraz-red"
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
+              {(["Все", ...CASE_CATEGORIES] as (CaseCategory | "Все")[]).map(
+                (cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setCaseFilter(cat)}
+                    className={`font-oswald text-sm tracking-wider uppercase px-5 py-2.5 border transition-all ${
+                      caseFilter === cat
+                        ? "bg-evraz-red border-evraz-red text-white"
+                        : "border-evraz-border bg-white text-evraz-steel hover:border-evraz-red hover:text-evraz-red"
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ),
+              )}
             </div>
           </AnimSection>
 
@@ -205,9 +275,15 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
 
                   {/* Body */}
                   <div className="p-6 flex flex-col flex-1">
-                    <h3 className="font-oswald text-xl text-evraz-dark font-semibold mb-2">{c.title}</h3>
+                    <h3 className="font-oswald text-xl text-evraz-dark font-semibold mb-2">
+                      {c.title}
+                    </h3>
                     <div className="flex items-center gap-2 text-evraz-gray mb-5">
-                      <Icon name="MapPin" size={13} className="text-evraz-red shrink-0" />
+                      <Icon
+                        name="MapPin"
+                        size={13}
+                        className="text-evraz-red shrink-0"
+                      />
                       <span className="font-ibm text-sm">{c.location}</span>
                     </div>
 
@@ -219,18 +295,33 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
                         { label: "Длина", value: c.dims.length },
                         { label: "Высота", value: c.dims.height },
                       ].map((d) => (
-                        <div key={d.label} className="bg-evraz-light px-2 py-2.5 text-center">
-                          <div className="font-oswald text-sm text-evraz-dark font-semibold leading-none">{d.value}</div>
-                          <div className="font-ibm text-xs text-evraz-gray mt-1">{d.label}</div>
+                        <div
+                          key={d.label}
+                          className="bg-evraz-light px-2 py-2.5 text-center"
+                        >
+                          <div className="font-oswald text-sm text-evraz-dark font-semibold leading-none">
+                            {d.value}
+                          </div>
+                          <div className="font-ibm text-xs text-evraz-gray mt-1">
+                            {d.label}
+                          </div>
                         </div>
                       ))}
                     </div>
 
                     {/* Партнёр */}
                     <div className="flex items-center gap-2 mb-5">
-                      <Icon name="HardHat" size={13} className="text-evraz-gray shrink-0" />
-                      <span className="font-ibm text-xs text-evraz-gray">Монтаж:</span>
-                      <span className="font-ibm text-xs text-evraz-dark font-medium">{c.partner}</span>
+                      <Icon
+                        name="HardHat"
+                        size={13}
+                        className="text-evraz-gray shrink-0"
+                      />
+                      <span className="font-ibm text-xs text-evraz-gray">
+                        Монтаж:
+                      </span>
+                      <span className="font-ibm text-xs text-evraz-dark font-medium">
+                        {c.partner}
+                      </span>
                     </div>
 
                     {/* Отзыв + стрелка */}
@@ -266,7 +357,10 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
       </section>
 
       {/* CALCULATOR */}
-      <section id="calculator" className="py-24 bg-evraz-charcoal relative overflow-hidden">
+      <section
+        id="calculator"
+        className="py-24 bg-evraz-charcoal relative overflow-hidden"
+      >
         <div
           className="absolute inset-0 opacity-5"
           style={{
@@ -282,10 +376,12 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
               <div className="flex justify-center mb-4">
                 <div className="w-12 h-0.5 bg-evraz-red" />
               </div>
-              <h2 className="font-oswald text-4xl md:text-5xl text-evraz-dark font-semibold">ОНЛАЙН-КАЛЬКУЛЯТОР</h2>
+              <h2 className="font-oswald text-4xl md:text-5xl text-evraz-dark font-semibold">
+                ОНЛАЙН-КАЛЬКУЛЯТОР
+              </h2>
               <p className="font-ibm text-evraz-gray mt-4 max-w-xl mx-auto text-base">
-                Получите предварительный расчёт стоимости за несколько секунд. Точная смета — после бесплатной
-                консультации.
+                Получите предварительный расчёт стоимости за несколько секунд.
+                Точная смета — после бесплатной консультации.
               </p>
             </div>
           </AnimSection>
@@ -305,15 +401,21 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
             <AnimSection>
               <div>
                 <div className="accent-line" />
-                <h2 className="font-oswald text-4xl md:text-5xl text-evraz-dark font-semibold mb-6">О КОМПАНИИ</h2>
+                <h2 className="font-oswald text-4xl md:text-5xl text-evraz-dark font-semibold mb-6">
+                  О КОМПАНИИ
+                </h2>
                 <p className="font-ibm text-evraz-gray mb-6 leading-relaxed">
-                  EVRAZ Steel Buildings — ведущий поставщик металлических конструкций для быстровозводимых зданий в
-                  России и странах СНГ. Базируемся на производственных мощностях EVRAZ — одного из крупнейших
-                  вертикально интегрированных сталелитейных и горнодобывающих предприятий в мире.
+                  EVRAZ Steel Buildings — ведущий поставщик металлических
+                  конструкций для быстровозводимых зданий в России и странах
+                  СНГ. Базируемся на производственных мощностях EVRAZ — одного
+                  из крупнейших вертикально интегрированных сталелитейных и
+                  горнодобывающих предприятий в мире.
                 </p>
                 <p className="font-ibm text-evraz-gray mb-8 leading-relaxed">
-                  Полный производственный цикл от проектирования и изготовления металлоконструкций до монтажа и сдачи
-                  объекта под ключ позволяет обеспечить строгий контроль качества на каждом этапе.
+                  Полный производственный цикл от проектирования и изготовления
+                  металлоконструкций до монтажа и сдачи объекта под ключ
+                  позволяет обеспечить строгий контроль качества на каждом
+                  этапе.
                 </p>
                 <div className="grid grid-cols-2 gap-6 mb-8">
                   {[
@@ -323,12 +425,19 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
                     { n: "30 лет", l: "Опыта" },
                   ].map((s) => (
                     <div key={s.l} className="border-l-2 border-evraz-red pl-4">
-                      <div className="font-oswald text-3xl text-evraz-dark font-bold">{s.n}</div>
-                      <div className="font-ibm text-sm text-evraz-gray mt-1">{s.l}</div>
+                      <div className="font-oswald text-3xl text-evraz-dark font-bold">
+                        {s.n}
+                      </div>
+                      <div className="font-ibm text-sm text-evraz-gray mt-1">
+                        {s.l}
+                      </div>
                     </div>
                   ))}
                 </div>
-                <button onClick={() => scrollTo("contacts")} className="btn-primary">
+                <button
+                  onClick={() => scrollTo("contacts")}
+                  className="btn-primary"
+                >
                   Связаться с нами
                 </button>
               </div>
@@ -337,12 +446,23 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
             <AnimSection>
               <div className="grid grid-cols-2 gap-4">
                 {ADVANTAGES.map((adv) => (
-                  <div key={adv.title} className="steel-card p-6 border border-evraz-border">
+                  <div
+                    key={adv.title}
+                    className="steel-card p-6 border border-evraz-border"
+                  >
                     <div className="w-10 h-10 bg-red-50 flex items-center justify-center mb-4">
-                      <Icon name={adv.icon} size={20} className="text-evraz-red" />
+                      <Icon
+                        name={adv.icon}
+                        size={20}
+                        className="text-evraz-red"
+                      />
                     </div>
-                    <h4 className="font-oswald text-base text-evraz-dark font-semibold mb-2">{adv.title}</h4>
-                    <p className="font-ibm text-sm text-evraz-gray leading-relaxed">{adv.desc}</p>
+                    <h4 className="font-oswald text-base text-evraz-dark font-semibold mb-2">
+                      {adv.title}
+                    </h4>
+                    <p className="font-ibm text-sm text-evraz-gray leading-relaxed">
+                      {adv.desc}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -359,10 +479,12 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
               <div className="flex justify-center mb-4">
                 <div className="w-12 h-0.5 bg-evraz-steel" />
               </div>
-              <h2 className="font-oswald text-4xl md:text-5xl text-evraz-dark font-semibold">СЕТЬ ПАРТНЁРОВ</h2>
+              <h2 className="font-oswald text-4xl md:text-5xl text-evraz-dark font-semibold">
+                СЕТЬ ПАРТНЁРОВ
+              </h2>
               <p className="font-ibm text-evraz-gray mt-4 max-w-xl mx-auto text-base leading-relaxed">
-                Аккредитованные строительные организации, прошедшие обучение и сертификацию EVRAZ. Гарантия качества
-                монтажа по всей России.
+                Аккредитованные строительные организации, прошедшие обучение и
+                сертификацию EVRAZ. Гарантия качества монтажа по всей России.
               </p>
             </div>
           </AnimSection>
@@ -374,15 +496,32 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
                   {/* Шапка */}
                   <div className="flex items-start justify-between mb-4">
                     <div>
-                      <h4 className="font-oswald text-lg text-evraz-dark font-semibold">{p.name}</h4>
+                      <h4 className="font-oswald text-lg text-evraz-dark font-semibold">
+                        {p.name}
+                      </h4>
                       <div className="flex items-center gap-1.5 mt-1">
-                        <Icon name="MapPin" size={12} className="text-evraz-steel" />
-                        <span className="font-ibm text-sm text-evraz-gray">{p.region}</span>
+                        <Icon
+                          name="MapPin"
+                          size={12}
+                          className="text-evraz-steel"
+                        />
+                        <span className="font-ibm text-sm text-evraz-gray">
+                          {p.region}
+                        </span>
                       </div>
                     </div>
                     <div className="flex gap-0.5 shrink-0">
                       {Array.from({ length: 5 }).map((_, j) => (
-                        <Icon key={j} name="Star" size={12} className={j < p.rating ? "text-evraz-orange" : "text-evraz-border"} />
+                        <Icon
+                          key={j}
+                          name="Star"
+                          size={12}
+                          className={
+                            j < p.rating
+                              ? "text-evraz-orange"
+                              : "text-evraz-border"
+                          }
+                        />
                       ))}
                     </div>
                   </div>
@@ -390,11 +529,14 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
                   {/* Услуги */}
                   <div className="flex flex-wrap gap-1.5 mb-4">
                     {p.services.map((s) => (
-                      <span key={s} className={`font-oswald text-xs tracking-wider uppercase px-2.5 py-1 ${
-                        s === "Проектирование"
-                          ? "bg-evraz-charcoal text-evraz-steel border border-evraz-border"
-                          : "bg-evraz-red/10 text-evraz-red border border-evraz-red/30"
-                      }`}>
+                      <span
+                        key={s}
+                        className={`font-oswald text-xs tracking-wider uppercase px-2.5 py-1 ${
+                          s === "Проектирование"
+                            ? "bg-evraz-charcoal text-evraz-steel border border-evraz-border"
+                            : "bg-evraz-red/10 text-evraz-red border border-evraz-red/30"
+                        }`}
+                      >
                         {s}
                       </span>
                     ))}
@@ -403,15 +545,21 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
                   {/* Отзыв */}
                   {p.review && (
                     <div className="bg-evraz-charcoal border-l-2 border-evraz-steel px-4 py-3 mb-4 flex-1">
-                      <p className="font-ibm text-xs text-evraz-dark leading-relaxed italic">«{p.review.text}»</p>
-                      <p className="font-ibm text-xs text-evraz-gray mt-2">— {p.review.author}</p>
+                      <p className="font-ibm text-xs text-evraz-dark leading-relaxed italic">
+                        «{p.review.text}»
+                      </p>
+                      <p className="font-ibm text-xs text-evraz-gray mt-2">
+                        — {p.review.author}
+                      </p>
                     </div>
                   )}
                   {!p.review && <div className="flex-1" />}
 
                   {/* Футер */}
                   <div className="border-t border-evraz-border pt-4 flex items-center justify-between">
-                    <span className="font-ibm text-sm text-evraz-gray">{p.projects} проектов</span>
+                    <span className="font-ibm text-sm text-evraz-gray">
+                      {p.projects} проектов
+                    </span>
                     <span className="font-oswald text-xs tracking-widest text-evraz-steel uppercase bg-evraz-steel/10 px-2 py-1">
                       Аккредитован
                     </span>
@@ -424,12 +572,18 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
           <AnimSection>
             <div className="mt-12 border border-evraz-steel/30 bg-evraz-charcoal p-8 flex flex-col md:flex-row items-center justify-between gap-6">
               <div>
-                <h3 className="font-oswald text-2xl text-evraz-dark font-semibold">Хотите стать партнёром?</h3>
+                <h3 className="font-oswald text-2xl text-evraz-dark font-semibold">
+                  Хотите стать партнёром?
+                </h3>
                 <p className="font-ibm text-evraz-gray mt-2 text-sm">
-                  Присоединяйтесь к сети из 120+ аккредитованных исполнителей EVRAZ
+                  Присоединяйтесь к сети из 120+ аккредитованных исполнителей
+                  EVRAZ
                 </p>
               </div>
-              <button onClick={() => scrollTo("contacts")} className="btn-primary whitespace-nowrap">
+              <button
+                onClick={() => scrollTo("contacts")}
+                className="btn-primary whitespace-nowrap"
+              >
                 Подать заявку
               </button>
             </div>
@@ -444,12 +598,17 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
               <div>
                 <div className="accent-line" />
-                <h2 className="font-oswald text-4xl md:text-5xl text-evraz-dark font-semibold">БЛОГ И СТАТЬИ</h2>
+                <h2 className="font-oswald text-4xl md:text-5xl text-evraz-dark font-semibold">
+                  БЛОГ И СТАТЬИ
+                </h2>
                 <p className="font-ibm text-evraz-gray mt-4 max-w-xl text-base leading-relaxed">
-                  Экспертные материалы по проектированию, строительству и эксплуатации быстровозводимых зданий.
+                  Экспертные материалы по проектированию, строительству и
+                  эксплуатации быстровозводимых зданий.
                 </p>
               </div>
-              <button className="btn-outline-dark self-start md:self-auto">Все статьи</button>
+              <button className="btn-outline-dark self-start md:self-auto">
+                Все статьи
+              </button>
             </div>
           </AnimSection>
 
@@ -464,7 +623,9 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
                     <span className="font-oswald text-xs tracking-widest text-evraz-red uppercase bg-red-50 px-2 py-1">
                       {post.category}
                     </span>
-                    <span className="font-ibm text-xs text-evraz-gray">{post.date}</span>
+                    <span className="font-ibm text-xs text-evraz-gray">
+                      {post.date}
+                    </span>
                     <span className="font-ibm text-xs text-evraz-gray ml-auto flex items-center gap-1">
                       <Icon name="Clock" size={12} /> {post.read}
                     </span>
@@ -472,7 +633,9 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
                   <h3 className="font-oswald text-xl text-evraz-dark font-semibold mb-3 group-hover:text-evraz-red transition-colors">
                     {post.title}
                   </h3>
-                  <p className="font-ibm text-evraz-gray text-sm leading-relaxed mb-5">{post.desc}</p>
+                  <p className="font-ibm text-evraz-gray text-sm leading-relaxed mb-5">
+                    {post.desc}
+                  </p>
                   <div className="flex items-center gap-2 text-evraz-red font-oswald text-sm font-medium tracking-wider uppercase">
                     Читать <Icon name="ArrowRight" size={14} />
                   </div>
@@ -490,28 +653,53 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
             <AnimSection>
               <div>
                 <div className="accent-line" />
-                <h2 className="font-oswald text-4xl md:text-5xl text-evraz-dark font-semibold mb-6">КОНТАКТЫ</h2>
+                <h2 className="font-oswald text-4xl md:text-5xl text-evraz-dark font-semibold mb-6">
+                  КОНТАКТЫ
+                </h2>
                 <p className="font-ibm text-evraz-gray mb-10 leading-relaxed">
-                  Оставьте заявку — наш специалист свяжется с вами в течение 2 часов и проконсультирует по любым
-                  вопросам проектирования и строительства.
+                  Оставьте заявку — наш специалист свяжется с вами в течение 2
+                  часов и проконсультирует по любым вопросам проектирования и
+                  строительства.
                 </p>
 
                 <div className="space-y-6 mb-10">
                   {[
-                    { icon: "Phone", label: "Телефон", value: "8 800 123-45-67 (бесплатно)" },
-                    { icon: "Mail", label: "Email", value: "info@evraz-buildings.ru" },
-                    { icon: "MapPin", label: "Офис", value: "Москва, ул. Дубининская, 21, стр. 1" },
-                    { icon: "Clock", label: "Режим работы", value: "Пн–Пт: 9:00–18:00 МСК" },
+                    {
+                      icon: "Phone",
+                      label: "Телефон",
+                      value: "8 800 123-45-67 (бесплатно)",
+                    },
+                    {
+                      icon: "Mail",
+                      label: "Email",
+                      value: "info@evraz-buildings.ru",
+                    },
+                    {
+                      icon: "MapPin",
+                      label: "Офис",
+                      value: "Москва, ул. Дубининская, 21, стр. 1",
+                    },
+                    {
+                      icon: "Clock",
+                      label: "Режим работы",
+                      value: "Пн–Пт: 9:00–18:00 МСК",
+                    },
                   ].map((c) => (
                     <div key={c.label} className="flex items-start gap-4">
                       <div className="w-10 h-10 bg-red-50 flex items-center justify-center shrink-0 mt-0.5">
-                        <Icon name={c.icon} size={18} className="text-evraz-red" />
+                        <Icon
+                          name={c.icon}
+                          size={18}
+                          className="text-evraz-red"
+                        />
                       </div>
                       <div>
                         <div className="font-ibm text-xs text-evraz-gray uppercase tracking-wider mb-0.5">
                           {c.label}
                         </div>
-                        <div className="font-ibm text-evraz-dark font-medium">{c.value}</div>
+                        <div className="font-ibm text-evraz-dark font-medium">
+                          {c.value}
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -521,7 +709,9 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
 
             <AnimSection>
               <div className="bg-evraz-light border border-evraz-border p-8 md:p-10">
-                <h3 className="font-oswald text-2xl text-evraz-dark font-semibold mb-6">ОСТАВИТЬ ЗАЯВКУ</h3>
+                <h3 className="font-oswald text-2xl text-evraz-dark font-semibold mb-6">
+                  ОСТАВИТЬ ЗАЯВКУ
+                </h3>
                 <div className="space-y-4">
                   <div>
                     <label className="font-ibm text-xs text-evraz-gray uppercase tracking-wider block mb-2">
@@ -588,9 +778,12 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
                       className="w-full bg-white border border-evraz-border px-4 py-3 font-ibm text-evraz-dark text-sm focus:outline-none focus:border-evraz-red transition-colors resize-none"
                     />
                   </div>
-                  <button className="btn-primary w-full text-center">Отправить заявку</button>
+                  <button className="btn-primary w-full text-center">
+                    Отправить заявку
+                  </button>
                   <p className="font-ibm text-xs text-evraz-gray text-center leading-relaxed">
-                    Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных
+                    Нажимая кнопку, вы соглашаетесь с политикой обработки
+                    персональных данных
                   </p>
                 </div>
               </div>
@@ -605,17 +798,28 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
             <div className="md:col-span-1">
               <div className="mb-4">
-                <img src="https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/07662369-c03c-4cb9-b942-839aad61017e.png" alt="EVRAZ SteelBox" className="h-10 w-auto" />
+                <img
+                  src="https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/07662369-c03c-4cb9-b942-839aad61017e.png"
+                  alt="EVRAZ SteelBox"
+                  className="h-10 w-auto"
+                />
               </div>
               <p className="font-ibm text-sm text-evraz-gray leading-relaxed">
-                Быстровозводимые стальные здания. Сталь EVRAZ — надёжность, проверенная временем.
+                Быстровозводимые стальные здания. Сталь EVRAZ — надёжность,
+                проверенная временем.
               </p>
             </div>
 
             {[
               {
                 title: "Решения",
-                items: ["Склады и логистика", "Производство", "Торговые центры", "Агро объекты", "Спорт сооружения"],
+                items: [
+                  "Склады и логистика",
+                  "Производство",
+                  "Торговые центры",
+                  "Агро объекты",
+                  "Спорт сооружения",
+                ],
               },
               {
                 title: "Компания",
@@ -623,11 +827,18 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
               },
               {
                 title: "Контакты",
-                items: ["8 800 123-45-67", "info@evraz-buildings.ru", "Москва, Дубининская 21", "Пн–Пт 9:00–18:00"],
+                items: [
+                  "8 800 123-45-67",
+                  "info@evraz-buildings.ru",
+                  "Москва, Дубининская 21",
+                  "Пн–Пт 9:00–18:00",
+                ],
               },
             ].map((col) => (
               <div key={col.title}>
-                <h5 className="font-oswald text-sm tracking-widest text-evraz-dark uppercase mb-4">{col.title}</h5>
+                <h5 className="font-oswald text-sm tracking-widest text-evraz-dark uppercase mb-4">
+                  {col.title}
+                </h5>
                 <ul className="space-y-2">
                   {col.items.map((item) => (
                     <li key={item}>
@@ -642,7 +853,9 @@ export function ContentSections({ scrollTo }: { scrollTo: (id: string) => void }
           </div>
 
           <div className="border-t border-evraz-border pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="font-ibm text-xs text-evraz-gray">© 2026 EVRAZ Steel Buildings. Все права защищены.</p>
+            <p className="font-ibm text-xs text-evraz-gray">
+              © 2026 EVRAZ Steel Buildings. Все права защищены.
+            </p>
             <div className="flex gap-6">
               <span className="font-ibm text-xs text-evraz-gray hover:text-evraz-dark cursor-pointer transition-colors">
                 Политика конфиденциальности
