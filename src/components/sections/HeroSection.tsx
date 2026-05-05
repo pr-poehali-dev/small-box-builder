@@ -68,7 +68,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
                 opacity: typeFading ? 0 : 1,
                 transform: typeFading ? "translateY(8px)" : "translateY(0)",
               }}
-            >
+            
               {BUILDING_TYPES[typeIndex]}
             </span>
             <br />
