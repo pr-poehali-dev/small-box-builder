@@ -445,7 +445,7 @@ export function ContentSections({
       </section>
 
       {/* PARTNERS */}
-      <section id="partners" className="py-24 bg-white">
+      <section id="partners" className="py-24 bg-evraz-light">
         <div className="container mx-auto">
           <AnimSection>
             <div className="text-center mb-16">
@@ -565,7 +565,7 @@ export function ContentSections({
       </section>
 
       {/* BLOG */}
-      <section id="blog" className="py-24 bg-evraz-light">
+      <section id="blog" className="py-24 bg-white">
         <div className="container mx-auto">
           <AnimSection>
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
@@ -620,7 +620,7 @@ export function ContentSections({
       </section>
 
       {/* CONTACTS */}
-      <section id="contacts" className="py-24 bg-white">
+      <section id="contacts" className="py-24 bg-evraz-light">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <AnimSection>
