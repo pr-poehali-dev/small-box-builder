@@ -99,7 +99,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
               cta: "Обсудить проект",
               target: "contacts",
               accent: true,
-              route: "/BigBox",
+              route: "/BigBox2",
             },
             {
               icon: "Car",
