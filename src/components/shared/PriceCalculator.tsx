@@ -36,10 +36,10 @@ export function PriceCalculator({ onGetQuote }: PriceCalculatorProps) {
   };
 
   return (
-    <div className="bg-white/5 border border-white/10 p-8 md:p-12">
+    <div className="bg-white border border-evraz-border p-8 md:p-12">
       {/* Тип здания */}
       <div className="mb-10">
-        <label className="font-oswald text-sm tracking-widest text-gray-300 uppercase mb-4 block">
+        <label className="font-oswald text-sm tracking-widest text-evraz-dark uppercase mb-4 block">
           Тип здания
         </label>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
@@ -56,7 +56,7 @@ export function PriceCalculator({ onGetQuote }: PriceCalculatorProps) {
               className={`font-oswald text-sm tracking-wider uppercase py-3 px-4 border transition-all ${
                 buildingType === t.key
                   ? "bg-evraz-red border-evraz-red text-white"
-                  : "border-white/20 text-gray-300 hover:border-evraz-red hover:text-white"
+                  : "border-evraz-border text-evraz-dark hover:border-evraz-red hover:text-evraz-red"
               }`}
             >
               {t.label}
@@ -74,7 +74,7 @@ export function PriceCalculator({ onGetQuote }: PriceCalculatorProps) {
         ].map((s) => (
           <div key={s.label}>
             <div className="flex justify-between mb-3">
-              <label className="font-oswald text-sm tracking-widest text-gray-300 uppercase">{s.label}</label>
+              <label className="font-oswald text-sm tracking-widest text-evraz-dark uppercase">{s.label}</label>
               <span className="font-oswald text-evraz-red font-semibold">{s.val} м</span>
             </div>
             <input
@@ -85,7 +85,7 @@ export function PriceCalculator({ onGetQuote }: PriceCalculatorProps) {
               onChange={(e) => s.set(+e.target.value)}
               className="w-full"
             />
-            <div className="flex justify-between font-ibm text-xs text-gray-500 mt-1">
+            <div className="flex justify-between font-ibm text-xs text-evraz-gray mt-1">
               <span>{s.min} м</span>
               <span>{s.max} м</span>
             </div>
@@ -94,10 +94,10 @@ export function PriceCalculator({ onGetQuote }: PriceCalculatorProps) {
       </div>
 
       {/* Опции */}
-      <div className={`grid grid-cols-1 gap-6 mb-10 pt-8 border-t border-white/10 ${buildingType === "production" ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
+      <div className={`grid grid-cols-1 gap-6 mb-10 pt-8 border-t border-evraz-border ${buildingType === "production" ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
         {/* Ворота */}
         <div>
-          <label className="font-oswald text-sm tracking-widest text-gray-300 uppercase mb-4 block">
+          <label className="font-oswald text-sm tracking-widest text-evraz-dark uppercase mb-4 block">
             Ворота
           </label>
           <div className="flex gap-2">
@@ -108,21 +108,21 @@ export function PriceCalculator({ onGetQuote }: PriceCalculatorProps) {
                 className={`flex-1 py-2.5 font-oswald text-sm border transition-all ${
                   gates === v
                     ? "bg-evraz-red border-evraz-red text-white"
-                    : "border-white/20 text-gray-300 hover:border-evraz-red hover:text-white"
+                    : "border-evraz-border text-evraz-dark hover:border-evraz-red hover:text-evraz-red"
                 }`}
               >
                 {v === 5 ? "5+" : v}
               </button>
             ))}
           </div>
-          <div className="font-ibm text-xs text-gray-500 mt-2">
+          <div className="font-ibm text-xs text-evraz-gray mt-2">
             +{((gates === 5 ? 6 : gates) * 185000).toLocaleString("ru-RU")} ₽
           </div>
         </div>
 
         {/* Окна */}
         <div>
-          <label className="font-oswald text-sm tracking-widest text-gray-300 uppercase mb-4 block">
+          <label className="font-oswald text-sm tracking-widest text-evraz-dark uppercase mb-4 block">
             Оконные блоки
           </label>
           <div className="flex gap-2">
@@ -133,14 +133,14 @@ export function PriceCalculator({ onGetQuote }: PriceCalculatorProps) {
                 className={`flex-1 py-2.5 font-oswald text-sm border transition-all ${
                   windows === (v === 5 ? 5 : v)
                     ? "bg-evraz-red border-evraz-red text-white"
-                    : "border-white/20 text-gray-300 hover:border-evraz-red hover:text-white"
+                    : "border-evraz-border text-evraz-dark hover:border-evraz-red hover:text-evraz-red"
                 }`}
               >
                 {idx === 4 ? "8+" : v}
               </button>
             ))}
           </div>
-          <div className="font-ibm text-xs text-gray-500 mt-2">
+          <div className="font-ibm text-xs text-evraz-gray mt-2">
             +{((windows === 5 ? 8 : windows) * 42000).toLocaleString("ru-RU")} ₽
           </div>
         </div>
@@ -148,7 +148,7 @@ export function PriceCalculator({ onGetQuote }: PriceCalculatorProps) {
         {/* Кран — только для производства */}
         {buildingType === "production" && (
           <div>
-            <label className="font-oswald text-sm tracking-widest text-gray-300 uppercase mb-4 block">
+            <label className="font-oswald text-sm tracking-widest text-evraz-dark uppercase mb-4 block">
               Мостовой кран
             </label>
             <div className="flex gap-2">
@@ -162,14 +162,14 @@ export function PriceCalculator({ onGetQuote }: PriceCalculatorProps) {
                   className={`flex-1 py-2.5 font-oswald text-sm border transition-all ${
                     hasCrane === opt.val
                       ? "bg-evraz-red border-evraz-red text-white"
-                      : "border-white/20 text-gray-300 hover:border-evraz-red hover:text-white"
+                      : "border-evraz-border text-evraz-dark hover:border-evraz-red hover:text-evraz-red"
                   }`}
                 >
                   {opt.label}
                 </button>
               ))}
             </div>
-            <div className="font-ibm text-xs text-gray-500 mt-2">
+            <div className="font-ibm text-xs text-evraz-gray mt-2">
               {hasCrane ? `+${(width * length * 3200).toLocaleString("ru-RU")} ₽` : "Без доплаты"}
             </div>
           </div>
@@ -177,17 +177,17 @@ export function PriceCalculator({ onGetQuote }: PriceCalculatorProps) {
       </div>
 
       {/* Итог */}
-      <div className="bg-evraz-red/10 border border-evraz-red/30 p-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="bg-evraz-charcoal border border-evraz-border p-6 flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
-          <div className="font-ibm text-xs text-gray-400 uppercase tracking-wider mb-1">Площадь здания</div>
-          <div className="font-oswald text-2xl text-white">{(width * length).toLocaleString("ru-RU")} м²</div>
+          <div className="font-ibm text-xs text-evraz-gray uppercase tracking-wider mb-1">Площадь здания</div>
+          <div className="font-oswald text-2xl text-evraz-dark">{(width * length).toLocaleString("ru-RU")} м²</div>
         </div>
         <div className="text-center md:text-right">
-          <div className="font-ibm text-xs text-gray-400 uppercase tracking-wider mb-1">
+          <div className="font-ibm text-xs text-evraz-gray uppercase tracking-wider mb-1">
             Ориентировочная стоимость
           </div>
           <div className="font-oswald text-4xl text-evraz-red font-bold">{FORMAT_RUB(calcPrice())}</div>
-          <div className="font-ibm text-xs text-gray-500 mt-1">*без учёта инженерных сетей и фундамента</div>
+          <div className="font-ibm text-xs text-evraz-gray mt-1">*без учёта инженерных сетей и фундамента</div>
         </div>
         <button onClick={onGetQuote} className="btn-primary whitespace-nowrap">
           Получить смету

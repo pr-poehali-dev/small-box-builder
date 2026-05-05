@@ -197,7 +197,7 @@ export default function BigBox() {
       {/* ── ХЕДЕР ── */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "bg-evraz-dark shadow-xl" : "bg-transparent"
+          scrolled ? "bg-white shadow-md" : "bg-transparent"
         }`}
       >
         <div className="container mx-auto py-4 flex items-center justify-between">
@@ -212,7 +212,7 @@ export default function BigBox() {
               <button
                 key={l.label}
                 onClick={() => scrollTo(l.href.slice(1))}
-                className="font-ibm text-xs text-gray-300 hover:text-white transition-colors uppercase tracking-wider"
+                className="font-ibm text-xs text-evraz-dark hover:text-evraz-red transition-colors uppercase tracking-wider"
               >
                 {l.label}
               </button>
@@ -223,7 +223,7 @@ export default function BigBox() {
           <div className="flex items-center gap-4">
             <a
               href="tel:+78003006559"
-              className="hidden md:block font-oswald text-white text-sm tracking-wider hover:text-evraz-red transition-colors"
+              className="hidden md:block font-oswald text-evraz-dark text-sm tracking-wider hover:text-evraz-red transition-colors"
             >
               8 800 300 65 59
             </a>
@@ -236,7 +236,7 @@ export default function BigBox() {
             {/* Бургер */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="lg:hidden text-white"
+              className="lg:hidden text-evraz-dark"
             >
               <Icon name={menuOpen ? "X" : "Menu"} size={22} />
             </button>
@@ -245,18 +245,18 @@ export default function BigBox() {
 
         {/* Мобильное меню */}
         {menuOpen && (
-          <div className="lg:hidden bg-evraz-dark border-t border-evraz-charcoal px-6 py-4 space-y-3">
+          <div className="lg:hidden bg-white border-t border-evraz-border px-6 py-4 space-y-3">
             {NAV_LINKS.map((l) => (
               <button
                 key={l.label}
                 onClick={() => scrollTo(l.href.slice(1))}
-                className="block w-full text-left font-ibm text-sm text-gray-300 hover:text-white py-1.5 uppercase tracking-wider"
+                className="block w-full text-left font-ibm text-sm text-evraz-dark hover:text-evraz-red py-1.5 uppercase tracking-wider"
               >
                 {l.label}
               </button>
             ))}
-            <div className="pt-3 border-t border-evraz-charcoal">
-              <a href="tel:+78003006559" className="block font-oswald text-white text-base mb-3">
+            <div className="pt-3 border-t border-evraz-border">
+              <a href="tel:+78003006559" className="block font-oswald text-evraz-dark text-base mb-3">
                 8 800 300 65 59
               </a>
               <button

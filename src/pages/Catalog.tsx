@@ -226,14 +226,14 @@ export default function Catalog() {
   return (
     <div className="min-h-screen bg-white font-ibm">
       {/* HEADER */}
-      <header className="sticky top-0 z-50 bg-evraz-dark shadow-xl py-4">
+      <header className="sticky top-0 z-50 bg-white shadow-md py-4 border-b border-evraz-border">
         <div className="container mx-auto flex items-center justify-between">
           <button onClick={() => navigate("/")} className="flex items-center">
             <img src="https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/07662369-c03c-4cb9-b942-839aad61017e.png" alt="EVRAZ SteelBox" className="h-10 w-auto" />
           </button>
           <button
             onClick={() => navigate("/")}
-            className="flex items-center gap-2 font-ibm text-sm text-gray-300 hover:text-white transition-colors"
+            className="flex items-center gap-2 font-ibm text-sm text-evraz-gray hover:text-evraz-dark transition-colors"
           >
             <Icon name="ArrowLeft" size={16} />
             На главную
@@ -242,13 +242,13 @@ export default function Catalog() {
       </header>
 
       {/* HERO */}
-      <section className="bg-evraz-dark relative overflow-hidden py-16 md:py-20">
+      <section className="bg-evraz-charcoal relative overflow-hidden py-16 md:py-20">
         <div className="absolute left-0 top-0 bottom-0 w-1 bg-evraz-red" />
         <div
           className="absolute inset-0 opacity-5"
           style={{
             backgroundImage:
-              "repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.3) 40px, rgba(255,255,255,0.3) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.3) 40px, rgba(255,255,255,0.3) 41px)",
+              "repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(107,63,160,0.3) 40px, rgba(107,63,160,0.3) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(107,63,160,0.3) 40px, rgba(107,63,160,0.3) 41px)",
           }}
         />
         <div className="container mx-auto relative z-10">
@@ -258,12 +258,12 @@ export default function Catalog() {
               Серийные здания
             </span>
           </div>
-          <h1 className="font-oswald text-4xl md:text-6xl text-white font-bold mb-4 leading-tight">
+          <h1 className="font-oswald text-4xl md:text-6xl text-evraz-dark font-bold mb-4 leading-tight">
             КАТАЛОГ ГОТОВЫХ
             <br />
             <span className="text-evraz-red">РЕШЕНИЙ</span>
           </h1>
-          <p className="font-ibm text-gray-300 max-w-2xl text-base leading-relaxed mb-8">
+          <p className="font-ibm text-evraz-gray max-w-2xl text-base leading-relaxed mb-8">
             Типовые здания с фиксированной ценой — рассчитаны заранее, запущены
             в производство за 5 рабочих дней. Нужен нестандартный размер?
             Воспользуйтесь калькулятором ниже.
@@ -276,10 +276,10 @@ export default function Catalog() {
               { v: "Фикс. цена", l: "Без скрытых доплат" },
             ].map((s) => (
               <div key={s.l}>
-                <div className="font-oswald text-2xl text-white font-bold">
+                <div className="font-oswald text-2xl text-evraz-dark font-bold">
                   {s.v}
                 </div>
-                <div className="font-ibm text-xs text-gray-400 uppercase tracking-wider mt-0.5">
+                <div className="font-ibm text-xs text-evraz-gray uppercase tracking-wider mt-0.5">
                   {s.l}
                 </div>
               </div>

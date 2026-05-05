@@ -21,7 +21,7 @@ export default function Index() {
       {/* HEADER */}
       <header
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          scrolled ? "bg-evraz-dark shadow-2xl py-3" : "bg-transparent py-5"
+          scrolled ? "bg-white shadow-md py-3" : "bg-transparent py-5"
         }`}
       >
         <div className="container mx-auto flex items-center justify-between">
@@ -32,7 +32,7 @@ export default function Index() {
           <div className="flex items-center gap-4">
             <a
               href="tel:+78001234567"
-              className="hidden sm:block text-white font-ibm text-sm font-medium hover:text-evraz-red transition-colors"
+              className="hidden sm:block text-evraz-dark font-ibm text-sm font-medium hover:text-evraz-red transition-colors"
             >
               8 800 123-45-67
             </a>

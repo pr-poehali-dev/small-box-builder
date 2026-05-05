@@ -5,44 +5,45 @@
 @layer base {
   :root {
     --background: 0 0% 97%;
-    --foreground: 0 0% 8%;
+    --foreground: 0 0% 18%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 8%;
+    --card-foreground: 0 0% 18%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 8%;
+    --popover-foreground: 0 0% 18%;
 
-    --primary: 0 0% 10%;
-    --primary-foreground: 0 0% 97%;
+    --primary: 22 95% 48%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 94%;
-    --secondary-foreground: 0 0% 10%;
+    --secondary: 270 40% 40%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 0 0% 94%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 270 10% 95%;
+    --muted-foreground: 0 0% 55%;
 
-    --accent: 3 85% 42%;
-    --accent-foreground: 0 0% 97%;
+    --accent: 38 90% 55%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 97%;
 
-    --border: 0 0% 88%;
-    --input: 0 0% 88%;
-    --ring: 3 85% 42%;
+    --border: 270 15% 88%;
+    --input: 270 15% 88%;
+    --ring: 22 95% 48%;
 
     --radius: 0.25rem;
 
     /* EVRAZ Brand Colors */
-    --evraz-red: #c0392b;
-    --evraz-dark: #1a1a1a;
-    --evraz-charcoal: #2c2c2c;
-    --evraz-steel: #4a4a4a;
-    --evraz-gray: #7a7a7a;
-    --evraz-light: #f5f5f5;
+    --evraz-red: #e8600a;
+    --evraz-dark: #2d2d2d;
+    --evraz-charcoal: #f0eef4;
+    --evraz-steel: #6b3fa0;
+    --evraz-gray: #8a8a8a;
+    --evraz-light: #ffffff;
     --evraz-white: #ffffff;
-    --evraz-border: #e0e0e0;
+    --evraz-border: #e2dde8;
+    --evraz-orange: #f5a623;
 
     --sidebar-background: 0 0% 10%;
     --sidebar-foreground: 0 0% 90%;
@@ -199,7 +200,7 @@
 
 .steel-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 40px rgba(232, 96, 10, 0.15);
   border-color: var(--evraz-red) !important;
 }
 
@@ -248,7 +249,7 @@ input[type="range"]::-webkit-slider-thumb {
   background: var(--evraz-red);
   cursor: pointer;
   border: 2px solid white;
-  box-shadow: 0 2px 6px rgba(192, 57, 43, 0.4);
+  box-shadow: 0 2px 6px rgba(232, 96, 10, 0.4);
 }
 
 /* Button variants */
@@ -265,10 +266,10 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .btn-primary:hover {
-  background: #a93226;
-  border-color: #a93226;
+  background: #c95008;
+  border-color: #c95008;
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(192, 57, 43, 0.35);
+  box-shadow: 0 6px 20px rgba(232, 96, 10, 0.35);
 }
 
 .btn-outline {

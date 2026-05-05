@@ -117,7 +117,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
               className={`group relative p-8 md:p-10 border-t-2 cursor-pointer transition-all duration-300 ${
                 card.accent
                   ? "bg-evraz-red border-evraz-red"
-                  : "bg-evraz-dark/80 border-white/10 hover:bg-white/10 hover:border-evraz-red"
+                  : "bg-white/10 border-white/20 hover:bg-white/20 hover:border-evraz-red"
               }`}
               onClick={() =>
                 card.route ? navigate(card.route) : scrollTo(card.target)
@@ -147,7 +147,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
                     className={
                       card.accent
                         ? "text-white"
-                        : "text-gray-400 group-hover:text-evraz-red"
+                        : "text-white/70 group-hover:text-evraz-red"
                     }
                   />
                 </div>
@@ -158,7 +158,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
                 {card.title}
               </h3>
               <p
-                className={`font-ibm text-sm leading-relaxed mb-8 ${card.accent ? "text-white/80" : "text-gray-400"}`}
+                className={`font-ibm text-sm leading-relaxed mb-8 ${card.accent ? "text-white/80" : "text-white/70"}`}
               >
                 {card.desc}
               </p>
@@ -168,7 +168,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
                 className={`flex items-center gap-2 font-oswald text-sm tracking-wider uppercase transition-all ${
                   card.accent
                     ? "text-white"
-                    : "text-gray-400 group-hover:text-white"
+                    : "text-white/70 group-hover:text-white"
                 }`}
               >
                 {card.cta}

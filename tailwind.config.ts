@@ -57,13 +57,14 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				evraz: {
-					red: '#c0392b',
-					dark: '#1a1a1a',
-					charcoal: '#2c2c2c',
-					steel: '#4a4a4a',
-					gray: '#7a7a7a',
-					light: '#f5f5f5',
-					border: '#e0e0e0',
+					red: '#E8600A',
+					dark: '#2D2D2D',
+					charcoal: '#F0EEF4',
+					steel: '#6B3FA0',
+					gray: '#8A8A8A',
+					light: '#FFFFFF',
+					border: '#E2DDE8',
+					orange: '#F5A623',
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
