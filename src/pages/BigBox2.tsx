@@ -659,113 +659,79 @@ export default function BigBox2() {
             <span className="text-evraz-red">КОГДА СИСТЕМА НЕ ВЫСТРОЕНА</span>
           </h2>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Риски с цифрами */}
-            <div>
-              <p className="font-oswald text-xs text-evraz-gray uppercase tracking-widest mb-5">
-                Типичная ситуация при работе с 5–10 подрядчиками
-              </p>
-              <div className="space-y-4">
+          {/* Таблица сравнения */}
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr>
+                  <th className="w-1/4 p-4 text-left" />
+                  <th className="w-[37.5%] p-4 bg-white border border-evraz-border">
+                    <div className="font-oswald text-sm text-evraz-gray uppercase tracking-widest text-center">
+                      Обычная практика
+                    </div>
+                    <div className="font-ibm text-xs text-evraz-gray text-center mt-1">
+                      5–10 разных подрядчиков
+                    </div>
+                  </th>
+                  <th className="w-[37.5%] p-4 bg-evraz-steel border border-evraz-steel">
+                    <div className="font-oswald text-sm text-white uppercase tracking-widest text-center">
+                      EVRAZ STEEL BOX
+                    </div>
+                    <div className="font-ibm text-xs text-white/70 text-center mt-1">
+                      единая команда
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
                 {[
                   {
-                    risk: "Срыв сроков сдачи",
-                    stat: "+3–6 мес.",
-                    detail:
-                      "Среднее отклонение по рынку промстроительства (данные ДОМ.РФ, 2023)",
+                    label: "Договор",
+                    bad: "участвуют 5–10 разных подрядчиков, сложные согласования",
+                    good: "3-сторонний договор: единая команда от проектирования до реализации",
                   },
                   {
-                    risk: "Перерасход бюджета",
-                    stat: "+18–25%",
-                    detail:
-                      "Переделки из-за несогласованности проекта и поставки",
+                    label: "Стоимость",
+                    bad: "проектирование, поставка и строительство не связаны в одну систему",
+                    good: "Фиксированная цена. Смета закрыта до начала работ. Мы несём риск стоимости материалов, а не вы",
                   },
                   {
-                    risk: "Конфликт зон ответственности",
-                    stat: "47% споров",
-                    detail:
-                      "Доля судебных дел по промстройке, где причина — размытая ответственность",
+                    label: "Проектирование",
+                    bad: "проектирование, поставка и строительство не связаны в одну систему",
+                    good: "Параллельные процессы. Проектирование и производство конструкций идут одновременно — это даёт +4–6 недель к скорости",
                   },
                   {
-                    risk: "Вынужденный простой производства",
-                    stat: "от 2 мес.",
-                    detail:
-                      "Пока заказчик разбирается с подрядчиками, оборудование стоит",
+                    label: "Ответственность",
+                    bad: "ответственность размыта между участниками",
+                    good: "График в договоре. Штрафные санкции за каждый день просрочки — мы заинтересованы в сроке так же, как вы",
                   },
-                ].map((r) => (
-                  <div
-                    key={r.risk}
-                    className="flex gap-4 bg-white border border-evraz-border p-4"
-                  >
-                    <div className="shrink-0">
-                      <div className="font-oswald text-2xl text-evraz-red font-bold leading-none">
-                        {r.stat}
+                ].map((row, i) => (
+                  <tr key={row.label} className={i % 2 === 0 ? "" : ""}>
+                    <td className="p-4 border-b border-evraz-border">
+                      <span className="font-oswald text-sm text-evraz-dark uppercase tracking-wider">
+                        {row.label}
+                      </span>
+                    </td>
+                    <td className="p-4 bg-white border border-evraz-border align-top">
+                      <div className="flex items-start gap-2">
+                        <Icon name="X" size={14} className="text-evraz-red shrink-0 mt-0.5" />
+                        <span className="font-ibm text-sm text-evraz-gray leading-relaxed">
+                          {row.bad}
+                        </span>
                       </div>
-                    </div>
-                    <div>
-                      <div className="font-oswald text-sm text-evraz-dark uppercase tracking-wider mb-1">
-                        {r.risk}
+                    </td>
+                    <td className="p-4 bg-evraz-steel/10 border border-evraz-steel/30 align-top">
+                      <div className="flex items-start gap-2">
+                        <Icon name="Check" size={14} className="text-evraz-steel shrink-0 mt-0.5" />
+                        <span className="font-ibm text-sm text-evraz-dark leading-relaxed">
+                          {row.good}
+                        </span>
                       </div>
-                      <div className="font-ibm text-xs text-evraz-gray leading-relaxed italic">
-                        {r.detail}
-                      </div>
-                    </div>
-                  </div>
+                    </td>
+                  </tr>
                 ))}
-              </div>
-            </div>
-
-            {/* Решение BIG BOX */}
-            <div className="bg-evraz-steel p-6 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-8 h-8 bg-white/20 flex items-center justify-center">
-                    <Icon name="ShieldCheck" size={16} className="text-white" />
-                  </div>
-                  <p className="font-oswald text-sm text-white uppercase tracking-widest">
-                    BIG BOX устраняет эти риски системно
-                  </p>
-                </div>
-                <div className="space-y-4">
-                  {[
-                    {
-                      fix: "Единый договор",
-                      desc: "Проектирование, поставка и монтаж — один контрагент, одна точка ответственности",
-                    },
-                    {
-                      fix: "Фиксированная цена",
-                      desc: "Смета закрыта до начала работ. Мы несём риск стоимости материалов, а не вы",
-                    },
-                    {
-                      fix: "График в договоре",
-                      desc: "Штрафные санкции за каждый день просрочки — мы заинтересованы в сроке так же, как вы",
-                    },
-                    {
-                      fix: "Параллельные процессы",
-                      desc: "Проектирование и производство конструкций идут одновременно — это даёт +4–6 недель к скорости",
-                    },
-                  ].map((f) => (
-                    <div key={f.fix} className="flex items-start gap-3">
-                      <div className="w-5 h-5 bg-white/20 flex items-center justify-center shrink-0 mt-0.5">
-                        <Icon name="Check" size={10} className="text-white" />
-                      </div>
-                      <div>
-                        <div className="font-oswald text-sm text-white uppercase tracking-wide">
-                          {f.fix}
-                        </div>
-                        <div className="font-ibm text-xs text-white/70 mt-0.5 leading-relaxed">
-                          {f.desc}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="mt-6 pt-5 border-t border-white/20">
-                <p className="font-oswald text-base text-white font-semibold">
-                  Управляемый результат — не лозунг, а условие договора.
-                </p>
-              </div>
-            </div>
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
