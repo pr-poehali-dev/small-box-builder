@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
 import { AnimSection } from "@/components/shared/AnimSection";
-import { PriceCalculator } from "@/components/shared/PriceCalculator";
 
 type CaseCategory = "Серийные здания" | "Индивидуальные проекты" | "Парковки";
 
@@ -352,44 +351,6 @@ export function ContentSections({
                 </div>
               </AnimSection>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CALCULATOR */}
-      <section
-        id="calculator"
-        className="py-24 bg-evraz-charcoal relative overflow-hidden"
-      >
-        <div
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(107,63,160,0.4) 40px, rgba(107,63,160,0.4) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(107,63,160,0.4) 40px, rgba(107,63,160,0.4) 41px)",
-          }}
-        />
-        <div className="absolute right-0 top-0 bottom-0 w-1 bg-evraz-steel" />
-
-        <div className="container mx-auto relative z-10">
-          <AnimSection>
-            <div className="mb-16 text-center">
-              <div className="flex justify-center mb-4">
-                <div className="w-12 h-0.5 bg-evraz-red" />
-              </div>
-              <h2 className="font-oswald text-4xl md:text-5xl text-evraz-dark font-semibold">
-                ОНЛАЙН-КАЛЬКУЛЯТОР
-              </h2>
-              <p className="font-ibm text-evraz-gray mt-4 max-w-xl mx-auto text-base">
-                Получите предварительный расчёт стоимости за несколько секунд.
-                Точная смета — после бесплатной консультации.
-              </p>
-            </div>
-          </AnimSection>
-
-          <div className="max-w-4xl mx-auto">
-            <AnimSection>
-              <PriceCalculator onGetQuote={() => scrollTo("contacts")} />
-            </AnimSection>
           </div>
         </div>
       </section>
