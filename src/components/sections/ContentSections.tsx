@@ -572,11 +572,11 @@ export function ContentSections({
               <div>
                 <div className="accent-line" />
                 <h2 className="font-oswald text-4xl md:text-5xl text-evraz-dark font-semibold">
-                  БЛОГ И СТАТЬИ
+                  БЛОГ И ОТЗЫВЫ
                 </h2>
                 <p className="font-ibm text-evraz-gray mt-4 max-w-xl text-base leading-relaxed">
-                  Экспертные материалы по проектированию, строительству и
-                  эксплуатации быстровозводимых зданий.
+                  Экспертные материалы, актуальные новости компании, отзывы
+                  наших клиентов.
                 </p>
               </div>
               <button className="btn-outline-dark self-start md:self-auto">
@@ -630,8 +630,8 @@ export function ContentSections({
                   КОНТАКТЫ
                 </h2>
                 <p className="font-ibm text-evraz-gray mb-10 leading-relaxed">
-                  Оставьте заявку — наш специалист свяжется с вами в течение 2
-                  часов и проконсультирует по любым вопросам проектирования и
+                  Оставьте заявку — наш специалист свяжется с вами в течение 1
+                  часа и проконсультирует по любым вопросам проектирования и
                   строительства.
                 </p>
 
@@ -640,22 +640,18 @@ export function ContentSections({
                     {
                       icon: "Phone",
                       label: "Телефон",
-                      value: "8 800 123-45-67 (бесплатно)",
+                      value: "8 800 302 96 86 (звонок по России бесплатный)",
                     },
                     {
                       icon: "Mail",
                       label: "Email",
-                      value: "info@evraz-buildings.ru",
+                      value: "info.box@evrazsteel.ru",
                     },
                     {
                       icon: "MapPin",
                       label: "Офис",
-                      value: "Москва, ул. Дубининская, 21, стр. 1",
-                    },
-                    {
-                      icon: "Clock",
-                      label: "Режим работы",
-                      value: "Пн–Пт: 9:00–18:00 МСК",
+                      value:
+                        "125252, Россия, г. Москва, ул. Авиаконструктора Микояна, д. 12, БЦ «Линкор» ",
                     },
                   ].map((c) => (
                     <div key={c.label} className="flex items-start gap-4">
@@ -696,16 +692,6 @@ export function ContentSections({
                       className="w-full bg-white border border-evraz-border px-4 py-3 font-ibm text-evraz-dark text-sm focus:outline-none focus:border-evraz-red transition-colors"
                     />
                   </div>
-                  <div>
-                    <label className="font-ibm text-xs text-evraz-gray uppercase tracking-wider block mb-2">
-                      Компания
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="ООО «Ваша компания»"
-                      className="w-full bg-white border border-evraz-border px-4 py-3 font-ibm text-evraz-dark text-sm focus:outline-none focus:border-evraz-red transition-colors"
-                    />
-                  </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label className="font-ibm text-xs text-evraz-gray uppercase tracking-wider block mb-2">
@@ -738,6 +724,7 @@ export function ContentSections({
                       <option>Торговый центр</option>
                       <option>Агропромышленный объект</option>
                       <option>Спортивное сооружение</option>
+                      <option>Паркинг</option>
                       <option>Другое</option>
                     </select>
                   </div>
