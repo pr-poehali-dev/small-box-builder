@@ -165,7 +165,7 @@
   background: var(--evraz-light);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--evraz-red);
+  background: var(--evraz-steel);
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--evraz-red);
