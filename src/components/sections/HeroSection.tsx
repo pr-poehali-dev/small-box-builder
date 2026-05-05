@@ -37,24 +37,27 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
       className="relative min-h-screen flex items-center overflow-hidden"
     >
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
         style={{
           backgroundImage: `url(https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/5b4508f9-9d77-48fd-8352-9fba826f4269.jpg)`,
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-evraz-dark/95 via-evraz-dark/80 to-evraz-dark/40" />
-      <div className="absolute inset-0 bg-gradient-to-t from-evraz-dark/60 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-evraz-charcoal/98 via-evraz-charcoal/85 to-evraz-charcoal/40" />
+      <div className="absolute inset-0 bg-gradient-to-t from-evraz-charcoal/60 via-transparent to-transparent" />
+      <div className="absolute inset-0 opacity-[0.03]"
+        style={{ backgroundImage: "repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(107,63,160,0.5) 60px,rgba(107,63,160,0.5) 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(107,63,160,0.5) 60px,rgba(107,63,160,0.5) 61px)" }}
+      />
       <div className="absolute left-0 top-0 bottom-0 w-1 bg-evraz-red" />
 
       <div className="container mx-auto relative z-10 pt-24 pb-0 flex flex-col min-h-screen">
         {/* Верхняя часть — заголовок */}
         <div className="flex-1 flex flex-col justify-center max-w-3xl py-12">
-          <h1 className="font-oswald text-4xl md:text-6xl text-white font-bold leading-tight mb-6 animate-fade-in-up">
-            <span className="text-gray-300 font-light">
+          <h1 className="font-oswald text-4xl md:text-6xl text-evraz-dark font-bold leading-tight mb-6 animate-fade-in-up">
+            <span className="text-evraz-gray font-light">
               Спроектируем, изготовим
             </span>
             <br />
-            <span className="text-gray-300 font-light">и построим</span>{" "}
+            <span className="text-evraz-gray font-light">и построим</span>{" "}
             <span
               className="text-evraz-red inline-block transition-all duration-300"
               style={{
@@ -65,14 +68,14 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
               {BUILDING_TYPES[typeIndex]}
             </span>
             <br />
-            <span className="text-white">под ключ за 40 дней</span>
+            <span className="text-evraz-dark">под ключ за 40 дней</span>
           </h1>
 
           <div className="flex items-center gap-3 animate-fade-in-up delay-200">
             <div className="w-8 h-8 bg-evraz-red flex items-center justify-center shrink-0">
               <div className="w-3.5 h-3.5 border-2 border-white rotate-45" />
             </div>
-            <span className="font-oswald text-white text-lg tracking-widest uppercase">
+            <span className="font-oswald text-evraz-dark text-lg tracking-widest uppercase">
               Гарантия EVRAZ
             </span>
           </div>
@@ -116,8 +119,8 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
               key={card.tag}
               className={`group relative p-8 md:p-10 border-t-2 cursor-pointer transition-all duration-300 ${
                 card.accent
-                  ? "bg-evraz-red border-evraz-red"
-                  : "bg-white/10 border-white/20 hover:bg-white/20 hover:border-evraz-red"
+                  ? "bg-evraz-steel border-evraz-steel"
+                  : "bg-white border-evraz-border hover:border-evraz-red"
               }`}
               onClick={() =>
                 card.route ? navigate(card.route) : scrollTo(card.target)
@@ -129,7 +132,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
                   className={`font-oswald text-xs tracking-[0.2em] uppercase px-2 py-1 ${
                     card.accent
                       ? "bg-white/20 text-white"
-                      : "bg-white/5 text-evraz-red"
+                      : "bg-evraz-light text-evraz-red"
                   }`}
                 >
                   {card.tag}
@@ -138,7 +141,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
                   className={`w-10 h-10 flex items-center justify-center border ${
                     card.accent
                       ? "border-white/30"
-                      : "border-white/10 group-hover:border-evraz-red"
+                      : "border-evraz-border group-hover:border-evraz-red"
                   } transition-colors`}
                 >
                   <Icon
@@ -147,18 +150,18 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
                     className={
                       card.accent
                         ? "text-white"
-                        : "text-white/70 group-hover:text-evraz-red"
+                        : "text-evraz-gray group-hover:text-evraz-red"
                     }
                   />
                 </div>
               </div>
 
               {/* Content */}
-              <h3 className="font-oswald text-2xl text-white font-semibold mb-3 leading-tight">
+              <h3 className={`font-oswald text-2xl font-semibold mb-3 leading-tight ${card.accent ? "text-white" : "text-evraz-dark"}`}>
                 {card.title}
               </h3>
               <p
-                className={`font-ibm text-sm leading-relaxed mb-8 ${card.accent ? "text-white/80" : "text-white/70"}`}
+                className={`font-ibm text-sm leading-relaxed mb-8 ${card.accent ? "text-white/80" : "text-evraz-gray"}`}
               >
                 {card.desc}
               </p>
@@ -168,7 +171,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
                 className={`flex items-center gap-2 font-oswald text-sm tracking-wider uppercase transition-all ${
                   card.accent
                     ? "text-white"
-                    : "text-white/70 group-hover:text-white"
+                    : "text-evraz-gray group-hover:text-evraz-dark"
                 }`}
               >
                 {card.cta}
