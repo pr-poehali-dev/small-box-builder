@@ -86,7 +86,7 @@ const ADVANTAGES = [
   {
     icon: "Globe",
     title: "Сеть партнёров",
-    desc: "Более 120 аккредитованных исполнителей в 45 регионах",
+    desc: "Более 180 аккредитованных исполнителей в 45 регионах",
   },
 ];
 
@@ -456,8 +456,8 @@ export function ContentSections({
                 СЕТЬ ПАРТНЁРОВ
               </h2>
               <p className="font-ibm text-evraz-gray mt-4 max-w-xl mx-auto text-base leading-relaxed">
-                Аккредитованные строительные организации, прошедшие обучение и
-                сертификацию EVRAZ. Гарантия качества монтажа по всей России.
+                Сертифицированные строительные организации EVRAZ STEEL BOX.
+                Гарантия качества монтажа по всей России.
               </p>
             </div>
           </AnimSection>
@@ -549,8 +549,8 @@ export function ContentSections({
                   Хотите стать партнёром?
                 </h3>
                 <p className="font-ibm text-evraz-gray mt-2 text-sm">
-                  Присоединяйтесь к сети из 120+ аккредитованных исполнителей
-                  EVRAZ
+                  Присоединяйтесь к сети из 180+ сертифицированных партнеров
+                  EVRAZ STEEL BOX
                 </p>
               </div>
               <button
