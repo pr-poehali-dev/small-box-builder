@@ -8,6 +8,7 @@ const BUILDING_TYPES = [
   "паркинг",
   "торговый центр",
   "паддле центр",
+  "автосервис",
 ];
 
 interface HeroSectionProps {
