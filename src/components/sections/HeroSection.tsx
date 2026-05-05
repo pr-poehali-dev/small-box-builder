@@ -76,9 +76,6 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
           </h1>
 
           <div className="flex items-center gap-3 animate-fade-in-up delay-200">
-            <div className="w-8 h-8 bg-evraz-red flex items-center justify-center shrink-0">
-              <div className="w-3.5 h-3.5 border-2 border-white rotate-45" />
-            </div>
             <span className="font-oswald text-evraz-dark text-lg tracking-widest uppercase">
               Фиксированная цена до 90 дней. Прозрачное ценообразование
             </span>
