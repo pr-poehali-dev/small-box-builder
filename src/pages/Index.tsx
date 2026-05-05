@@ -25,14 +25,8 @@ export default function Index() {
         }`}
       >
         <div className="container mx-auto flex items-center justify-between">
-          <button onClick={() => scrollTo("home")} className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-evraz-red flex items-center justify-center">
-              <div className="w-4 h-4 border-2 border-white rotate-45" />
-            </div>
-            <div className="text-left">
-              <div className="font-oswald font-bold text-white text-lg leading-none tracking-widest">EVRAZ</div>
-              <div className="font-ibm text-xs text-gray-400 tracking-wider uppercase">SteelBox</div>
-            </div>
+          <button onClick={() => scrollTo("home")} className="flex items-center">
+            <img src="https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/07662369-c03c-4cb9-b942-839aad61017e.png" alt="EVRAZ SteelBox" className="h-10 w-auto" />
           </button>
 
           <div className="flex items-center gap-4">

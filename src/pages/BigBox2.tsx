@@ -235,21 +235,8 @@ export default function BigBox2() {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-evraz-dark shadow-xl" : "bg-transparent"}`}
       >
         <div className="container mx-auto py-4 flex items-center justify-between gap-4">
-          <button
-            onClick={() => navigate("/")}
-            className="flex items-center gap-3 shrink-0"
-          >
-            <div className="w-8 h-8 bg-evraz-red flex items-center justify-center">
-              <div className="w-4 h-4 border-2 border-white rotate-45" />
-            </div>
-            <div>
-              <div className="font-oswald font-bold text-white text-lg leading-none tracking-widest">
-                EVRAZ
-              </div>
-              <div className="font-ibm text-xs text-gray-400 tracking-wider uppercase">
-                BigBox
-              </div>
-            </div>
+          <button onClick={() => navigate("/")} className="flex items-center shrink-0">
+            <img src="https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/07662369-c03c-4cb9-b942-839aad61017e.png" alt="EVRAZ SteelBox" className="h-10 w-auto" />
           </button>
 
           <nav className="hidden lg:flex items-center gap-5">
