@@ -238,14 +238,14 @@ export default function Parking() {
       </header>
 
       {/* HERO */}
-      <section id="hero" className="bg-evraz-dark min-h-screen flex flex-col justify-end pb-0 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.04]"
-          style={{ backgroundImage: "repeating-linear-gradient(0deg,transparent,transparent 60px,#fff 60px,#fff 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,#fff 60px,#fff 61px)" }} />
+      <section id="hero" className="min-h-screen flex flex-col justify-end pb-0 relative overflow-hidden bg-evraz-charcoal">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-25"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
           style={{ backgroundImage: `url(https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/5b4508f9-9d77-48fd-8352-9fba826f4269.jpg)` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-evraz-dark/95 via-evraz-dark/80 to-evraz-dark/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-evraz-charcoal/98 via-evraz-charcoal/85 to-evraz-charcoal/40" />
+        <div className="absolute inset-0 opacity-[0.03]"
+          style={{ backgroundImage: "repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(107,63,160,0.5) 60px,rgba(107,63,160,0.5) 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(107,63,160,0.5) 60px,rgba(107,63,160,0.5) 61px)" }} />
         <div className="absolute left-0 top-0 bottom-0 w-1 bg-evraz-red" />
 
         <div className="container mx-auto pt-36 pb-0 relative z-10">
@@ -257,39 +257,39 @@ export default function Parking() {
               </span>
             </div>
 
-            <h1 className="font-oswald text-4xl md:text-6xl text-white font-bold leading-tight mb-6">
-              <span className="text-gray-300 font-light">Многоуровневые</span>
+            <h1 className="font-oswald text-4xl md:text-6xl text-evraz-dark font-bold leading-tight mb-6">
+              <span className="text-evraz-gray font-light">Многоуровневые</span>
               <br />
               <span className="text-evraz-red">паркинги</span>{" "}
-              <span className="text-white">из стали</span>
+              <span className="text-evraz-dark">из стали</span>
               <br />
-              <span className="text-gray-300 font-light">под ключ за 30 дней</span>
+              <span className="text-evraz-gray font-light">под ключ за 30 дней</span>
             </h1>
 
-            <p className="font-ibm text-gray-400 text-base leading-relaxed mb-8 max-w-xl">
+            <p className="font-ibm text-evraz-gray text-base leading-relaxed mb-8 max-w-xl">
               Проектируем, изготавливаем и монтируем наземные и многоуровневые металлические паркинги.
               От 100 до 5 000+ машиномест. Собственная сталь, гарантия 25 лет.
             </p>
 
             <div className="flex flex-wrap gap-4">
               <button onClick={() => setActiveForm("callback")}
-                className="bg-evraz-red text-white font-oswald text-sm tracking-widest uppercase px-8 py-4 hover:bg-red-700 transition-colors">
+                className="bg-evraz-red text-white font-oswald text-sm tracking-widest uppercase px-8 py-4 hover:bg-orange-700 transition-colors">
                 Получить расчёт стоимости
               </button>
               <button onClick={() => scrollTo("cases")}
-                className="border border-white/30 text-white font-oswald text-sm tracking-widest uppercase px-8 py-4 hover:border-evraz-red hover:text-evraz-red transition-colors">
+                className="border border-evraz-steel text-evraz-steel font-oswald text-sm tracking-widest uppercase px-8 py-4 hover:bg-evraz-steel hover:text-white transition-colors">
                 Смотреть проекты
               </button>
             </div>
           </div>
 
           {/* Статистика */}
-          <div className="grid grid-cols-1 md:grid-cols-3 border-t border-white/10">
+          <div className="grid grid-cols-1 md:grid-cols-3 border-t border-evraz-border">
             {STATS.map((s) => (
-              <div key={s.value} className="p-8 border-r border-white/10 last:border-r-0 group">
+              <div key={s.value} className="p-8 border-r border-evraz-border last:border-r-0 group">
                 <div className="font-oswald text-4xl text-evraz-red font-bold mb-1">{s.value}</div>
-                <div className="font-oswald text-sm text-white uppercase tracking-wider mb-2">{s.label}</div>
-                <div className="font-ibm text-xs text-gray-500 leading-relaxed">{s.proof}</div>
+                <div className="font-oswald text-sm text-evraz-dark uppercase tracking-wider mb-2">{s.label}</div>
+                <div className="font-ibm text-xs text-evraz-gray leading-relaxed">{s.proof}</div>
               </div>
             ))}
           </div>
@@ -310,31 +310,31 @@ export default function Parking() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {TYPES.map((t) => (
               <div key={t.title}
-                className={`p-8 border-t-2 flex flex-col ${t.accent ? "bg-evraz-dark border-evraz-red" : "bg-white border-evraz-border"}`}>
-                <div className={`w-12 h-12 flex items-center justify-center mb-5 border ${t.accent ? "border-evraz-red" : "border-evraz-border"}`}>
-                  <Icon name={t.icon} size={20} className={t.accent ? "text-evraz-red" : "text-evraz-gray"} />
+                className={`p-8 border-t-2 flex flex-col ${t.accent ? "bg-evraz-steel border-evraz-steel" : "bg-white border-evraz-border"}`}>
+                <div className={`w-12 h-12 flex items-center justify-center mb-5 border ${t.accent ? "border-white/30" : "border-evraz-border"}`}>
+                  <Icon name={t.icon} size={20} className={t.accent ? "text-white" : "text-evraz-gray"} />
                 </div>
                 <h3 className={`font-oswald text-xl font-semibold mb-3 leading-snug ${t.accent ? "text-white" : "text-evraz-dark"}`}>
                   {t.title}
                 </h3>
-                <p className={`font-ibm text-sm leading-relaxed mb-5 flex-1 ${t.accent ? "text-gray-400" : "text-evraz-gray"}`}>
+                <p className={`font-ibm text-sm leading-relaxed mb-5 flex-1 ${t.accent ? "text-white/70" : "text-evraz-gray"}`}>
                   {t.desc}
                 </p>
                 <ul className="space-y-2 mb-6">
                   {t.features.map((f) => (
                     <li key={f} className="flex items-center gap-2">
-                      <Icon name="Check" size={12} className="text-evraz-red shrink-0" />
-                      <span className={`font-ibm text-xs ${t.accent ? "text-gray-300" : "text-evraz-dark"}`}>{f}</span>
+                      <Icon name="Check" size={12} className={t.accent ? "text-white shrink-0" : "text-evraz-red shrink-0"} />
+                      <span className={`font-ibm text-xs ${t.accent ? "text-white/80" : "text-evraz-dark"}`}>{f}</span>
                     </li>
                   ))}
                 </ul>
-                <div className={`font-oswald text-lg font-semibold ${t.accent ? "text-evraz-red" : "text-evraz-dark"}`}>
+                <div className={`font-oswald text-lg font-semibold ${t.accent ? "text-white" : "text-evraz-dark"}`}>
                   {t.from}
                 </div>
                 <button onClick={() => setActiveForm("callback")}
                   className={`mt-4 w-full py-3 font-oswald text-xs tracking-widest uppercase transition-colors ${
                     t.accent
-                      ? "bg-evraz-red text-white hover:bg-red-700"
+                      ? "bg-white text-evraz-steel hover:bg-evraz-charcoal"
                       : "border border-evraz-border text-evraz-dark hover:border-evraz-red hover:text-evraz-red"
                   }`}>
                   Запросить расчёт
@@ -346,24 +346,24 @@ export default function Parking() {
       </section>
 
       {/* ПРЕИМУЩЕСТВА */}
-      <section id="features" className="py-20 bg-evraz-dark">
+      <section id="features" className="py-20 bg-evraz-charcoal">
         <div className="container mx-auto">
           <div className="flex items-center gap-3 mb-3">
             <div className="w-10 h-0.5 bg-evraz-red" />
             <span className="font-oswald text-evraz-red text-xs tracking-[0.25em] uppercase">Почему металл</span>
           </div>
-          <h2 className="font-oswald text-3xl md:text-4xl text-white font-semibold mb-10">
+          <h2 className="font-oswald text-3xl md:text-4xl text-evraz-dark font-semibold mb-10">
             ПРЕИМУЩЕСТВА МЕТАЛЛИЧЕСКОГО ПАРКИНГА
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-evraz-border">
             {FEATURES.map((f) => (
-              <div key={f.title} className="bg-evraz-dark p-8">
+              <div key={f.title} className="bg-white p-8">
                 <div className="w-12 h-12 bg-evraz-red flex items-center justify-center mb-5">
                   <Icon name={f.icon} size={20} className="text-white" />
                 </div>
-                <h3 className="font-oswald text-lg text-white font-semibold mb-3">{f.title}</h3>
-                <p className="font-ibm text-sm text-gray-400 leading-relaxed">{f.desc}</p>
+                <h3 className="font-oswald text-lg text-evraz-dark font-semibold mb-3">{f.title}</h3>
+                <p className="font-ibm text-sm text-evraz-gray leading-relaxed">{f.desc}</p>
               </div>
             ))}
           </div>
@@ -423,8 +423,8 @@ export default function Parking() {
                 </div>
 
                 {/* Хронология */}
-                <div className="border-t border-evraz-border bg-evraz-dark px-6 lg:px-8 py-6">
-                  <p className="font-oswald text-xs text-gray-400 uppercase tracking-widest mb-5">
+                <div className="border-t border-evraz-border bg-evraz-charcoal px-6 lg:px-8 py-6">
+                  <p className="font-oswald text-xs text-evraz-gray uppercase tracking-widest mb-5">
                     Хронология — {c.client}
                   </p>
                   <div className="flex flex-col sm:flex-row gap-0">
@@ -438,8 +438,8 @@ export default function Parking() {
                             <div className="w-2 h-2 bg-white rounded-full" />
                           </div>
                           <div>
-                            <div className="font-oswald text-xs text-white uppercase tracking-wider">{t.date}</div>
-                            <div className="font-ibm text-xs text-gray-400 mt-0.5 leading-relaxed max-w-[120px]">{t.label}</div>
+                            <div className="font-oswald text-xs text-evraz-dark uppercase tracking-wider">{t.date}</div>
+                            <div className="font-ibm text-xs text-evraz-gray mt-0.5 leading-relaxed max-w-[120px]">{t.label}</div>
                           </div>
                         </div>
                       </div>

@@ -304,14 +304,14 @@ export default function BigBox2() {
       {/* ── HERO: BRAND PROMISE С ДОКАЗАТЕЛЬСТВАМИ ── */}
       <section
         id="hero"
-        className="bg-evraz-dark min-h-screen flex flex-col justify-end pb-0 relative overflow-hidden"
+        className="bg-evraz-charcoal min-h-screen flex flex-col justify-end pb-0 relative overflow-hidden"
       >
         {/* Сетка фон */}
         <div
-          className="absolute inset-0 opacity-[0.04]"
+          className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage:
-              "repeating-linear-gradient(0deg,transparent,transparent 60px,#fff 60px,#fff 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,#fff 60px,#fff 61px)",
+              "repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(107,63,160,0.5) 60px,rgba(107,63,160,0.5) 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(107,63,160,0.5) 60px,rgba(107,63,160,0.5) 61px)",
           }}
         />
         <div className="absolute left-0 top-0 bottom-0 w-1 bg-evraz-red" />
@@ -326,7 +326,7 @@ export default function BigBox2() {
           </div>
 
           {/* Заголовок */}
-          <h1 className="font-oswald text-4xl md:text-6xl lg:text-7xl text-white font-bold leading-[1.05] mb-8 max-w-4xl">
+          <h1 className="font-oswald text-4xl md:text-6xl lg:text-7xl text-evraz-dark font-bold leading-[1.05] mb-8 max-w-4xl">
             ПРОМЫШЛЕННЫЕ И
             <br />
             СКЛАДСКИЕ
@@ -334,7 +334,7 @@ export default function BigBox2() {
             <span className="text-evraz-red">ЗДАНИЯ ПОД КЛЮЧ</span>
             <br />
           </h1>
-          <p className="font-ibm text-gray-300 text-base leading-relaxed mb-4 max-w-2xl">
+          <p className="font-ibm text-evraz-gray text-base leading-relaxed mb-4 max-w-2xl">
             Вы получаете объект в срок и по зафиксированной цене. BIG BOX — это
             генеральное проектирование и единый договор на поставку и монтаж.
             Конструкции из стали собственного производства EVRAZ: мы
@@ -342,31 +342,31 @@ export default function BigBox2() {
           </p>
 
           {/* Brand Promise — три блока с доказательствами */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10 mb-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-evraz-border mb-10">
             {PROMISES.map((p) => (
-              <div key={p.claim} className="bg-evraz-dark p-6 relative group">
+              <div key={p.claim} className="bg-white p-6 relative group">
                 <div className="flex items-start gap-4 mb-4">
                   <div className="w-10 h-10 bg-evraz-red flex items-center justify-center shrink-0">
                     <Icon name={p.icon} size={18} className="text-white" />
                   </div>
                   <div>
-                    <div className="font-oswald text-3xl text-white font-bold leading-none">
+                    <div className="font-oswald text-3xl text-evraz-dark font-bold leading-none">
                       {p.claim}
                     </div>
-                    <div className="font-ibm text-xs text-gray-400 mt-1 leading-relaxed">
+                    <div className="font-ibm text-xs text-evraz-gray mt-1 leading-relaxed">
                       {p.sub}
                     </div>
                   </div>
                 </div>
                 {/* Доказательство */}
-                <div className="border-t border-white/10 pt-4">
+                <div className="border-t border-evraz-border pt-4">
                   <div className="flex items-start gap-2">
                     <Icon
                       name="FileCheck"
                       size={12}
                       className="text-evraz-red mt-0.5 shrink-0"
                     />
-                    <p className="font-ibm text-xs text-gray-500 leading-relaxed italic">
+                    <p className="font-ibm text-xs text-evraz-gray leading-relaxed italic">
                       {p.proof}
                     </p>
                   </div>
@@ -379,13 +379,13 @@ export default function BigBox2() {
           <div className="flex flex-col sm:flex-row gap-4 pb-16">
             <button
               onClick={() => setActiveForm("callback")}
-              className="bg-evraz-red text-white font-oswald text-sm tracking-widest uppercase px-8 py-4 hover:bg-red-700 transition-colors"
+              className="bg-evraz-red text-white font-oswald text-sm tracking-widest uppercase px-8 py-4 hover:bg-orange-700 transition-colors"
             >
               Получить расчёт под ваш проект
             </button>
             <button
               onClick={() => scrollTo("cases")}
-              className="border border-white/20 text-white font-oswald text-sm tracking-widest uppercase px-8 py-4 hover:border-white/60 transition-colors flex items-center gap-2"
+              className="border border-evraz-steel text-evraz-steel font-oswald text-sm tracking-widest uppercase px-8 py-4 hover:bg-evraz-steel hover:text-white transition-colors flex items-center gap-2"
             >
               Смотреть объекты <Icon name="ArrowDown" size={16} />
             </button>
@@ -481,8 +481,8 @@ export default function BigBox2() {
                 </div>
 
                 {/* Хронология — всегда видна */}
-                <div className="border-t border-evraz-border bg-evraz-dark px-6 lg:px-8 py-6">
-                  <p className="font-oswald text-xs text-gray-400 uppercase tracking-widest mb-5">
+                <div className="border-t border-evraz-border bg-evraz-charcoal px-6 lg:px-8 py-6">
+                  <p className="font-oswald text-xs text-evraz-gray uppercase tracking-widest mb-5">
                     Хронология — {c.client}
                   </p>
                   <div className="flex flex-col sm:flex-row gap-0">
@@ -499,10 +499,10 @@ export default function BigBox2() {
                             <div className="w-2 h-2 bg-white rounded-full" />
                           </div>
                           <div>
-                            <div className="font-oswald text-xs text-white uppercase tracking-wider">
+                            <div className="font-oswald text-xs text-evraz-dark uppercase tracking-wider">
                               {t.date}
                             </div>
-                            <div className="font-ibm text-xs text-gray-400 mt-0.5 leading-relaxed max-w-[120px]">
+                            <div className="font-ibm text-xs text-evraz-gray mt-0.5 leading-relaxed max-w-[120px]">
                               {t.label}
                             </div>
                           </div>
@@ -636,14 +636,14 @@ export default function BigBox2() {
       {/* ── АНТИПРОСТРАНСТВО: РИСКИ БЕЗ BIG BOX ── */}
       <section
         id="challenge"
-        className="py-20 bg-evraz-dark relative overflow-hidden"
+        className="py-20 bg-evraz-charcoal relative overflow-hidden"
       >
-        <div className="absolute right-0 top-0 bottom-0 w-1 bg-evraz-red" />
+        <div className="absolute right-0 top-0 bottom-0 w-1 bg-evraz-steel" />
         <div
-          className="absolute inset-0 opacity-[0.04]"
+          className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage:
-              "repeating-linear-gradient(0deg,transparent,transparent 60px,#fff 60px,#fff 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,#fff 60px,#fff 61px)",
+              "repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(107,63,160,0.5) 60px,rgba(107,63,160,0.5) 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(107,63,160,0.5) 60px,rgba(107,63,160,0.5) 61px)",
           }}
         />
         <div className="container mx-auto relative z-10">
@@ -653,7 +653,7 @@ export default function BigBox2() {
               Цена ошибки
             </span>
           </div>
-          <h2 className="font-oswald text-3xl md:text-4xl text-white font-semibold mb-10 leading-tight">
+          <h2 className="font-oswald text-3xl md:text-4xl text-evraz-dark font-semibold mb-10 leading-tight">
             ЧТО ПРОИСХОДИТ,
             <br />
             <span className="text-evraz-red">КОГДА СИСТЕМА НЕ ВЫСТРОЕНА</span>
@@ -662,7 +662,7 @@ export default function BigBox2() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Риски с цифрами */}
             <div>
-              <p className="font-oswald text-xs text-gray-400 uppercase tracking-widest mb-5">
+              <p className="font-oswald text-xs text-evraz-gray uppercase tracking-widest mb-5">
                 Типичная ситуация при работе с 5–10 подрядчиками
               </p>
               <div className="space-y-4">
@@ -694,7 +694,7 @@ export default function BigBox2() {
                 ].map((r) => (
                   <div
                     key={r.risk}
-                    className="flex gap-4 bg-white/5 border border-white/10 p-4"
+                    className="flex gap-4 bg-white border border-evraz-border p-4"
                   >
                     <div className="shrink-0">
                       <div className="font-oswald text-2xl text-evraz-red font-bold leading-none">
@@ -702,10 +702,10 @@ export default function BigBox2() {
                       </div>
                     </div>
                     <div>
-                      <div className="font-oswald text-sm text-white uppercase tracking-wider mb-1">
+                      <div className="font-oswald text-sm text-evraz-dark uppercase tracking-wider mb-1">
                         {r.risk}
                       </div>
-                      <div className="font-ibm text-xs text-gray-500 leading-relaxed italic">
+                      <div className="font-ibm text-xs text-evraz-gray leading-relaxed italic">
                         {r.detail}
                       </div>
                     </div>
@@ -715,10 +715,10 @@ export default function BigBox2() {
             </div>
 
             {/* Решение BIG BOX */}
-            <div className="bg-evraz-red/10 border border-evraz-red/30 p-6 flex flex-col justify-between">
+            <div className="bg-evraz-steel p-6 flex flex-col justify-between">
               <div>
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="w-8 h-8 bg-evraz-red flex items-center justify-center">
+                  <div className="w-8 h-8 bg-white/20 flex items-center justify-center">
                     <Icon name="ShieldCheck" size={16} className="text-white" />
                   </div>
                   <p className="font-oswald text-sm text-white uppercase tracking-widest">
@@ -745,14 +745,14 @@ export default function BigBox2() {
                     },
                   ].map((f) => (
                     <div key={f.fix} className="flex items-start gap-3">
-                      <div className="w-5 h-5 bg-evraz-red flex items-center justify-center shrink-0 mt-0.5">
+                      <div className="w-5 h-5 bg-white/20 flex items-center justify-center shrink-0 mt-0.5">
                         <Icon name="Check" size={10} className="text-white" />
                       </div>
                       <div>
                         <div className="font-oswald text-sm text-white uppercase tracking-wide">
                           {f.fix}
                         </div>
-                        <div className="font-ibm text-xs text-gray-400 mt-0.5 leading-relaxed">
+                        <div className="font-ibm text-xs text-white/70 mt-0.5 leading-relaxed">
                           {f.desc}
                         </div>
                       </div>
@@ -760,7 +760,7 @@ export default function BigBox2() {
                   ))}
                 </div>
               </div>
-              <div className="mt-6 pt-5 border-t border-evraz-red/30">
+              <div className="mt-6 pt-5 border-t border-white/20">
                 <p className="font-oswald text-base text-white font-semibold">
                   Управляемый результат — не лозунг, а условие договора.
                 </p>
@@ -802,7 +802,7 @@ export default function BigBox2() {
                 key={s.label}
                 className="bg-white border border-evraz-border p-5 text-center"
               >
-                <div className="w-10 h-10 bg-evraz-dark mx-auto flex items-center justify-center mb-3">
+                <div className="w-10 h-10 bg-evraz-steel mx-auto flex items-center justify-center mb-3">
                   <Icon name={s.icon} size={18} className="text-white" />
                 </div>
                 <div className="font-oswald text-xl text-evraz-red font-bold">
@@ -815,12 +815,12 @@ export default function BigBox2() {
             ))}
           </div>
 
-          <div className="bg-evraz-dark p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="bg-evraz-steel p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <h3 className="font-oswald text-xl text-white font-semibold mb-2">
                 Скачайте каталог конструкционных решений
               </h3>
-              <p className="font-ibm text-sm text-gray-400">
+              <p className="font-ibm text-sm text-white/70">
                 Конструкционные решения EVRAZ STEEL BOX — выберите подходящий
                 вариант и оцените экономию ещё до начала проектирования
               </p>
@@ -873,14 +873,14 @@ export default function BigBox2() {
       {/* ── CTA ФИНАЛЬНЫЙ ── */}
       <section
         id="cta"
-        className="py-20 bg-evraz-dark relative overflow-hidden"
+        className="py-20 bg-evraz-charcoal relative overflow-hidden"
       >
         <div className="absolute left-0 top-0 bottom-0 w-1 bg-evraz-red" />
         <div
-          className="absolute inset-0 opacity-[0.04]"
+          className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage:
-              "repeating-linear-gradient(0deg,transparent,transparent 60px,#fff 60px,#fff 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,#fff 60px,#fff 61px)",
+              "repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(107,63,160,0.5) 60px,rgba(107,63,160,0.5) 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(107,63,160,0.5) 60px,rgba(107,63,160,0.5) 61px)",
           }}
         />
         <div className="container mx-auto relative z-10">
@@ -892,12 +892,12 @@ export default function BigBox2() {
                   Зафиксировать условия
                 </span>
               </div>
-              <h2 className="font-oswald text-3xl md:text-4xl text-white font-semibold mb-4 leading-tight">
+              <h2 className="font-oswald text-3xl md:text-4xl text-evraz-dark font-semibold mb-4 leading-tight">
                 ЗАПРОСИТЬ РАСЧЁТ
                 <br />
                 <span className="text-evraz-red">СТОИМОСТИ</span>
               </h2>
-              <p className="font-ibm text-gray-400 text-sm leading-relaxed mb-6">
+              <p className="font-ibm text-evraz-gray text-sm leading-relaxed mb-6">
                 Оставьте заявку — мы перезвоним и разберём вашу задачу: тип
                 объекта, площадь, регион и бюджет. Расчёт получите в течение
                 одного рабочего дня.
@@ -915,7 +915,7 @@ export default function BigBox2() {
                     <div className="w-8 h-8 bg-evraz-red flex items-center justify-center">
                       <Icon name={c.icon} size={14} className="text-white" />
                     </div>
-                    <span className="font-ibm text-sm text-gray-300">
+                    <span className="font-ibm text-sm text-evraz-dark">
                       {c.text}
                     </span>
                   </div>
@@ -926,7 +926,7 @@ export default function BigBox2() {
                   href="https://t.me/EvrazBigBox_bot"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-2 font-ibm text-xs text-gray-400 hover:text-white transition-colors"
+                  className="flex items-center gap-2 font-ibm text-xs text-evraz-gray hover:text-evraz-dark transition-colors"
                 >
                   <Icon name="Send" size={13} className="text-evraz-red" />
                   @EvrazBigBox_bot
@@ -935,7 +935,7 @@ export default function BigBox2() {
                   href="https://wa.me/79692688420"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-2 font-ibm text-xs text-gray-400 hover:text-white transition-colors"
+                  className="flex items-center gap-2 font-ibm text-xs text-evraz-gray hover:text-evraz-dark transition-colors"
                 >
                   <Icon
                     name="MessageCircle"
@@ -959,40 +959,30 @@ export default function BigBox2() {
       </section>
 
       {/* ── ФУТЕР ── */}
-      <footer className="bg-evraz-dark border-t border-evraz-charcoal py-10">
+      <footer className="bg-evraz-charcoal border-t border-evraz-border py-10">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-8 h-8 bg-evraz-red flex items-center justify-center">
-                  <div className="w-4 h-4 border-2 border-white rotate-45" />
-                </div>
-                <div>
-                  <div className="font-oswald font-bold text-white text-lg leading-none tracking-widest">
-                    EVRAZ
-                  </div>
-                  <div className="font-ibm text-xs text-gray-400 tracking-wider uppercase">
-                    BigBox
-                  </div>
-                </div>
+              <div className="mb-4">
+                <img src="https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/07662369-c03c-4cb9-b942-839aad61017e.png" alt="EVRAZ SteelBox" className="h-10 w-auto" />
               </div>
-              <p className="font-ibm text-xs text-gray-400 leading-relaxed mb-3">
+              <p className="font-ibm text-xs text-evraz-gray leading-relaxed mb-3">
                 Полнокомплектные здания площадью от 3 000 м²
                 <br />
                 Работаем во всех регионах России
               </p>
               <a
                 href="tel:+78003006559"
-                className="font-oswald text-xl text-white hover:text-evraz-red transition-colors block mb-1"
+                className="font-oswald text-xl text-evraz-dark hover:text-evraz-red transition-colors block mb-1"
               >
                 8 800 300 65 59
               </a>
-              <p className="font-ibm text-xs text-gray-500">
+              <p className="font-ibm text-xs text-evraz-gray">
                 пн.–пт. с 9:30 до 18:00
               </p>
               <button
                 onClick={() => setActiveForm("callback")}
-                className="mt-3 font-ibm text-xs text-evraz-red hover:text-white transition-colors underline"
+                className="mt-3 font-ibm text-xs text-evraz-red hover:text-evraz-dark transition-colors underline"
               >
                 Закажите звонок
               </button>
@@ -1019,7 +1009,7 @@ export default function BigBox2() {
                     href={c.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-2 font-ibm text-xs text-gray-400 hover:text-white transition-colors"
+                    className="flex items-center gap-2 font-ibm text-xs text-evraz-gray hover:text-evraz-dark transition-colors"
                   >
                     <Icon name={c.icon} size={13} className="text-evraz-red" />
                     {c.label}
@@ -1028,7 +1018,7 @@ export default function BigBox2() {
               </div>
             </div>
             <div>
-              <h5 className="font-oswald text-xs text-gray-400 uppercase tracking-widest mb-4">
+              <h5 className="font-oswald text-xs text-evraz-dark uppercase tracking-widest mb-4">
                 Навигация
               </h5>
               <ul className="space-y-2">
@@ -1036,7 +1026,7 @@ export default function BigBox2() {
                   <li key={l.label}>
                     <button
                       onClick={() => scrollTo(l.href)}
-                      className="font-ibm text-sm text-gray-400 hover:text-white transition-colors"
+                      className="font-ibm text-sm text-evraz-gray hover:text-evraz-dark transition-colors"
                     >
                       {l.label}
                     </button>
@@ -1045,14 +1035,14 @@ export default function BigBox2() {
               </ul>
             </div>
             <div>
-              <h5 className="font-oswald text-xs text-gray-400 uppercase tracking-widest mb-4">
+              <h5 className="font-oswald text-xs text-evraz-dark uppercase tracking-widest mb-4">
                 Документы
               </h5>
               <ul className="space-y-2">
                 <li>
                   <a
                     href="#"
-                    className="font-ibm text-sm text-gray-400 hover:text-white transition-colors"
+                    className="font-ibm text-sm text-evraz-gray hover:text-evraz-dark transition-colors"
                   >
                     Политика конфиденциальности
                   </a>
@@ -1060,7 +1050,7 @@ export default function BigBox2() {
                 <li>
                   <a
                     href="#"
-                    className="font-ibm text-sm text-gray-400 hover:text-white transition-colors"
+                    className="font-ibm text-sm text-evraz-gray hover:text-evraz-dark transition-colors"
                   >
                     Согласие на обработку персональных данных
                   </a>
@@ -1068,8 +1058,8 @@ export default function BigBox2() {
               </ul>
             </div>
           </div>
-          <div className="border-t border-evraz-charcoal pt-6">
-            <p className="font-ibm text-xs text-gray-500">
+          <div className="border-t border-evraz-border pt-6">
+            <p className="font-ibm text-xs text-evraz-gray">
               © {new Date().getFullYear()} EVRAZ Steel Box. Все права защищены.
             </p>
           </div>
