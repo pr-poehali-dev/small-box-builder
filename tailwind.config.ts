@@ -62,7 +62,7 @@ export default {
 					charcoal: '#F0EEF4',
 					steel: '#6B3FA0',
 					gray: '#8A8A8A',
-					light: '#FFFFFF',
+					light: '#F5F4F8',
 					border: '#E2DDE8',
 					orange: '#F5A623',
 				},
