@@ -5,7 +5,6 @@ import Icon from "@/components/ui/icon";
 const BUILDING_TYPES = [
   "склад",
   "производство",
-  "паркинг",
   "торговый центр",
   "паддле центр",
   "автосервис",
