@@ -71,7 +71,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
               {BUILDING_TYPES[typeIndex]}
             </span>
             <br />
-            <span className="text-evraz-dark">под ключ за 40 дней</span>
+            <span className="text-evraz-dark">под ключ за 45 дней</span>
           </h1>
 
           <div className="flex items-center gap-3 animate-fade-in-up delay-200">
