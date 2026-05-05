@@ -124,7 +124,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
               key={card.tag}
               className={`group relative p-8 md:p-10 border-t-2 cursor-pointer transition-all duration-300 ${
                 card.accent
-                  ? "bg-evraz-steel border-evraz-steel"
+                  ? "bg-evraz-red border-evraz-steel"
                   : "bg-white border-evraz-border hover:border-evraz-red"
               }`}
               onClick={() =>
