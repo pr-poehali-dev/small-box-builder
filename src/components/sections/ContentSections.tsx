@@ -380,7 +380,7 @@ export function ContentSections({
                 </p>
                 <div className="grid grid-cols-2 gap-6 mb-8">
                   {[
-                    { n: "850+", l: "Объектов" },
+                    { n: "400+", l: "Объектов" },
                     { n: "45", l: "Регионов" },
                     { n: "120+", l: "Партнёров" },
                     { n: "30 лет", l: "Опыта" },
