@@ -44,8 +44,12 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
       />
       <div className="absolute inset-0 bg-gradient-to-r from-evraz-charcoal/98 via-evraz-charcoal/85 to-evraz-charcoal/40" />
       <div className="absolute inset-0 bg-gradient-to-t from-evraz-charcoal/60 via-transparent to-transparent" />
-      <div className="absolute inset-0 opacity-[0.03]"
-        style={{ backgroundImage: "repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(107,63,160,0.5) 60px,rgba(107,63,160,0.5) 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(107,63,160,0.5) 60px,rgba(107,63,160,0.5) 61px)" }}
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(107,63,160,0.5) 60px,rgba(107,63,160,0.5) 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(107,63,160,0.5) 60px,rgba(107,63,160,0.5) 61px)",
+        }}
       />
       <div className="absolute left-0 top-0 bottom-0 w-1 bg-evraz-red" />
 
@@ -76,7 +80,9 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
               <div className="w-3.5 h-3.5 border-2 border-white rotate-45" />
             </div>
             <span className="font-oswald text-evraz-dark text-lg tracking-widest uppercase">
-              Гарантия EVRAZ
+              Фиксированная цена до 90 дней. Прозрачная цена. Сопровождение от
+              проектирования до сдачи под ключ. 400+ успешных проектов по всей
+              России.
             </span>
           </div>
         </div>
@@ -157,7 +163,9 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
               </div>
 
               {/* Content */}
-              <h3 className={`font-oswald text-2xl font-semibold mb-3 leading-tight ${card.accent ? "text-white" : "text-evraz-dark"}`}>
+              <h3
+                className={`font-oswald text-2xl font-semibold mb-3 leading-tight ${card.accent ? "text-white" : "text-evraz-dark"}`}
+              >
                 {card.title}
               </h3>
               <p
