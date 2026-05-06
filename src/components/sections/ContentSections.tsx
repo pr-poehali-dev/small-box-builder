@@ -536,7 +536,7 @@ export function ContentSections({
                       {p.projects} проектов
                     </span>
                     <span className="font-oswald text-xs tracking-widest text-evraz-steel uppercase bg-evraz-steel/10 px-2 py-1">
-                      Аккредитован
+                      Сертифицирован
                     </span>
                   </div>
                 </div>
