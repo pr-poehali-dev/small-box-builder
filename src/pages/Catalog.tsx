@@ -37,120 +37,186 @@ const CATALOG: CatalogItem[] = [
     id: "s-18-36-6",
     tag: "Склад",
     name: "Склад S-18",
-    width: 18, length: 36, height: 6,
-    price: 8_100_000, pricePerSqm: 12_500, days: 30,
+    width: 18,
+    length: 36,
+    height: 6,
+    price: 8_100_000,
+    pricePerSqm: 12_500,
+    days: 30,
     features: ["2 ворот", "Утеплённые сэндвич-панели", "Рулонная кровля"],
     designers: ["СтальПроект", "ГрупПром"],
-    city: "Москва", capital: false,
+    city: "Москва",
+    capital: false,
   },
   {
     id: "s-24-48-7",
     tag: "Склад",
     name: "Склад S-24",
-    width: 24, length: 48, height: 7,
-    price: 14_400_000, pricePerSqm: 12_500, days: 35,
+    width: 24,
+    length: 48,
+    height: 7,
+    price: 14_400_000,
+    pricePerSqm: 12_500,
+    days: 35,
     features: ["2 ворот", "4 окна", "Антикор покрытие"],
     popular: true,
     designers: ["МеталлДизайн", "СтальПроект"],
-    city: "Екатеринбург", capital: true,
+    city: "Екатеринбург",
+    capital: true,
   },
   {
     id: "s-36-72-8",
     tag: "Склад",
     name: "Склад S-36",
-    width: 36, length: 72, height: 8,
-    price: 32_400_000, pricePerSqm: 12_500, days: 45,
+    width: 36,
+    length: 72,
+    height: 8,
+    price: 32_400_000,
+    pricePerSqm: 12_500,
+    days: 45,
     features: ["4 ворот", "6 окон", "Дымовые люки"],
     designers: ["ПромАрхитектура"],
-    city: "Новосибирск", capital: true,
+    city: "Новосибирск",
+    capital: true,
   },
   {
     id: "p-24-48-10",
     tag: "Производство",
     name: "Цех P-24",
-    width: 24, length: 48, height: 10,
-    price: 20_160_000, pricePerSqm: 17_500, days: 40,
+    width: 24,
+    length: 48,
+    height: 10,
+    price: 20_160_000,
+    pricePerSqm: 17_500,
+    days: 40,
     features: ["2 ворот", "Мостовой кран 10т", "Усиленный каркас"],
     popular: true,
     designers: ["ИндустриалПроект", "ТехноСталь"],
-    city: "Челябинск", capital: true,
+    city: "Челябинск",
+    capital: true,
   },
   {
     id: "p-36-72-12",
     tag: "Производство",
     name: "Цех P-36",
-    width: 36, length: 72, height: 12,
-    price: 45_360_000, pricePerSqm: 17_500, days: 55,
+    width: 36,
+    length: 72,
+    height: 12,
+    price: 45_360_000,
+    pricePerSqm: 17_500,
+    days: 55,
     features: ["4 ворот", "Мостовой кран 20т", "Технические галереи"],
     designers: ["ИндустриалПроект", "МеталлДизайн", "ПромАрхитектура"],
-    city: "Москва", capital: true,
+    city: "Москва",
+    capital: true,
   },
   {
     id: "a-18-36-5",
     tag: "Агро",
     name: "Агро A-18",
-    width: 18, length: 36, height: 5,
-    price: 7_000_000, pricePerSqm: 10_800, days: 28,
+    width: 18,
+    length: 36,
+    height: 5,
+    price: 7_000_000,
+    pricePerSqm: 10_800,
+    days: 28,
     features: ["1 ворота", "Вентиляционные решётки", "Антикор каркас"],
     designers: ["АгроСтрой"],
-    city: "Краснодар", capital: false,
+    city: "Краснодар",
+    capital: false,
   },
   {
     id: "a-24-60-6",
     tag: "Агро",
     name: "Агро A-24",
-    width: 24, length: 60, height: 6,
-    price: 15_552_000, pricePerSqm: 10_800, days: 35,
+    width: 24,
+    length: 60,
+    height: 6,
+    price: 15_552_000,
+    pricePerSqm: 10_800,
+    days: 35,
     features: ["2 ворот", "Принудительная вентиляция", "Аттестован под зерно"],
     popular: true,
     designers: ["АгроСтрой", "ГрупПром"],
-    city: "Ростов-на-Дону", capital: false,
+    city: "Ростов-на-Дону",
+    capital: false,
   },
   {
     id: "t-30-60-8",
     tag: "Торговля",
     name: "ТЦ T-30",
-    width: 30, length: 60, height: 8,
-    price: 33_300_000, pricePerSqm: 18_500, days: 50,
+    width: 30,
+    length: 60,
+    height: 8,
+    price: 33_300_000,
+    pricePerSqm: 18_500,
+    days: 50,
     features: ["6 входных групп", "Витражное остекление", "Фасадные кассеты"],
     popular: true,
     designers: ["АрхибюроПлюс", "МеталлДизайн"],
-    city: "Екатеринбург", capital: true,
+    city: "Екатеринбург",
+    capital: true,
   },
   {
     id: "sp-48-72-14",
     tag: "Спорт",
     name: "Арена SP-48",
-    width: 48, length: 72, height: 14,
-    price: 76_204_800, pricePerSqm: 22_000, days: 70,
-    features: ["Пролёт 48 м без опор", "Естественное освещение", "Трибуны 500 мест"],
+    width: 48,
+    length: 72,
+    height: 14,
+    price: 76_204_800,
+    pricePerSqm: 22_000,
+    days: 70,
+    features: [
+      "Пролёт 48 м без опор",
+      "Естественное освещение",
+      "Трибуны 500 мест",
+    ],
     designers: ["СпортАрхПроект", "ПромАрхитектура"],
-    city: "Челябинск", capital: true,
+    city: "Челябинск",
+    capital: true,
   },
   {
     id: "pk-18-54-3",
     tag: "Паркинг",
     name: "Паркинг PK-18",
-    width: 18, length: 54, height: 3,
-    price: 9_450_000, pricePerSqm: 9_700, days: 30,
+    width: 18,
+    length: 54,
+    height: 3,
+    price: 9_450_000,
+    pricePerSqm: 9_700,
+    days: 30,
     features: ["54 машиноместа", "Открытый тип", "Быстрый монтаж"],
     designers: ["ГрупПром"],
-    city: "Новосибирск", capital: false,
+    city: "Новосибирск",
+    capital: false,
   },
   {
     id: "pk-24-72-6",
     tag: "Паркинг",
     name: "Паркинг PK-24 (2 уровня)",
-    width: 24, length: 72, height: 6,
-    price: 21_600_000, pricePerSqm: 12_500, days: 45,
+    width: 24,
+    length: 72,
+    height: 6,
+    price: 21_600_000,
+    pricePerSqm: 12_500,
+    days: 45,
     features: ["144 машиноместа", "2 уровня", "Антикор покрытие"],
     popular: true,
     designers: ["ГрупПром", "АрхибюроПлюс"],
-    city: "Москва", capital: false,
+    city: "Москва",
+    capital: false,
   },
 ];
 
-const TAGS: BuildingTag[] = ["Склад", "Производство", "Агро", "Торговля", "Спорт", "Паркинг"];
+const TAGS: BuildingTag[] = [
+  "Склад",
+  "Производство",
+  "Агро",
+  "Торговля",
+  "Спорт",
+  "Паркинг",
+];
 
 const CITIES = [...new Set(CATALOG.map((c) => c.city))].sort();
 
@@ -167,7 +233,7 @@ const FORMAT_RUB = (n: number) =>
     maximumFractionDigits: 0,
   }).format(n);
 
-const LEASING_ADVANCE = 0.20;
+const LEASING_ADVANCE = 0.2;
 const LEASING_MONTHS = 36;
 const LEASING_RATE = 0.165;
 
@@ -175,7 +241,8 @@ function calcLeasing(price: number) {
   const advance = price * LEASING_ADVANCE;
   const body = price - advance;
   const monthlyRate = LEASING_RATE / 12;
-  const payment = (body * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -LEASING_MONTHS));
+  const payment =
+    (body * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -LEASING_MONTHS));
   return { advance, payment };
 }
 
@@ -186,11 +253,14 @@ export default function Catalog() {
   const [activeTag, setActiveTag] = useState<BuildingTag | "Все">("Все");
   const [activeCity, setActiveCity] = useState<string>("Все");
   const [activeArea, setActiveArea] = useState<AreaRange | "Все">("Все");
-  const [capitalFilter, setCapitalFilter] = useState<"all" | "capital" | "noncapital">("all");
+  const [capitalFilter, setCapitalFilter] = useState<
+    "all" | "capital" | "noncapital"
+  >("all");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  const filtered = CATALOG
-    .filter((item) => activeTag === "Все" || item.tag === activeTag)
+  const filtered = CATALOG.filter(
+    (item) => activeTag === "Все" || item.tag === activeTag,
+  )
     .filter((item) => activeCity === "Все" || item.city === activeCity)
     .filter((item) => {
       if (activeArea === "Все") return true;
@@ -229,7 +299,11 @@ export default function Catalog() {
       <header className="sticky top-0 z-50 bg-white shadow-md py-4 border-b border-evraz-border">
         <div className="container mx-auto flex items-center justify-between">
           <button onClick={() => navigate("/")} className="flex items-center">
-            <img src="https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/07662369-c03c-4cb9-b942-839aad61017e.png" alt="EVRAZ SteelBox" className="h-10 w-auto" />
+            <img
+              src="https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/07662369-c03c-4cb9-b942-839aad61017e.png"
+              alt="EVRAZ SteelBox"
+              className="h-10 w-auto"
+            />
           </button>
           <button
             onClick={() => navigate("/")}
@@ -291,10 +365,11 @@ export default function Catalog() {
       {/* FILTER BAR */}
       <section className="bg-evraz-light border-b border-evraz-border py-5 sticky top-16 z-40">
         <div className="container mx-auto space-y-4">
-
           {/* Строка 1: Назначение здания */}
           <div className="flex flex-wrap items-center gap-2">
-            <span className="font-ibm text-xs text-evraz-gray w-36 shrink-0">Назначение:</span>
+            <span className="font-ibm text-xs text-evraz-gray w-36 shrink-0">
+              Назначение:
+            </span>
             <div className="flex flex-wrap gap-1.5">
               {(["Все", ...TAGS] as (BuildingTag | "Все")[]).map((tag) => (
                 <button
@@ -314,9 +389,11 @@ export default function Catalog() {
 
           {/* Строка 2: Город */}
           <div className="flex flex-wrap items-center gap-2">
-            <span className="font-ibm text-xs text-evraz-gray w-36 shrink-0">Город строительства:</span>
+            <span className="font-ibm text-xs text-evraz-gray w-36 shrink-0">
+              Город строительства:
+            </span>
             <div className="flex flex-wrap gap-1.5">
-              {(["Все", ...CITIES]).map((city) => (
+              {["Все", ...CITIES].map((city) => (
                 <button
                   key={city}
                   onClick={() => setActiveCity(city)}
@@ -336,9 +413,16 @@ export default function Catalog() {
           <div className="flex flex-wrap items-center gap-6">
             {/* Площадь */}
             <div className="flex flex-wrap items-center gap-2">
-              <span className="font-ibm text-xs text-evraz-gray w-36 shrink-0">Площадь здания:</span>
+              <span className="font-ibm text-xs text-evraz-gray w-36 shrink-0">
+                Площадь здания:
+              </span>
               <div className="flex gap-1.5">
-                {(["Все", ...AREA_RANGES.map((r) => r.label)] as (AreaRange | "Все")[]).map((a) => (
+                {(
+                  ["Все", ...AREA_RANGES.map((r) => r.label)] as (
+                    | AreaRange
+                    | "Все"
+                  )[]
+                ).map((a) => (
                   <button
                     key={a}
                     onClick={() => setActiveArea(a)}
@@ -356,13 +440,20 @@ export default function Catalog() {
 
             {/* Капитальность */}
             <div className="flex items-center gap-2">
-              <span className="font-ibm text-xs text-evraz-gray shrink-0">Тип:</span>
+              <span className="font-ibm text-xs text-evraz-gray shrink-0">
+                Тип:
+              </span>
               <div className="flex border border-evraz-border overflow-hidden">
-                {([
-                  { key: "all", label: "Все" },
-                  { key: "capital", label: "Капитальное" },
-                  { key: "noncapital", label: "Не капитальное" },
-                ] as { key: "all" | "capital" | "noncapital"; label: string }[]).map((opt) => (
+                {(
+                  [
+                    { key: "all", label: "Все" },
+                    { key: "capital", label: "Капитальное" },
+                    { key: "noncapital", label: "Не капитальное" },
+                  ] as {
+                    key: "all" | "capital" | "noncapital";
+                    label: string;
+                  }[]
+                ).map((opt) => (
                   <button
                     key={opt.key}
                     onClick={() => setCapitalFilter(opt.key)}
@@ -383,7 +474,6 @@ export default function Catalog() {
               {filtered.length} проектов
             </span>
           </div>
-
         </div>
       </section>
 
@@ -500,7 +590,11 @@ export default function Catalog() {
                       return (
                         <div className="border border-evraz-red/20 bg-evraz-red/5 px-4 py-3 mb-5">
                           <div className="flex items-center gap-1.5 mb-2">
-                            <Icon name="CreditCard" size={13} className="text-evraz-red shrink-0" />
+                            <Icon
+                              name="CreditCard"
+                              size={13}
+                              className="text-evraz-red shrink-0"
+                            />
                             <span className="font-oswald text-xs tracking-widest uppercase text-evraz-red">
                               Лизинг
                             </span>
@@ -511,7 +605,8 @@ export default function Catalog() {
                                 {FORMAT_RUB(Math.round(payment))}/мес.
                               </div>
                               <div className="font-ibm text-xs text-evraz-gray mt-1">
-                                Аванс {FORMAT_RUB(Math.round(advance))} · 36 мес. · 16,5%
+                                Аванс {FORMAT_RUB(Math.round(advance))} · 36
+                                мес. · 16,5%
                               </div>
                             </div>
                           </div>
@@ -648,7 +743,8 @@ export default function Catalog() {
               ЧТО НУЖНО ОТ ВАС
             </h2>
             <p className="font-ibm text-evraz-gray mt-3 max-w-xl mx-auto text-sm leading-relaxed">
-              Мы берём на себя максимум. Ниже — таймлайн стройки и что требуется от вас на каждом этапе.
+              Мы берём на себя максимум. Ниже — таймлайн стройки и что требуется
+              от вас на каждом этапе.
             </p>
           </div>
 
@@ -660,7 +756,8 @@ export default function Catalog() {
                 phase: "Недели 1–2",
                 icon: "FileText",
                 title: "Геология и проектирование",
-                client: "Предоставить отчёт по геологии участка (или заказать через нас). Согласовать планировочное решение и подписать проект.",
+                client:
+                  "Предоставить отчёт по геологии участка (или заказать через нас). Согласовать планировочное решение и подписать проект.",
                 us: "Разрабатываем рабочую документацию, рассчитываем фундамент под геологию участка.",
               },
               {
@@ -668,7 +765,8 @@ export default function Catalog() {
                 phase: "Недели 3–4",
                 icon: "Layers",
                 title: "Фундамент",
-                client: "Обеспечить доступ спецтехники на участок. Назначить ответственного представителя для приёмки фундамента.",
+                client:
+                  "Обеспечить доступ спецтехники на участок. Назначить ответственного представителя для приёмки фундамента.",
                 us: "Устройство фундамента по проекту. Приёмка — только после соответствия геометрии допускам.",
               },
               {
@@ -676,7 +774,8 @@ export default function Catalog() {
                 phase: "Недели 5–6",
                 icon: "Zap",
                 title: "Монтаж каркаса",
-                client: "Подвести временное электричество 380В для монтажного оборудования на площадку.",
+                client:
+                  "Подвести временное электричество 380В для монтажного оборудования на площадку.",
                 us: "Монтаж металлокаркаса из стали EVRAZ. Сварка, болтовые соединения, контроль качества.",
               },
               {
@@ -684,7 +783,8 @@ export default function Catalog() {
                 phase: "Недели 7–8",
                 icon: "Package",
                 title: "Ограждающие конструкции",
-                client: "Промежуточная приёмка каркаса — подпись акта выполненных работ.",
+                client:
+                  "Промежуточная приёмка каркаса — подпись акта выполненных работ.",
                 us: "Монтаж сэндвич-панелей, кровли, ворот, окон и фасадных элементов.",
               },
               {
@@ -692,7 +792,8 @@ export default function Catalog() {
                 phase: "Неделя 9+",
                 icon: "CheckSquare",
                 title: "Сдача объекта",
-                client: "Финальная приёмка: проверка комплектности, подписание акта КС-2/КС-3, оплата оставшейся части по договору.",
+                client:
+                  "Финальная приёмка: проверка комплектности, подписание акта КС-2/КС-3, оплата оставшейся части по договору.",
                 us: "Передаём исполнительную документацию, паспорта на конструкции и гарантийное письмо на 25 лет.",
               },
             ].map((s, i, arr) => (
@@ -708,7 +809,9 @@ export default function Catalog() {
                   </div>
                 </div>
                 {/* Контент */}
-                <div className={`pb-10 flex-1 ${i === arr.length - 1 ? "pb-0" : ""}`}>
+                <div
+                  className={`pb-10 flex-1 ${i === arr.length - 1 ? "pb-0" : ""}`}
+                >
                   <div className="flex items-center gap-3 mb-3">
                     <span className="font-ibm text-xs text-evraz-red font-medium tracking-widest uppercase">
                       {s.phase}
@@ -723,17 +826,33 @@ export default function Catalog() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     <div className="bg-red-50 border border-red-100 p-4">
                       <div className="flex items-center gap-2 mb-2">
-                        <Icon name="User" size={13} className="text-evraz-red" />
-                        <span className="font-oswald text-xs text-evraz-red tracking-wider uppercase">От вас</span>
+                        <Icon
+                          name="User"
+                          size={13}
+                          className="text-evraz-red"
+                        />
+                        <span className="font-oswald text-xs text-evraz-red tracking-wider uppercase">
+                          От вас
+                        </span>
                       </div>
-                      <p className="font-ibm text-xs text-evraz-dark leading-relaxed">{s.client}</p>
+                      <p className="font-ibm text-xs text-evraz-dark leading-relaxed">
+                        {s.client}
+                      </p>
                     </div>
                     <div className="bg-evraz-light border border-evraz-border p-4">
                       <div className="flex items-center gap-2 mb-2">
-                        <Icon name="Building2" size={13} className="text-evraz-steel" />
-                        <span className="font-oswald text-xs text-evraz-steel tracking-wider uppercase">Мы делаем</span>
+                        <Icon
+                          name="Building2"
+                          size={13}
+                          className="text-evraz-steel"
+                        />
+                        <span className="font-oswald text-xs text-evraz-steel tracking-wider uppercase">
+                          Мы делаем
+                        </span>
                       </div>
-                      <p className="font-ibm text-xs text-evraz-gray leading-relaxed">{s.us}</p>
+                      <p className="font-ibm text-xs text-evraz-gray leading-relaxed">
+                        {s.us}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -763,11 +882,6 @@ export default function Catalog() {
               <input
                 type="tel"
                 placeholder="Телефон*"
-                className="bg-white/5 border border-white/15 px-4 py-3 font-ibm text-white text-sm placeholder-gray-500 focus:outline-none focus:border-evraz-red transition-colors"
-              />
-              <input
-                type="text"
-                placeholder="Компания"
                 className="bg-white/5 border border-white/15 px-4 py-3 font-ibm text-white text-sm placeholder-gray-500 focus:outline-none focus:border-evraz-red transition-colors"
               />
               <input
