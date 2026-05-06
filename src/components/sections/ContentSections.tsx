@@ -60,8 +60,8 @@ const CASES: {
 const ADVANTAGES = [
   {
     icon: "Shield",
-    title: "Гарантия 5 лет",
-    desc: "На несущие конструкции из стали EVRAZ",
+    title: "Фиксированная цена",
+    desc: "Мы фиксируем цены до 90 дней",
   },
   {
     icon: "Zap",
