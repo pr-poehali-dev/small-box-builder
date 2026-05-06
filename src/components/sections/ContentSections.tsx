@@ -17,12 +17,12 @@ const CASES: {
   category: CaseCategory;
 }[] = [
   {
-    title: "Логистический центр OZON",
+    title: "Производственное здание для очистных систем",
     location: "Московская обл., Домодедово",
-    area: "48 000 м²",
+    area: "24 833 м²",
     year: "2023",
     image:
-      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/5b4508f9-9d77-48fd-8352-9fba826f4269.jpg",
+      "https://evrazsteelbox.ru/upload/iblock/d64/we3s93is5c5pfquynm5j88josbj50poj.jpg",
     tag: "Склад",
     dims: { width: "120 м", length: "400 м", height: "14 м" },
     partner: "СтальСтрой",
@@ -389,7 +389,7 @@ export function ContentSections({
                       l: "всего за 6 недель мы обеспечиваем поставку и монтаж быстровозводимых серийных зданий для малого и среднего бизнеса",
                     },
                     {
-                      n: "500+ тыс. кв. м.",
+                      n: "500 000 м²",
                       l: "всего за 6 недель мы обеспечиваем поставку и монтаж быстровозводимых серийных зданий для малого и среднего бизнеса",
                     },
                     {
