@@ -716,20 +716,6 @@ export function ContentSections({
                   </div>
                   <div>
                     <label className="font-ibm text-xs text-evraz-gray uppercase tracking-wider block mb-2">
-                      Тип объекта
-                    </label>
-                    <select className="w-full bg-white border border-evraz-border px-4 py-3 font-ibm text-evraz-dark text-sm focus:outline-none focus:border-evraz-red transition-colors appearance-none">
-                      <option>Складской комплекс</option>
-                      <option>Производственный корпус</option>
-                      <option>Торговый центр</option>
-                      <option>Агропромышленный объект</option>
-                      <option>Спортивное сооружение</option>
-                      <option>Паркинг</option>
-                      <option>Другое</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="font-ibm text-xs text-evraz-gray uppercase tracking-wider block mb-2">
                       Описание проекта
                     </label>
                     <textarea
