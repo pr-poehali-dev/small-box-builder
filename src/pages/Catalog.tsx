@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Icon from "@/components/ui/icon";
-import { PriceCalculator, PriceCalculatorInitial } from "@/components/shared/PriceCalculator";
+import {
+  PriceCalculator,
+  PriceCalculatorInitial,
+} from "@/components/shared/PriceCalculator";
 
 // ─── Данные каталога ────────────────────────────────────────────────────────
 
@@ -10,16 +13,20 @@ type BuildingTag =
   | "Производство"
   | "Агро"
   | "Торговля"
-  | "Спорт"
-  | "Паркинг";
+  | "Паддл-центр";
 
 const BUILDING_IMAGES: Record<BuildingTag, string> = {
-  "Склад": "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/2fb164ba-da93-460e-9469-f460552a8183.jpg",
-  "Производство": "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/944172ff-60bb-4a97-a5fa-67449c85e5cf.jpg",
-  "Агро": "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/4928399c-e5aa-4af6-8121-e9d16add6eef.jpg",
-  "Торговля": "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/939b90d2-2c41-4b4d-b6c9-c8bf06a0068a.jpg",
-  "Спорт": "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/b4c28f1b-3efc-43a1-bd11-81c6bf3baff1.jpg",
-  "Паркинг": "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/1e822311-2222-42f0-9d92-bcc404d1aa6c.jpg",
+  Склад:
+    "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/2fb164ba-da93-460e-9469-f460552a8183.jpg",
+  Производство:
+    "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/944172ff-60bb-4a97-a5fa-67449c85e5cf.jpg",
+  Агро: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/4928399c-e5aa-4af6-8121-e9d16add6eef.jpg",
+  Торговля:
+    "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/939b90d2-2c41-4b4d-b6c9-c8bf06a0068a.jpg",
+  Спорт:
+    "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/b4c28f1b-3efc-43a1-bd11-81c6bf3baff1.jpg",
+  Паркинг:
+    "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/1e822311-2222-42f0-9d92-bcc404d1aa6c.jpg",
 };
 
 type AreaRange = "до 1000 м²" | "1000–3000 м²" | "свыше 3000 м²";
@@ -65,8 +72,23 @@ const CATALOG: CatalogItem[] = [
     price: 4_850_000,
     pricePerSqm: 8_981,
     days: 25,
-    features: ["Каркас EVRAZ", "Профлист кровля", "1 секция ворот 4×4 м", "Ветровые панели"],
-    specs: { wallPanel: "Профлист", wallThickness: 0, roofType: "Скатная", roofPanel: "Профлист оцинкованный", roofThickness: 0, stripGlazing: false, doors: 1, gates: 1, windows: 0 },
+    features: [
+      "Каркас EVRAZ",
+      "Профлист кровля",
+      "1 секция ворот 4×4 м",
+      "Ветровые панели",
+    ],
+    specs: {
+      wallPanel: "Профлист",
+      wallThickness: 0,
+      roofType: "Скатная",
+      roofPanel: "Профлист оцинкованный",
+      roofThickness: 0,
+      stripGlazing: false,
+      doors: 1,
+      gates: 1,
+      windows: 0,
+    },
     city: "Москва",
     capital: false,
   },
@@ -80,8 +102,23 @@ const CATALOG: CatalogItem[] = [
     price: 8_640_000,
     pricePerSqm: 8_889,
     days: 30,
-    features: ["Каркас EVRAZ", "Сэндвич-панели кровля 100 мм", "2 секции ворот", "4 окна PVC"],
-    specs: { wallPanel: "Сэндвич-панели", wallThickness: 80, roofType: "Скатная", roofPanel: "Сэндвич-панели", roofThickness: 100, stripGlazing: false, doors: 1, gates: 2, windows: 4 },
+    features: [
+      "Каркас EVRAZ",
+      "Сэндвич-панели кровля 100 мм",
+      "2 секции ворот",
+      "4 окна PVC",
+    ],
+    specs: {
+      wallPanel: "Сэндвич-панели",
+      wallThickness: 80,
+      roofType: "Скатная",
+      roofPanel: "Сэндвич-панели",
+      roofThickness: 100,
+      stripGlazing: false,
+      doors: 1,
+      gates: 2,
+      windows: 4,
+    },
     popular: true,
     city: "Екатеринбург",
     capital: false,
@@ -96,8 +133,23 @@ const CATALOG: CatalogItem[] = [
     price: 15_120_000,
     pricePerSqm: 10_500,
     days: 35,
-    features: ["Каркас EVRAZ", "Сэндвич-панели стены 80 мм", "3 секции ворот 4×4 м", "Дымовые люки"],
-    specs: { wallPanel: "Сэндвич-панели", wallThickness: 80, roofType: "Скатная", roofPanel: "Сэндвич-панели", roofThickness: 100, stripGlazing: false, doors: 2, gates: 3, windows: 6 },
+    features: [
+      "Каркас EVRAZ",
+      "Сэндвич-панели стены 80 мм",
+      "3 секции ворот 4×4 м",
+      "Дымовые люки",
+    ],
+    specs: {
+      wallPanel: "Сэндвич-панели",
+      wallThickness: 80,
+      roofType: "Скатная",
+      roofPanel: "Сэндвич-панели",
+      roofThickness: 100,
+      stripGlazing: false,
+      doors: 2,
+      gates: 3,
+      windows: 6,
+    },
     popular: true,
     city: "Новосибирск",
     capital: true,
@@ -112,8 +164,24 @@ const CATALOG: CatalogItem[] = [
     price: 32_400_000,
     pricePerSqm: 12_500,
     days: 45,
-    features: ["Каркас EVRAZ усиленный", "Сэндвич-панели 100 мм", "4 ворот", "6 окон", "Аварийные люки"],
-    specs: { wallPanel: "Сэндвич-панели", wallThickness: 100, roofType: "Скатная", roofPanel: "Сэндвич-панели", roofThickness: 120, stripGlazing: false, doors: 2, gates: 4, windows: 6 },
+    features: [
+      "Каркас EVRAZ усиленный",
+      "Сэндвич-панели 100 мм",
+      "4 ворот",
+      "6 окон",
+      "Аварийные люки",
+    ],
+    specs: {
+      wallPanel: "Сэндвич-панели",
+      wallThickness: 100,
+      roofType: "Скатная",
+      roofPanel: "Сэндвич-панели",
+      roofThickness: 120,
+      stripGlazing: false,
+      doors: 2,
+      gates: 4,
+      windows: 6,
+    },
     city: "Москва",
     capital: true,
   },
@@ -127,8 +195,23 @@ const CATALOG: CatalogItem[] = [
     price: 19_584_000,
     pricePerSqm: 17_000,
     days: 40,
-    features: ["Каркас под мостовой кран", "Консоли 10т", "2 ворот 5×5 м", "Сэндвич-панели 120 мм"],
-    specs: { wallPanel: "Сэндвич-панели", wallThickness: 120, roofType: "Скатная", roofPanel: "Сэндвич-панели", roofThickness: 150, stripGlazing: true, doors: 2, gates: 2, windows: 8 },
+    features: [
+      "Каркас под мостовой кран",
+      "Консоли 10т",
+      "2 ворот 5×5 м",
+      "Сэндвич-панели 120 мм",
+    ],
+    specs: {
+      wallPanel: "Сэндвич-панели",
+      wallThickness: 120,
+      roofType: "Скатная",
+      roofPanel: "Сэндвич-панели",
+      roofThickness: 150,
+      stripGlazing: true,
+      doors: 2,
+      gates: 2,
+      windows: 8,
+    },
     popular: true,
     city: "Челябинск",
     capital: true,
@@ -143,8 +226,23 @@ const CATALOG: CatalogItem[] = [
     price: 38_880_000,
     pricePerSqm: 18_000,
     days: 55,
-    features: ["Усиленный каркас под кран 20т", "4 ворот 5×5 м", "Антресольный этаж", "Сэндвич-панели 150 мм"],
-    specs: { wallPanel: "Сэндвич-панели", wallThickness: 150, roofType: "Скатная", roofPanel: "Сэндвич-панели", roofThickness: 200, stripGlazing: true, doors: 4, gates: 4, windows: 12 },
+    features: [
+      "Усиленный каркас под кран 20т",
+      "4 ворот 5×5 м",
+      "Антресольный этаж",
+      "Сэндвич-панели 150 мм",
+    ],
+    specs: {
+      wallPanel: "Сэндвич-панели",
+      wallThickness: 150,
+      roofType: "Скатная",
+      roofPanel: "Сэндвич-панели",
+      roofThickness: 200,
+      stripGlazing: true,
+      doors: 4,
+      gates: 4,
+      windows: 12,
+    },
     city: "Москва",
     capital: true,
   },
@@ -158,8 +256,23 @@ const CATALOG: CatalogItem[] = [
     price: 7_290_000,
     pricePerSqm: 7_500,
     days: 28,
-    features: ["Каркас EVRAZ антикор", "Профлист оцинкованный", "Вентиляционные решётки", "1 ворот 4×4 м"],
-    specs: { wallPanel: "Профлист оцинкованный", wallThickness: 0, roofType: "Скатная", roofPanel: "Профлист оцинкованный", roofThickness: 0, stripGlazing: false, doors: 1, gates: 1, windows: 0 },
+    features: [
+      "Каркас EVRAZ антикор",
+      "Профлист оцинкованный",
+      "Вентиляционные решётки",
+      "1 ворот 4×4 м",
+    ],
+    specs: {
+      wallPanel: "Профлист оцинкованный",
+      wallThickness: 0,
+      roofType: "Скатная",
+      roofPanel: "Профлист оцинкованный",
+      roofThickness: 0,
+      stripGlazing: false,
+      doors: 1,
+      gates: 1,
+      windows: 0,
+    },
     city: "Краснодар",
     capital: false,
   },
@@ -173,8 +286,23 @@ const CATALOG: CatalogItem[] = [
     price: 12_441_600,
     pricePerSqm: 7_179,
     days: 35,
-    features: ["Химстойкое покрытие", "Принудительная вентиляция", "2 ворот 4×4 м", "Аттестован Россельхознадзором"],
-    specs: { wallPanel: "Профлист с хим. покрытием", wallThickness: 0, roofType: "Скатная", roofPanel: "Профлист с хим. покрытием", roofThickness: 0, stripGlazing: false, doors: 1, gates: 2, windows: 2 },
+    features: [
+      "Химстойкое покрытие",
+      "Принудительная вентиляция",
+      "2 ворот 4×4 м",
+      "Аттестован Россельхознадзором",
+    ],
+    specs: {
+      wallPanel: "Профлист с хим. покрытием",
+      wallThickness: 0,
+      roofType: "Скатная",
+      roofPanel: "Профлист с хим. покрытием",
+      roofThickness: 0,
+      stripGlazing: false,
+      doors: 1,
+      gates: 2,
+      windows: 2,
+    },
     popular: true,
     city: "Ростов-на-Дону",
     capital: false,
@@ -189,15 +317,30 @@ const CATALOG: CatalogItem[] = [
     price: 33_300_000,
     pricePerSqm: 18_500,
     days: 50,
-    features: ["Витражное остекление", "Фасадные кассеты", "6 входных групп", "Противопожарная система"],
-    specs: { wallPanel: "Фасадные кассеты", wallThickness: 80, roofType: "Плоская", roofPanel: "Сэндвич-панели", roofThickness: 150, stripGlazing: true, doors: 6, gates: 0, windows: 0 },
+    features: [
+      "Витражное остекление",
+      "Фасадные кассеты",
+      "6 входных групп",
+      "Противопожарная система",
+    ],
+    specs: {
+      wallPanel: "Фасадные кассеты",
+      wallThickness: 80,
+      roofType: "Плоская",
+      roofPanel: "Сэндвич-панели",
+      roofThickness: 150,
+      stripGlazing: true,
+      doors: 6,
+      gates: 0,
+      windows: 0,
+    },
     popular: true,
     city: "Екатеринбург",
     capital: true,
   },
   {
     id: "sp-30-60-10",
-    tag: "Спорт",
+    tag: "Паддл-центр",
     name: "Физкультурный зал 30×60 м",
     width: 30,
     length: 60,
@@ -205,14 +348,29 @@ const CATALOG: CatalogItem[] = [
     price: 39_600_000,
     pricePerSqm: 22_000,
     days: 60,
-    features: ["Пролёт 30 м без опор", "Световые фонари", "Пожарная сигнализация", "Акустические панели"],
-    specs: { wallPanel: "Сэндвич-панели", wallThickness: 150, roofType: "Скатная", roofPanel: "Сэндвич-панели", roofThickness: 200, stripGlazing: true, doors: 4, gates: 0, windows: 16 },
+    features: [
+      "Пролёт 30 м без опор",
+      "Световые фонари",
+      "Пожарная сигнализация",
+      "Акустические панели",
+    ],
+    specs: {
+      wallPanel: "Сэндвич-панели",
+      wallThickness: 150,
+      roofType: "Скатная",
+      roofPanel: "Сэндвич-панели",
+      roofThickness: 200,
+      stripGlazing: true,
+      doors: 4,
+      gates: 0,
+      windows: 16,
+    },
     city: "Нижний Новгород",
     capital: true,
   },
   {
     id: "sp-48-72-14",
-    tag: "Спорт",
+    tag: "Паддл-центр",
     name: "Спортивная арена 48×72 м",
     width: 48,
     length: 72,
@@ -220,42 +378,26 @@ const CATALOG: CatalogItem[] = [
     price: 76_032_000,
     pricePerSqm: 22_000,
     days: 70,
-    features: ["Пролёт 48 м без опор", "Естественное освещение", "Трибуны 500 мест", "Хранилище инвентаря"],
-    specs: { wallPanel: "Сэндвич-панели", wallThickness: 150, roofType: "Скатная", roofPanel: "Сэндвич-панели", roofThickness: 200, stripGlazing: true, doors: 6, gates: 2, windows: 24 },
+    features: [
+      "Пролёт 48 м без опор",
+      "Естественное освещение",
+      "Трибуны 500 мест",
+      "Хранилище инвентаря",
+    ],
+    specs: {
+      wallPanel: "Сэндвич-панели",
+      wallThickness: 150,
+      roofType: "Скатная",
+      roofPanel: "Сэндвич-панели",
+      roofThickness: 200,
+      stripGlazing: true,
+      doors: 6,
+      gates: 2,
+      windows: 24,
+    },
     popular: true,
     city: "Челябинск",
     capital: true,
-  },
-  {
-    id: "pk-15-48-3",
-    tag: "Паркинг",
-    name: "Навес для авто 15×48 м",
-    width: 15,
-    length: 48,
-    height: 3,
-    price: 6_048_000,
-    pricePerSqm: 8_400,
-    days: 20,
-    features: ["36 машиномест", "Открытый тип", "Антикор покрытие", "Монтаж от 7 дней"],
-    specs: { wallPanel: "Открытый тип (без стен)", wallThickness: 0, roofType: "Скатная", roofPanel: "Профлист оцинкованный", roofThickness: 0, stripGlazing: false, doors: 0, gates: 0, windows: 0 },
-    city: "Краснодар",
-    capital: false,
-  },
-  {
-    id: "pk-24-72-6",
-    tag: "Паркинг",
-    name: "Паркинг 2-уровневый 24×72 м",
-    width: 24,
-    length: 72,
-    height: 6,
-    price: 21_600_000,
-    pricePerSqm: 12_500,
-    days: 45,
-    features: ["144 машиноместа", "2 уровня", "Пандус с покрытием", "Видеонаблюдение"],
-    specs: { wallPanel: "Профлист оцинкованный", wallThickness: 0, roofType: "Плоская", roofPanel: "Профлист оцинкованный", roofThickness: 0, stripGlazing: false, doors: 2, gates: 2, windows: 0 },
-    popular: true,
-    city: "Москва",
-    capital: false,
   },
 ];
 
@@ -264,8 +406,7 @@ const TAGS: BuildingTag[] = [
   "Производство",
   "Агро",
   "Торговля",
-  "Спорт",
-  "Паркинг",
+  "Паддл-центр",
 ];
 
 const CITIES = [...new Set(CATALOG.map((c) => c.city))].sort();
@@ -299,12 +440,12 @@ function calcLeasing(price: number) {
 // ─── Маппинг тега → тип калькулятора ────────────────────────────────────────
 
 const TAG_TO_CALC_TYPE: Record<BuildingTag, string> = {
-  "Склад": "warehouse",
-  "Производство": "production",
-  "Агро": "agro",
-  "Торговля": "trade",
-  "Спорт": "sport",
-  "Паркинг": "warehouse",
+  Склад: "warehouse",
+  Производство: "production",
+  Агро: "agro",
+  Торговля: "trade",
+  Спорт: "sport",
+  Паркинг: "warehouse",
 };
 
 // ─── Компонент ──────────────────────────────────────────────────────────────
@@ -312,7 +453,9 @@ const TAG_TO_CALC_TYPE: Record<BuildingTag, string> = {
 export default function Catalog() {
   const navigate = useNavigate();
   const [activeTag, setActiveTag] = useState<BuildingTag | "Все">("Все");
-  const [calcInitial, setCalcInitial] = useState<PriceCalculatorInitial | undefined>(undefined);
+  const [calcInitial, setCalcInitial] = useState<
+    PriceCalculatorInitial | undefined
+  >(undefined);
   const [activeCity, setActiveCity] = useState<string>("Все");
   const [customCity, setCustomCity] = useState<string>("");
   const [showCustomInput, setShowCustomInput] = useState(false);
@@ -325,7 +468,12 @@ export default function Catalog() {
   const filtered = CATALOG.filter(
     (item) => activeTag === "Все" || item.tag === activeTag,
   )
-    .filter((item) => activeCity === "Все" || activeCity === "custom" || item.city === activeCity)
+    .filter(
+      (item) =>
+        activeCity === "Все" ||
+        activeCity === "custom" ||
+        item.city === activeCity,
+    )
     .filter((item) => {
       if (activeArea === "Все") return true;
       const range = AREA_RANGES.find((r) => r.label === activeArea);
@@ -515,8 +663,11 @@ export default function Catalog() {
             </div>
             {showCustomInput && customCity && (
               <p className="font-ibm text-xs text-evraz-gray mt-1 w-full">
-                Показаны все доступные проекты — менеджер уточнит условия для&nbsp;
-                <span className="text-evraz-dark font-medium">{customCity}</span>
+                Показаны все доступные проекты — менеджер уточнит условия
+                для&nbsp;
+                <span className="text-evraz-dark font-medium">
+                  {customCity}
+                </span>
               </p>
             )}
           </div>
@@ -684,16 +835,18 @@ export default function Catalog() {
                         {
                           icon: "Layers",
                           label: "Стены",
-                          value: item.specs.wallThickness > 0
-                            ? `${item.specs.wallPanel}, ${item.specs.wallThickness} мм`
-                            : item.specs.wallPanel,
+                          value:
+                            item.specs.wallThickness > 0
+                              ? `${item.specs.wallPanel}, ${item.specs.wallThickness} мм`
+                              : item.specs.wallPanel,
                         },
                         {
                           icon: "Triangle",
                           label: `Кровля (${item.specs.roofType})`,
-                          value: item.specs.roofThickness > 0
-                            ? `${item.specs.roofPanel}, ${item.specs.roofThickness} мм`
-                            : item.specs.roofPanel,
+                          value:
+                            item.specs.roofThickness > 0
+                              ? `${item.specs.roofPanel}, ${item.specs.roofThickness} мм`
+                              : item.specs.roofPanel,
                         },
                         {
                           icon: "Columns2",
@@ -704,23 +857,43 @@ export default function Catalog() {
                         {
                           icon: "DoorOpen",
                           label: "Двери",
-                          value: item.specs.doors > 0 ? `${item.specs.doors} шт.` : "Нет",
+                          value:
+                            item.specs.doors > 0
+                              ? `${item.specs.doors} шт.`
+                              : "Нет",
                         },
                         {
                           icon: "RectangleHorizontal",
                           label: "Ворота",
-                          value: item.specs.gates > 0 ? `${item.specs.gates} секции` : "Нет",
+                          value:
+                            item.specs.gates > 0
+                              ? `${item.specs.gates} секции`
+                              : "Нет",
                         },
                         {
                           icon: "AppWindow",
                           label: "Окна",
-                          value: item.specs.windows > 0 ? `${item.specs.windows} шт.` : "Нет",
+                          value:
+                            item.specs.windows > 0
+                              ? `${item.specs.windows} шт.`
+                              : "Нет",
                         },
                       ].map((row) => (
-                        <div key={row.label} className="flex items-center gap-3 px-3 py-2">
-                          <Icon name={row.icon as "Layers"} size={13} className="text-evraz-steel shrink-0" />
-                          <span className="font-ibm text-xs text-evraz-gray w-32 shrink-0">{row.label}</span>
-                          <span className={`font-ibm text-xs font-medium ml-auto text-right ${row.highlight ? "text-evraz-red" : "text-evraz-dark"}`}>
+                        <div
+                          key={row.label}
+                          className="flex items-center gap-3 px-3 py-2"
+                        >
+                          <Icon
+                            name={row.icon as "Layers"}
+                            size={13}
+                            className="text-evraz-steel shrink-0"
+                          />
+                          <span className="font-ibm text-xs text-evraz-gray w-32 shrink-0">
+                            {row.label}
+                          </span>
+                          <span
+                            className={`font-ibm text-xs font-medium ml-auto text-right ${row.highlight ? "text-evraz-red" : "text-evraz-dark"}`}
+                          >
                             {row.value}
                           </span>
                         </div>
@@ -801,7 +974,8 @@ export default function Catalog() {
                             height: item.height,
                             buildingType: TAG_TO_CALC_TYPE[item.tag],
                             gates: Math.min(5, item.specs.gates || 1),
-                            windows: item.specs.windows <= 6 ? item.specs.windows : 5,
+                            windows:
+                              item.specs.windows <= 6 ? item.specs.windows : 5,
                           });
                           setTimeout(() => {
                             document
@@ -853,9 +1027,14 @@ export default function Catalog() {
           {calcInitial && (
             <div className="max-w-3xl mx-auto mb-4">
               <div className="flex items-center gap-3 bg-evraz-red/10 border border-evraz-red/30 px-4 py-3">
-                <Icon name="Info" size={14} className="text-evraz-red shrink-0" />
+                <Icon
+                  name="Info"
+                  size={14}
+                  className="text-evraz-red shrink-0"
+                />
                 <span className="font-ibm text-xs text-evraz-red">
-                  Параметры загружены из карточки: {calcInitial.width}×{calcInitial.length} м, высота {calcInitial.height} м
+                  Параметры загружены из карточки: {calcInitial.width}×
+                  {calcInitial.length} м, высота {calcInitial.height} м
                 </span>
                 <button
                   onClick={() => setCalcInitial(undefined)}
