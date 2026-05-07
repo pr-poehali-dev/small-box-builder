@@ -31,6 +31,7 @@ const BUILDING_IMAGES: Record<BuildingTag, string> = {
 };
 
 type AreaRange = "до 1000 м²" | "1000–3000 м²" | "свыше 3000 м²";
+type HeightRange = "до 5 м" | "5–8 м" | "свыше 8 м";
 
 interface CatalogItemSpecs {
   wallPanel: string;
@@ -418,6 +419,12 @@ const AREA_RANGES: { label: AreaRange; test: (a: number) => boolean }[] = [
   { label: "свыше 3000 м²", test: (a) => a > 3000 },
 ];
 
+const HEIGHT_RANGES: { label: HeightRange; test: (h: number) => boolean }[] = [
+  { label: "до 5 м", test: (h) => h < 5 },
+  { label: "5–8 м", test: (h) => h >= 5 && h <= 8 },
+  { label: "свыше 8 м", test: (h) => h > 8 },
+];
+
 const FORMAT_RUB = (n: number) =>
   new Intl.NumberFormat("ru-RU", {
     style: "currency",
@@ -464,6 +471,7 @@ export default function Catalog() {
   const [capitalFilter, setCapitalFilter] = useState<
     "all" | "capital" | "noncapital"
   >("all");
+  const [activeHeight, setActiveHeight] = useState<HeightRange | "Все">("Все");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const filtered = CATALOG.filter(
@@ -484,6 +492,11 @@ export default function Catalog() {
       if (capitalFilter === "capital") return item.capital;
       if (capitalFilter === "noncapital") return !item.capital;
       return true;
+    })
+    .filter((item) => {
+      if (activeHeight === "Все") return true;
+      const range = HEIGHT_RANGES.find((r) => r.label === activeHeight);
+      return range ? range.test(item.height) : true;
     })
     .sort((a, b) => a.price - b.price);
 
@@ -660,7 +673,7 @@ export default function Catalog() {
             )}
           </div>
 
-          {/* Строка 3: Площадь + Капитальность */}
+          {/* Строка 3: Площадь + Высота + Капитальность */}
           <div className="flex flex-wrap items-center gap-6">
             {/* Площадь */}
             <div className="flex flex-wrap items-center gap-2">
@@ -684,6 +697,33 @@ export default function Catalog() {
                     }`}
                   >
                     {a}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Высота */}
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="font-ibm text-xs text-evraz-gray w-36 shrink-0">
+                Высота здания:
+              </span>
+              <div className="flex gap-1.5">
+                {(
+                  ["Все", ...HEIGHT_RANGES.map((r) => r.label)] as (
+                    | HeightRange
+                    | "Все"
+                  )[]
+                ).map((h) => (
+                  <button
+                    key={h}
+                    onClick={() => setActiveHeight(h)}
+                    className={`font-ibm text-xs px-3 py-1.5 border transition-all whitespace-nowrap ${
+                      activeHeight === h
+                        ? "bg-evraz-dark border-evraz-dark text-white"
+                        : "border-evraz-border text-evraz-steel hover:border-evraz-dark bg-white"
+                    }`}
+                  >
+                    {h}
                   </button>
                 ))}
               </div>
@@ -744,7 +784,10 @@ export default function Catalog() {
               <button
                 onClick={() => {
                   setActiveTag("Все");
-                  setMaxPrice(100_000_000);
+                  setActiveCity("Все");
+                  setActiveArea("Все");
+                  setActiveHeight("Все");
+                  setCapitalFilter("all");
                 }}
                 className="mt-4 font-ibm text-sm text-evraz-red underline"
               >
@@ -991,6 +1034,61 @@ export default function Catalog() {
               ))}
             </div>
           )}
+        </div>
+      </section>
+
+      {/* КМ+АР SPECIAL OFFER */}
+      <section className="py-12 bg-evraz-light border-t border-evraz-border">
+        <div className="container mx-auto">
+          <div className="flex flex-col md:flex-row items-center gap-8 bg-white border border-evraz-border p-8 md:p-10 relative overflow-hidden">
+            <div className="absolute left-0 top-0 bottom-0 w-1 bg-evraz-red" />
+            <div className="flex-1 pl-4">
+              <div className="font-oswald text-xs tracking-widest text-evraz-red uppercase mb-2">
+                Специальное предложение
+              </div>
+              <h2 className="font-oswald text-2xl md:text-3xl text-evraz-dark font-bold leading-tight">
+                Комплект документации КМ + АР
+              </h2>
+              <p className="font-ibm text-sm text-evraz-steel mt-3 leading-relaxed max-w-lg">
+                Конструктивные решения металлокаркаса (КМ) и архитектурные решения (АР) — полный пакет для согласования и строительства. Готовим за 5 рабочих дней.
+              </p>
+              <ul className="mt-4 space-y-1.5">
+                {[
+                  "Рабочая документация для монтажа",
+                  "Соответствие ГОСТ и СП",
+                  "Готово к согласованию в гос. органах",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-2 font-ibm text-xs text-evraz-steel">
+                    <Icon name="CheckCircle" size={14} className="text-evraz-red shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="flex flex-col items-center md:items-end gap-4 shrink-0">
+              <div className="text-center md:text-right">
+                <div className="font-oswald text-4xl font-bold text-evraz-red">
+                  9 998 ₽
+                </div>
+                <div className="font-ibm text-xs text-evraz-gray mt-1">
+                  вместо 25 000 ₽ · ограниченное предложение
+                </div>
+              </div>
+              <button
+                onClick={() =>
+                  document
+                    .getElementById("contacts-section")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+                className="btn-primary font-oswald tracking-wider uppercase px-8 py-3 text-sm whitespace-nowrap"
+              >
+                Заказать КМ + АР
+              </button>
+              <p className="font-ibm text-xs text-evraz-gray text-center">
+                Менеджер свяжется в течение 1 часа
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
