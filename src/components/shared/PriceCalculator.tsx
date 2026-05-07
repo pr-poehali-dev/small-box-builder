@@ -186,8 +186,46 @@ export function PriceCalculator({ onGetQuote, initialValues }: PriceCalculatorPr
         )}
       </div>
 
+      {/* Справочные характеристики */}
+      {(() => {
+        const wallThickness = buildingType === "sport" || buildingType === "trade" ? 150 : 100;
+        const roofThickness = buildingType === "agro" ? 100 : 150;
+        const roofType = height > 8 ? "Скатная двускатная" : "Скатная однопролётная";
+        const roofPanel = buildingType === "agro" ? "Профнастил" : "Сэндвич-панель";
+        const wallPanel = buildingType === "agro" ? "Профнастил" : "Сэндвич-панель";
+        const hasStripGlazing = buildingType === "trade" || buildingType === "sport";
+        const doorsCount = buildingType === "production" ? 4 : 2;
+        const gatesCount = gates === 5 ? 6 : gates;
+        const windowsCount = windows === 5 ? 8 : windows;
+
+        const specs = [
+          { label: "Стены", value: `${wallPanel}, ${wallThickness} мм` },
+          { label: "Кровля", value: `${roofType}, ${roofPanel} ${roofThickness} мм` },
+          { label: "Ленточное остекление", value: hasStripGlazing ? "Да" : "Нет" },
+          { label: "Ворота", value: `${gatesCount} шт.` },
+          { label: "Окна", value: `${windowsCount} шт.` },
+          { label: "Двери", value: `${doorsCount} шт.` },
+        ];
+
+        return (
+          <div className="border border-evraz-border bg-evraz-light px-6 py-5 mb-0">
+            <div className="font-ibm text-xs text-evraz-gray uppercase tracking-widest mb-4">
+              Характеристики здания
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-3">
+              {specs.map((s) => (
+                <div key={s.label} className="flex flex-col gap-0.5">
+                  <span className="font-ibm text-xs text-evraz-gray">{s.label}</span>
+                  <span className="font-oswald text-sm text-evraz-dark font-semibold">{s.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      })()}
+
       {/* Итог */}
-      <div className="bg-evraz-charcoal border border-evraz-border p-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="bg-evraz-charcoal border border-t-0 border-evraz-border p-6 flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
           <div className="font-ibm text-xs text-evraz-gray uppercase tracking-wider mb-1">Площадь здания</div>
           <div className="font-oswald text-2xl text-evraz-dark">{(width * length).toLocaleString("ru-RU")} м²</div>
