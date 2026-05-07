@@ -195,15 +195,11 @@ export function PriceCalculator({ onGetQuote, initialValues }: PriceCalculatorPr
         const wallPanel = buildingType === "agro" ? "Профнастил" : "Сэндвич-панель";
         const hasStripGlazing = buildingType === "trade" || buildingType === "sport";
         const doorsCount = buildingType === "production" ? 4 : 2;
-        const gatesCount = gates === 5 ? 6 : gates;
-        const windowsCount = windows === 5 ? 8 : windows;
 
         const specs = [
           { label: "Стены", value: `${wallPanel}, ${wallThickness} мм` },
           { label: "Кровля", value: `${roofType}, ${roofPanel} ${roofThickness} мм` },
           { label: "Ленточное остекление", value: hasStripGlazing ? "Да" : "Нет" },
-          { label: "Ворота", value: `${gatesCount} шт.` },
-          { label: "Окна", value: `${windowsCount} шт.` },
           { label: "Двери", value: `${doorsCount} шт.` },
         ];
 
