@@ -550,7 +550,7 @@ export default function Catalog() {
           </h1>
           <p className="font-ibm text-evraz-gray max-w-2xl text-base leading-relaxed mb-8">
             Широкий ассортимент типовых решений с предварительно рассчитанной
-            стоимостью. Вы можете заказать КМ+АР отдельно за 9998 рублей.
+            стоимостью.
           </p>
           {/* Quick stats */}
           <div className="flex flex-wrap gap-8">
@@ -1050,7 +1050,9 @@ export default function Catalog() {
                 Комплект документации КМ + АР
               </h2>
               <p className="font-ibm text-sm text-evraz-steel mt-3 leading-relaxed max-w-lg">
-                Конструктивные решения металлокаркаса (КМ) и архитектурные решения (АР) — полный пакет для согласования и строительства. Готовим за 5 рабочих дней.
+                Конструктивные решения металлокаркаса (КМ) и архитектурные
+                решения (АР) — полный пакет для согласования и строительства.
+                Готовим за 5 рабочих дней.
               </p>
               <ul className="mt-4 space-y-1.5">
                 {[
@@ -1058,8 +1060,15 @@ export default function Catalog() {
                   "Соответствие ГОСТ и СП",
                   "Готово к согласованию в гос. органах",
                 ].map((item) => (
-                  <li key={item} className="flex items-center gap-2 font-ibm text-xs text-evraz-steel">
-                    <Icon name="CheckCircle" size={14} className="text-evraz-red shrink-0" />
+                  <li
+                    key={item}
+                    className="flex items-center gap-2 font-ibm text-xs text-evraz-steel"
+                  >
+                    <Icon
+                      name="CheckCircle"
+                      size={14}
+                      className="text-evraz-red shrink-0"
+                    />
                     {item}
                   </li>
                 ))}
