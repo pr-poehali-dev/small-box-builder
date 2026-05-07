@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export interface PriceCalculatorInitial {
   width?: number;
@@ -25,17 +25,6 @@ export function PriceCalculator({ onGetQuote, initialValues }: PriceCalculatorPr
   const [gates, setGates] = useState(initialValues?.gates ?? 1);
   const [windows, setWindows] = useState(initialValues?.windows ?? 0);
   const [hasCrane, setHasCrane] = useState(false);
-
-  useEffect(() => {
-    if (!initialValues) return;
-    if (initialValues.width !== undefined) setWidth(Math.min(60, Math.max(12, initialValues.width)));
-    if (initialValues.length !== undefined) setLength(Math.min(200, Math.max(18, initialValues.length)));
-    if (initialValues.height !== undefined) setHeight(Math.min(20, Math.max(4, initialValues.height)));
-    if (initialValues.buildingType !== undefined) setBuildingType(initialValues.buildingType);
-    if (initialValues.gates !== undefined) setGates(Math.min(5, Math.max(1, initialValues.gates)));
-    if (initialValues.windows !== undefined) setWindows(initialValues.windows);
-    setHasCrane(false);
-  }, [initialValues]);
 
   const calcPrice = () => {
     const area = width * length;
