@@ -544,7 +544,7 @@ export default function Catalog() {
             {[
               { v: "до 45 дн.", l: "Срок монтажа" },
               {
-                v: "Предварительный КМ за час",
+                v: "Предварительный КМ+АР за час",
                 l: "С помощью автоматического проектирования",
               },
               { v: "Фикс. цена", l: "Без скрытых доплат" },
@@ -559,6 +559,9 @@ export default function Catalog() {
               </div>
             ))}
           </div>
+          <p className="font-ibm text-evraz-gray max-w-2xl text-base leading-relaxed mb-8">
+            Вы можете заказать КМ+АР отдельно за 9998 рублей.
+          </p>
         </div>
       </section>
 
@@ -631,7 +634,7 @@ export default function Catalog() {
                     type="text"
                     value={customCity}
                     onChange={(e) => setCustomCity(e.target.value)}
-                    placeholder="Введите ваш город..."
+                    placeholder="Укажите ваш город..."
                     className="font-ibm text-xs px-3 py-1.5 border border-evraz-red bg-white text-evraz-dark placeholder-evraz-gray outline-none w-44"
                   />
                   {customCity && (
