@@ -23,7 +23,7 @@ const BUILDING_IMAGES: Record<BuildingTag, string> = {
   Агро: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/4928399c-e5aa-4af6-8121-e9d16add6eef.jpg",
   Торговля:
     "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/939b90d2-2c41-4b4d-b6c9-c8bf06a0068a.jpg",
-  Спорт:
+  Паддл-центр:
     "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/b4c28f1b-3efc-43a1-bd11-81c6bf3baff1.jpg",
   Паркинг:
     "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/1e822311-2222-42f0-9d92-bcc404d1aa6c.jpg",
