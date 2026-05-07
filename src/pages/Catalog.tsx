@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Icon from "@/components/ui/icon";
-import { PriceCalculator } from "@/components/shared/PriceCalculator";
+import { PriceCalculator, PriceCalculatorInitial } from "@/components/shared/PriceCalculator";
 
 // ─── Данные каталога ────────────────────────────────────────────────────────
 
@@ -296,11 +296,23 @@ function calcLeasing(price: number) {
   return { advance, payment };
 }
 
+// ─── Маппинг тега → тип калькулятора ────────────────────────────────────────
+
+const TAG_TO_CALC_TYPE: Record<BuildingTag, string> = {
+  "Склад": "warehouse",
+  "Производство": "production",
+  "Агро": "agro",
+  "Торговля": "trade",
+  "Спорт": "sport",
+  "Паркинг": "warehouse",
+};
+
 // ─── Компонент ──────────────────────────────────────────────────────────────
 
 export default function Catalog() {
   const navigate = useNavigate();
   const [activeTag, setActiveTag] = useState<BuildingTag | "Все">("Все");
+  const [calcInitial, setCalcInitial] = useState<PriceCalculatorInitial | undefined>(undefined);
   const [activeCity, setActiveCity] = useState<string>("Все");
   const [customCity, setCustomCity] = useState<string>("");
   const [showCustomInput, setShowCustomInput] = useState(false);
@@ -781,18 +793,26 @@ export default function Catalog() {
 
                     {/* CTA */}
                     <div className="flex gap-3">
-                      <a
-                        href="#calc"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          document
-                            .getElementById("calc-section")
-                            ?.scrollIntoView({ behavior: "smooth" });
+                      <button
+                        onClick={() => {
+                          setCalcInitial({
+                            width: item.width,
+                            length: item.length,
+                            height: item.height,
+                            buildingType: TAG_TO_CALC_TYPE[item.tag],
+                            gates: Math.min(5, item.specs.gates || 1),
+                            windows: item.specs.windows <= 6 ? item.specs.windows : 5,
+                          });
+                          setTimeout(() => {
+                            document
+                              .getElementById("calc-section")
+                              ?.scrollIntoView({ behavior: "smooth" });
+                          }, 50);
                         }}
                         className="flex-1 text-center font-oswald text-sm tracking-wider uppercase py-3 border-2 border-evraz-dark text-evraz-dark hover:bg-evraz-dark hover:text-white transition-all"
                       >
                         Изменить размер
-                      </a>
+                      </button>
                       <button
                         onClick={() =>
                           document
@@ -830,7 +850,25 @@ export default function Catalog() {
               Введите свои параметры — получите мгновенную оценку стоимости.
             </p>
           </div>
+          {calcInitial && (
+            <div className="max-w-3xl mx-auto mb-4">
+              <div className="flex items-center gap-3 bg-evraz-red/10 border border-evraz-red/30 px-4 py-3">
+                <Icon name="Info" size={14} className="text-evraz-red shrink-0" />
+                <span className="font-ibm text-xs text-evraz-red">
+                  Параметры загружены из карточки: {calcInitial.width}×{calcInitial.length} м, высота {calcInitial.height} м
+                </span>
+                <button
+                  onClick={() => setCalcInitial(undefined)}
+                  className="ml-auto text-evraz-red hover:opacity-70"
+                >
+                  <Icon name="X" size={14} />
+                </button>
+              </div>
+            </div>
+          )}
           <PriceCalculator
+            key={JSON.stringify(calcInitial)}
+            initialValues={calcInitial}
             onGetQuote={() =>
               document
                 .getElementById("contacts-section")

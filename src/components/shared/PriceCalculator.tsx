@@ -1,20 +1,41 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+export interface PriceCalculatorInitial {
+  width?: number;
+  length?: number;
+  height?: number;
+  buildingType?: string;
+  gates?: number;
+  windows?: number;
+}
 
 interface PriceCalculatorProps {
   onGetQuote: () => void;
+  initialValues?: PriceCalculatorInitial;
 }
 
 const FORMAT_RUB = (n: number) =>
   new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", maximumFractionDigits: 0 }).format(n);
 
-export function PriceCalculator({ onGetQuote }: PriceCalculatorProps) {
-  const [width, setWidth] = useState(24);
-  const [length, setLength] = useState(48);
-  const [height, setHeight] = useState(6);
-  const [buildingType, setBuildingType] = useState("warehouse");
-  const [gates, setGates] = useState(1);
-  const [windows, setWindows] = useState(0);
+export function PriceCalculator({ onGetQuote, initialValues }: PriceCalculatorProps) {
+  const [width, setWidth] = useState(initialValues?.width ?? 24);
+  const [length, setLength] = useState(initialValues?.length ?? 48);
+  const [height, setHeight] = useState(initialValues?.height ?? 6);
+  const [buildingType, setBuildingType] = useState(initialValues?.buildingType ?? "warehouse");
+  const [gates, setGates] = useState(initialValues?.gates ?? 1);
+  const [windows, setWindows] = useState(initialValues?.windows ?? 0);
   const [hasCrane, setHasCrane] = useState(false);
+
+  useEffect(() => {
+    if (!initialValues) return;
+    if (initialValues.width !== undefined) setWidth(Math.min(60, Math.max(12, initialValues.width)));
+    if (initialValues.length !== undefined) setLength(Math.min(200, Math.max(18, initialValues.length)));
+    if (initialValues.height !== undefined) setHeight(Math.min(20, Math.max(4, initialValues.height)));
+    if (initialValues.buildingType !== undefined) setBuildingType(initialValues.buildingType);
+    if (initialValues.gates !== undefined) setGates(Math.min(5, Math.max(1, initialValues.gates)));
+    if (initialValues.windows !== undefined) setWindows(initialValues.windows);
+    setHasCrane(false);
+  }, [initialValues]);
 
   const calcPrice = () => {
     const area = width * length;
