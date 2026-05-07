@@ -1,18 +1,11 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
 import Icon from "@/components/ui/icon";
+import Header from "@/components/shared/Header";
 import { PARTNERS } from "@/components/sections/ContentSections";
 
 export default function PartnerReview() {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => removeEventListener("scroll", onScroll);
-  }, []);
 
   const partner = PARTNERS.find((p) => p.slug === slug);
 
@@ -34,28 +27,9 @@ export default function PartnerReview() {
   return (
     <div className="min-h-screen bg-white font-ibm">
       {/* HEADER */}
-      <header
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          scrolled ? "bg-white shadow-md py-3" : "bg-white border-b border-evraz-border py-5"
-        }`}
-      >
-        <div className="container mx-auto flex items-center justify-between">
-          <button onClick={() => navigate("/")} className="flex items-center">
-            <img
-              src="https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/07662369-c03c-4cb9-b942-839aad61017e.png"
-              alt="EVRAZ SteelBox"
-              className="h-10 w-auto"
-            />
-          </button>
-          <button
-            onClick={() => navigate(-1)}
-            className="flex items-center gap-2 font-ibm text-sm text-evraz-steel hover:text-evraz-red transition-colors"
-          >
-            <Icon name="ArrowLeft" size={16} />
-            Назад к партнёрам
-          </button>
-        </div>
-      </header>
+      <Header
+        backButton={{ label: "Назад к партнёрам", onClick: () => navigate(-1) }}
+      />
 
       <div className="pt-24 pb-20">
         <div className="container mx-auto max-w-3xl px-4">

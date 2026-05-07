@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Icon from "@/components/ui/icon";
+import Header from "@/components/shared/Header";
 import {
   PriceCalculator,
   PriceCalculatorInitial,
@@ -508,24 +509,9 @@ export default function Catalog() {
   return (
     <div className="min-h-screen bg-white font-ibm">
       {/* HEADER */}
-      <header className="sticky top-0 z-50 bg-white shadow-md py-4 border-b border-evraz-border">
-        <div className="container mx-auto flex items-center justify-between">
-          <button onClick={() => navigate("/")} className="flex items-center">
-            <img
-              src="https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/07662369-c03c-4cb9-b942-839aad61017e.png"
-              alt="EVRAZ SteelBox"
-              className="h-10 w-auto"
-            />
-          </button>
-          <button
-            onClick={() => navigate("/")}
-            className="flex items-center gap-2 font-ibm text-sm text-evraz-gray hover:text-evraz-dark transition-colors"
-          >
-            <Icon name="ArrowLeft" size={16} />
-            На главную
-          </button>
-        </div>
-      </header>
+      <Header
+        backButton={{ label: "На главную", onClick: () => navigate("/") }}
+      />
 
       {/* HERO */}
       <section className="bg-evraz-charcoal relative overflow-hidden py-16 md:py-20">

@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Icon from "@/components/ui/icon";
+import Header from "@/components/shared/Header";
 
 export default function BigBoxThanks() {
   const navigate = useNavigate();
@@ -7,24 +8,9 @@ export default function BigBoxThanks() {
   return (
     <div className="min-h-screen bg-white font-ibm flex flex-col">
       {/* Хедер */}
-      <header className="py-6 border-b border-evraz-border">
-        <div className="container mx-auto flex items-center justify-between">
-          <button onClick={() => navigate("/bigbox")} className="flex items-center">
-            <img src="https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/07662369-c03c-4cb9-b942-839aad61017e.png" alt="EVRAZ SteelBox" className="h-10 w-auto" />
-          </button>
-          <div className="text-right hidden sm:block">
-            <a
-              href="tel:+78003006559"
-              className="font-oswald text-xl text-evraz-dark hover:text-evraz-red transition-colors block"
-            >
-              8 800 300 65 59
-            </a>
-            <p className="font-ibm text-xs text-evraz-gray">
-              пн.–пт. с 9:30 до 18:00 &nbsp;/&nbsp; Звоните, мы сейчас на связи
-            </p>
-          </div>
-        </div>
-      </header>
+      <Header
+        backButton={{ label: "Назад", onClick: () => navigate("/bigbox") }}
+      />
 
       {/* Основной контент */}
       <main className="flex-1 flex items-center justify-center py-16">

@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Icon from "@/components/ui/icon";
+import Header from "@/components/shared/Header";
 
 // ─── Brand Promise — верифицированные данные ──────────────────────────────────
 
@@ -201,17 +201,9 @@ const NAV_LINKS = [
 
 export default function BigBox2() {
   const navigate = useNavigate();
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
   const [activeForm, setActiveForm] = useState<FormType>(null);
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   const scrollTo = (id: string) => {
-    setMenuOpen(false);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -231,75 +223,11 @@ export default function BigBox2() {
       )}
 
       {/* ── ХЕДЕР ── */}
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white shadow-md" : "bg-transparent"}`}
-      >
-        <div className="container mx-auto py-4 flex items-center justify-between gap-4">
-          <button onClick={() => navigate("/")} className="flex items-center shrink-0">
-            <img src="https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/07662369-c03c-4cb9-b942-839aad61017e.png" alt="EVRAZ SteelBox" className="h-10 w-auto" />
-          </button>
-
-          <nav className="hidden lg:flex items-center gap-5">
-            {NAV_LINKS.map((l) => (
-              <button
-                key={l.label}
-                onClick={() => scrollTo(l.href)}
-                className="font-ibm text-xs text-evraz-dark hover:text-evraz-red transition-colors uppercase tracking-wider"
-              >
-                {l.label}
-              </button>
-            ))}
-          </nav>
-
-          <div className="flex items-center gap-3 shrink-0">
-            <a
-              href="tel:+78003006559"
-              className="hidden md:block font-oswald text-evraz-dark text-sm tracking-wider hover:text-evraz-red transition-colors"
-            >
-              8 800 300 65 59
-            </a>
-            <button
-              onClick={() => setActiveForm("callback")}
-              className="bg-evraz-red text-white font-oswald text-xs tracking-widest uppercase px-5 py-2.5 hover:bg-red-700 transition-colors hidden sm:block"
-            >
-              Запросить расчёт
-            </button>
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="lg:hidden text-evraz-dark"
-            >
-              <Icon name={menuOpen ? "X" : "Menu"} size={22} />
-            </button>
-          </div>
-        </div>
-        {menuOpen && (
-          <div className="lg:hidden bg-white border-t border-evraz-border px-6 py-4 space-y-3">
-            {NAV_LINKS.map((l) => (
-              <button
-                key={l.label}
-                onClick={() => scrollTo(l.href)}
-                className="block w-full text-left font-ibm text-sm text-evraz-dark hover:text-evraz-red py-1.5 uppercase tracking-wider"
-              >
-                {l.label}
-              </button>
-            ))}
-            <div className="pt-3 border-t border-evraz-border">
-              <a
-                href="tel:+78003006559"
-                className="block font-oswald text-evraz-dark text-base mb-3"
-              >
-                8 800 300 65 59
-              </a>
-              <button
-                onClick={() => setActiveForm("callback")}
-                className="w-full bg-evraz-red text-white font-oswald text-xs tracking-widest uppercase px-5 py-3"
-              >
-                Запросить расчёт
-              </button>
-            </div>
-          </div>
-        )}
-      </header>
+      <Header
+        navLinks={NAV_LINKS.map((l) => ({ label: l.label, href: l.href }))}
+        onNavClick={(href) => scrollTo(href)}
+        onCallbackClick={() => setActiveForm("callback")}
+      />
 
       {/* ── HERO: BRAND PROMISE С ДОКАЗАТЕЛЬСТВАМИ ── */}
       <section

@@ -1,6 +1,7 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Icon from "@/components/ui/icon";
+import Header from "@/components/shared/Header";
 
 // ─── Данные кейсов ───────────────────────────────────────────────────────────
 
@@ -163,19 +164,10 @@ function LeadForm({
 
 export default function BigBox() {
   const navigate = useNavigate();
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
   const [activeForm, setActiveForm] = useState<FormType>(null);
   const ctaRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   const scrollTo = (id: string) => {
-    setMenuOpen(false);
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
@@ -195,80 +187,11 @@ export default function BigBox() {
       )}
 
       {/* ── ХЕДЕР ── */}
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "bg-white shadow-md" : "bg-transparent"
-        }`}
-      >
-        <div className="container mx-auto py-4 flex items-center justify-between">
-          {/* Лого */}
-          <button onClick={() => navigate("/")} className="flex items-center">
-            <img src="https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/07662369-c03c-4cb9-b942-839aad61017e.png" alt="EVRAZ SteelBox" className="h-10 w-auto" />
-          </button>
-
-          {/* Навигация десктоп */}
-          <nav className="hidden lg:flex items-center gap-6">
-            {NAV_LINKS.map((l) => (
-              <button
-                key={l.label}
-                onClick={() => scrollTo(l.href.slice(1))}
-                className="font-ibm text-xs text-evraz-dark hover:text-evraz-red transition-colors uppercase tracking-wider"
-              >
-                {l.label}
-              </button>
-            ))}
-          </nav>
-
-          {/* Телефон + CTA */}
-          <div className="flex items-center gap-4">
-            <a
-              href="tel:+78003006559"
-              className="hidden md:block font-oswald text-evraz-dark text-sm tracking-wider hover:text-evraz-red transition-colors"
-            >
-              8 800 300 65 59
-            </a>
-            <button
-              onClick={() => openForm("callback")}
-              className="bg-evraz-red text-white font-oswald text-xs tracking-widest uppercase px-5 py-2.5 hover:bg-red-700 transition-colors hidden sm:block"
-            >
-              Запросить расчёт
-            </button>
-            {/* Бургер */}
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="lg:hidden text-evraz-dark"
-            >
-              <Icon name={menuOpen ? "X" : "Menu"} size={22} />
-            </button>
-          </div>
-        </div>
-
-        {/* Мобильное меню */}
-        {menuOpen && (
-          <div className="lg:hidden bg-white border-t border-evraz-border px-6 py-4 space-y-3">
-            {NAV_LINKS.map((l) => (
-              <button
-                key={l.label}
-                onClick={() => scrollTo(l.href.slice(1))}
-                className="block w-full text-left font-ibm text-sm text-evraz-dark hover:text-evraz-red py-1.5 uppercase tracking-wider"
-              >
-                {l.label}
-              </button>
-            ))}
-            <div className="pt-3 border-t border-evraz-border">
-              <a href="tel:+78003006559" className="block font-oswald text-evraz-dark text-base mb-3">
-                8 800 300 65 59
-              </a>
-              <button
-                onClick={() => openForm("callback")}
-                className="w-full bg-evraz-red text-white font-oswald text-xs tracking-widest uppercase px-5 py-3"
-              >
-                Запросить расчёт
-              </button>
-            </div>
-          </div>
-        )}
-      </header>
+      <Header
+        navLinks={NAV_LINKS.map((l) => ({ label: l.label, href: l.href.replace("#", "") }))}
+        onNavClick={(href) => scrollTo(href)}
+        onCallbackClick={() => openForm("callback")}
+      />
 
       {/* ── ЭКРАН 0: ШАПКА-КОНТАКТЫ ── */}
       <section id="hero" className="bg-evraz-charcoal border-b border-evraz-border pt-32 pb-8">
