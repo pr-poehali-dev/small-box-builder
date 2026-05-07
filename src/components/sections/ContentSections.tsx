@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import { AnimSection } from "@/components/shared/AnimSection";
 
@@ -90,8 +91,9 @@ const ADVANTAGES = [
   },
 ];
 
-const PARTNERS = [
+export const PARTNERS = [
   {
+    slug: "stalstroy",
     name: "СтальСтрой",
     region: "Москва и МО",
     projects: 48,
@@ -99,10 +101,12 @@ const PARTNERS = [
     services: ["Монтаж", "Проектирование"],
     review: {
       text: "Сдали объект на 2 недели раньше срока. Качество монтажа — без нареканий.",
+      fullText: "Сдали объект на 2 недели раньше срока. Качество монтажа — без нареканий. Работаем с командой EVRAZ STEEL BOX уже пять лет, и каждый раз убеждаемся: документация чёткая, комплект поставки приходит в срок, монтажные карты исчерпывающие. Особо отмечу техническую поддержку — на любой вопрос отвечают в течение часа. Из 48 реализованных объектов ни один не вышел за рамки сметы.",
       author: "Алексей К., директор ООО «ЛогоПарк»",
     },
   },
   {
+    slug: "uralmontazh",
     name: "УралМеталлМонтаж",
     region: "Урал, Сибирь",
     projects: 62,
@@ -110,10 +114,12 @@ const PARTNERS = [
     services: ["Монтаж"],
     review: {
       text: "Работаем с ними на трёх объектах подряд. Надёжная команда, чёткое соблюдение смет.",
+      fullText: "Работаем с ними на трёх объектах подряд. Надёжная команда, чёткое соблюдение смет. EVRAZ STEEL BOX — это прежде всего предсказуемость: фиксированная цена комплекта, понятная логистика, грамотные монтажные инструкции. На двух объектах в Екатеринбурге и одном в Тюмени мы уложились в сроки, хотя зима была ранняя. Металлоконструкции идут без брака — это важно, когда монтируешь в мороз. Планируем продолжать сотрудничество.",
       author: "Игорь Р., технический директор НТМК",
     },
   },
   {
+    slug: "sibirstal",
     name: "СибирьСталь",
     region: "Новосибирск, Красноярск",
     projects: 35,
@@ -121,10 +127,12 @@ const PARTNERS = [
     services: ["Монтаж", "Проектирование"],
     review: {
       text: "Профессиональный подход к проекту, грамотная проектная документация.",
+      fullText: "Профессиональный подход к проекту, грамотная проектная документация. Мы занимаемся проектированием и монтажом одновременно, и EVRAZ STEEL BOX — один из немногих поставщиков, у которых документация реально соответствует тому, что приходит на объект. Работали на агро-объектах в Красноярском крае: зернохранилища, склады техники. Конструктив жёсткий, нагрузки выдерживает по нормативам. Отдельно хочу отметить качество антикоррозийного покрытия — через два года после монтажа замечаний нет.",
       author: "Светлана М., АгроХолдинг «Восток»",
     },
   },
   {
+    slug: "yugmontazh",
     name: "ЮгМонтаж",
     region: "Краснодар, Ростов",
     projects: 29,
@@ -132,10 +140,12 @@ const PARTNERS = [
     services: ["Монтаж"],
     review: {
       text: "Быстро развернули бригаду, уложились в 28 дней под ключ.",
+      fullText: "Быстро развернули бригаду, уложились в 28 дней под ключ. Заказчик поставил жёсткие сроки — открытие торгового склада было привязано к сезону. EVRAZ STEEL BOX обеспечил отгрузку комплекта за 12 дней с момента подписания договора, мы развернули бригаду из 14 человек и уложились в 28 дней вместо запланированных 35. Качество узлов — без нареканий, всё собирается по инструкции без подгонки. Заказчик остался доволен и уже разместил второй заказ.",
       author: "Дмитрий П., ИП Павлов",
     },
   },
   {
+    slug: "volgaprom",
     name: "ВолгаПром",
     region: "Поволжье",
     projects: 41,
@@ -149,6 +159,7 @@ const PARTNERS = [
     },
   },
   {
+    slug: "severstroy",
     name: "СеверСтройПроект",
     region: "СЗФО",
     projects: 23,
@@ -156,6 +167,7 @@ const PARTNERS = [
     services: ["Проектирование"],
     review: {
       text: "Разработали проект с учётом северных снеговых нагрузок — всё соответствует нормативам.",
+      fullText: "Разработали проект с учётом северных снеговых нагрузок — всё соответствует нормативам. Работаем в условиях СЗФО, где снеговые нагрузки существенно выше среднероссийских. EVRAZ STEEL BOX предоставил усиленный вариант каркаса без доплаты — это было предусмотрено в базовой комплектации для данного региона. Проектная документация прошла экспертизу с первого раза. Объект в Мурманской области эксплуатируется второй год, замечаний нет.",
       author: "Николай В., «Северлес»",
     },
   },
@@ -206,7 +218,6 @@ export function ContentSections({
   scrollTo: (id: string) => void;
 }) {
   const [caseFilter, setCaseFilter] = useState<CaseCategory | "Все">("Все");
-  const [expandedReview, setExpandedReview] = useState<string | null>(null);
 
   const filteredCases =
     caseFilter === "Все"
@@ -527,30 +538,19 @@ export function ContentSections({
                   {p.review && (
                     <div className="bg-evraz-charcoal border-l-2 border-evraz-steel px-4 py-3 mb-4 flex-1">
                       <p className="font-ibm text-xs text-evraz-dark leading-relaxed italic">
-                        «{expandedReview === p.name && p.review.fullText
-                          ? p.review.fullText
-                          : p.review.text}»
+                        «{p.review.text}»
                       </p>
                       <p className="font-ibm text-xs text-evraz-gray mt-2">
                         — {p.review.author}
                       </p>
                       <div className="flex items-center gap-3 mt-3 flex-wrap">
-                        {p.review.fullText && (
-                          <button
-                            onClick={() =>
-                              setExpandedReview(
-                                expandedReview === p.name ? null : p.name,
-                              )
-                            }
-                            className="font-ibm text-xs text-evraz-red hover:underline flex items-center gap-1"
-                          >
-                            <Icon
-                              name={expandedReview === p.name ? "ChevronUp" : "ChevronDown"}
-                              size={12}
-                            />
-                            {expandedReview === p.name ? "Свернуть" : "Смотреть полностью"}
-                          </button>
-                        )}
+                        <Link
+                          to={`/partners/${p.slug}`}
+                          className="font-ibm text-xs text-evraz-red hover:underline flex items-center gap-1"
+                        >
+                          <Icon name="ChevronRight" size={12} />
+                          Смотреть полностью
+                        </Link>
                         {p.review.videoUrl && (
                           <a
                             href={p.review.videoUrl}
