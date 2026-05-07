@@ -24,6 +24,18 @@ const BUILDING_IMAGES: Record<BuildingTag, string> = {
 
 type AreaRange = "до 1000 м²" | "1000–3000 м²" | "свыше 3000 м²";
 
+interface CatalogItemSpecs {
+  wallPanel: string;
+  wallThickness: number;
+  roofType: "Скатная" | "Плоская";
+  roofPanel: string;
+  roofThickness: number;
+  stripGlazing: boolean;
+  doors: number;
+  gates: number;
+  windows: number;
+}
+
 interface CatalogItem {
   id: string;
   tag: BuildingTag;
@@ -35,6 +47,7 @@ interface CatalogItem {
   pricePerSqm: number;
   days: number;
   features: string[];
+  specs: CatalogItemSpecs;
   popular?: boolean;
   designers?: string[];
   city: string;
@@ -53,6 +66,7 @@ const CATALOG: CatalogItem[] = [
     pricePerSqm: 8_981,
     days: 25,
     features: ["Каркас EVRAZ", "Профлист кровля", "1 секция ворот 4×4 м", "Ветровые панели"],
+    specs: { wallPanel: "Профлист", wallThickness: 0, roofType: "Скатная", roofPanel: "Профлист оцинкованный", roofThickness: 0, stripGlazing: false, doors: 1, gates: 1, windows: 0 },
     city: "Москва",
     capital: false,
   },
@@ -67,6 +81,7 @@ const CATALOG: CatalogItem[] = [
     pricePerSqm: 8_889,
     days: 30,
     features: ["Каркас EVRAZ", "Сэндвич-панели кровля 100 мм", "2 секции ворот", "4 окна PVC"],
+    specs: { wallPanel: "Сэндвич-панели", wallThickness: 80, roofType: "Скатная", roofPanel: "Сэндвич-панели", roofThickness: 100, stripGlazing: false, doors: 1, gates: 2, windows: 4 },
     popular: true,
     city: "Екатеринбург",
     capital: false,
@@ -82,6 +97,7 @@ const CATALOG: CatalogItem[] = [
     pricePerSqm: 10_500,
     days: 35,
     features: ["Каркас EVRAZ", "Сэндвич-панели стены 80 мм", "3 секции ворот 4×4 м", "Дымовые люки"],
+    specs: { wallPanel: "Сэндвич-панели", wallThickness: 80, roofType: "Скатная", roofPanel: "Сэндвич-панели", roofThickness: 100, stripGlazing: false, doors: 2, gates: 3, windows: 6 },
     popular: true,
     city: "Новосибирск",
     capital: true,
@@ -97,6 +113,7 @@ const CATALOG: CatalogItem[] = [
     pricePerSqm: 12_500,
     days: 45,
     features: ["Каркас EVRAZ усиленный", "Сэндвич-панели 100 мм", "4 ворот", "6 окон", "Аварийные люки"],
+    specs: { wallPanel: "Сэндвич-панели", wallThickness: 100, roofType: "Скатная", roofPanel: "Сэндвич-панели", roofThickness: 120, stripGlazing: false, doors: 2, gates: 4, windows: 6 },
     city: "Москва",
     capital: true,
   },
@@ -111,6 +128,7 @@ const CATALOG: CatalogItem[] = [
     pricePerSqm: 17_000,
     days: 40,
     features: ["Каркас под мостовой кран", "Консоли 10т", "2 ворот 5×5 м", "Сэндвич-панели 120 мм"],
+    specs: { wallPanel: "Сэндвич-панели", wallThickness: 120, roofType: "Скатная", roofPanel: "Сэндвич-панели", roofThickness: 150, stripGlazing: true, doors: 2, gates: 2, windows: 8 },
     popular: true,
     city: "Челябинск",
     capital: true,
@@ -126,6 +144,7 @@ const CATALOG: CatalogItem[] = [
     pricePerSqm: 18_000,
     days: 55,
     features: ["Усиленный каркас под кран 20т", "4 ворот 5×5 м", "Антресольный этаж", "Сэндвич-панели 150 мм"],
+    specs: { wallPanel: "Сэндвич-панели", wallThickness: 150, roofType: "Скатная", roofPanel: "Сэндвич-панели", roofThickness: 200, stripGlazing: true, doors: 4, gates: 4, windows: 12 },
     city: "Москва",
     capital: true,
   },
@@ -140,6 +159,7 @@ const CATALOG: CatalogItem[] = [
     pricePerSqm: 7_500,
     days: 28,
     features: ["Каркас EVRAZ антикор", "Профлист оцинкованный", "Вентиляционные решётки", "1 ворот 4×4 м"],
+    specs: { wallPanel: "Профлист оцинкованный", wallThickness: 0, roofType: "Скатная", roofPanel: "Профлист оцинкованный", roofThickness: 0, stripGlazing: false, doors: 1, gates: 1, windows: 0 },
     city: "Краснодар",
     capital: false,
   },
@@ -154,6 +174,7 @@ const CATALOG: CatalogItem[] = [
     pricePerSqm: 7_179,
     days: 35,
     features: ["Химстойкое покрытие", "Принудительная вентиляция", "2 ворот 4×4 м", "Аттестован Россельхознадзором"],
+    specs: { wallPanel: "Профлист с хим. покрытием", wallThickness: 0, roofType: "Скатная", roofPanel: "Профлист с хим. покрытием", roofThickness: 0, stripGlazing: false, doors: 1, gates: 2, windows: 2 },
     popular: true,
     city: "Ростов-на-Дону",
     capital: false,
@@ -169,6 +190,7 @@ const CATALOG: CatalogItem[] = [
     pricePerSqm: 18_500,
     days: 50,
     features: ["Витражное остекление", "Фасадные кассеты", "6 входных групп", "Противопожарная система"],
+    specs: { wallPanel: "Фасадные кассеты", wallThickness: 80, roofType: "Плоская", roofPanel: "Сэндвич-панели", roofThickness: 150, stripGlazing: true, doors: 6, gates: 0, windows: 0 },
     popular: true,
     city: "Екатеринбург",
     capital: true,
@@ -184,6 +206,7 @@ const CATALOG: CatalogItem[] = [
     pricePerSqm: 22_000,
     days: 60,
     features: ["Пролёт 30 м без опор", "Световые фонари", "Пожарная сигнализация", "Акустические панели"],
+    specs: { wallPanel: "Сэндвич-панели", wallThickness: 150, roofType: "Скатная", roofPanel: "Сэндвич-панели", roofThickness: 200, stripGlazing: true, doors: 4, gates: 0, windows: 16 },
     city: "Нижний Новгород",
     capital: true,
   },
@@ -198,6 +221,7 @@ const CATALOG: CatalogItem[] = [
     pricePerSqm: 22_000,
     days: 70,
     features: ["Пролёт 48 м без опор", "Естественное освещение", "Трибуны 500 мест", "Хранилище инвентаря"],
+    specs: { wallPanel: "Сэндвич-панели", wallThickness: 150, roofType: "Скатная", roofPanel: "Сэндвич-панели", roofThickness: 200, stripGlazing: true, doors: 6, gates: 2, windows: 24 },
     popular: true,
     city: "Челябинск",
     capital: true,
@@ -213,6 +237,7 @@ const CATALOG: CatalogItem[] = [
     pricePerSqm: 8_400,
     days: 20,
     features: ["36 машиномест", "Открытый тип", "Антикор покрытие", "Монтаж от 7 дней"],
+    specs: { wallPanel: "Открытый тип (без стен)", wallThickness: 0, roofType: "Скатная", roofPanel: "Профлист оцинкованный", roofThickness: 0, stripGlazing: false, doors: 0, gates: 0, windows: 0 },
     city: "Краснодар",
     capital: false,
   },
@@ -227,6 +252,7 @@ const CATALOG: CatalogItem[] = [
     pricePerSqm: 12_500,
     days: 45,
     features: ["144 машиноместа", "2 уровня", "Пандус с покрытием", "Видеонаблюдение"],
+    specs: { wallPanel: "Профлист оцинкованный", wallThickness: 0, roofType: "Плоская", roofPanel: "Профлист оцинкованный", roofThickness: 0, stripGlazing: false, doors: 2, gates: 2, windows: 0 },
     popular: true,
     city: "Москва",
     capital: false,
@@ -639,18 +665,55 @@ export default function Catalog() {
                     ))}
                   </div>
 
-                  {/* Features + срок */}
+                  {/* Specs + срок */}
                   <div className="p-6 flex flex-col flex-1">
-                    <ul className="space-y-2 mb-5 flex-1">
-                      {item.features.map((f) => (
-                        <li key={f} className="flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 bg-evraz-red shrink-0 rotate-45" />
-                          <span className="font-ibm text-sm text-evraz-steel">
-                            {f}
+                    <div className="mb-5 flex-1 space-y-0 divide-y divide-evraz-border border border-evraz-border">
+                      {[
+                        {
+                          icon: "Layers",
+                          label: "Стены",
+                          value: item.specs.wallThickness > 0
+                            ? `${item.specs.wallPanel}, ${item.specs.wallThickness} мм`
+                            : item.specs.wallPanel,
+                        },
+                        {
+                          icon: "Triangle",
+                          label: `Кровля (${item.specs.roofType})`,
+                          value: item.specs.roofThickness > 0
+                            ? `${item.specs.roofPanel}, ${item.specs.roofThickness} мм`
+                            : item.specs.roofPanel,
+                        },
+                        {
+                          icon: "Columns2",
+                          label: "Лент. остекление",
+                          value: item.specs.stripGlazing ? "Есть" : "Нет",
+                          highlight: item.specs.stripGlazing,
+                        },
+                        {
+                          icon: "DoorOpen",
+                          label: "Двери",
+                          value: item.specs.doors > 0 ? `${item.specs.doors} шт.` : "Нет",
+                        },
+                        {
+                          icon: "RectangleHorizontal",
+                          label: "Ворота",
+                          value: item.specs.gates > 0 ? `${item.specs.gates} секции` : "Нет",
+                        },
+                        {
+                          icon: "AppWindow",
+                          label: "Окна",
+                          value: item.specs.windows > 0 ? `${item.specs.windows} шт.` : "Нет",
+                        },
+                      ].map((row) => (
+                        <div key={row.label} className="flex items-center gap-3 px-3 py-2">
+                          <Icon name={row.icon as "Layers"} size={13} className="text-evraz-steel shrink-0" />
+                          <span className="font-ibm text-xs text-evraz-gray w-32 shrink-0">{row.label}</span>
+                          <span className={`font-ibm text-xs font-medium ml-auto text-right ${row.highlight ? "text-evraz-red" : "text-evraz-dark"}`}>
+                            {row.value}
                           </span>
-                        </li>
+                        </div>
                       ))}
-                    </ul>
+                    </div>
 
                     {/* Срок */}
                     <div className="flex items-center gap-2 bg-evraz-light px-4 py-2.5 mb-3">
