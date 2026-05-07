@@ -141,7 +141,12 @@ const PARTNERS = [
     projects: 41,
     rating: 4,
     services: ["Монтаж", "Проектирование"],
-    review: null,
+    review: {
+      text: "Сотрудничаем с EVRAZ STEEL BOX уже четвёртый год.",
+      fullText: "Сотрудничаем с EVRAZ STEEL BOX уже четвёртый год. За это время реализовали 41 объект в Поволжье — от небольших складов до производственных цехов с мостовыми кранами. Чёткая логистика комплектов, подробная монтажная документация и постоянная поддержка технического отдела — всё это делает работу предсказуемой и без сюрпризов. Рекомендуем коллегам.",
+      author: "Артём Д., генеральный директор ВолгаПром",
+      videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    },
   },
   {
     name: "СеверСтройПроект",
@@ -201,6 +206,7 @@ export function ContentSections({
   scrollTo: (id: string) => void;
 }) {
   const [caseFilter, setCaseFilter] = useState<CaseCategory | "Все">("Все");
+  const [expandedReview, setExpandedReview] = useState<string | null>(null);
 
   const filteredCases =
     caseFilter === "Все"
@@ -521,11 +527,42 @@ export function ContentSections({
                   {p.review && (
                     <div className="bg-evraz-charcoal border-l-2 border-evraz-steel px-4 py-3 mb-4 flex-1">
                       <p className="font-ibm text-xs text-evraz-dark leading-relaxed italic">
-                        «{p.review.text}»
+                        «{expandedReview === p.name && p.review.fullText
+                          ? p.review.fullText
+                          : p.review.text}»
                       </p>
                       <p className="font-ibm text-xs text-evraz-gray mt-2">
                         — {p.review.author}
                       </p>
+                      <div className="flex items-center gap-3 mt-3 flex-wrap">
+                        {p.review.fullText && (
+                          <button
+                            onClick={() =>
+                              setExpandedReview(
+                                expandedReview === p.name ? null : p.name,
+                              )
+                            }
+                            className="font-ibm text-xs text-evraz-red hover:underline flex items-center gap-1"
+                          >
+                            <Icon
+                              name={expandedReview === p.name ? "ChevronUp" : "ChevronDown"}
+                              size={12}
+                            />
+                            {expandedReview === p.name ? "Свернуть" : "Смотреть полностью"}
+                          </button>
+                        )}
+                        {p.review.videoUrl && (
+                          <a
+                            href={p.review.videoUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-ibm text-xs text-evraz-red hover:underline flex items-center gap-1"
+                          >
+                            <Icon name="Play" size={12} />
+                            Видеоотзыв
+                          </a>
+                        )}
+                      </div>
                     </div>
                   )}
                   {!p.review && <div className="flex-1" />}
