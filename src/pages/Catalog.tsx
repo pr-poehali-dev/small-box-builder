@@ -276,6 +276,8 @@ export default function Catalog() {
   const navigate = useNavigate();
   const [activeTag, setActiveTag] = useState<BuildingTag | "Все">("Все");
   const [activeCity, setActiveCity] = useState<string>("Все");
+  const [customCity, setCustomCity] = useState<string>("");
+  const [showCustomInput, setShowCustomInput] = useState(false);
   const [activeArea, setActiveArea] = useState<AreaRange | "Все">("Все");
   const [capitalFilter, setCapitalFilter] = useState<
     "all" | "capital" | "noncapital"
@@ -285,7 +287,7 @@ export default function Catalog() {
   const filtered = CATALOG.filter(
     (item) => activeTag === "Все" || item.tag === activeTag,
   )
-    .filter((item) => activeCity === "Все" || item.city === activeCity)
+    .filter((item) => activeCity === "Все" || activeCity === "custom" || item.city === activeCity)
     .filter((item) => {
       if (activeArea === "Все") return true;
       const range = AREA_RANGES.find((r) => r.label === activeArea);
@@ -416,13 +418,17 @@ export default function Catalog() {
             <span className="font-ibm text-xs text-evraz-gray w-36 shrink-0">
               Город строительства:
             </span>
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex flex-wrap gap-1.5 items-center">
               {["Все", ...CITIES].map((city) => (
                 <button
                   key={city}
-                  onClick={() => setActiveCity(city)}
+                  onClick={() => {
+                    setActiveCity(city);
+                    setShowCustomInput(false);
+                    setCustomCity("");
+                  }}
                   className={`font-ibm text-xs px-3 py-1.5 border transition-all ${
-                    activeCity === city
+                    activeCity === city && !showCustomInput
                       ? "bg-evraz-dark border-evraz-dark text-white"
                       : "border-evraz-border text-evraz-steel hover:border-evraz-dark bg-white"
                   }`}
@@ -430,7 +436,51 @@ export default function Catalog() {
                   {city}
                 </button>
               ))}
+              <button
+                onClick={() => {
+                  setShowCustomInput(true);
+                  setActiveCity("custom");
+                }}
+                className={`font-ibm text-xs px-3 py-1.5 border transition-all flex items-center gap-1.5 ${
+                  showCustomInput
+                    ? "bg-evraz-dark border-evraz-dark text-white"
+                    : "border-evraz-border text-evraz-steel hover:border-evraz-dark bg-white"
+                }`}
+              >
+                <Icon name="MapPin" size={11} />
+                Выберите любой
+              </button>
+              {showCustomInput && (
+                <div className="flex items-center gap-1.5">
+                  <input
+                    autoFocus
+                    type="text"
+                    value={customCity}
+                    onChange={(e) => setCustomCity(e.target.value)}
+                    placeholder="Введите ваш город..."
+                    className="font-ibm text-xs px-3 py-1.5 border border-evraz-red bg-white text-evraz-dark placeholder-evraz-gray outline-none w-44"
+                  />
+                  {customCity && (
+                    <button
+                      onClick={() => {
+                        setCustomCity("");
+                        setShowCustomInput(false);
+                        setActiveCity("Все");
+                      }}
+                      className="text-evraz-gray hover:text-evraz-red transition-colors"
+                    >
+                      <Icon name="X" size={14} />
+                    </button>
+                  )}
+                </div>
+              )}
             </div>
+            {showCustomInput && customCity && (
+              <p className="font-ibm text-xs text-evraz-gray mt-1 w-full">
+                Показаны все доступные проекты — менеджер уточнит условия для&nbsp;
+                <span className="text-evraz-dark font-medium">{customCity}</span>
+              </p>
+            )}
           </div>
 
           {/* Строка 3: Площадь + Капитальность */}
