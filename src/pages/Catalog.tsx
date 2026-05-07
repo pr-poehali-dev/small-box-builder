@@ -537,7 +537,7 @@ export default function Catalog() {
           </h1>
           <p className="font-ibm text-evraz-gray max-w-2xl text-base leading-relaxed mb-8">
             Широкий ассортимент типовых решений с предварительно рассчитанной
-            стоимостью.
+            стоимостью. Вы можете заказать КМ+АР отдельно за 9998 рублей.
           </p>
           {/* Quick stats */}
           <div className="flex flex-wrap gap-8">
@@ -559,9 +559,6 @@ export default function Catalog() {
               </div>
             ))}
           </div>
-          <p className="font-ibm text-evraz-gray max-w-2xl text-base leading-relaxed mb-8">
-            Вы можете заказать КМ+АР отдельно за 9998 рублей.
-          </p>
         </div>
       </section>
 
