@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/shared/Header";
+import Icon from "@/components/ui/icon";
 
 // ─── Brand Promise — верифицированные данные ──────────────────────────────────
 
