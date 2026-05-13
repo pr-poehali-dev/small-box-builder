@@ -9,11 +9,7 @@ const DELIVERABLES = [
   {
     icon: "FileText",
     title: "Архитектурные решения (АР)",
-    items: [
-      "Планы этажей и фасады",
-      "Разрезы и узлы",
-      "Пояснительная записка",
-    ],
+    items: ["Планы этажей и фасады", "Разрезы и узлы", "Пояснительная записка"],
   },
   {
     icon: "Settings",
@@ -22,6 +18,7 @@ const DELIVERABLES = [
       "Расчёт несущих конструкций",
       "Чертежи металлоконструкций",
       "Ведомость элементов",
+      "Нагрузки на фундаменты",
     ],
   },
   {
@@ -67,8 +64,18 @@ const NOT_INCLUDED = [
 // ─── Сравнение с рынком ────────────────────────────────────────────────────────
 
 const COMPARISON = [
-  { label: "Проектное бюро", price: "150 000 ₽", days: "30–60 дней", ok: false },
-  { label: "Фриланс-инженер", price: "60 000 ₽", days: "20–40 дней", ok: false },
+  {
+    label: "Проектное бюро",
+    price: "150 000 ₽",
+    days: "30–60 дней",
+    ok: false,
+  },
+  {
+    label: "Фриланс-инженер",
+    price: "60 000 ₽",
+    days: "20–40 дней",
+    ok: false,
+  },
   { label: "EVRAZ STEEL BOX", price: "9 998 ₽", days: "1 день", ok: true },
 ];
 
@@ -97,7 +104,12 @@ function LeadForm({
   onClose: () => void;
   onSuccess: () => void;
 }) {
-  const [form, setForm] = useState<FormData>({ name: "", phone: "", email: "", area: "" });
+  const [form, setForm] = useState<FormData>({
+    name: "",
+    phone: "",
+    email: "",
+    area: "",
+  });
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
@@ -113,7 +125,8 @@ function LeadForm({
             ЗАКАЗАТЬ АР+КР — 9 998 ₽
           </h3>
           <p className="font-ibm text-xs text-gray-400 mt-2 leading-relaxed">
-            Укажите параметры здания — получите готовый проект за 1 рабочий день с подписью инженеров EVRAZ STEEL BOX
+            Укажите параметры здания — получите готовый проект за 1 рабочий день
+            с подписью инженеров EVRAZ STEEL BOX
           </p>
         </div>
         <form
@@ -124,10 +137,30 @@ function LeadForm({
           className="p-6 space-y-4"
         >
           {[
-            { label: "Имя*", key: "name", type: "text", placeholder: "Иван Иванов" },
-            { label: "Телефон*", key: "phone", type: "tel", placeholder: "+7 (___) ___-__-__" },
-            { label: "E-mail*", key: "email", type: "email", placeholder: "ivan@company.ru" },
-            { label: "Площадь здания (м²)*", key: "area", type: "text", placeholder: "Например: 1 500 м²" },
+            {
+              label: "Имя*",
+              key: "name",
+              type: "text",
+              placeholder: "Иван Иванов",
+            },
+            {
+              label: "Телефон*",
+              key: "phone",
+              type: "tel",
+              placeholder: "+7 (___) ___-__-__",
+            },
+            {
+              label: "E-mail*",
+              key: "email",
+              type: "email",
+              placeholder: "ivan@company.ru",
+            },
+            {
+              label: "Площадь здания (м²)*",
+              key: "area",
+              type: "text",
+              placeholder: "Например: 1 500 м²",
+            },
           ].map((f) => (
             <div key={f.key}>
               <label className="font-ibm text-xs text-evraz-gray uppercase tracking-wider block mb-1.5">
@@ -175,7 +208,10 @@ export default function ArKr() {
   return (
     <div className="min-h-screen bg-white font-ibm">
       {showForm && (
-        <LeadForm onClose={() => setShowForm(false)} onSuccess={handleSuccess} />
+        <LeadForm
+          onClose={() => setShowForm(false)}
+          onSuccess={handleSuccess}
+        />
       )}
 
       <Header onCallbackClick={() => setShowForm(true)} />
@@ -202,16 +238,15 @@ export default function ArKr() {
 
           {/* Заголовок */}
           <h1 className="font-oswald text-5xl md:text-7xl font-bold text-white leading-none mb-6 uppercase">
-            Экономия{" "}
-            <span className="text-evraz-red">до 140 000 ₽</span>
+            Экономия <span className="text-evraz-red">до 140 000 ₽</span>
             <br />
             на каждом проекте
           </h1>
 
           <p className="font-ibm text-lg text-gray-400 mb-10 max-w-2xl leading-relaxed">
             Проект АР+КР для типовых зданий 200–3 000 м² за{" "}
-            <span className="text-white font-semibold">9 998 ₽</span> вместо 150 000 ₽.
-            Готово за 1 рабочий день. Подпись инженеров EVRAZ STEEL BOX.
+            <span className="text-white font-semibold">9 998 ₽</span> вместо 150
+            000 ₽. Готово за 1 рабочий день. Подпись инженеров EVRAZ STEEL BOX.
           </p>
 
           {/* CTA */}
@@ -223,16 +258,21 @@ export default function ArKr() {
               ЗАКАЗАТЬ ЗА 9 998 ₽
             </button>
             <div className="flex items-center gap-3 px-6 py-5 border border-evraz-border">
-              <Icon name="Clock" size={18} className="text-evraz-red flex-shrink-0" />
-              <span className="font-ibm text-sm text-gray-400">Готово за <span className="text-white">1 рабочий день</span></span>
+              <Icon
+                name="Clock"
+                size={18}
+                className="text-evraz-red flex-shrink-0"
+              />
+              <span className="font-ibm text-sm text-gray-400">
+                Готово за <span className="text-white">1 рабочий день</span>
+              </span>
             </div>
           </div>
 
           {/* Зачёркнутая цена */}
           <p className="font-ibm text-xs text-gray-600 mt-6">
             Рыночная стоимость АР+КР:{" "}
-            <span className="line-through text-gray-500">150 000 ₽</span>
-            {" "}→{" "}
+            <span className="line-through text-gray-500">150 000 ₽</span> →{" "}
             <span className="text-evraz-red font-semibold">9 998 ₽</span>
           </p>
         </div>
@@ -242,7 +282,9 @@ export default function ArKr() {
       <section id="deliverables" className="py-24 bg-evraz-light px-6">
         <div className="max-w-5xl mx-auto">
           <div className="mb-12">
-            <p className="font-ibm text-xs text-evraz-red uppercase tracking-widest mb-3">Состав проекта</p>
+            <p className="font-ibm text-xs text-evraz-red uppercase tracking-widest mb-3">
+              Состав проекта
+            </p>
             <h2 className="font-oswald text-4xl font-bold text-evraz-dark uppercase">
               Что входит — и что нет
             </h2>
@@ -255,19 +297,37 @@ export default function ArKr() {
                 <div className="w-6 h-6 bg-evraz-red flex items-center justify-center flex-shrink-0">
                   <Icon name="Check" size={14} className="text-white" />
                 </div>
-                <h3 className="font-oswald text-xl font-semibold text-evraz-dark uppercase">Входит в проект</h3>
+                <h3 className="font-oswald text-xl font-semibold text-evraz-dark uppercase">
+                  Входит в проект
+                </h3>
               </div>
               <div className="space-y-4">
                 {DELIVERABLES.map((d) => (
-                  <div key={d.title} className="bg-white border border-evraz-border p-5">
+                  <div
+                    key={d.title}
+                    className="bg-white border border-evraz-border p-5"
+                  >
                     <div className="flex items-center gap-3 mb-3">
-                      <Icon name={d.icon} size={18} className="text-evraz-red flex-shrink-0" />
-                      <h4 className="font-oswald text-sm font-semibold text-evraz-dark uppercase">{d.title}</h4>
+                      <Icon
+                        name={d.icon}
+                        size={18}
+                        className="text-evraz-red flex-shrink-0"
+                      />
+                      <h4 className="font-oswald text-sm font-semibold text-evraz-dark uppercase">
+                        {d.title}
+                      </h4>
                     </div>
                     <ul className="space-y-1.5 pl-7">
                       {d.items.map((item) => (
-                        <li key={item} className="flex items-start gap-2 font-ibm text-sm text-evraz-gray">
-                          <Icon name="Check" size={12} className="text-evraz-red mt-0.5 flex-shrink-0" />
+                        <li
+                          key={item}
+                          className="flex items-start gap-2 font-ibm text-sm text-evraz-gray"
+                        >
+                          <Icon
+                            name="Check"
+                            size={12}
+                            className="text-evraz-red mt-0.5 flex-shrink-0"
+                          />
                           {item}
                         </li>
                       ))}
@@ -283,18 +343,27 @@ export default function ArKr() {
                 <div className="w-6 h-6 bg-gray-300 flex items-center justify-center flex-shrink-0">
                   <Icon name="Minus" size={14} className="text-white" />
                 </div>
-                <h3 className="font-oswald text-xl font-semibold text-evraz-dark uppercase">Не входит</h3>
+                <h3 className="font-oswald text-xl font-semibold text-evraz-dark uppercase">
+                  Не входит
+                </h3>
               </div>
               <div className="space-y-3">
                 {NOT_INCLUDED.map((item) => (
-                  <div key={item.title} className="flex items-start gap-3 border border-evraz-border bg-white p-5">
+                  <div
+                    key={item.title}
+                    className="flex items-start gap-3 border border-evraz-border bg-white p-5"
+                  >
                     <div className="w-5 h-5 bg-gray-100 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <Icon name="X" size={11} className="text-evraz-gray" />
                     </div>
                     <div>
-                      <p className="font-ibm text-sm font-semibold text-evraz-dark">{item.title}</p>
+                      <p className="font-ibm text-sm font-semibold text-evraz-dark">
+                        {item.title}
+                      </p>
                       {item.note && (
-                        <p className="font-ibm text-xs text-evraz-gray mt-1 leading-relaxed">{item.note}</p>
+                        <p className="font-ibm text-xs text-evraz-gray mt-1 leading-relaxed">
+                          {item.note}
+                        </p>
                       )}
                     </div>
                   </div>
@@ -309,7 +378,9 @@ export default function ArKr() {
       <section id="comparison" className="py-24 bg-evraz-light px-6">
         <div className="max-w-5xl mx-auto">
           <div className="mb-12">
-            <p className="font-ibm text-xs text-evraz-red uppercase tracking-widest mb-3">Экономика</p>
+            <p className="font-ibm text-xs text-evraz-red uppercase tracking-widest mb-3">
+              Экономика
+            </p>
             <h2 className="font-oswald text-4xl font-bold text-evraz-dark uppercase">
               Сравнение с рынком
             </h2>
@@ -326,14 +397,18 @@ export default function ArKr() {
                 }`}
               >
                 <div className="flex items-center gap-4">
-                  <div className={`w-8 h-8 flex items-center justify-center flex-shrink-0 ${c.ok ? "bg-evraz-red" : "bg-evraz-border"}`}>
+                  <div
+                    className={`w-8 h-8 flex items-center justify-center flex-shrink-0 ${c.ok ? "bg-evraz-red" : "bg-evraz-border"}`}
+                  >
                     <Icon
                       name={c.ok ? "Check" : "X"}
                       size={16}
                       className={c.ok ? "text-white" : "text-evraz-gray"}
                     />
                   </div>
-                  <span className={`font-oswald text-lg uppercase ${c.ok ? "text-evraz-dark font-bold" : "text-evraz-gray"}`}>
+                  <span
+                    className={`font-oswald text-lg uppercase ${c.ok ? "text-evraz-dark font-bold" : "text-evraz-gray"}`}
+                  >
                     {c.label}
                   </span>
                   {c.ok && (
@@ -344,14 +419,22 @@ export default function ArKr() {
                 </div>
                 <div className="flex gap-8 sm:gap-12 text-right">
                   <div>
-                    <p className="font-ibm text-xs text-evraz-gray uppercase tracking-wider mb-1">Стоимость</p>
-                    <p className={`font-oswald text-xl font-bold ${c.ok ? "text-evraz-red" : "text-evraz-gray line-through"}`}>
+                    <p className="font-ibm text-xs text-evraz-gray uppercase tracking-wider mb-1">
+                      Стоимость
+                    </p>
+                    <p
+                      className={`font-oswald text-xl font-bold ${c.ok ? "text-evraz-red" : "text-evraz-gray line-through"}`}
+                    >
                       {c.price}
                     </p>
                   </div>
                   <div>
-                    <p className="font-ibm text-xs text-evraz-gray uppercase tracking-wider mb-1">Срок</p>
-                    <p className={`font-oswald text-xl font-bold ${c.ok ? "text-evraz-dark" : "text-evraz-gray"}`}>
+                    <p className="font-ibm text-xs text-evraz-gray uppercase tracking-wider mb-1">
+                      Срок
+                    </p>
+                    <p
+                      className={`font-oswald text-xl font-bold ${c.ok ? "text-evraz-dark" : "text-evraz-gray"}`}
+                    >
                       {c.days}
                     </p>
                   </div>
@@ -366,7 +449,9 @@ export default function ArKr() {
       <section id="for-whom" className="py-24 bg-evraz-dark px-6">
         <div className="max-w-5xl mx-auto">
           <div className="mb-12">
-            <p className="font-ibm text-xs text-evraz-red uppercase tracking-widest mb-3">Целевая аудитория</p>
+            <p className="font-ibm text-xs text-evraz-red uppercase tracking-widest mb-3">
+              Целевая аудитория
+            </p>
             <h2 className="font-oswald text-4xl font-bold text-white uppercase">
               Кому подходит
             </h2>
@@ -374,11 +459,16 @@ export default function ArKr() {
 
           <div className="grid sm:grid-cols-2 gap-4">
             {FOR_WHOM.map((f) => (
-              <div key={f.text} className="flex items-center gap-4 border border-evraz-border/30 p-6 hover:border-evraz-red/40 transition-colors">
+              <div
+                key={f.text}
+                className="flex items-center gap-4 border border-evraz-border/30 p-6 hover:border-evraz-red/40 transition-colors"
+              >
                 <div className="w-10 h-10 bg-evraz-red/10 flex items-center justify-center flex-shrink-0">
                   <Icon name={f.icon} size={20} className="text-evraz-red" />
                 </div>
-                <span className="font-ibm text-sm text-gray-300 leading-relaxed">{f.text}</span>
+                <span className="font-ibm text-sm text-gray-300 leading-relaxed">
+                  {f.text}
+                </span>
               </div>
             ))}
           </div>
@@ -389,7 +479,9 @@ export default function ArKr() {
       <section id="how" className="py-24 bg-evraz-light px-6">
         <div className="max-w-5xl mx-auto">
           <div className="mb-12">
-            <p className="font-ibm text-xs text-evraz-red uppercase tracking-widest mb-3">Процесс</p>
+            <p className="font-ibm text-xs text-evraz-red uppercase tracking-widest mb-3">
+              Процесс
+            </p>
             <h2 className="font-oswald text-4xl font-bold text-evraz-dark uppercase">
               Как это работает
             </h2>
@@ -397,15 +489,40 @@ export default function ArKr() {
 
           <div className="grid sm:grid-cols-4 gap-6">
             {[
-              { step: "01", title: "Заявка", desc: "Укажите площадь, назначение здания и регион" },
-              { step: "02", title: "Оплата", desc: "9 998 ₽ — один платёж без скрытых доплат" },
-              { step: "03", title: "Расчёт", desc: "Автоматическое проектирование + проверка инженером" },
-              { step: "04", title: "Получение", desc: "DWG, IFC и PDF-комплект с подписью EVRAZ STEEL BOX" },
+              {
+                step: "01",
+                title: "Заявка",
+                desc: "Укажите площадь, назначение здания и регион",
+              },
+              {
+                step: "02",
+                title: "Оплата",
+                desc: "9 998 ₽ — один платёж без скрытых доплат",
+              },
+              {
+                step: "03",
+                title: "Расчёт",
+                desc: "Автоматическое проектирование + проверка инженером",
+              },
+              {
+                step: "04",
+                title: "Получение",
+                desc: "DWG, IFC и PDF-комплект с подписью EVRAZ STEEL BOX",
+              },
             ].map((s) => (
-              <div key={s.step} className="bg-white border border-evraz-border p-6">
-                <div className="font-oswald text-5xl font-bold text-evraz-red/20 mb-4">{s.step}</div>
-                <h3 className="font-oswald text-lg font-semibold text-evraz-dark uppercase mb-2">{s.title}</h3>
-                <p className="font-ibm text-sm text-evraz-gray leading-relaxed">{s.desc}</p>
+              <div
+                key={s.step}
+                className="bg-white border border-evraz-border p-6"
+              >
+                <div className="font-oswald text-5xl font-bold text-evraz-red/20 mb-4">
+                  {s.step}
+                </div>
+                <h3 className="font-oswald text-lg font-semibold text-evraz-dark uppercase mb-2">
+                  {s.title}
+                </h3>
+                <p className="font-ibm text-sm text-evraz-gray leading-relaxed">
+                  {s.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -416,10 +533,13 @@ export default function ArKr() {
       <section id="cta" className="py-24 bg-evraz-red px-6">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-oswald text-5xl font-bold text-white uppercase mb-4">
-            Проект АР+КР<br />за 9 998 ₽
+            Проект АР+КР
+            <br />
+            за 9 998 ₽
           </h2>
           <p className="font-ibm text-white/80 mb-10 text-lg leading-relaxed">
-            Редактируемые DWG + IFC-модель. Подпись инженеров EVRAZ STEEL BOX.<br />
+            Редактируемые DWG + IFC-модель. Подпись инженеров EVRAZ STEEL BOX.
+            <br />
             Готово за 1 рабочий день. Здания 200–3 000 м².
           </p>
           <button
@@ -441,10 +561,16 @@ export default function ArKr() {
             © 2024 EVRAZ STEEL BOX
           </span>
           <div className="flex gap-6">
-            <a href="#" className="font-ibm text-xs text-gray-600 hover:text-gray-400 transition-colors">
+            <a
+              href="#"
+              className="font-ibm text-xs text-gray-600 hover:text-gray-400 transition-colors"
+            >
               Политика конфиденциальности
             </a>
-            <a href="#" className="font-ibm text-xs text-gray-600 hover:text-gray-400 transition-colors">
+            <a
+              href="#"
+              className="font-ibm text-xs text-gray-600 hover:text-gray-400 transition-colors"
+            >
               Согласие на обработку ПД
             </a>
           </div>
