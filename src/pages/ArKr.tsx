@@ -238,66 +238,69 @@ export default function ArKr() {
         </div>
       </section>
 
-      {/* ── ЧТО ВХОДИТ ── */}
+      {/* ── СОСТАВ ПРОЕКТА ── */}
       <section id="deliverables" className="py-24 bg-evraz-light px-6">
         <div className="max-w-5xl mx-auto">
           <div className="mb-12">
             <p className="font-ibm text-xs text-evraz-red uppercase tracking-widest mb-3">Состав проекта</p>
             <h2 className="font-oswald text-4xl font-bold text-evraz-dark uppercase">
-              Что вы получаете
+              Что входит — и что нет
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {DELIVERABLES.map((d) => (
-              <div key={d.title} className="bg-white border border-evraz-border p-8">
-                <div className="w-12 h-12 bg-evraz-red/10 flex items-center justify-center mb-6">
-                  <Icon name={d.icon} size={24} className="text-evraz-red" />
+          <div className="grid lg:grid-cols-2 gap-8">
+            {/* Входит */}
+            <div>
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-6 h-6 bg-evraz-red flex items-center justify-center flex-shrink-0">
+                  <Icon name="Check" size={14} className="text-white" />
                 </div>
-                <h3 className="font-oswald text-lg font-semibold text-evraz-dark uppercase mb-4">
-                  {d.title}
-                </h3>
-                <ul className="space-y-2">
-                  {d.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2 font-ibm text-sm text-evraz-gray">
-                      <Icon name="Check" size={14} className="text-evraz-red mt-0.5 flex-shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                <h3 className="font-oswald text-xl font-semibold text-evraz-dark uppercase">Входит в проект</h3>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── ЧТО НЕ ВХОДИТ ── */}
-      <section id="not-included" className="py-24 bg-white px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="mb-12">
-            <p className="font-ibm text-xs text-evraz-gray uppercase tracking-widest mb-3">Ограничения</p>
-            <h2 className="font-oswald text-4xl font-bold text-evraz-dark uppercase">
-              Не входит в проект
-            </h2>
-            <p className="font-ibm text-sm text-evraz-gray mt-3">
-              Уточните заранее — чтобы не было сюрпризов
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 gap-4">
-            {NOT_INCLUDED.map((item) => (
-              <div key={item.title} className="flex items-start gap-4 border border-evraz-border p-5">
-                <div className="w-7 h-7 bg-gray-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Icon name="Minus" size={14} className="text-evraz-gray" />
-                </div>
-                <div>
-                  <p className="font-ibm text-sm font-semibold text-evraz-dark">{item.title}</p>
-                  {item.note && (
-                    <p className="font-ibm text-xs text-evraz-gray mt-1 leading-relaxed">{item.note}</p>
-                  )}
-                </div>
+              <div className="space-y-4">
+                {DELIVERABLES.map((d) => (
+                  <div key={d.title} className="bg-white border border-evraz-border p-5">
+                    <div className="flex items-center gap-3 mb-3">
+                      <Icon name={d.icon} size={18} className="text-evraz-red flex-shrink-0" />
+                      <h4 className="font-oswald text-sm font-semibold text-evraz-dark uppercase">{d.title}</h4>
+                    </div>
+                    <ul className="space-y-1.5 pl-7">
+                      {d.items.map((item) => (
+                        <li key={item} className="flex items-start gap-2 font-ibm text-sm text-evraz-gray">
+                          <Icon name="Check" size={12} className="text-evraz-red mt-0.5 flex-shrink-0" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            {/* Не входит */}
+            <div>
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-6 h-6 bg-gray-300 flex items-center justify-center flex-shrink-0">
+                  <Icon name="Minus" size={14} className="text-white" />
+                </div>
+                <h3 className="font-oswald text-xl font-semibold text-evraz-dark uppercase">Не входит</h3>
+              </div>
+              <div className="space-y-3">
+                {NOT_INCLUDED.map((item) => (
+                  <div key={item.title} className="flex items-start gap-3 border border-evraz-border bg-white p-5">
+                    <div className="w-5 h-5 bg-gray-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Icon name="X" size={11} className="text-evraz-gray" />
+                    </div>
+                    <div>
+                      <p className="font-ibm text-sm font-semibold text-evraz-dark">{item.title}</p>
+                      {item.note && (
+                        <p className="font-ibm text-xs text-evraz-gray mt-1 leading-relaxed">{item.note}</p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
