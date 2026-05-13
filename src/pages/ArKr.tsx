@@ -35,6 +35,35 @@ const DELIVERABLES = [
   },
 ];
 
+// ─── Что не входит ────────────────────────────────────────────────────────────
+
+const NOT_INCLUDED = [
+  {
+    title: "КЖ (конструкции железобетонные)",
+    note: null,
+  },
+  {
+    title: "Фундаменты",
+    note: "Ваша зона ответственности",
+  },
+  {
+    title: "РПЗ для экспертизы",
+    note: "Разрабатывается индивидуально в рамках договора поставки",
+  },
+  {
+    title: "Нетиповые пролёты >24 м",
+    note: null,
+  },
+  {
+    title: "Двухэтажные здания",
+    note: "Только в договоре поставки",
+  },
+  {
+    title: "Спецификации металла",
+    note: "Включены в договор поставки на стадии КМД",
+  },
+];
+
 // ─── Сравнение с рынком ────────────────────────────────────────────────────────
 
 const COMPARISON = [
@@ -242,8 +271,39 @@ export default function ArKr() {
         </div>
       </section>
 
+      {/* ── ЧТО НЕ ВХОДИТ ── */}
+      <section id="not-included" className="py-24 bg-white px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-12">
+            <p className="font-ibm text-xs text-evraz-gray uppercase tracking-widest mb-3">Ограничения</p>
+            <h2 className="font-oswald text-4xl font-bold text-evraz-dark uppercase">
+              Не входит в проект
+            </h2>
+            <p className="font-ibm text-sm text-evraz-gray mt-3">
+              Уточните заранее — чтобы не было сюрпризов
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-4">
+            {NOT_INCLUDED.map((item) => (
+              <div key={item.title} className="flex items-start gap-4 border border-evraz-border p-5">
+                <div className="w-7 h-7 bg-gray-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Icon name="Minus" size={14} className="text-evraz-gray" />
+                </div>
+                <div>
+                  <p className="font-ibm text-sm font-semibold text-evraz-dark">{item.title}</p>
+                  {item.note && (
+                    <p className="font-ibm text-xs text-evraz-gray mt-1 leading-relaxed">{item.note}</p>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── СРАВНЕНИЕ ── */}
-      <section id="comparison" className="py-24 bg-white px-6">
+      <section id="comparison" className="py-24 bg-evraz-light px-6">
         <div className="max-w-5xl mx-auto">
           <div className="mb-12">
             <p className="font-ibm text-xs text-evraz-red uppercase tracking-widest mb-3">Экономика</p>
