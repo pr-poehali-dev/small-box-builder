@@ -11,6 +11,7 @@ import BigBox2 from "./pages/BigBox2";
 import BigBoxThanks from "./pages/BigBoxThanks";
 import Parking from "./pages/Parking";
 import PartnerReview from "./pages/PartnerReview";
+import ArKr from "./pages/ArKr";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/bigbox/thanks" element={<BigBoxThanks />} />
           <Route path="/parking" element={<Parking />} />
           <Route path="/partners/:slug" element={<PartnerReview />} />
+          <Route path="/arkr" element={<ArKr />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
