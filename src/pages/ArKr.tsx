@@ -36,10 +36,6 @@ const DELIVERABLES = [
 
 const NOT_INCLUDED = [
   {
-    title: "КЖ (конструкции железобетонные)",
-    note: null,
-  },
-  {
     title: "Фундаменты",
     note: "Ваша зона ответственности",
   },
