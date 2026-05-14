@@ -81,13 +81,6 @@ const COMPARISON = [
 
 // ─── Для кого подходит ─────────────────────────────────────────────────────────
 
-const FOR_WHOM = [
-  { icon: "Building2", text: "Проектировщики, работающие с типовыми зданиями" },
-  { icon: "Briefcase", text: "Девелоперы и заказчики с серийными объектами" },
-  { icon: "Ruler", text: "ГИПы, которым нужно быстро пройти экспертизу" },
-  { icon: "Users", text: "Управляющие компании и застройщики" },
-];
-
 // ─── Форма ─────────────────────────────────────────────────────────────────────
 
 interface FormData {
@@ -439,36 +432,6 @@ export default function ArKr() {
                     </p>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── ДЛЯ КОГО ── */}
-      <section id="for-whom" className="py-24 bg-evraz-dark px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="mb-12">
-            <p className="font-ibm text-xs text-evraz-red uppercase tracking-widest mb-3">
-              Целевая аудитория
-            </p>
-            <h2 className="font-oswald text-4xl font-bold text-white uppercase">
-              Кому подходит
-            </h2>
-          </div>
-
-          <div className="grid sm:grid-cols-2 gap-4">
-            {FOR_WHOM.map((f) => (
-              <div
-                key={f.text}
-                className="flex items-center gap-4 border border-evraz-border/30 p-6 hover:border-evraz-red/40 transition-colors"
-              >
-                <div className="w-10 h-10 bg-evraz-red/10 flex items-center justify-center flex-shrink-0">
-                  <Icon name={f.icon} size={20} className="text-evraz-red" />
-                </div>
-                <span className="font-ibm text-sm text-gray-300 leading-relaxed">
-                  {f.text}
-                </span>
               </div>
             ))}
           </div>
