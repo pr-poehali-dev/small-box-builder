@@ -64,7 +64,7 @@ const COMPARISON = [
     days: "20–40 дней",
     ok: false,
   },
-  { label: "EVRAZ STEEL BOX", price: "9 998 ₽", days: "1 день", ok: true },
+  { label: "EVRAZ STEEL BOX", price: "9 998 ₽", days: "2 дня", ok: true },
 ];
 
 // ─── Для кого подходит ─────────────────────────────────────────────────────────
@@ -106,7 +106,7 @@ function LeadForm({
             ЗАКАЗАТЬ АР+КР — 9 998 ₽
           </h3>
           <p className="font-ibm text-xs text-gray-400 mt-2 leading-relaxed">
-            Укажите параметры здания — получите готовый проект за 1 рабочий день
+            Укажите параметры здания — получите готовый проект за 2 рабочих дня
             с подписью инженеров EVRAZ STEEL BOX
           </p>
         </div>
@@ -227,7 +227,7 @@ export default function ArKr() {
           <p className="font-ibm text-lg text-gray-400 mb-10 max-w-2xl leading-relaxed">
             Проект АР+КР для типовых зданий 200–3 000 м² за{" "}
             <span className="text-white font-semibold">9 998 ₽</span> вместо 150
-            000 ₽. Готово за 1 рабочий день. Подпись инженеров EVRAZ STEEL BOX.
+            000 ₽. Готово за 2 рабочих дня. Подпись инженеров EVRAZ STEEL BOX.
           </p>
 
           {/* CTA */}
@@ -245,7 +245,7 @@ export default function ArKr() {
                 className="text-evraz-red flex-shrink-0"
               />
               <span className="font-ibm text-sm text-gray-400">
-                Готово за <span className="text-white">1 рабочий день</span>
+                Готово за <span className="text-white">2 рабочих дня</span>
               </span>
             </div>
           </div>
@@ -317,6 +317,76 @@ export default function ArKr() {
                 ))}
               </div>
             </div>
+            {/* ── СРАВНЕНИЕ ── */}
+            <section id="comparison" className="py-24 bg-evraz-light px-6">
+              <div className="max-w-5xl mx-auto">
+                <div className="mb-12">
+                  <p className="font-ibm text-xs text-evraz-red uppercase tracking-widest mb-3">
+                    Экономика
+                  </p>
+                  <h2 className="font-oswald text-4xl font-bold text-evraz-dark uppercase">
+                    Сравнение с рынком
+                  </h2>
+                </div>
+
+                <div className="space-y-4">
+                  {COMPARISON.map((c) => (
+                    <div
+                      key={c.label}
+                      className={`flex flex-col sm:flex-row sm:items-center justify-between p-6 border-2 gap-4 ${
+                        c.ok
+                          ? "border-evraz-red bg-evraz-red/5"
+                          : "border-evraz-border bg-white"
+                      }`}
+                    >
+                      <div className="flex items-center gap-4">
+                        <div
+                          className={`w-8 h-8 flex items-center justify-center flex-shrink-0 ${c.ok ? "bg-evraz-red" : "bg-evraz-border"}`}
+                        >
+                          <Icon
+                            name={c.ok ? "Check" : "X"}
+                            size={16}
+                            className={c.ok ? "text-white" : "text-evraz-gray"}
+                          />
+                        </div>
+                        <span
+                          className={`font-oswald text-lg uppercase ${c.ok ? "text-evraz-dark font-bold" : "text-evraz-gray"}`}
+                        >
+                          {c.label}
+                        </span>
+                        {c.ok && (
+                          <span className="bg-evraz-red text-white font-ibm text-xs px-2 py-1 uppercase tracking-wider">
+                            Выгоднее в 15 раз
+                          </span>
+                        )}
+                      </div>
+                      <div className="flex gap-8 sm:gap-12 text-right">
+                        <div>
+                          <p className="font-ibm text-xs text-evraz-gray uppercase tracking-wider mb-1">
+                            Стоимость
+                          </p>
+                          <p
+                            className={`font-oswald text-xl font-bold ${c.ok ? "text-evraz-red" : "text-evraz-gray line-through"}`}
+                          >
+                            {c.price}
+                          </p>
+                        </div>
+                        <div>
+                          <p className="font-ibm text-xs text-evraz-gray uppercase tracking-wider mb-1">
+                            Срок
+                          </p>
+                          <p
+                            className={`font-oswald text-xl font-bold ${c.ok ? "text-evraz-dark" : "text-evraz-gray"}`}
+                          >
+                            {c.days}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
 
             {/* Не входит */}
             <div>
@@ -351,77 +421,6 @@ export default function ArKr() {
                 ))}
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── СРАВНЕНИЕ ── */}
-      <section id="comparison" className="py-24 bg-evraz-light px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="mb-12">
-            <p className="font-ibm text-xs text-evraz-red uppercase tracking-widest mb-3">
-              Экономика
-            </p>
-            <h2 className="font-oswald text-4xl font-bold text-evraz-dark uppercase">
-              Сравнение с рынком
-            </h2>
-          </div>
-
-          <div className="space-y-4">
-            {COMPARISON.map((c) => (
-              <div
-                key={c.label}
-                className={`flex flex-col sm:flex-row sm:items-center justify-between p-6 border-2 gap-4 ${
-                  c.ok
-                    ? "border-evraz-red bg-evraz-red/5"
-                    : "border-evraz-border bg-white"
-                }`}
-              >
-                <div className="flex items-center gap-4">
-                  <div
-                    className={`w-8 h-8 flex items-center justify-center flex-shrink-0 ${c.ok ? "bg-evraz-red" : "bg-evraz-border"}`}
-                  >
-                    <Icon
-                      name={c.ok ? "Check" : "X"}
-                      size={16}
-                      className={c.ok ? "text-white" : "text-evraz-gray"}
-                    />
-                  </div>
-                  <span
-                    className={`font-oswald text-lg uppercase ${c.ok ? "text-evraz-dark font-bold" : "text-evraz-gray"}`}
-                  >
-                    {c.label}
-                  </span>
-                  {c.ok && (
-                    <span className="bg-evraz-red text-white font-ibm text-xs px-2 py-1 uppercase tracking-wider">
-                      Выгоднее в 15 раз
-                    </span>
-                  )}
-                </div>
-                <div className="flex gap-8 sm:gap-12 text-right">
-                  <div>
-                    <p className="font-ibm text-xs text-evraz-gray uppercase tracking-wider mb-1">
-                      Стоимость
-                    </p>
-                    <p
-                      className={`font-oswald text-xl font-bold ${c.ok ? "text-evraz-red" : "text-evraz-gray line-through"}`}
-                    >
-                      {c.price}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="font-ibm text-xs text-evraz-gray uppercase tracking-wider mb-1">
-                      Срок
-                    </p>
-                    <p
-                      className={`font-oswald text-xl font-bold ${c.ok ? "text-evraz-dark" : "text-evraz-gray"}`}
-                    >
-                      {c.days}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
