@@ -271,8 +271,91 @@ export default function ArKr() {
             </h2>
           </div>
 
+          <div className="grid lg:grid-cols-2 gap-8">
+            {/* Входит */}
+            <div>
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-6 h-6 bg-evraz-red flex items-center justify-center flex-shrink-0">
+                  <Icon name="Check" size={14} className="text-white" />
+                </div>
+                <h3 className="font-oswald text-xl font-semibold text-evraz-dark uppercase">
+                  Входит в проект
+                </h3>
+              </div>
+              <div className="space-y-4">
+                {DELIVERABLES.map((d) => (
+                  <div
+                    key={d.title}
+                    className="bg-white border border-evraz-border p-5"
+                  >
+                    <div className="flex items-center gap-3 mb-3">
+                      <Icon
+                        name={d.icon}
+                        size={18}
+                        className="text-evraz-red flex-shrink-0"
+                      />
+                      <h4 className="font-oswald text-sm font-semibold text-evraz-dark uppercase">
+                        {d.title}
+                      </h4>
+                    </div>
+                    <ul className="space-y-1.5 pl-7">
+                      {d.items.map((item) => (
+                        <li
+                          key={item}
+                          className="flex items-start gap-2 font-ibm text-sm text-evraz-gray"
+                        >
+                          <Icon
+                            name="Check"
+                            size={12}
+                            className="text-evraz-red mt-0.5 flex-shrink-0"
+                          />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
 
- {/* ── СРАВНЕНИЕ ── */}
+            {/* Не входит */}
+            <div>
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-6 h-6 bg-gray-300 flex items-center justify-center flex-shrink-0">
+                  <Icon name="Minus" size={14} className="text-white" />
+                </div>
+                <h3 className="font-oswald text-xl font-semibold text-evraz-dark uppercase">
+                  Не входит
+                </h3>
+              </div>
+              <div className="space-y-3">
+                {NOT_INCLUDED.map((item) => (
+                  <div
+                    key={item.title}
+                    className="flex items-start gap-3 border border-evraz-border bg-white p-5"
+                  >
+                    <div className="w-5 h-5 bg-gray-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Icon name="X" size={11} className="text-evraz-gray" />
+                    </div>
+                    <div>
+                      <p className="font-ibm text-sm font-semibold text-evraz-dark">
+                        {item.title}
+                      </p>
+                      {item.note && (
+                        <p className="font-ibm text-xs text-evraz-gray mt-1 leading-relaxed">
+                          {item.note}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── СРАВНЕНИЕ ── */}
       <section id="comparison" className="py-24 bg-evraz-light px-6">
         <div className="max-w-5xl mx-auto">
           <div className="mb-12">
@@ -342,90 +425,8 @@ export default function ArKr() {
           </div>
         </div>
       </section>
-      
-            {/* Не входит */}
-            <div>
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-6 h-6 bg-gray-300 flex items-center justify-center flex-shrink-0">
-                  <Icon name="Minus" size={14} className="text-white" />
-                </div>
-                <h3 className="font-oswald text-xl font-semibold text-evraz-dark uppercase">
-                  Не входит
-                </h3>
-              </div>
-              <div className="space-y-3">
-                {NOT_INCLUDED.map((item) => (
-                  <div
-                    key={item.title}
-                    className="flex items-start gap-3 border border-evraz-border bg-white p-5"
-                  >
-                    <div className="w-5 h-5 bg-gray-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Icon name="X" size={11} className="text-evraz-gray" />
-                    </div>
-                    <div>
-                      <p className="font-ibm text-sm font-semibold text-evraz-dark">
-                        {item.title}
-                      </p>
-                      {item.note && (
-                        <p className="font-ibm text-xs text-evraz-gray mt-1 leading-relaxed">
-                          {item.note}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
 
- <div className="grid lg:grid-cols-2 gap-8">
-            {/* Входит */}
-            <div>
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-6 h-6 bg-evraz-red flex items-center justify-center flex-shrink-0">
-                  <Icon name="Check" size={14} className="text-white" />
-                </div>
-                <h3 className="font-oswald text-xl font-semibold text-evraz-dark uppercase">
-                  Входит в проект
-                </h3>
-              </div>
-              <div className="space-y-4">
-                {DELIVERABLES.map((d) => (
-                  <div
-                    key={d.title}
-                    className="bg-white border border-evraz-border p-5"
-                  >
-                    <div className="flex items-center gap-3 mb-3">
-                      <Icon
-                        name={d.icon}
-                        size={18}
-                        className="text-evraz-red flex-shrink-0"
-                      />
-                      <h4 className="font-oswald text-sm font-semibold text-evraz-dark uppercase">
-                        {d.title}
-                      </h4>
-                    </div>
-                    <ul className="space-y-1.5 pl-7">
-                      {d.items.map((item) => (
-                        <li
-                          key={item}
-                          className="flex items-start gap-2 font-ibm text-sm text-evraz-gray"
-                        >
-                          <Icon
-                            name="Check"
-                            size={12}
-                            className="text-evraz-red mt-0.5 flex-shrink-0"
-                          />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </div>
-     
+
 
       {/* ── КАК РАБОТАЕТ ── */}
       <section id="how" className="py-24 bg-evraz-light px-6">
