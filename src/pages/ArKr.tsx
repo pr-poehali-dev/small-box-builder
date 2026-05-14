@@ -432,6 +432,67 @@ export default function ArKr() {
         </div>
       </section>
 
+      {/* ── ОБРАЗЕЦ РЕЗУЛЬТАТА ── */}
+      <section id="result" className="py-24 bg-white px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-12">
+            <p className="font-ibm text-xs text-evraz-red uppercase tracking-widest mb-3">
+              Пример
+            </p>
+            <h2 className="font-oswald text-4xl font-bold text-evraz-dark uppercase">
+              Образец результата
+            </h2>
+            <p className="font-ibm text-evraz-gray mt-3 text-sm leading-relaxed max-w-xl">
+              Реальный комплект документации, который вы получите после заказа. Скачайте и оцените качество.
+            </p>
+          </div>
+
+          {/* Видео 3D-модели */}
+          <div className="mb-10 border border-evraz-border overflow-hidden">
+            <video
+              src="https://evrazsteelbox.ru/upload/iblock/b99/v50xx6b31r4ov4t1lllwsmzy1bfzhwax.webm"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full object-cover"
+            />
+          </div>
+
+          {/* Файлы для скачивания */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              { label: "АР — Архитектурные решения", ext: "PDF", icon: "FileText", url: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/6e1ab496-3649-4b48-aedf-b1a300216991.pdf" },
+              { label: "КР — Конструктивные решения", ext: "PDF", icon: "Settings", url: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/4a350aa7-1922-4793-8f86-eaaeb6027b62.pdf" },
+              { label: "BIM-модель здания", ext: "IFC", icon: "Box", url: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/427bfd3e-b9bb-4ad0-be45-2634f83717ca.ifc" },
+              { label: "Ведомость элементов", ext: "PDF", icon: "List", url: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/ab656364-eeff-4785-9864-d50d2b6ed6dc.pdf" },
+              { label: "Расчёт стоимости здания", ext: "PDF", icon: "Calculator", url: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/4188b9c1-6076-47da-8237-86eaf43d9ed7.pdf" },
+            ].map((f) => (
+              <a
+                key={f.url}
+                href={f.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 border border-evraz-border bg-evraz-light p-5 hover:border-evraz-red hover:bg-evraz-red/5 transition-colors group"
+              >
+                <div className="w-10 h-10 bg-evraz-red/10 flex items-center justify-center flex-shrink-0 group-hover:bg-evraz-red/20 transition-colors">
+                  <Icon name={f.icon} size={20} className="text-evraz-red" />
+                </div>
+                <div className="min-w-0">
+                  <p className="font-ibm text-sm font-semibold text-evraz-dark leading-tight">
+                    {f.label}
+                  </p>
+                  <p className="font-ibm text-xs text-evraz-gray mt-1 uppercase tracking-wider">
+                    {f.ext} — скачать
+                  </p>
+                </div>
+                <Icon name="Download" size={16} className="text-evraz-gray group-hover:text-evraz-red ml-auto flex-shrink-0 transition-colors" />
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── КАК РАБОТАЕТ ── */}
       <section id="how" className="py-24 bg-evraz-light px-6">
         <div className="max-w-5xl mx-auto">
