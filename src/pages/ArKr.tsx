@@ -493,6 +493,93 @@ export default function ArKr() {
         </div>
       </section>
 
+      {/* ── СОСТАВ ПРОЕКТНОЙ ДОКУМЕНТАЦИИ ── */}
+      <section id="expertise" className="py-24 bg-evraz-light px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-12">
+            <p className="font-ibm text-xs text-evraz-red uppercase tracking-widest mb-3">
+              Экспертиза
+            </p>
+            <h2 className="font-oswald text-4xl font-bold text-evraz-dark uppercase">
+              Состав проектной документации
+            </h2>
+            <p className="font-ibm text-evraz-gray mt-3 text-sm leading-relaxed max-w-2xl">
+              Для объектов, не проходящих государственную экспертизу. Разделы, выделенные красным — входят в ваш комплект АР+КР.
+            </p>
+          </div>
+
+          {/* Обязательные разделы */}
+          <div className="mb-8">
+            <p className="font-ibm text-xs text-evraz-gray uppercase tracking-widest mb-4">
+              Обязательные разделы проектной документации
+            </p>
+            <div className="flex flex-col gap-2">
+              {[
+                { num: "1", title: "Пояснительная записка", ours: true },
+                { num: "2", title: "Схема планировочной организации земельного участка (ОПЗ)", ours: false },
+                { num: "3", title: "Объёмно-планировочные и архитектурные решения (АР)", ours: true },
+                { num: "4", title: "Конструктивные решения (КР)", ours: true },
+                { num: "7", title: "Проект организации строительства (ПОС)", ours: false },
+              ].map((item) => (
+                <div
+                  key={item.num}
+                  className={`flex items-center gap-4 px-5 py-4 border ${
+                    item.ours
+                      ? "border-evraz-red bg-evraz-red/5"
+                      : "border-evraz-border bg-white"
+                  }`}
+                >
+                  <span
+                    className={`font-oswald text-sm font-bold w-6 text-center flex-shrink-0 ${
+                      item.ours ? "text-evraz-red" : "text-evraz-gray"
+                    }`}
+                  >
+                    {item.num}
+                  </span>
+                  <p
+                    className={`font-ibm text-sm flex-1 ${
+                      item.ours ? "text-evraz-dark font-semibold" : "text-evraz-gray"
+                    }`}
+                  >
+                    {item.title}
+                  </p>
+                  {item.ours && (
+                    <span className="flex items-center gap-1.5 font-ibm text-xs text-evraz-red uppercase tracking-wider flex-shrink-0">
+                      <Icon name="CheckCircle" size={14} />
+                      Входит в комплект
+                    </span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Дополнительные разделы */}
+          <div>
+            <p className="font-ibm text-xs text-evraz-gray uppercase tracking-widest mb-4">
+              Дополнительно — потребуется в ходе строительства
+            </p>
+            <div className="flex flex-col gap-2">
+              {[
+                { num: "5", title: "Инженерные сети: электроснабжение, водоснабжение, водоотведение, отопление, вентиляция (наружные и внутренние)" },
+                { num: "9", title: "Мероприятия по обеспечению пожарной безопасности" },
+                { num: "11", title: "Мероприятия по обеспечению доступа инвалидов" },
+              ].map((item) => (
+                <div
+                  key={item.num}
+                  className="flex items-center gap-4 px-5 py-4 border border-dashed border-evraz-border bg-white"
+                >
+                  <span className="font-oswald text-sm font-bold w-6 text-center flex-shrink-0 text-evraz-gray">
+                    {item.num}
+                  </span>
+                  <p className="font-ibm text-sm text-evraz-gray flex-1">{item.title}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── КАК РАБОТАЕТ ── */}
       <section id="how" className="py-24 bg-evraz-light px-6">
         <div className="max-w-5xl mx-auto">
