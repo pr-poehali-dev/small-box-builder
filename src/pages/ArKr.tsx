@@ -378,7 +378,7 @@ export default function ArKr() {
             </div>
           </div>
         </div>
-      </section>
+
  <div className="grid lg:grid-cols-2 gap-8">
             {/* Входит */}
             <div>
