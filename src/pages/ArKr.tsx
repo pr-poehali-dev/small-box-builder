@@ -46,7 +46,7 @@ const NOT_INCLUDED = [
   {
     title: "Спецификации металла",
     note: "Включены в договор поставки на стадии КМД",
-  },  
+  },
 ];
 
 // ─── Сравнение с рынком ────────────────────────────────────────────────────────
@@ -259,6 +259,77 @@ export default function ArKr() {
         </div>
       </section>
 
+      {/* ── СРАВНЕНИЕ ── */}
+      <section id="comparison" className="py-24 bg-evraz-light px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-12">
+            <p className="font-ibm text-xs text-evraz-red uppercase tracking-widest mb-3">
+              Экономика
+            </p>
+            <h2 className="font-oswald text-4xl font-bold text-evraz-dark uppercase">
+              Сравнение с рынком
+            </h2>
+          </div>
+
+          <div className="space-y-4">
+            {COMPARISON.map((c) => (
+              <div
+                key={c.label}
+                className={`flex flex-col sm:flex-row sm:items-center justify-between p-6 border-2 gap-4 ${
+                  c.ok
+                    ? "border-evraz-red bg-evraz-red/5"
+                    : "border-evraz-border bg-white"
+                }`}
+              >
+                <div className="flex items-center gap-4">
+                  <div
+                    className={`w-8 h-8 flex items-center justify-center flex-shrink-0 ${c.ok ? "bg-evraz-red" : "bg-evraz-border"}`}
+                  >
+                    <Icon
+                      name={c.ok ? "Check" : "X"}
+                      size={16}
+                      className={c.ok ? "text-white" : "text-evraz-gray"}
+                    />
+                  </div>
+                  <span
+                    className={`font-oswald text-lg uppercase ${c.ok ? "text-evraz-dark font-bold" : "text-evraz-gray"}`}
+                  >
+                    {c.label}
+                  </span>
+                  {c.ok && (
+                    <span className="bg-evraz-red text-white font-ibm text-xs px-2 py-1 uppercase tracking-wider">
+                      Выгоднее в 15 раз
+                    </span>
+                  )}
+                </div>
+                <div className="flex gap-8 sm:gap-12 text-right">
+                  <div>
+                    <p className="font-ibm text-xs text-evraz-gray uppercase tracking-wider mb-1">
+                      Стоимость
+                    </p>
+                    <p
+                      className={`font-oswald text-xl font-bold ${c.ok ? "text-evraz-red" : "text-evraz-gray line-through"}`}
+                    >
+                      {c.price}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="font-ibm text-xs text-evraz-gray uppercase tracking-wider mb-1">
+                      Срок
+                    </p>
+                    <p
+                      className={`font-oswald text-xl font-bold ${c.ok ? "text-evraz-dark" : "text-evraz-gray"}`}
+                    >
+                      {c.days}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── СОСТАВ ПРОЕКТА ── */}
       <section id="deliverables" className="py-24 bg-evraz-light px-6">
         <div className="max-w-5xl mx-auto">
@@ -354,79 +425,6 @@ export default function ArKr() {
           </div>
         </div>
       </section>
-
-      {/* ── СРАВНЕНИЕ ── */}
-      <section id="comparison" className="py-24 bg-evraz-light px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="mb-12">
-            <p className="font-ibm text-xs text-evraz-red uppercase tracking-widest mb-3">
-              Экономика
-            </p>
-            <h2 className="font-oswald text-4xl font-bold text-evraz-dark uppercase">
-              Сравнение с рынком
-            </h2>
-          </div>
-
-          <div className="space-y-4">
-            {COMPARISON.map((c) => (
-              <div
-                key={c.label}
-                className={`flex flex-col sm:flex-row sm:items-center justify-between p-6 border-2 gap-4 ${
-                  c.ok
-                    ? "border-evraz-red bg-evraz-red/5"
-                    : "border-evraz-border bg-white"
-                }`}
-              >
-                <div className="flex items-center gap-4">
-                  <div
-                    className={`w-8 h-8 flex items-center justify-center flex-shrink-0 ${c.ok ? "bg-evraz-red" : "bg-evraz-border"}`}
-                  >
-                    <Icon
-                      name={c.ok ? "Check" : "X"}
-                      size={16}
-                      className={c.ok ? "text-white" : "text-evraz-gray"}
-                    />
-                  </div>
-                  <span
-                    className={`font-oswald text-lg uppercase ${c.ok ? "text-evraz-dark font-bold" : "text-evraz-gray"}`}
-                  >
-                    {c.label}
-                  </span>
-                  {c.ok && (
-                    <span className="bg-evraz-red text-white font-ibm text-xs px-2 py-1 uppercase tracking-wider">
-                      Выгоднее в 15 раз
-                    </span>
-                  )}
-                </div>
-                <div className="flex gap-8 sm:gap-12 text-right">
-                  <div>
-                    <p className="font-ibm text-xs text-evraz-gray uppercase tracking-wider mb-1">
-                      Стоимость
-                    </p>
-                    <p
-                      className={`font-oswald text-xl font-bold ${c.ok ? "text-evraz-red" : "text-evraz-gray line-through"}`}
-                    >
-                      {c.price}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="font-ibm text-xs text-evraz-gray uppercase tracking-wider mb-1">
-                      Срок
-                    </p>
-                    <p
-                      className={`font-oswald text-xl font-bold ${c.ok ? "text-evraz-dark" : "text-evraz-gray"}`}
-                    >
-                      {c.days}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-
 
       {/* ── КАК РАБОТАЕТ ── */}
       <section id="how" className="py-24 bg-evraz-light px-6">
