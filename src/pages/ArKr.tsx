@@ -621,8 +621,8 @@ export default function ArKr() {
                 {/* Ширина пролёта */}
                 <tr className="bg-evraz-light/50">
                   <td className="border border-evraz-border p-3 text-evraz-dark font-medium">Ширина пролёта, м</td>
-                  <td className="border border-evraz-border p-3 text-center text-evraz-dark">дек.18</td>
-                  <td className="border border-evraz-border p-3 text-center text-evraz-dark" colSpan={2}>дек.24</td>
+                  <td className="border border-evraz-border p-3 text-center text-evraz-dark">12 - 18</td>
+                  <td className="border border-evraz-border p-3 text-center text-evraz-dark" colSpan={2}12 - 24</td>
                 </tr>
                 {/* Высота */}
                 <tr>
