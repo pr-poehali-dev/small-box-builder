@@ -576,7 +576,7 @@ export default function Catalog() {
       </section>
 
       {/* FILTER BAR */}
-      <section className="bg-evraz-light border-b border-evraz-border py-5 sticky top-16 z-40">
+      <section className="bg-evraz-light border-b border-evraz-border py-5">
         <div className="container mx-auto space-y-4">
           {/* Строка 1: Назначение здания */}
           <div className="flex flex-wrap items-center gap-2">
