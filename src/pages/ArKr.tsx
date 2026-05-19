@@ -598,16 +598,19 @@ export default function ArKr() {
                 <tr>
                   <th className="border border-evraz-border bg-evraz-light p-3 text-left w-40" />
                   <th className="border border-evraz-border bg-evraz-light p-3 text-center font-normal text-evraz-dark leading-snug">
+                    <img src="https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/d7220fa8-311f-4f46-89fe-94625ddbceb9.png" alt="Каркас 1" className="mx-auto mb-2 h-24 object-contain" />
                     Каркас с колоннами и ригелями<br />
                     <span className="text-evraz-gray">из горячекатаного</span><br />
                     <span className="text-evraz-gray">двутавра</span>
                   </th>
                   <th className="border border-evraz-border bg-evraz-light p-3 text-center font-normal text-evraz-dark leading-snug">
+                    <img src="https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/ffa54025-88c8-4ca8-930d-1f5902764c09.png" alt="Каркас 2" className="mx-auto mb-2 h-24 object-contain" />
                     Каркас с колоннами<br />
                     <span className="text-evraz-gray">из горячекатаного двутавра</span><br />
                     <span className="text-evraz-gray">и шпренгельными ригелями</span>
                   </th>
                   <th className="border border-evraz-border bg-evraz-light p-3 text-center font-normal text-evraz-dark leading-snug">
+                    <img src="https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/d4f82733-1ab4-418a-b5ef-7ee3b7eb31bf.png" alt="Каркас 3" className="mx-auto mb-2 h-24 object-contain" />
                     Каркас с колоннами<br />
                     <span className="text-evraz-gray">из горячекатаного двутавра</span><br />
                     <span className="text-evraz-gray">и шпренгельными ригелями</span>
