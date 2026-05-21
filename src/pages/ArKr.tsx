@@ -3,6 +3,111 @@ import { useNavigate } from "react-router-dom";
 import Header from "@/components/shared/Header";
 import Icon from "@/components/ui/icon";
 
+// ─── Как это работает ─────────────────────────────────────────────────────────
+
+const HOW_STEPS = [
+  {
+    step: "01",
+    title: "Подключиться к BOX EXPRESS",
+    desc: "Зарегистрируйтесь на платформе и получите доступ к онлайн-конфигуратору зданий.",
+    cta: { label: "Перейти", href: "#" },
+  },
+  {
+    step: "02",
+    title: "Сконфигурировать здание",
+    desc: "Задайте параметры и выберите оптимальный вариант в конфигураторе.",
+    cta: null,
+  },
+  {
+    step: "03",
+    title: "Запросить договор АР + КР",
+    desc: "Договор формируется автоматически по конфигурации здания.",
+    cta: null,
+  },
+  {
+    step: "04",
+    title: "Оплатить 9 998 ₽ вкл. НДС",
+    desc: "Один платёж без скрытых доплат на юр. или физ. лицо.",
+    cta: null,
+  },
+  {
+    step: "05",
+    title: "Получить документацию",
+    desc: "За 7 рабочих дней — полный комплект АР + КР: DWG, IFC и PDF.",
+    cta: null,
+  },
+];
+
+function HowItWorks() {
+  const [active, setActive] = useState<number | null>(null);
+
+  return (
+    <section id="how" className="py-16 bg-evraz-light px-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="mb-8">
+          <p className="font-ibm text-xs text-evraz-red uppercase tracking-widest mb-2">Процесс</p>
+          <h2 className="font-oswald text-4xl font-bold text-evraz-dark uppercase">Как это работает</h2>
+        </div>
+
+        {/* Шаги горизонтально */}
+        <div className="grid grid-cols-5 gap-0 border border-evraz-border bg-white mb-0">
+          {HOW_STEPS.map((s, i) => (
+            <button
+              key={s.step}
+              onClick={() => setActive(active === i ? null : i)}
+              className={`text-left p-5 border-r border-evraz-border last:border-r-0 transition-colors cursor-pointer ${active === i ? "bg-evraz-dark" : "hover:bg-evraz-light/80"}`}
+            >
+              <div className={`font-oswald text-3xl font-bold mb-3 ${active === i ? "text-evraz-red" : "text-evraz-red/30"}`}>
+                {s.step}
+              </div>
+              <p className={`font-oswald text-sm font-semibold uppercase leading-snug mb-2 ${active === i ? "text-white" : "text-evraz-dark"}`}>
+                {s.title}
+              </p>
+              {s.cta && (
+                <span className="inline-block font-ibm text-xs text-evraz-red underline mt-1">
+                  {s.cta.label} →
+                </span>
+              )}
+            </button>
+          ))}
+        </div>
+
+        {/* Выезжающая панель */}
+        <div
+          className={`overflow-hidden transition-all duration-300 border-x border-b border-evraz-border bg-white ${active !== null ? "max-h-96" : "max-h-0 border-0"}`}
+        >
+          {active !== null && (
+            <div className="flex gap-8 p-6">
+              <div className="flex-1">
+                <p className="font-ibm text-sm text-evraz-gray leading-relaxed mb-4">
+                  {HOW_STEPS[active].desc}
+                </p>
+                {HOW_STEPS[active].cta && (
+                  <a
+                    href={HOW_STEPS[active].cta!.href}
+                    className="font-oswald text-sm font-semibold uppercase tracking-widest bg-evraz-red text-white px-5 py-2.5 hover:bg-evraz-dark transition-colors inline-block"
+                  >
+                    {HOW_STEPS[active].cta!.label}
+                  </a>
+                )}
+              </div>
+              {/* Заглушка видео */}
+              <div className="w-64 flex-shrink-0 aspect-video bg-evraz-light border border-evraz-border flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-10 h-10 rounded-full border-2 border-evraz-border flex items-center justify-center mx-auto mb-2">
+                    <div className="w-0 h-0 border-t-[5px] border-t-transparent border-l-[9px] border-l-evraz-gray border-b-[5px] border-b-transparent ml-0.5" />
+                  </div>
+                  <p className="font-ibm text-xs text-evraz-gray">Видео · ~30 сек</p>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── Что входит в проект ───────────────────────────────────────────────────────
 
 const DELIVERABLES = [
@@ -693,95 +798,7 @@ export default function ArKr() {
       </section>
 
       {/* ── КАК РАБОТАЕТ ── */}
-      <section id="how" className="py-24 bg-evraz-light px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="mb-12">
-            <p className="font-ibm text-xs text-evraz-red uppercase tracking-widest mb-3">
-              Процесс
-            </p>
-            <h2 className="font-oswald text-4xl font-bold text-evraz-dark uppercase">
-              Как это работает
-            </h2>
-          </div>
-
-          <div className="flex flex-col gap-6">
-            {[
-              {
-                step: "01",
-                title: "Подключиться к платформе BOX EXPRESS",
-                desc: "Зарегистрируйтесь на платформе и получите доступ к онлайн-конфигуратору зданий.",
-                cta: { label: "Перейти", href: "#" },
-              },
-              {
-                step: "02",
-                title: "Сконфигурировать здание и выбрать оптимальный вариант",
-                desc: "Задайте параметры: пролёт, высоту, длину, тип кровли и стен. Конфигуратор подберёт оптимальное решение.",
-                cta: null,
-              },
-              {
-                step: "03",
-                title: "Запросить договор на разработку АР + КР",
-                desc: "Нажмите кнопку заказа — договор будет сформирован автоматически на основании конфигурации здания.",
-                cta: null,
-              },
-              {
-                step: "04",
-                title: "Получить договор и оплатить счёт на 9 998 ₽, включая НДС",
-                desc: "Один платёж без скрытых доплат. Счёт выставляется на юридическое или физическое лицо.",
-                cta: null,
-              },
-              {
-                step: "05",
-                title: "Получить весь комплект документации",
-                desc: "В течение 7 рабочих дней вы получаете полный комплект АР + КР: DWG, IFC-модель и PDF с подписью инженеров.",
-                cta: null,
-              },
-            ].map((s) => (
-              <div key={s.step} className="bg-white border border-evraz-border">
-                <div className="flex gap-6 p-6">
-                  {/* Номер + линия */}
-                  <div className="flex flex-col items-center gap-2 flex-shrink-0">
-                    <div className="font-oswald text-2xl font-bold text-evraz-red w-10 text-center">{s.step}</div>
-                    <div className="w-px flex-1 bg-evraz-border" />
-                  </div>
-
-                  {/* Контент */}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-                      <div className="flex-1">
-                        <h3 className="font-oswald text-lg font-semibold text-evraz-dark uppercase mb-2">
-                          {s.title}
-                        </h3>
-                        <p className="font-ibm text-sm text-evraz-gray leading-relaxed">
-                          {s.desc}
-                        </p>
-                      </div>
-                      {s.cta && (
-                        <a
-                          href={s.cta.href}
-                          className="flex-shrink-0 font-oswald text-sm font-semibold uppercase tracking-widest bg-evraz-red text-white px-5 py-2.5 hover:bg-evraz-dark transition-colors self-start"
-                        >
-                          {s.cta.label}
-                        </a>
-                      )}
-                    </div>
-
-                    {/* Заглушка под видео */}
-                    <div className="mt-5 w-full aspect-video bg-evraz-light border border-evraz-border flex items-center justify-center max-w-md">
-                      <div className="text-center">
-                        <div className="w-12 h-12 rounded-full border-2 border-evraz-border flex items-center justify-center mx-auto mb-2">
-                          <div className="w-0 h-0 border-t-[6px] border-t-transparent border-l-[10px] border-l-evraz-gray border-b-[6px] border-b-transparent ml-1" />
-                        </div>
-                        <p className="font-ibm text-xs text-evraz-gray">Видео · ~30 сек</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <HowItWorks />
 
       {/* ── ФИНАЛЬНЫЙ CTA ── */}
       <section id="cta" className="py-24 bg-evraz-red px-6">
