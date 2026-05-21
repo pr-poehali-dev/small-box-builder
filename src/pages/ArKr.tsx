@@ -704,42 +704,79 @@ export default function ArKr() {
             </h2>
           </div>
 
-          <div className="grid sm:grid-cols-4 gap-6">
+          <div className="flex flex-col gap-6">
             {[
               {
                 step: "01",
-                title: "Заявка",
-                desc: "Укажите площадь, назначение здания и регион",
+                title: "Подключиться к платформе BOX EXPRESS",
+                desc: "Зарегистрируйтесь на платформе и получите доступ к онлайн-конфигуратору зданий.",
+                cta: { label: "Перейти", href: "#" },
               },
               {
                 step: "02",
-                title: "Оплата",
-                desc: "9 998 ₽ — один платёж без скрытых доплат",
+                title: "Сконфигурировать здание и выбрать оптимальный вариант",
+                desc: "Задайте параметры: пролёт, высоту, длину, тип кровли и стен. Конфигуратор подберёт оптимальное решение.",
+                cta: null,
               },
               {
                 step: "03",
-                title: "Расчёт",
-                desc: "Автоматическое проектирование + проверка инженером",
+                title: "Запросить договор на разработку АР + КР",
+                desc: "Нажмите кнопку заказа — договор будет сформирован автоматически на основании конфигурации здания.",
+                cta: null,
               },
               {
                 step: "04",
-                title: "Получение",
-                desc: "DWG, IFC и PDF-комплект с подписью EVRAZ STEEL BOX",
+                title: "Получить договор и оплатить счёт на 9 998 ₽, включая НДС",
+                desc: "Один платёж без скрытых доплат. Счёт выставляется на юридическое или физическое лицо.",
+                cta: null,
+              },
+              {
+                step: "05",
+                title: "Получить весь комплект документации",
+                desc: "В течение 7 рабочих дней вы получаете полный комплект АР + КР: DWG, IFC-модель и PDF с подписью инженеров.",
+                cta: null,
               },
             ].map((s) => (
-              <div
-                key={s.step}
-                className="bg-white border border-evraz-border p-6"
-              >
-                <div className="font-oswald text-5xl font-bold text-evraz-red/20 mb-4">
-                  {s.step}
+              <div key={s.step} className="bg-white border border-evraz-border">
+                <div className="flex gap-6 p-6">
+                  {/* Номер + линия */}
+                  <div className="flex flex-col items-center gap-2 flex-shrink-0">
+                    <div className="font-oswald text-2xl font-bold text-evraz-red w-10 text-center">{s.step}</div>
+                    <div className="w-px flex-1 bg-evraz-border" />
+                  </div>
+
+                  {/* Контент */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                      <div className="flex-1">
+                        <h3 className="font-oswald text-lg font-semibold text-evraz-dark uppercase mb-2">
+                          {s.title}
+                        </h3>
+                        <p className="font-ibm text-sm text-evraz-gray leading-relaxed">
+                          {s.desc}
+                        </p>
+                      </div>
+                      {s.cta && (
+                        <a
+                          href={s.cta.href}
+                          className="flex-shrink-0 font-oswald text-sm font-semibold uppercase tracking-widest bg-evraz-red text-white px-5 py-2.5 hover:bg-evraz-dark transition-colors self-start"
+                        >
+                          {s.cta.label}
+                        </a>
+                      )}
+                    </div>
+
+                    {/* Заглушка под видео */}
+                    <div className="mt-5 w-full aspect-video bg-evraz-light border border-evraz-border flex items-center justify-center max-w-md">
+                      <div className="text-center">
+                        <div className="w-12 h-12 rounded-full border-2 border-evraz-border flex items-center justify-center mx-auto mb-2">
+                          <div className="w-0 h-0 border-t-[6px] border-t-transparent border-l-[10px] border-l-evraz-gray border-b-[6px] border-b-transparent ml-1" />
+                        </div>
+                        <p className="font-ibm text-xs text-evraz-gray">Видео · ~30 сек</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="font-oswald text-lg font-semibold text-evraz-dark uppercase mb-2">
-                  {s.title}
-                </h3>
-                <p className="font-ibm text-sm text-evraz-gray leading-relaxed">
-                  {s.desc}
-                </p>
               </div>
             ))}
           </div>
