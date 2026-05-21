@@ -627,7 +627,7 @@ export default function ArKr() {
 
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Параметры — левые 2 колонки */}
-            <div className="lg:col-span-2 grid sm:grid-cols-2 gap-4">
+            <div className="lg:col-span-2 flex flex-col gap-0 border border-evraz-border">
               {[
                 { label: "Ширина пролёта", value: "12–24 м" },
                 { label: "Высота до низа несущих конструкций", value: "3,6–12 м" },
@@ -635,22 +635,32 @@ export default function ArKr() {
                 { label: "Уклон кровли", value: "3–10 %" },
                 { label: "Тип кровли", value: "Мембрана / Сэндвич-панели" },
                 { label: "Тип стен", value: "Сэндвич-панели" },
-                { label: "Окна", value: "До 6 × 2 м" },
-                { label: "Витражи", value: "До 6 × 4,2 м" },
-                { label: "Двери", value: "0,8×2,1 — 2,0×2,1 м" },
-                { label: "Ворота", value: "До 4 × 4,2 м" },
-                { label: "Кранбалки", value: "До 10 т, 2 крана" },
-                { label: "Антресоли", value: "В части здания" },
-              ].map((p) => (
-                <div key={p.label} className="border border-evraz-border bg-evraz-light p-5">
-                  <p className="font-ibm text-xs text-evraz-gray uppercase tracking-widest mb-2 leading-snug">
-                    {p.label}
-                  </p>
-                  <p className="font-oswald text-2xl font-bold text-evraz-dark leading-tight">
-                    {p.value}
-                  </p>
+              ].map((p, i) => (
+                <div key={p.label} className={`flex items-center justify-between gap-6 px-5 py-4 font-ibm text-sm border-b border-evraz-border last:border-b-0 ${i % 2 === 0 ? "bg-evraz-light/50" : "bg-white"}`}>
+                  <span className="text-evraz-gray">{p.label}</span>
+                  <span className="font-semibold text-evraz-dark text-right">{p.value}</span>
                 </div>
               ))}
+
+              {/* Элементы заполнения проёмов */}
+              <div className="px-5 py-4 bg-evraz-light/50 border-b border-evraz-border">
+                <p className="font-ibm text-sm text-evraz-gray mb-2">Элементы заполнения проёмов</p>
+                <ul className="font-ibm text-sm text-evraz-dark space-y-1">
+                  <li>• Окна произвольного размера шириной до 6 м, высотой до 2 м</li>
+                  <li>• Проёмы для витражей размером по ширине до 6 м и по высоте до 4,2 м в основных шагах</li>
+                  <li>• Двери размерами от 0,8 × 2,1 м до 2,0 × 2,1 м</li>
+                  <li>• Ворота размером по ширине до 4 м и по высоте до 4,2 м в основных шагах</li>
+                </ul>
+              </div>
+
+              {/* Дополнительные опции */}
+              <div className="px-5 py-4 bg-white">
+                <p className="font-ibm text-sm text-evraz-gray mb-2">Дополнительные опции</p>
+                <ul className="font-ibm text-sm text-evraz-dark space-y-1">
+                  <li>• Подкрановые пути для кранбалок грузоподъёмностью до 10 тонн, до двух кранов в здании</li>
+                  <li>• Антресоли в части здания</li>
+                </ul>
+              </div>
             </div>
 
             {/* Наши каркасы — правая колонка */}
