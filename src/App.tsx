@@ -6,7 +6,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Catalog from "./pages/Catalog";
-import BigBox from "./pages/BigBox";
 import BigBox2 from "./pages/BigBox2";
 import BigBoxThanks from "./pages/BigBoxThanks";
 import Parking from "./pages/Parking";
@@ -25,7 +24,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/catalog" element={<Catalog />} />
-          <Route path="/bigbox" element={<BigBox />} />
+          <Route path="/bigbox" element={<BigBox2 />} />
           <Route path="/bigbox2" element={<BigBox2 />} />
           <Route path="/bigbox/thanks" element={<BigBoxThanks />} />
           <Route path="/parking" element={<Parking />} />
