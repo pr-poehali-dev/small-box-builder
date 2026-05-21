@@ -621,189 +621,33 @@ export default function ArKr() {
               Технические параметры
             </p>
             <h2 className="font-oswald text-4xl font-bold text-evraz-dark uppercase">
-              Характеристики конструктивных систем
+              Мы автоматически проектируем здания
             </h2>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse font-ibm text-sm">
-              <thead>
-                <tr>
-                  <th className="border border-evraz-border bg-evraz-light p-3 text-left w-40" />
-                  <th className="border border-evraz-border bg-evraz-light p-3 text-center font-normal text-evraz-dark leading-snug">
-                    <img
-                      src="https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/d7220fa8-311f-4f46-89fe-94625ddbceb9.png"
-                      alt="Каркас 1"
-                      className="mx-auto mb-2 h-24 object-contain"
-                    />
-                    Каркас с колоннами и ригелями
-                    <br />
-                    <span className="text-evraz-gray">из горячекатаного</span>
-                    <br />
-                    <span className="text-evraz-gray">двутавра</span>
-                  </th>
-                  <th className="border border-evraz-border bg-evraz-light p-3 text-center font-normal text-evraz-dark leading-snug">
-                    <img
-                      src="https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/ffa54025-88c8-4ca8-930d-1f5902764c09.png"
-                      alt="Каркас 2"
-                      className="mx-auto mb-2 h-24 object-contain"
-                    />
-                    Каркас с колоннами
-                    <br />
-                    <span className="text-evraz-gray">
-                      из горячекатаного двутавра
-                    </span>
-                    <br />
-                    <span className="text-evraz-gray">
-                      и шпренгельными ригелями
-                    </span>
-                  </th>
-                  <th className="border border-evraz-border bg-evraz-light p-3 text-center font-normal text-evraz-dark leading-snug">
-                    <img
-                      src="https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/d4f82733-1ab4-418a-b5ef-7ee3b7eb31bf.png"
-                      alt="Каркас 3"
-                      className="mx-auto mb-2 h-24 object-contain"
-                    />
-                    Каркас с колоннами
-                    <br />
-                    <span className="text-evraz-gray">
-                      из горячекатаного двутавра
-                    </span>
-                    <br />
-                    <span className="text-evraz-gray">
-                      и шпренгельными ригелями
-                    </span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {/* Ширина пролёта */}
-                <tr className="bg-evraz-light/50">
-                  <td className="border border-evraz-border p-3 text-evraz-dark font-medium">
-                    Ширина пролёта, м
-                  </td>
-                  <td className="border border-evraz-border p-3 text-center text-evraz-dark">
-                    12 - 18
-                  </td>
-                  <td
-                    className="border border-evraz-border p-3 text-center text-evraz-dark"
-                    colSpan={2}
-                  >
-                    12 - 24
-                  </td>
-                </tr>
-                {/* Высота */}
-                <tr>
-                  <td className="border border-evraz-border p-3 text-evraz-dark font-medium leading-snug">
-                    Высота до низа несущих конструкций, м
-                  </td>
-                  <td
-                    className="border border-evraz-border p-3 text-center text-evraz-dark"
-                    colSpan={3}
-                  >
-                    3,6 – 12
-                  </td>
-                </tr>
-                {/* Длина */}
-                <tr className="bg-evraz-light/50">
-                  <td className="border border-evraz-border p-3 text-evraz-dark font-medium">
-                    Длина здания, м
-                  </td>
-                  <td
-                    className="border border-evraz-border p-3 text-center text-evraz-dark"
-                    colSpan={3}
-                  >
-                    18 – 96
-                  </td>
-                </tr>
-                {/* Уклон кровли */}
-                <tr>
-                  <td className="border border-evraz-border p-3 text-evraz-dark font-medium">
-                    Уклон кровли, %
-                  </td>
-                  <td
-                    className="border border-evraz-border p-3 text-center text-evraz-dark"
-                    colSpan={2}
-                  >
-                    3
-                  </td>
-                  <td className="border border-evraz-border p-3 text-center text-evraz-dark">
-                    10
-                  </td>
-                </tr>
-                {/* Тип кровли */}
-                <tr className="bg-evraz-light/50">
-                  <td className="border border-evraz-border p-3 text-evraz-dark font-medium">
-                    Тип кровли
-                  </td>
-                  <td
-                    className="border border-evraz-border p-3 text-center text-evraz-dark"
-                    colSpan={2}
-                  >
-                    Мембрана
-                  </td>
-                  <td className="border border-evraz-border p-3 text-center text-evraz-dark">
-                    Сэндвич-панели
-                  </td>
-                </tr>
-                {/* Тип стен */}
-                <tr>
-                  <td className="border border-evraz-border p-3 text-evraz-dark font-medium">
-                    Тип стен
-                  </td>
-                  <td
-                    className="border border-evraz-border p-3 text-center text-evraz-dark"
-                    colSpan={3}
-                  >
-                    Сэндвич-панели
-                  </td>
-                </tr>
-                {/* Элементы заполнения */}
-                <tr className="bg-evraz-light/50">
-                  <td className="border border-evraz-border p-3 text-evraz-dark font-medium leading-snug">
-                    Элементы заполнения проёмов
-                  </td>
-                  <td
-                    className="border border-evraz-border p-3 text-evraz-dark"
-                    colSpan={3}
-                  >
-                    <ul className="space-y-1 list-none">
-                      <li>
-                        • Окна произвольного размера шириной до 6 м, высотой до
-                        2 м
-                      </li>
-                      <li>
-                        • Проёмы для витражей размером по ширине до 6 м и по
-                        высоте до 4.2 м в основных шагах
-                      </li>
-                      <li>• Двери размерами от 0,8 × 2,1 м до 2,0 × 2,1 м</li>
-                      <li>
-                        • Ворота размером по ширине до 4 м и по высоте до 4.2 м
-                        в основных шагах
-                      </li>
-                    </ul>
-                  </td>
-                </tr>
-                {/* Дополнительные опции */}
-                <tr>
-                  <td className="border border-evraz-border p-3 text-evraz-dark font-medium leading-snug">
-                    Дополнительные опции
-                  </td>
-                  <td
-                    className="border border-evraz-border p-3 text-evraz-dark"
-                    colSpan={3}
-                  >
-                    <ul className="space-y-1 list-none">
-                      <li>
-                        • Подкрановые пути для кранбалок грузоподъёмностью до 10
-                        тонн, до двух кранов в здании
-                      </li>
-                      <li>• Антресоли в части здания</li>
-                    </ul>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div className="grid sm:grid-cols-2 gap-6">
+            <div className="border border-evraz-border bg-evraz-light p-8">
+              <p className="font-ibm text-xs text-evraz-gray uppercase tracking-widest mb-3">
+                Ширина пролёта
+              </p>
+              <p className="font-oswald text-5xl font-bold text-evraz-dark leading-none mb-2">
+                12–24 м
+              </p>
+              <p className="font-ibm text-sm text-evraz-gray leading-relaxed mt-3">
+                Проектируем здания с шириной пролёта от 12 до 24 метров под любые производственные задачи
+              </p>
+            </div>
+            <div className="border border-evraz-border bg-evraz-light p-8">
+              <p className="font-ibm text-xs text-evraz-gray uppercase tracking-widest mb-3">
+                Высота до низа несущих конструкций
+              </p>
+              <p className="font-oswald text-5xl font-bold text-evraz-dark leading-none mb-2">
+                3,6–12 м
+              </p>
+              <p className="font-ibm text-sm text-evraz-gray leading-relaxed mt-3">
+                Высота подбирается под требования технологического процесса и габариты оборудования
+              </p>
+            </div>
           </div>
         </div>
       </section>
