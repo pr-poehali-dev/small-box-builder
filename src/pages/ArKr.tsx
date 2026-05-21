@@ -625,28 +625,58 @@ export default function ArKr() {
             </h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-6">
-            <div className="border border-evraz-border bg-evraz-light p-8">
-              <p className="font-ibm text-xs text-evraz-gray uppercase tracking-widest mb-3">
-                Ширина пролёта
-              </p>
-              <p className="font-oswald text-5xl font-bold text-evraz-dark leading-none mb-2">
-                12–24 м
-              </p>
-              <p className="font-ibm text-sm text-evraz-gray leading-relaxed mt-3">
-                Проектируем здания с шириной пролёта от 12 до 24 метров под любые производственные задачи
-              </p>
+          <div className="grid lg:grid-cols-3 gap-8">
+            {/* Параметры — левые 2 колонки */}
+            <div className="lg:col-span-2 grid sm:grid-cols-2 gap-4">
+              {[
+                { label: "Ширина пролёта", value: "12–24 м" },
+                { label: "Высота до низа несущих конструкций", value: "3,6–12 м" },
+                { label: "Длина здания", value: "18–96 м" },
+                { label: "Уклон кровли", value: "3–10 %" },
+                { label: "Тип кровли", value: "Мембрана / Сэндвич-панели" },
+                { label: "Тип стен", value: "Сэндвич-панели" },
+                { label: "Окна", value: "До 6 × 2 м" },
+                { label: "Витражи", value: "До 6 × 4,2 м" },
+                { label: "Двери", value: "0,8×2,1 — 2,0×2,1 м" },
+                { label: "Ворота", value: "До 4 × 4,2 м" },
+                { label: "Кранбалки", value: "До 10 т, 2 крана" },
+                { label: "Антресоли", value: "В части здания" },
+              ].map((p) => (
+                <div key={p.label} className="border border-evraz-border bg-evraz-light p-5">
+                  <p className="font-ibm text-xs text-evraz-gray uppercase tracking-widest mb-2 leading-snug">
+                    {p.label}
+                  </p>
+                  <p className="font-oswald text-2xl font-bold text-evraz-dark leading-tight">
+                    {p.value}
+                  </p>
+                </div>
+              ))}
             </div>
-            <div className="border border-evraz-border bg-evraz-light p-8">
-              <p className="font-ibm text-xs text-evraz-gray uppercase tracking-widest mb-3">
-                Высота до низа несущих конструкций
+
+            {/* Наши каркасы — правая колонка */}
+            <div className="flex flex-col gap-4">
+              <p className="font-ibm text-xs text-evraz-gray uppercase tracking-widest">
+                Наши каркасы
               </p>
-              <p className="font-oswald text-5xl font-bold text-evraz-dark leading-none mb-2">
-                3,6–12 м
-              </p>
-              <p className="font-ibm text-sm text-evraz-gray leading-relaxed mt-3">
-                Высота подбирается под требования технологического процесса и габариты оборудования
-              </p>
+              {[
+                {
+                  src: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/d7220fa8-311f-4f46-89fe-94625ddbceb9.png",
+                  label: "Каркас с колоннами и ригелями из горячекатаного двутавра",
+                },
+                {
+                  src: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/ffa54025-88c8-4ca8-930d-1f5902764c09.png",
+                  label: "Каркас с колоннами из двутавра и шпренгельными ригелями",
+                },
+                {
+                  src: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/d4f82733-1ab4-418a-b5ef-7ee3b7eb31bf.png",
+                  label: "Каркас с колоннами из двутавра и шпренгельными ригелями",
+                },
+              ].map((c) => (
+                <div key={c.src} className="border border-evraz-border bg-evraz-light p-4 flex flex-col items-center gap-3">
+                  <img src={c.src} alt={c.label} className="h-28 object-contain" />
+                  <p className="font-ibm text-xs text-evraz-gray text-center leading-snug">{c.label}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
