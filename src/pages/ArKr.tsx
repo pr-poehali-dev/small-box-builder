@@ -432,37 +432,6 @@ export default function ArKr() {
         </div>
       </section>
 
-      {/* ── ОБРАЗЕЦ РЕЗУЛЬТАТА ── */}
-      <section id="result" className="py-24 bg-white px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="mb-12">
-            <p className="font-ibm text-xs text-evraz-red uppercase tracking-widest mb-3">
-              Пример
-            </p>
-            <h2 className="font-oswald text-4xl font-bold text-evraz-dark uppercase">
-              Образец результата
-            </h2>
-            <p className="font-ibm text-evraz-gray mt-3 text-sm leading-relaxed max-w-xl">
-              Реальный комплект документации, который вы получите после заказа. Скачайте и оцените качество.
-            </p>
-          </div>
-
-          {/* Видео 3D-модели */}
-          <div className="mb-10 border border-evraz-border overflow-hidden">
-            <video
-              src="https://evrazsteelbox.ru/upload/iblock/b99/v50xx6b31r4ov4t1lllwsmzy1bfzhwax.webm"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full object-cover"
-            />
-          </div>
-
-
-        </div>
-      </section>
-
       {/* ── СОСТАВ ПРОЕКТНОЙ ДОКУМЕНТАЦИИ ── */}
       <section id="expertise" className="py-24 bg-evraz-light px-6">
         <div className="max-w-5xl mx-auto">
@@ -474,7 +443,8 @@ export default function ArKr() {
               Состав проектной документации
             </h2>
             <p className="font-ibm text-evraz-gray mt-3 text-sm leading-relaxed max-w-2xl">
-              Для объектов, не проходящих государственную экспертизу. Разделы, выделенные красным — входят в ваш комплект АР+КР.
+              Для объектов, не проходящих государственную экспертизу. Разделы,
+              выделенные красным — входят в ваш комплект АР+КР.
             </p>
           </div>
 
@@ -486,10 +456,23 @@ export default function ArKr() {
             <div className="flex flex-col gap-2">
               {[
                 { num: "1", title: "Пояснительная записка", ours: true },
-                { num: "2", title: "Схема планировочной организации земельного участка (ОПЗ)", ours: false },
-                { num: "3", title: "Объёмно-планировочные и архитектурные решения (АР)", ours: true },
+                {
+                  num: "2",
+                  title:
+                    "Схема планировочной организации земельного участка (ОПЗ)",
+                  ours: false,
+                },
+                {
+                  num: "3",
+                  title: "Объёмно-планировочные и архитектурные решения (АР)",
+                  ours: true,
+                },
                 { num: "4", title: "Конструктивные решения (КР)", ours: true },
-                { num: "7", title: "Проект организации строительства (ПОС)", ours: false },
+                {
+                  num: "7",
+                  title: "Проект организации строительства (ПОС)",
+                  ours: false,
+                },
               ].map((item) => (
                 <div
                   key={item.num}
@@ -508,7 +491,9 @@ export default function ArKr() {
                   </span>
                   <p
                     className={`font-ibm text-sm flex-1 ${
-                      item.ours ? "text-evraz-dark font-semibold" : "text-evraz-gray"
+                      item.ours
+                        ? "text-evraz-dark font-semibold"
+                        : "text-evraz-gray"
                     }`}
                   >
                     {item.title}
@@ -531,9 +516,19 @@ export default function ArKr() {
             </p>
             <div className="flex flex-col gap-2">
               {[
-                { num: "5", title: "Инженерные сети: электроснабжение, водоснабжение, водоотведение, отопление, вентиляция (наружные и внутренние)" },
-                { num: "9", title: "Мероприятия по обеспечению пожарной безопасности" },
-                { num: "11", title: "Мероприятия по обеспечению доступа инвалидов" },
+                {
+                  num: "5",
+                  title:
+                    "Инженерные сети: электроснабжение, водоснабжение, водоотведение, отопление, вентиляция (наружные и внутренние)",
+                },
+                {
+                  num: "9",
+                  title: "Мероприятия по обеспечению пожарной безопасности",
+                },
+                {
+                  num: "11",
+                  title: "Мероприятия по обеспечению доступа инвалидов",
+                },
               ].map((item) => (
                 <div
                   key={item.num}
@@ -542,7 +537,9 @@ export default function ArKr() {
                   <span className="font-oswald text-sm font-bold w-6 text-center flex-shrink-0 text-evraz-gray">
                     {item.num}
                   </span>
-                  <p className="font-ibm text-sm text-evraz-gray flex-1">{item.title}</p>
+                  <p className="font-ibm text-sm text-evraz-gray flex-1">
+                    {item.title}
+                  </p>
                 </div>
               ))}
             </div>
@@ -555,11 +552,36 @@ export default function ArKr() {
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {[
-                { label: "АР — Архитектурные решения", ext: "PDF", icon: "FileText", url: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/6e1ab496-3649-4b48-aedf-b1a300216991.pdf" },
-                { label: "КР — Конструктивные решения", ext: "PDF", icon: "Settings", url: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/4a350aa7-1922-4793-8f86-eaaeb6027b62.pdf" },
-                { label: "BIM-модель здания", ext: "IFC", icon: "Box", url: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/427bfd3e-b9bb-4ad0-be45-2634f83717ca.ifc" },
-                { label: "Ведомость элементов", ext: "PDF", icon: "List", url: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/ab656364-eeff-4785-9864-d50d2b6ed6dc.pdf" },
-                { label: "Расчёт стоимости здания", ext: "PDF", icon: "Calculator", url: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/4188b9c1-6076-47da-8237-86eaf43d9ed7.pdf" },
+                {
+                  label: "АР — Архитектурные решения",
+                  ext: "PDF",
+                  icon: "FileText",
+                  url: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/6e1ab496-3649-4b48-aedf-b1a300216991.pdf",
+                },
+                {
+                  label: "КР — Конструктивные решения",
+                  ext: "PDF",
+                  icon: "Settings",
+                  url: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/4a350aa7-1922-4793-8f86-eaaeb6027b62.pdf",
+                },
+                {
+                  label: "BIM-модель здания",
+                  ext: "IFC",
+                  icon: "Box",
+                  url: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/427bfd3e-b9bb-4ad0-be45-2634f83717ca.ifc",
+                },
+                {
+                  label: "Ведомость элементов",
+                  ext: "PDF",
+                  icon: "List",
+                  url: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/ab656364-eeff-4785-9864-d50d2b6ed6dc.pdf",
+                },
+                {
+                  label: "Расчёт стоимости здания",
+                  ext: "PDF",
+                  icon: "Calculator",
+                  url: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/4188b9c1-6076-47da-8237-86eaf43d9ed7.pdf",
+                },
               ].map((f) => (
                 <a
                   key={f.url}
@@ -579,7 +601,11 @@ export default function ArKr() {
                       {f.ext} — скачать
                     </p>
                   </div>
-                  <Icon name="Download" size={16} className="text-evraz-gray group-hover:text-evraz-red ml-auto flex-shrink-0 transition-colors" />
+                  <Icon
+                    name="Download"
+                    size={16}
+                    className="text-evraz-gray group-hover:text-evraz-red ml-auto flex-shrink-0 transition-colors"
+                  />
                 </a>
               ))}
             </div>
@@ -605,77 +631,173 @@ export default function ArKr() {
                 <tr>
                   <th className="border border-evraz-border bg-evraz-light p-3 text-left w-40" />
                   <th className="border border-evraz-border bg-evraz-light p-3 text-center font-normal text-evraz-dark leading-snug">
-                    <img src="https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/d7220fa8-311f-4f46-89fe-94625ddbceb9.png" alt="Каркас 1" className="mx-auto mb-2 h-24 object-contain" />
-                    Каркас с колоннами и ригелями<br />
-                    <span className="text-evraz-gray">из горячекатаного</span><br />
+                    <img
+                      src="https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/d7220fa8-311f-4f46-89fe-94625ddbceb9.png"
+                      alt="Каркас 1"
+                      className="mx-auto mb-2 h-24 object-contain"
+                    />
+                    Каркас с колоннами и ригелями
+                    <br />
+                    <span className="text-evraz-gray">из горячекатаного</span>
+                    <br />
                     <span className="text-evraz-gray">двутавра</span>
                   </th>
                   <th className="border border-evraz-border bg-evraz-light p-3 text-center font-normal text-evraz-dark leading-snug">
-                    <img src="https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/ffa54025-88c8-4ca8-930d-1f5902764c09.png" alt="Каркас 2" className="mx-auto mb-2 h-24 object-contain" />
-                    Каркас с колоннами<br />
-                    <span className="text-evraz-gray">из горячекатаного двутавра</span><br />
-                    <span className="text-evraz-gray">и шпренгельными ригелями</span>
+                    <img
+                      src="https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/ffa54025-88c8-4ca8-930d-1f5902764c09.png"
+                      alt="Каркас 2"
+                      className="mx-auto mb-2 h-24 object-contain"
+                    />
+                    Каркас с колоннами
+                    <br />
+                    <span className="text-evraz-gray">
+                      из горячекатаного двутавра
+                    </span>
+                    <br />
+                    <span className="text-evraz-gray">
+                      и шпренгельными ригелями
+                    </span>
                   </th>
                   <th className="border border-evraz-border bg-evraz-light p-3 text-center font-normal text-evraz-dark leading-snug">
-                    <img src="https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/d4f82733-1ab4-418a-b5ef-7ee3b7eb31bf.png" alt="Каркас 3" className="mx-auto mb-2 h-24 object-contain" />
-                    Каркас с колоннами<br />
-                    <span className="text-evraz-gray">из горячекатаного двутавра</span><br />
-                    <span className="text-evraz-gray">и шпренгельными ригелями</span>
+                    <img
+                      src="https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/d4f82733-1ab4-418a-b5ef-7ee3b7eb31bf.png"
+                      alt="Каркас 3"
+                      className="mx-auto mb-2 h-24 object-contain"
+                    />
+                    Каркас с колоннами
+                    <br />
+                    <span className="text-evraz-gray">
+                      из горячекатаного двутавра
+                    </span>
+                    <br />
+                    <span className="text-evraz-gray">
+                      и шпренгельными ригелями
+                    </span>
                   </th>
                 </tr>
               </thead>
               <tbody>
                 {/* Ширина пролёта */}
                 <tr className="bg-evraz-light/50">
-                  <td className="border border-evraz-border p-3 text-evraz-dark font-medium">Ширина пролёта, м</td>
-                  <td className="border border-evraz-border p-3 text-center text-evraz-dark">12 - 18</td>
-                  <td className="border border-evraz-border p-3 text-center text-evraz-dark" colSpan={2}>12 - 24</td>
+                  <td className="border border-evraz-border p-3 text-evraz-dark font-medium">
+                    Ширина пролёта, м
+                  </td>
+                  <td className="border border-evraz-border p-3 text-center text-evraz-dark">
+                    12 - 18
+                  </td>
+                  <td
+                    className="border border-evraz-border p-3 text-center text-evraz-dark"
+                    colSpan={2}
+                  >
+                    12 - 24
+                  </td>
                 </tr>
                 {/* Высота */}
                 <tr>
-                  <td className="border border-evraz-border p-3 text-evraz-dark font-medium leading-snug">Высота до низа несущих конструкций, м</td>
-                  <td className="border border-evraz-border p-3 text-center text-evraz-dark" colSpan={3}>3,6 – 12</td>
+                  <td className="border border-evraz-border p-3 text-evraz-dark font-medium leading-snug">
+                    Высота до низа несущих конструкций, м
+                  </td>
+                  <td
+                    className="border border-evraz-border p-3 text-center text-evraz-dark"
+                    colSpan={3}
+                  >
+                    3,6 – 12
+                  </td>
                 </tr>
                 {/* Длина */}
                 <tr className="bg-evraz-light/50">
-                  <td className="border border-evraz-border p-3 text-evraz-dark font-medium">Длина здания, м</td>
-                  <td className="border border-evraz-border p-3 text-center text-evraz-dark" colSpan={3}>18 – 96</td>
+                  <td className="border border-evraz-border p-3 text-evraz-dark font-medium">
+                    Длина здания, м
+                  </td>
+                  <td
+                    className="border border-evraz-border p-3 text-center text-evraz-dark"
+                    colSpan={3}
+                  >
+                    18 – 96
+                  </td>
                 </tr>
                 {/* Уклон кровли */}
                 <tr>
-                  <td className="border border-evraz-border p-3 text-evraz-dark font-medium">Уклон кровли, %</td>
-                  <td className="border border-evraz-border p-3 text-center text-evraz-dark" colSpan={2}>3</td>
-                  <td className="border border-evraz-border p-3 text-center text-evraz-dark">10</td>
+                  <td className="border border-evraz-border p-3 text-evraz-dark font-medium">
+                    Уклон кровли, %
+                  </td>
+                  <td
+                    className="border border-evraz-border p-3 text-center text-evraz-dark"
+                    colSpan={2}
+                  >
+                    3
+                  </td>
+                  <td className="border border-evraz-border p-3 text-center text-evraz-dark">
+                    10
+                  </td>
                 </tr>
                 {/* Тип кровли */}
                 <tr className="bg-evraz-light/50">
-                  <td className="border border-evraz-border p-3 text-evraz-dark font-medium">Тип кровли</td>
-                  <td className="border border-evraz-border p-3 text-center text-evraz-dark" colSpan={2}>Мембрана</td>
-                  <td className="border border-evraz-border p-3 text-center text-evraz-dark">Сэндвич-панели</td>
+                  <td className="border border-evraz-border p-3 text-evraz-dark font-medium">
+                    Тип кровли
+                  </td>
+                  <td
+                    className="border border-evraz-border p-3 text-center text-evraz-dark"
+                    colSpan={2}
+                  >
+                    Мембрана
+                  </td>
+                  <td className="border border-evraz-border p-3 text-center text-evraz-dark">
+                    Сэндвич-панели
+                  </td>
                 </tr>
                 {/* Тип стен */}
                 <tr>
-                  <td className="border border-evraz-border p-3 text-evraz-dark font-medium">Тип стен</td>
-                  <td className="border border-evraz-border p-3 text-center text-evraz-dark" colSpan={3}>Сэндвич-панели</td>
+                  <td className="border border-evraz-border p-3 text-evraz-dark font-medium">
+                    Тип стен
+                  </td>
+                  <td
+                    className="border border-evraz-border p-3 text-center text-evraz-dark"
+                    colSpan={3}
+                  >
+                    Сэндвич-панели
+                  </td>
                 </tr>
                 {/* Элементы заполнения */}
                 <tr className="bg-evraz-light/50">
-                  <td className="border border-evraz-border p-3 text-evraz-dark font-medium leading-snug">Элементы заполнения проёмов</td>
-                  <td className="border border-evraz-border p-3 text-evraz-dark" colSpan={3}>
+                  <td className="border border-evraz-border p-3 text-evraz-dark font-medium leading-snug">
+                    Элементы заполнения проёмов
+                  </td>
+                  <td
+                    className="border border-evraz-border p-3 text-evraz-dark"
+                    colSpan={3}
+                  >
                     <ul className="space-y-1 list-none">
-                      <li>• Окна произвольного размера шириной до 6 м, высотой до 2 м</li>
-                      <li>• Проёмы для витражей размером по ширине до 6 м и по высоте до 4.2 м в основных шагах</li>
+                      <li>
+                        • Окна произвольного размера шириной до 6 м, высотой до
+                        2 м
+                      </li>
+                      <li>
+                        • Проёмы для витражей размером по ширине до 6 м и по
+                        высоте до 4.2 м в основных шагах
+                      </li>
                       <li>• Двери размерами от 0,8 × 2,1 м до 2,0 × 2,1 м</li>
-                      <li>• Ворота размером по ширине до 4 м и по высоте до 4.2 м в основных шагах</li>
+                      <li>
+                        • Ворота размером по ширине до 4 м и по высоте до 4.2 м
+                        в основных шагах
+                      </li>
                     </ul>
                   </td>
                 </tr>
                 {/* Дополнительные опции */}
                 <tr>
-                  <td className="border border-evraz-border p-3 text-evraz-dark font-medium leading-snug">Дополнительные опции</td>
-                  <td className="border border-evraz-border p-3 text-evraz-dark" colSpan={3}>
+                  <td className="border border-evraz-border p-3 text-evraz-dark font-medium leading-snug">
+                    Дополнительные опции
+                  </td>
+                  <td
+                    className="border border-evraz-border p-3 text-evraz-dark"
+                    colSpan={3}
+                  >
                     <ul className="space-y-1 list-none">
-                      <li>• Подкрановые пути для кранбалок грузоподъёмностью до 10 тонн, до двух кранов в здании</li>
+                      <li>
+                        • Подкрановые пути для кранбалок грузоподъёмностью до 10
+                        тонн, до двух кранов в здании
+                      </li>
                       <li>• Антресоли в части здания</li>
                     </ul>
                   </td>
