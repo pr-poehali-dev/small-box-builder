@@ -1146,44 +1146,6 @@ export default function Catalog() {
         </div>
       </section>
 
-      {/* FAQ — закрываем возражения */}
-      <section className="py-16 bg-evraz-light">
-        <div className="container mx-auto max-w-3xl">
-          <div className="mb-10">
-            <div className="accent-line" />
-            <h2 className="font-oswald text-3xl md:text-4xl text-evraz-dark font-semibold">
-              ЧАСТЫЕ ВОПРОСЫ
-            </h2>
-          </div>
-          <div className="space-y-2">
-            {faqs.map((faq, i) => (
-              <div key={i} className="border border-evraz-border bg-white">
-                <button
-                  className="w-full flex items-center justify-between px-6 py-5 text-left"
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                >
-                  <span className="font-oswald text-base text-evraz-dark font-semibold pr-4">
-                    {faq.q}
-                  </span>
-                  <Icon
-                    name={openFaq === i ? "ChevronUp" : "ChevronDown"}
-                    size={18}
-                    className="text-evraz-red shrink-0"
-                  />
-                </button>
-                {openFaq === i && (
-                  <div className="px-6 pb-5">
-                    <p className="font-ibm text-sm text-evraz-gray leading-relaxed border-t border-evraz-border pt-4">
-                      {faq.a}
-                    </p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* WHAT'S NEEDED FROM CLIENT */}
       <section className="py-16 bg-white">
         <div className="container mx-auto">
@@ -1308,6 +1270,44 @@ export default function Catalog() {
                     </div>
                   </div>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ — закрываем возражения */}
+      <section className="py-16 bg-evraz-light">
+        <div className="container mx-auto max-w-3xl">
+          <div className="mb-10">
+            <div className="accent-line" />
+            <h2 className="font-oswald text-3xl md:text-4xl text-evraz-dark font-semibold">
+              ЧАСТЫЕ ВОПРОСЫ
+            </h2>
+          </div>
+          <div className="space-y-2">
+            {faqs.map((faq, i) => (
+              <div key={i} className="border border-evraz-border bg-white">
+                <button
+                  className="w-full flex items-center justify-between px-6 py-5 text-left"
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                >
+                  <span className="font-oswald text-base text-evraz-dark font-semibold pr-4">
+                    {faq.q}
+                  </span>
+                  <Icon
+                    name={openFaq === i ? "ChevronUp" : "ChevronDown"}
+                    size={18}
+                    className="text-evraz-red shrink-0"
+                  />
+                </button>
+                {openFaq === i && (
+                  <div className="px-6 pb-5">
+                    <p className="font-ibm text-sm text-evraz-gray leading-relaxed border-t border-evraz-border pt-4">
+                      {faq.a}
+                    </p>
+                  </div>
+                )}
               </div>
             ))}
           </div>
