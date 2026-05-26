@@ -1031,6 +1031,57 @@ export default function Catalog() {
         </div>
       </section>
 
+      {/* MINI CALCULATOR */}
+      <section
+        id="calc-section"
+        className="py-16 bg-evraz-dark relative overflow-hidden"
+      >
+        <div className="absolute right-0 top-0 bottom-0 w-1 bg-evraz-red" />
+        <div className="container mx-auto">
+          <div className="max-w-3xl mx-auto text-center mb-10">
+            <div className="flex justify-center mb-4">
+              <div className="w-10 h-0.5 bg-evraz-red" />
+            </div>
+            <h2 className="font-oswald text-3xl md:text-4xl text-white font-semibold">
+              НЕТ НУЖНОГО РАЗМЕРА?
+            </h2>
+            <p className="font-ibm text-gray-400 mt-3 text-sm leading-relaxed">
+              Введите свои параметры — получите мгновенную оценку стоимости.
+            </p>
+          </div>
+          {calcInitial && (
+            <div className="max-w-3xl mx-auto mb-4">
+              <div className="flex items-center gap-3 bg-evraz-red/10 border border-evraz-red/30 px-4 py-3">
+                <Icon
+                  name="Info"
+                  size={14}
+                  className="text-evraz-red shrink-0"
+                />
+                <span className="font-ibm text-xs text-evraz-red">
+                  Параметры загружены из карточки: {calcInitial.width}×
+                  {calcInitial.length} м, высота {calcInitial.height} м
+                </span>
+                <button
+                  onClick={() => setCalcInitial(undefined)}
+                  className="ml-auto text-evraz-red hover:opacity-70"
+                >
+                  <Icon name="X" size={14} />
+                </button>
+              </div>
+            </div>
+          )}
+          <PriceCalculator
+            key={JSON.stringify(calcInitial)}
+            initialValues={calcInitial}
+            onGetQuote={() =>
+              document
+                .getElementById("contacts-section")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+          />
+        </div>
+      </section>
+
       {/* КМ+АР SPECIAL OFFER */}
       <section className="py-12 bg-evraz-light border-t border-evraz-border">
         <div className="container mx-auto">
@@ -1092,57 +1143,6 @@ export default function Catalog() {
               </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* MINI CALCULATOR */}
-      <section
-        id="calc-section"
-        className="py-16 bg-evraz-dark relative overflow-hidden"
-      >
-        <div className="absolute right-0 top-0 bottom-0 w-1 bg-evraz-red" />
-        <div className="container mx-auto">
-          <div className="max-w-3xl mx-auto text-center mb-10">
-            <div className="flex justify-center mb-4">
-              <div className="w-10 h-0.5 bg-evraz-red" />
-            </div>
-            <h2 className="font-oswald text-3xl md:text-4xl text-white font-semibold">
-              НЕТ НУЖНОГО РАЗМЕРА?
-            </h2>
-            <p className="font-ibm text-gray-400 mt-3 text-sm leading-relaxed">
-              Введите свои параметры — получите мгновенную оценку стоимости.
-            </p>
-          </div>
-          {calcInitial && (
-            <div className="max-w-3xl mx-auto mb-4">
-              <div className="flex items-center gap-3 bg-evraz-red/10 border border-evraz-red/30 px-4 py-3">
-                <Icon
-                  name="Info"
-                  size={14}
-                  className="text-evraz-red shrink-0"
-                />
-                <span className="font-ibm text-xs text-evraz-red">
-                  Параметры загружены из карточки: {calcInitial.width}×
-                  {calcInitial.length} м, высота {calcInitial.height} м
-                </span>
-                <button
-                  onClick={() => setCalcInitial(undefined)}
-                  className="ml-auto text-evraz-red hover:opacity-70"
-                >
-                  <Icon name="X" size={14} />
-                </button>
-              </div>
-            </div>
-          )}
-          <PriceCalculator
-            key={JSON.stringify(calcInitial)}
-            initialValues={calcInitial}
-            onGetQuote={() =>
-              document
-                .getElementById("contacts-section")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-          />
         </div>
       </section>
 
