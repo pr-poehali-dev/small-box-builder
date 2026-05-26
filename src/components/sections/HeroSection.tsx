@@ -75,13 +75,13 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
 
           <div className="flex items-center gap-3 animate-fade-in-up delay-200">
             <span className="font-oswald text-evraz-dark text-lg tracking-widest uppercase">
-              Фиксированная цена до 90 дней. Прозрачное ценообразование
+              400+ успешных проектов по всей России
             </span>
             <span className="font-oswald text-evraz-dark text-lg tracking-widest uppercase">
               Сопровождение от проектирования до сдачи под ключ
             </span>
             <span className="font-oswald text-evraz-dark text-lg tracking-widest uppercase">
-              400+ успешных проектов по всей России
+              Фиксированная цена до 90 дней. Прозрачное ценообразование
             </span>
           </div>
         </div>
