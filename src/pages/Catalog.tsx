@@ -537,12 +537,6 @@ export default function Catalog() {
           }}
         />
         <div className="container mx-auto relative z-10">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-0.5 bg-evraz-red" />
-            <span className="font-oswald text-evraz-red text-xs tracking-[0.25em] uppercase">
-              Серийные здания
-            </span>
-          </div>
           <h1 className="font-oswald text-4xl md:text-6xl text-evraz-dark font-bold mb-4 leading-tight">
             КАТАЛОГ ГОТОВЫХ
             <br />
@@ -555,7 +549,7 @@ export default function Catalog() {
           {/* Quick stats */}
           <div className="flex flex-wrap gap-8">
             {[
-              { v: "до 45 дн.", l: "Срок монтажа" },
+              { v: "45 дней", l: "Срок монтажа" },
               {
                 v: "Предварительный КМ+АР за час",
                 l: "С помощью автоматического проектирования",
