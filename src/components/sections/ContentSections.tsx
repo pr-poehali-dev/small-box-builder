@@ -134,7 +134,8 @@ export const PARTNERS = [
     services: ["Монтаж", "Проектирование"],
     review: {
       text: "Сдали объект на 2 недели раньше срока. Качество монтажа — без нареканий.",
-      fullText: "Сдали объект на 2 недели раньше срока. Качество монтажа — без нареканий. Работаем с командой EVRAZ STEEL BOX уже пять лет, и каждый раз убеждаемся: документация чёткая, комплект поставки приходит в срок, монтажные карты исчерпывающие. Из 48 реализованных объектов ни один не вышел за рамки сметы.",
+      fullText:
+        "Сдали объект на 2 недели раньше срока. Качество монтажа — без нареканий. Работаем с командой EVRAZ STEEL BOX уже пять лет, и каждый раз убеждаемся: документация чёткая, комплект поставки приходит в срок, монтажные карты исчерпывающие. Из 48 реализованных объектов ни один не вышел за рамки сметы.",
       author: "Алексей К., директор ООО «ЛогоПарк»",
     },
   },
@@ -146,7 +147,8 @@ export const PARTNERS = [
     services: ["Монтаж"],
     review: {
       text: "Работаем с ними на трёх объектах подряд. Надёжная команда, чёткое соблюдение смет.",
-      fullText: "Работаем с ними на трёх объектах подряд. Надёжная команда, чёткое соблюдение смет. На двух объектах в Екатеринбурге и одном в Тюмени мы уложились в сроки, хотя зима была ранняя. Металлоконструкции идут без брака — это важно, когда монтируешь в мороз.",
+      fullText:
+        "Работаем с ними на трёх объектах подряд. Надёжная команда, чёткое соблюдение смет. На двух объектах в Екатеринбурге и одном в Тюмени мы уложились в сроки, хотя зима была ранняя. Металлоконструкции идут без брака — это важно, когда монтируешь в мороз.",
       author: "Игорь Р., технический директор НТМК",
     },
   },
@@ -158,7 +160,8 @@ export const PARTNERS = [
     services: ["Монтаж", "Проектирование"],
     review: {
       text: "Профессиональный подход к проекту, грамотная проектная документация.",
-      fullText: "Профессиональный подход к проекту, грамотная проектная документация. EVRAZ STEEL BOX — один из немногих поставщиков, у которых документация реально соответствует тому, что приходит на объект. Качество антикоррозийного покрытия — через два года после монтажа замечаний нет.",
+      fullText:
+        "Профессиональный подход к проекту, грамотная проектная документация. EVRAZ STEEL BOX — один из немногих поставщиков, у которых документация реально соответствует тому, что приходит на объект. Качество антикоррозийного покрытия — через два года после монтажа замечаний нет.",
       author: "Светлана М., АгроХолдинг «Восток»",
     },
   },
@@ -170,7 +173,8 @@ export const PARTNERS = [
     services: ["Монтаж"],
     review: {
       text: "Быстро развернули бригаду, уложились в 28 дней под ключ.",
-      fullText: "EVRAZ STEEL BOX обеспечил отгрузку комплекта за 12 дней с момента подписания договора, мы развернули бригаду из 14 человек и уложились в 28 дней вместо запланированных 35. Качество узлов — без нареканий, всё собирается по инструкции без подгонки.",
+      fullText:
+        "EVRAZ STEEL BOX обеспечил отгрузку комплекта за 12 дней с момента подписания договора, мы развернули бригаду из 14 человек и уложились в 28 дней вместо запланированных 35. Качество узлов — без нареканий, всё собирается по инструкции без подгонки.",
       author: "Дмитрий П., ИП Павлов",
     },
   },
@@ -182,7 +186,8 @@ export const PARTNERS = [
     services: ["Монтаж", "Проектирование"],
     review: {
       text: "Сотрудничаем с EVRAZ STEEL BOX уже четвёртый год.",
-      fullText: "За это время реализовали 41 объект в Поволжье — от небольших складов до производственных цехов с мостовыми кранами. Чёткая логистика комплектов и постоянная поддержка технического отдела делают работу предсказуемой и без сюрпризов.",
+      fullText:
+        "За это время реализовали 41 объект в Поволжье — от небольших складов до производственных цехов с мостовыми кранами. Чёткая логистика комплектов и постоянная поддержка технического отдела делают работу предсказуемой и без сюрпризов.",
       author: "Артём Д., генеральный директор ВолгаПром",
       videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     },
@@ -195,7 +200,8 @@ export const PARTNERS = [
     services: ["Проектирование"],
     review: {
       text: "Разработали проект с учётом северных снеговых нагрузок — всё соответствует нормативам.",
-      fullText: "EVRAZ STEEL BOX предоставил усиленный вариант каркаса без доплаты — это было предусмотрено в базовой комплектации для данного региона. Проектная документация прошла экспертизу с первого раза.",
+      fullText:
+        "EVRAZ STEEL BOX предоставил усиленный вариант каркаса без доплаты — это было предусмотрено в базовой комплектации для данного региона. Проектная документация прошла экспертизу с первого раза.",
       author: "Николай В., «Северлес»",
     },
   },
@@ -207,7 +213,8 @@ export const PARTNERS = [
     services: ["Монтаж"],
     review: {
       text: "Работаем на Дальнем Востоке — логистика сложная, но EVRAZ всегда выдерживает сроки.",
-      fullText: "Работаем на Дальнем Востоке — логистика сложная, но EVRAZ STEEL BOX всегда выдерживает сроки поставки. Собрали три объекта во Владивостоке и два в Хабаровском крае. Комплект приходит полным, без недостачи.",
+      fullText:
+        "Работаем на Дальнем Востоке — логистика сложная, но EVRAZ STEEL BOX всегда выдерживает сроки поставки. Собрали три объекта во Владивостоке и два в Хабаровском крае. Комплект приходит полным, без недостачи.",
       author: "Василий Н., ДальСтройМонтаж",
     },
   },
@@ -219,7 +226,8 @@ export const PARTNERS = [
     services: ["Монтаж", "Проектирование"],
     review: {
       text: "Реализовали 33 объекта за три года, ни одного срыва сроков.",
-      fullText: "Реализовали 33 объекта за три года — производственные цеха, склады, торговые павильоны. Ни одного срыва сроков по вине поставщика. EVRAZ STEEL BOX — наш ключевой партнёр по металлоконструкциям.",
+      fullText:
+        "Реализовали 33 объекта за три года — производственные цеха, склады, торговые павильоны. Ни одного срыва сроков по вине поставщика. EVRAZ STEEL BOX — наш ключевой партнёр по металлоконструкциям.",
       author: "Рустам Г., КазаньПромСтрой",
     },
   },
@@ -231,7 +239,8 @@ export const PARTNERS = [
     services: ["Монтаж"],
     review: {
       text: "Качественные конструкции и чёткая документация — с такими поставщиками работать одно удовольствие.",
-      fullText: "Монтируем объекты в Западной Сибири уже три года. Качественные конструкции и чёткая документация — с такими поставщиками работать легко. Особо ценим техническую поддержку при нестандартных узлах.",
+      fullText:
+        "Монтируем объекты в Западной Сибири уже три года. Качественные конструкции и чёткая документация — с такими поставщиками работать легко. Особо ценим техническую поддержку при нестандартных узлах.",
       author: "Сергей Л., ОмскМеталл",
     },
   },
@@ -276,7 +285,10 @@ function PartnersSection({ onContact }: { onContact: () => void }) {
 
   const scroll = (dir: "left" | "right") => {
     if (!scrollRef.current) return;
-    scrollRef.current.scrollBy({ left: dir === "right" ? CARD_WIDTH * 2 : -CARD_WIDTH * 2, behavior: "smooth" });
+    scrollRef.current.scrollBy({
+      left: dir === "right" ? CARD_WIDTH * 2 : -CARD_WIDTH * 2,
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -292,8 +304,8 @@ function PartnersSection({ onContact }: { onContact: () => void }) {
                 СЕТЬ ПАРТНЁРОВ
               </h2>
               <p className="font-ibm text-evraz-gray mt-4 max-w-xl text-base leading-relaxed">
-                Сертифицированные строительные организации EVRAZ STEEL BOX.
-                Гарантия качества монтажа по всей России.
+                Аккредитованные строительные и проектные организации Гарантия
+                качества монтажа по всей России.
               </p>
             </div>
             {/* Стрелки */}
@@ -327,10 +339,18 @@ function PartnersSection({ onContact }: { onContact: () => void }) {
             >
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <h4 className="font-oswald text-lg text-evraz-dark font-semibold">{p.name}</h4>
+                  <h4 className="font-oswald text-lg text-evraz-dark font-semibold">
+                    {p.name}
+                  </h4>
                   <div className="flex items-center gap-1.5 mt-1">
-                    <Icon name="MapPin" size={12} className="text-evraz-steel" />
-                    <span className="font-ibm text-sm text-evraz-gray">{p.region}</span>
+                    <Icon
+                      name="MapPin"
+                      size={12}
+                      className="text-evraz-steel"
+                    />
+                    <span className="font-ibm text-sm text-evraz-gray">
+                      {p.region}
+                    </span>
                   </div>
                 </div>
                 <span className="font-oswald text-xs tracking-widest text-evraz-steel uppercase bg-evraz-light px-2 py-1 shrink-0 border border-evraz-border">
@@ -358,7 +378,9 @@ function PartnersSection({ onContact }: { onContact: () => void }) {
                   <p className="font-ibm text-xs text-evraz-dark leading-relaxed italic">
                     «{p.review.text}»
                   </p>
-                  <p className="font-ibm text-xs text-evraz-gray mt-2">— {p.review.author}</p>
+                  <p className="font-ibm text-xs text-evraz-gray mt-2">
+                    — {p.review.author}
+                  </p>
                   <div className="flex items-center gap-3 mt-3 flex-wrap">
                     <Link
                       to={`/partners/${p.slug}`}
@@ -384,7 +406,9 @@ function PartnersSection({ onContact }: { onContact: () => void }) {
               {!p.review && <div className="flex-1" />}
 
               <div className="border-t border-evraz-border pt-4">
-                <span className="font-ibm text-sm text-evraz-gray">{p.projects} проектов</span>
+                <span className="font-ibm text-sm text-evraz-gray">
+                  {p.projects} проектов
+                </span>
               </div>
             </div>
           ))}
@@ -397,10 +421,14 @@ function PartnersSection({ onContact }: { onContact: () => void }) {
                 Хотите стать партнёром?
               </h3>
               <p className="font-ibm text-evraz-gray mt-2 text-sm">
-                Присоединяйтесь к сети из 180+ сертифицированных партнёров EVRAZ STEEL BOX
+                Присоединяйтесь к сети из 180+ сертифицированных партнёров EVRAZ
+                STEEL BOX
               </p>
             </div>
-            <button onClick={onContact} className="btn-primary whitespace-nowrap">
+            <button
+              onClick={onContact}
+              className="btn-primary whitespace-nowrap"
+            >
               Подать заявку
             </button>
           </div>
@@ -508,13 +536,17 @@ export function ContentSections({
           <div className="overflow-hidden">
             <div
               className="flex gap-6 transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(calc(-${slideIndex} * (100% / ${VISIBLE} + 8px)))` }}
+              style={{
+                transform: `translateX(calc(-${slideIndex} * (100% / ${VISIBLE} + 8px)))`,
+              }}
             >
               {filteredCases.map((c) => (
                 <div
                   key={c.title}
                   className="flex-shrink-0 bg-white border border-evraz-border overflow-hidden group flex flex-col"
-                  style={{ width: `calc((100% - ${(VISIBLE - 1) * 24}px) / ${VISIBLE})` }}
+                  style={{
+                    width: `calc((100% - ${(VISIBLE - 1) * 24}px) / ${VISIBLE})`,
+                  }}
                 >
                   {/* Image */}
                   <div className="relative h-64 overflow-hidden shrink-0">
@@ -538,7 +570,11 @@ export function ContentSections({
                       {c.title}
                     </h3>
                     <div className="flex items-center gap-2 text-evraz-gray mb-5">
-                      <Icon name="MapPin" size={13} className="text-evraz-red shrink-0" />
+                      <Icon
+                        name="MapPin"
+                        size={13}
+                        className="text-evraz-red shrink-0"
+                      />
                       <span className="font-ibm text-sm">{c.location}</span>
                     </div>
 
@@ -550,18 +586,33 @@ export function ContentSections({
                         { label: "Длина", value: c.dims.length },
                         { label: "Высота", value: c.dims.height },
                       ].map((d) => (
-                        <div key={d.label} className="bg-evraz-light px-2 py-2.5 text-center">
-                          <div className="font-oswald text-sm text-evraz-dark font-semibold leading-none">{d.value}</div>
-                          <div className="font-ibm text-xs text-evraz-gray mt-1">{d.label}</div>
+                        <div
+                          key={d.label}
+                          className="bg-evraz-light px-2 py-2.5 text-center"
+                        >
+                          <div className="font-oswald text-sm text-evraz-dark font-semibold leading-none">
+                            {d.value}
+                          </div>
+                          <div className="font-ibm text-xs text-evraz-gray mt-1">
+                            {d.label}
+                          </div>
                         </div>
                       ))}
                     </div>
 
                     {/* Партнёр */}
                     <div className="flex items-center gap-2 mb-5">
-                      <Icon name="HardHat" size={13} className="text-evraz-gray shrink-0" />
-                      <span className="font-ibm text-xs text-evraz-gray">Монтаж:</span>
-                      <span className="font-ibm text-xs text-evraz-dark font-medium">{c.partner}</span>
+                      <Icon
+                        name="HardHat"
+                        size={13}
+                        className="text-evraz-gray shrink-0"
+                      />
+                      <span className="font-ibm text-xs text-evraz-gray">
+                        Монтаж:
+                      </span>
+                      <span className="font-ibm text-xs text-evraz-dark font-medium">
+                        {c.partner}
+                      </span>
                     </div>
 
                     {/* Отзыв + стрелка */}
@@ -581,7 +632,11 @@ export function ContentSections({
                         <div />
                       )}
                       <div className="w-8 h-8 bg-red-50 flex items-center justify-center group-hover:bg-evraz-red transition-colors cursor-pointer">
-                        <Icon name="ArrowRight" size={15} className="text-evraz-red group-hover:text-white transition-colors" />
+                        <Icon
+                          name="ArrowRight"
+                          size={15}
+                          className="text-evraz-red group-hover:text-white transition-colors"
+                        />
                       </div>
                     </div>
                   </div>
@@ -627,14 +682,17 @@ export function ContentSections({
                 коммерческого назначения.
               </p>
               <p className="font-ibm text-evraz-gray leading-relaxed mb-8">
-                Мы предлагаем полнокомплектные здания заводского изготовления
-                с высокой степенью готовности, что позволяет нашим клиентам
+                Мы предлагаем полнокомплектные здания заводского изготовления с
+                высокой степенью готовности, что позволяет нашим клиентам
                 значительно сократить сроки строительства. EVRAZ STEEL BOX
                 входит в состав ЕВРАЗа — вертикально-интегрированной
                 металлургической компании, лидера на рынке стального проката и
                 готовых решений для инфраструктурных проектов.
               </p>
-              <button onClick={() => scrollTo("contacts")} className="btn-primary">
+              <button
+                onClick={() => scrollTo("contacts")}
+                className="btn-primary"
+              >
                 Связаться с нами
               </button>
             </AnimSection>
@@ -642,11 +700,14 @@ export function ContentSections({
             <AnimSection>
               <div className="grid grid-cols-2 gap-px bg-evraz-border border border-evraz-border">
                 {[
-                  { n: "400+",         l: "реализованных проектов по всей России" },
-                  { n: "45 дней",      l: "поставка и монтаж серийных зданий" },
-                  { n: "500 000 м²",   l: "запроектированных объектов в портфеле" },
-                  { n: "300 000 м²",   l: "построенных индивидуальных объектов" },
-                  { n: "60+",          l: "многоуровневых паркингов на 50 000 м/мест" },
+                  { n: "400+", l: "реализованных проектов по всей России" },
+                  { n: "45 дней", l: "поставка и монтаж серийных зданий" },
+                  {
+                    n: "500 000 м²",
+                    l: "запроектированных объектов в портфеле",
+                  },
+                  { n: "300 000 м²", l: "построенных индивидуальных объектов" },
+                  { n: "60+", l: "многоуровневых паркингов на 50 000 м/мест" },
                 ].map((s, i) => (
                   <div
                     key={s.n}
@@ -655,7 +716,9 @@ export function ContentSections({
                     <div className="font-oswald text-3xl text-evraz-dark font-bold leading-none mb-1">
                       {s.n}
                     </div>
-                    <div className="font-ibm text-sm text-evraz-gray">{s.l}</div>
+                    <div className="font-ibm text-sm text-evraz-gray">
+                      {s.l}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -668,7 +731,11 @@ export function ContentSections({
               {ADVANTAGES.map((adv) => (
                 <div key={adv.title} className="bg-white p-6 flex flex-col">
                   <div className="w-9 h-9 bg-evraz-light flex items-center justify-center mb-4">
-                    <Icon name={adv.icon} size={18} className="text-evraz-red" />
+                    <Icon
+                      name={adv.icon}
+                      size={18}
+                      className="text-evraz-red"
+                    />
                   </div>
                   <h4 className="font-oswald text-sm text-evraz-dark font-semibold uppercase tracking-wide mb-1">
                     {adv.title}
@@ -863,7 +930,6 @@ export function ContentSections({
       {/* FOOTER */}
       <footer className="bg-evraz-charcoal border-t border-evraz-border pt-14 pb-8">
         <div className="container mx-auto">
-
           {/* Верхняя часть: лого + описание */}
           <div className="mb-10">
             <div className="mb-4">
@@ -874,7 +940,8 @@ export function ContentSections({
               />
             </div>
             <p className="font-ibm text-sm text-evraz-gray leading-relaxed max-w-xs">
-              EVRAZ STEEL BOX — высокотехнологичный поставщик быстровозводимых зданий
+              EVRAZ STEEL BOX — высокотехнологичный поставщик быстровозводимых
+              зданий
             </p>
           </div>
 
@@ -882,11 +949,23 @@ export function ContentSections({
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
             {/* Продукция */}
             <div>
-              <h5 className="font-oswald text-xs tracking-widest text-evraz-dark uppercase mb-4">Продукция</h5>
+              <h5 className="font-oswald text-xs tracking-widest text-evraz-dark uppercase mb-4">
+                Продукция
+              </h5>
               <ul className="space-y-2">
-                {["BOX 2.0", "Склады и ангары", "Быстровозводимые здания", "Магазины и торговые здания", "Здания для транспорта", "Спортивные сооружения", "Сельхозяйственные здания"].map((item) => (
+                {[
+                  "BOX 2.0",
+                  "Склады и ангары",
+                  "Быстровозводимые здания",
+                  "Магазины и торговые здания",
+                  "Здания для транспорта",
+                  "Спортивные сооружения",
+                  "Сельхозяйственные здания",
+                ].map((item) => (
                   <li key={item}>
-                    <span className="font-ibm text-sm text-evraz-gray hover:text-evraz-dark cursor-pointer transition-colors">{item}</span>
+                    <span className="font-ibm text-sm text-evraz-gray hover:text-evraz-dark cursor-pointer transition-colors">
+                      {item}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -894,11 +973,21 @@ export function ContentSections({
 
             {/* О компании */}
             <div>
-              <h5 className="font-oswald text-xs tracking-widest text-evraz-dark uppercase mb-4">О компании</h5>
+              <h5 className="font-oswald text-xs tracking-widest text-evraz-dark uppercase mb-4">
+                О компании
+              </h5>
               <ul className="space-y-2">
-                {["О компании", "Контакты", "Наше производство", "Этапы реализации", "Готовые проекты"].map((item) => (
+                {[
+                  "О компании",
+                  "Контакты",
+                  "Наше производство",
+                  "Этапы реализации",
+                  "Готовые проекты",
+                ].map((item) => (
                   <li key={item}>
-                    <span className="font-ibm text-sm text-evraz-gray hover:text-evraz-dark cursor-pointer transition-colors">{item}</span>
+                    <span className="font-ibm text-sm text-evraz-gray hover:text-evraz-dark cursor-pointer transition-colors">
+                      {item}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -906,11 +995,15 @@ export function ContentSections({
 
             {/* Пресс-центр */}
             <div>
-              <h5 className="font-oswald text-xs tracking-widest text-evraz-dark uppercase mb-4">Пресс-центр</h5>
+              <h5 className="font-oswald text-xs tracking-widest text-evraz-dark uppercase mb-4">
+                Пресс-центр
+              </h5>
               <ul className="space-y-2">
                 {["Новости", "Статьи", "База знаний", "FAQ"].map((item) => (
                   <li key={item}>
-                    <span className="font-ibm text-sm text-evraz-gray hover:text-evraz-dark cursor-pointer transition-colors">{item}</span>
+                    <span className="font-ibm text-sm text-evraz-gray hover:text-evraz-dark cursor-pointer transition-colors">
+                      {item}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -918,12 +1011,18 @@ export function ContentSections({
 
             {/* Головной офис */}
             <div>
-              <h5 className="font-oswald text-xs tracking-widest text-evraz-dark uppercase mb-4">Головной офис</h5>
+              <h5 className="font-oswald text-xs tracking-widest text-evraz-dark uppercase mb-4">
+                Головной офис
+              </h5>
               <p className="font-ibm text-sm text-evraz-gray leading-relaxed mb-3">
                 г. Москва, ул. Авиаконструктора Микояна, д. 12
               </p>
-              <p className="font-ibm text-xs text-evraz-gray mb-1">Мы открыты</p>
-              <p className="font-ibm text-xs text-evraz-dark font-medium">09:30 — 18:00</p>
+              <p className="font-ibm text-xs text-evraz-gray mb-1">
+                Мы открыты
+              </p>
+              <p className="font-ibm text-xs text-evraz-dark font-medium">
+                09:30 — 18:00
+              </p>
               <p className="font-ibm text-xs text-evraz-gray mt-3">
                 Наши офисы расположены по всей России
               </p>
@@ -931,7 +1030,9 @@ export function ContentSections({
 
             {/* Контакты */}
             <div>
-              <h5 className="font-oswald text-xs tracking-widest text-evraz-dark uppercase mb-4">Контакты</h5>
+              <h5 className="font-oswald text-xs tracking-widest text-evraz-dark uppercase mb-4">
+                Контакты
+              </h5>
               <p className="font-ibm text-xs text-evraz-gray mb-1">Телефон</p>
               <a
                 href="tel:88003029686"
@@ -939,7 +1040,9 @@ export function ContentSections({
               >
                 8 800 302 96 86
               </a>
-              <p className="font-ibm text-xs text-evraz-gray mb-3">звонок по России бесплатный</p>
+              <p className="font-ibm text-xs text-evraz-gray mb-3">
+                звонок по России бесплатный
+              </p>
               <p className="font-ibm text-xs text-evraz-gray mb-1">Email</p>
               <a
                 href="mailto:info.box@evrazsteel.ru"
@@ -964,7 +1067,6 @@ export function ContentSections({
               </span>
             </div>
           </div>
-
         </div>
       </footer>
     </>
