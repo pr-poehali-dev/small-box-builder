@@ -444,98 +444,78 @@ export function ContentSections({
       {/* ABOUT */}
       <section id="about" className="py-24 bg-white">
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <AnimSection>
+            {/* Шапка */}
+            <div className="mb-12">
+              <div className="accent-line" />
+              <h2 className="font-oswald text-4xl md:text-5xl text-evraz-dark font-semibold">
+                О КОМПАНИИ
+              </h2>
+            </div>
+          </AnimSection>
+
+          {/* Верхний ряд: текст + 5 статов */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
             <AnimSection>
-              <div>
-                <div className="accent-line" />
-                <h2 className="font-oswald text-4xl md:text-5xl text-evraz-dark font-semibold mb-6">
-                  О КОМПАНИИ
-                </h2>
-                <p className="font-ibm text-evraz-gray mb-6 leading-relaxed">
-                  EVRAZ STEEL BOX специализируется на проектировании и поставке
-                  зданий и кровельных систем для проектов промышленного и
-                  коммерческого назначения.
-                </p>
-                <p className="font-ibm text-evraz-gray mb-8 leading-relaxed">
-                  Мы предлагаем полнокомплектные здания заводского изготовления
-                  с высокой степенью готовности, что позволяет нашим клиентам
-                  значительно сократить сроки строительства. EVRAZ STEEL BOX
-                  входит в состав ЕВРАЗа — вертикально-интегрированной
-                  металлургической компании, лидера на рынке стального проката и
-                  готовых решений для инфраструктурных проектов.
-                </p>
-                <div className="grid grid-cols-3 gap-4 mb-4">
-                  {[
-                    {
-                      n: "400+",
-                      l: "реализованных проектов по всей России",
-                    },
-                    {
-                      n: "45 дней",
-                      l: "поставка и монтаж серийных зданий",
-                    },
-                    {
-                      n: "60+",
-                      l: "многоуровневых паркингов на 50 000 машиномест",
-                    },
-                  ].map((s) => (
-                    <div key={s.l} className="border-l-2 border-evraz-red pl-4">
-                      <div className="font-oswald text-3xl text-evraz-dark font-bold">{s.n}</div>
-                      <div className="font-ibm text-sm text-evraz-gray mt-1">{s.l}</div>
-                    </div>
-                  ))}
-                </div>
-                <div className="grid grid-cols-2 gap-4 mb-8">
-                  {[
-                    {
-                      n: "500 000 м²",
-                      l: "запроектированных объектов в нашем портфеле",
-                    },
-                    {
-                      n: "300 000 м²",
-                      l: "построенных индивидуальных объектов",
-                    },
-                  ].map((s) => (
-                    <div key={s.l} className="border-l-2 border-evraz-red pl-4">
-                      <div className="font-oswald text-3xl text-evraz-dark font-bold">{s.n}</div>
-                      <div className="font-ibm text-sm text-evraz-gray mt-1">{s.l}</div>
-                    </div>
-                  ))}
-                </div>
-                <button
-                  onClick={() => scrollTo("contacts")}
-                  className="btn-primary"
-                >
-                  Связаться с нами
-                </button>
-              </div>
+              <p className="font-ibm text-evraz-gray leading-relaxed mb-4">
+                EVRAZ STEEL BOX специализируется на проектировании и поставке
+                зданий и кровельных систем для проектов промышленного и
+                коммерческого назначения.
+              </p>
+              <p className="font-ibm text-evraz-gray leading-relaxed mb-8">
+                Мы предлагаем полнокомплектные здания заводского изготовления
+                с высокой степенью готовности, что позволяет нашим клиентам
+                значительно сократить сроки строительства. EVRAZ STEEL BOX
+                входит в состав ЕВРАЗа — вертикально-интегрированной
+                металлургической компании, лидера на рынке стального проката и
+                готовых решений для инфраструктурных проектов.
+              </p>
+              <button onClick={() => scrollTo("contacts")} className="btn-primary">
+                Связаться с нами
+              </button>
             </AnimSection>
 
             <AnimSection>
-              <div className="grid grid-cols-3 gap-4">
-                {ADVANTAGES.map((adv) => (
+              <div className="grid grid-cols-2 gap-px bg-evraz-border border border-evraz-border">
+                {[
+                  { n: "400+",         l: "реализованных проектов по всей России" },
+                  { n: "45 дней",      l: "поставка и монтаж серийных зданий" },
+                  { n: "500 000 м²",   l: "запроектированных объектов в портфеле" },
+                  { n: "300 000 м²",   l: "построенных индивидуальных объектов" },
+                  { n: "60+",          l: "многоуровневых паркингов на 50 000 м/мест" },
+                ].map((s, i) => (
                   <div
-                    key={adv.title}
-                    className="steel-card p-6 border border-evraz-border"
+                    key={s.n}
+                    className={`bg-white px-6 py-5 ${i === 4 ? "col-span-2 border-t border-evraz-border" : ""}`}
                   >
-                    <div className="w-10 h-10 bg-red-50 flex items-center justify-center mb-4">
-                      <Icon
-                        name={adv.icon}
-                        size={20}
-                        className="text-evraz-red"
-                      />
+                    <div className="font-oswald text-3xl text-evraz-dark font-bold leading-none mb-1">
+                      {s.n}
                     </div>
-                    <h4 className="font-oswald text-base text-evraz-dark font-semibold mb-2">
-                      {adv.title}
-                    </h4>
-                    <p className="font-ibm text-sm text-evraz-gray leading-relaxed">
-                      {adv.desc}
-                    </p>
+                    <div className="font-ibm text-sm text-evraz-gray">{s.l}</div>
                   </div>
                 ))}
               </div>
             </AnimSection>
           </div>
+
+          {/* Нижний ряд: 5 преимуществ */}
+          <AnimSection>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-evraz-border border border-evraz-border">
+              {ADVANTAGES.map((adv) => (
+                <div key={adv.title} className="bg-white p-6 flex flex-col">
+                  <div className="w-9 h-9 bg-evraz-light flex items-center justify-center mb-4">
+                    <Icon name={adv.icon} size={18} className="text-evraz-red" />
+                  </div>
+                  <h4 className="font-oswald text-sm text-evraz-dark font-semibold uppercase tracking-wide mb-1">
+                    {adv.title}
+                  </h4>
+                  <p className="font-ibm text-xs text-evraz-gray leading-relaxed">
+                    {adv.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </AnimSection>
         </div>
       </section>
 
