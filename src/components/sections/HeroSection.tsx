@@ -98,6 +98,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
               target: "solutions",
               accent: false,
               route: "/catalog",
+              image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/02b7701e-8f0d-4d16-8e31-51e2632569a9.png",
             },
             {
               icon: "PenRuler",
@@ -108,6 +109,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
               target: "contacts",
               accent: true,
               route: "/BigBox2",
+              image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/57c8a566-90b2-44fe-9f39-5b317f8073ee.jpg",
             },
             {
               icon: "Car",
@@ -118,81 +120,55 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
               target: "calculator",
               accent: false,
               route: "/parking",
+              image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/c5af765d-44ea-4928-b299-a722ed76e5e8.png",
             },
           ].map((card) => (
             <div
               key={card.tag}
-              className={`group relative p-8 md:p-10 border-t-2 cursor-pointer transition-all duration-300 ${
-                card.accent
-                  ? "bg-evraz-red border-evraz-red"
-                  : "bg-white border-evraz-border hover:border-evraz-red"
-              }`}
+              className="group relative overflow-hidden cursor-pointer border-t-2 border-evraz-border hover:border-evraz-red transition-colors duration-300"
+              style={{ minHeight: "280px" }}
               onClick={() =>
                 card.route ? navigate(card.route) : scrollTo(card.target)
               }
             >
-              {/* Top */}
-              <div className="flex items-center justify-between mb-6">
-                <span
-                  className={`font-oswald text-xs tracking-[0.2em] uppercase px-2 py-1 ${
-                    card.accent
-                      ? "bg-white/20 text-white"
-                      : "bg-evraz-light text-evraz-red"
-                  }`}
-                >
+              {/* Фоновое изображение */}
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                style={{ backgroundImage: `url(${card.image})` }}
+              />
+              {/* Затемнение поверх фото — по умолчанию сильное, при наведении слабее */}
+              <div className="absolute inset-0 bg-evraz-dark/70 group-hover:bg-evraz-dark/50 transition-colors duration-300" />
+
+              {/* Контент — виден всегда */}
+              <div className="relative z-10 flex flex-col justify-end h-full p-8 md:p-10" style={{ minHeight: "280px" }}>
+                {/* Тег */}
+                <span className="font-oswald text-xs tracking-[0.2em] uppercase px-2 py-1 bg-evraz-red text-white self-start mb-4">
                   {card.tag}
                 </span>
-                <div
-                  className={`w-10 h-10 flex items-center justify-center border ${
-                    card.accent
-                      ? "border-white/30"
-                      : "border-evraz-border group-hover:border-evraz-red"
-                  } transition-colors`}
-                >
+
+                {/* Заголовок */}
+                <h3 className="font-oswald text-2xl font-semibold leading-tight text-white mb-3">
+                  {card.title}
+                </h3>
+
+                {/* Описание — появляется при наведении */}
+                <p className="font-ibm text-sm leading-relaxed text-white/80 mb-5 max-h-0 overflow-hidden group-hover:max-h-24 transition-all duration-400">
+                  {card.desc}
+                </p>
+
+                {/* CTA */}
+                <div className="flex items-center gap-2 font-oswald text-sm tracking-wider uppercase text-white/70 group-hover:text-white transition-colors duration-300">
+                  {card.cta}
                   <Icon
-                    name={card.icon}
-                    size={18}
-                    className={
-                      card.accent
-                        ? "text-white"
-                        : "text-evraz-gray group-hover:text-evraz-red"
-                    }
+                    name="ArrowRight"
+                    size={16}
+                    className="transition-transform duration-300 group-hover:translate-x-1"
                   />
                 </div>
               </div>
 
-              {/* Content */}
-              <h3
-                className={`font-oswald text-2xl font-semibold mb-3 leading-tight ${card.accent ? "text-white" : "text-evraz-dark"}`}
-              >
-                {card.title}
-              </h3>
-              <p
-                className={`font-ibm text-sm leading-relaxed mb-8 ${card.accent ? "text-white/80" : "text-evraz-gray"}`}
-              >
-                {card.desc}
-              </p>
-
-              {/* CTA */}
-              <div
-                className={`flex items-center gap-2 font-oswald text-sm tracking-wider uppercase transition-all ${
-                  card.accent
-                    ? "text-white"
-                    : "text-evraz-gray group-hover:text-evraz-dark"
-                }`}
-              >
-                {card.cta}
-                <Icon
-                  name="ArrowRight"
-                  size={16}
-                  className={`transition-transform duration-300 group-hover:translate-x-1 ${card.accent ? "text-white" : ""}`}
-                />
-              </div>
-
               {/* Bottom accent line */}
-              {!card.accent && (
-                <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-evraz-red group-hover:w-full transition-all duration-500" />
-              )}
+              <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-evraz-red group-hover:w-full transition-all duration-500 z-20" />
             </div>
           ))}
         </div>
