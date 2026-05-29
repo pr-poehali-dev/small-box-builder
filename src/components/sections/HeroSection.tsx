@@ -109,7 +109,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
               target: "contacts",
               accent: true,
               route: "/BigBox2",
-              image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/57c8a566-90b2-44fe-9f39-5b317f8073ee.jpg",
+              image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/a183d3e6-91ce-4d88-a8bb-785b392733e8.jpg",
             },
             {
               icon: "Car",
