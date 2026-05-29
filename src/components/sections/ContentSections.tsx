@@ -37,7 +37,7 @@ const CASES: {
     year: "2026",
     image:
       "https://evrazsteelbox.ru/upload/iblock/002/n6azi9qr6xbitzth4po2353gykbamus9.jpg",
-    tag: "торговый центр",
+    tag: "Торговый центр",
     dims: { width: "24 м", length: "60 м", height: "5 м" },
     partner: "УралМеталлМонтаж",
     review: "https://metallurg.ru",
@@ -55,6 +55,45 @@ const CASES: {
     partner: "СибирьСталь",
     review: null,
     category: "Серийные здания",
+  },
+  {
+    title: "Логистический комплекс",
+    location: "Тульская обл., Узловая",
+    area: "12 600 м²",
+    year: "2025",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/34ba11a3-b1fe-4f66-89ea-dd01b3d5386a.jpg",
+    tag: "Склад",
+    dims: { width: "42 м", length: "300 м", height: "12 м" },
+    partner: "ТехноСтальМонтаж",
+    review: null,
+    category: "Серийные здания",
+  },
+  {
+    title: "Многоуровневый паркинг ЖК",
+    location: "г. Екатеринбург",
+    area: "8 200 м²",
+    year: "2026",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/b0ec478d-e1b7-4efa-9b5e-73c039061c72.jpg",
+    tag: "Паркинг",
+    dims: { width: "36 м", length: "82 м", height: "14 м" },
+    partner: "УралСтройГрупп",
+    review: null,
+    category: "Парковки",
+  },
+  {
+    title: "Цех металлоконструкций",
+    location: "г. Челябинск",
+    area: "18 400 м²",
+    year: "2024",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/70650cd9-92ae-4db5-afef-df9bd475ee3f.jpg",
+    tag: "Производство",
+    dims: { width: "60 м", length: "180 м", height: "14 м" },
+    partner: "МеталлСтройПроект",
+    review: null,
+    category: "Индивидуальные проекты",
   },
 ];
 
@@ -218,17 +257,30 @@ const CASE_CATEGORIES: CaseCategory[] = [
   "Парковки",
 ];
 
+const VISIBLE = 3;
+
 export function ContentSections({
   scrollTo,
 }: {
   scrollTo: (id: string) => void;
 }) {
   const [caseFilter, setCaseFilter] = useState<CaseCategory | "Все">("Все");
+  const [slideIndex, setSlideIndex] = useState(0);
 
   const filteredCases =
     caseFilter === "Все"
       ? CASES
       : CASES.filter((c) => c.category === caseFilter);
+
+  const maxIndex = Math.max(0, filteredCases.length - VISIBLE);
+
+  const handleFilter = (cat: CaseCategory | "Все") => {
+    setCaseFilter(cat);
+    setSlideIndex(0);
+  };
+
+  const prev = () => setSlideIndex((i) => Math.max(0, i - 1));
+  const next = () => setSlideIndex((i) => Math.min(maxIndex, i + 1));
 
   return (
     <>
@@ -253,33 +305,57 @@ export function ContentSections({
             </div>
           </AnimSection>
 
-          {/* Переключатель категорий */}
+          {/* Фильтры + навигация */}
           <AnimSection>
-            <div className="flex flex-wrap gap-2 mb-10">
-              {(["Все", ...CASE_CATEGORIES] as (CaseCategory | "Все")[]).map(
-                (cat) => (
-                  <button
-                    key={cat}
-                    onClick={() => setCaseFilter(cat)}
-                    className={`font-oswald text-sm tracking-wider uppercase px-5 py-2.5 border transition-all ${
-                      caseFilter === cat
-                        ? "bg-evraz-red border-evraz-red text-white"
-                        : "border-evraz-border bg-white text-evraz-steel hover:border-evraz-red hover:text-evraz-red"
-                    }`}
-                  >
-                    {cat}
-                  </button>
-                ),
-              )}
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-10">
+              <div className="flex flex-wrap gap-2">
+                {(["Все", ...CASE_CATEGORIES] as (CaseCategory | "Все")[]).map(
+                  (cat) => (
+                    <button
+                      key={cat}
+                      onClick={() => handleFilter(cat)}
+                      className={`font-oswald text-sm tracking-wider uppercase px-5 py-2.5 border transition-all ${
+                        caseFilter === cat
+                          ? "bg-evraz-red border-evraz-red text-white"
+                          : "border-evraz-border bg-white text-evraz-steel hover:border-evraz-red hover:text-evraz-red"
+                      }`}
+                    >
+                      {cat}
+                    </button>
+                  ),
+                )}
+              </div>
+              {/* Стрелки */}
+              <div className="flex gap-2">
+                <button
+                  onClick={prev}
+                  disabled={slideIndex === 0}
+                  className="w-10 h-10 border border-evraz-border flex items-center justify-center transition-all hover:border-evraz-red hover:text-evraz-red disabled:opacity-30 disabled:cursor-not-allowed"
+                >
+                  <Icon name="ChevronLeft" size={18} />
+                </button>
+                <button
+                  onClick={next}
+                  disabled={slideIndex >= maxIndex}
+                  className="w-10 h-10 border border-evraz-border flex items-center justify-center transition-all hover:border-evraz-red hover:text-evraz-red disabled:opacity-30 disabled:cursor-not-allowed"
+                >
+                  <Icon name="ChevronRight" size={18} />
+                </button>
+              </div>
             </div>
           </AnimSection>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {filteredCases.map((c, i) => (
-              <AnimSection key={c.title}>
+          {/* Слайдер */}
+          <div className="overflow-hidden">
+            <div
+              className="flex gap-6 transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(calc(-${slideIndex} * (100% / ${VISIBLE} + 8px)))` }}
+            >
+              {filteredCases.map((c) => (
                 <div
-                  className="steel-card bg-white border border-evraz-border overflow-hidden group flex flex-col"
-                  style={{ transitionDelay: `${i * 120}ms` }}
+                  key={c.title}
+                  className="flex-shrink-0 bg-white border border-evraz-border overflow-hidden group flex flex-col"
+                  style={{ width: `calc((100% - ${(VISIBLE - 1) * 24}px) / ${VISIBLE})` }}
                 >
                   {/* Image */}
                   <div className="relative h-64 overflow-hidden shrink-0">
@@ -303,11 +379,7 @@ export function ContentSections({
                       {c.title}
                     </h3>
                     <div className="flex items-center gap-2 text-evraz-gray mb-5">
-                      <Icon
-                        name="MapPin"
-                        size={13}
-                        className="text-evraz-red shrink-0"
-                      />
+                      <Icon name="MapPin" size={13} className="text-evraz-red shrink-0" />
                       <span className="font-ibm text-sm">{c.location}</span>
                     </div>
 
@@ -319,33 +391,18 @@ export function ContentSections({
                         { label: "Длина", value: c.dims.length },
                         { label: "Высота", value: c.dims.height },
                       ].map((d) => (
-                        <div
-                          key={d.label}
-                          className="bg-evraz-light px-2 py-2.5 text-center"
-                        >
-                          <div className="font-oswald text-sm text-evraz-dark font-semibold leading-none">
-                            {d.value}
-                          </div>
-                          <div className="font-ibm text-xs text-evraz-gray mt-1">
-                            {d.label}
-                          </div>
+                        <div key={d.label} className="bg-evraz-light px-2 py-2.5 text-center">
+                          <div className="font-oswald text-sm text-evraz-dark font-semibold leading-none">{d.value}</div>
+                          <div className="font-ibm text-xs text-evraz-gray mt-1">{d.label}</div>
                         </div>
                       ))}
                     </div>
 
                     {/* Партнёр */}
                     <div className="flex items-center gap-2 mb-5">
-                      <Icon
-                        name="HardHat"
-                        size={13}
-                        className="text-evraz-gray shrink-0"
-                      />
-                      <span className="font-ibm text-xs text-evraz-gray">
-                        Монтаж:
-                      </span>
-                      <span className="font-ibm text-xs text-evraz-dark font-medium">
-                        {c.partner}
-                      </span>
+                      <Icon name="HardHat" size={13} className="text-evraz-gray shrink-0" />
+                      <span className="font-ibm text-xs text-evraz-gray">Монтаж:</span>
+                      <span className="font-ibm text-xs text-evraz-dark font-medium">{c.partner}</span>
                     </div>
 
                     {/* Отзыв + стрелка */}
@@ -365,18 +422,27 @@ export function ContentSections({
                         <div />
                       )}
                       <div className="w-8 h-8 bg-red-50 flex items-center justify-center group-hover:bg-evraz-red transition-colors cursor-pointer">
-                        <Icon
-                          name="ArrowRight"
-                          size={15}
-                          className="text-evraz-red group-hover:text-white transition-colors"
-                        />
+                        <Icon name="ArrowRight" size={15} className="text-evraz-red group-hover:text-white transition-colors" />
                       </div>
                     </div>
                   </div>
                 </div>
-              </AnimSection>
-            ))}
+              ))}
+            </div>
           </div>
+
+          {/* Точки-индикаторы */}
+          {maxIndex > 0 && (
+            <div className="flex justify-center gap-2 mt-8">
+              {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setSlideIndex(i)}
+                  className={`h-1.5 transition-all duration-300 ${i === slideIndex ? "w-8 bg-evraz-red" : "w-3 bg-evraz-border hover:bg-evraz-gray"}`}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
