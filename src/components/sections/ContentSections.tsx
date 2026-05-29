@@ -861,68 +861,99 @@ export function ContentSections({
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-evraz-charcoal border-t border-evraz-border py-12">
+      <footer className="bg-evraz-charcoal border-t border-evraz-border pt-14 pb-8">
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
-            <div className="md:col-span-1">
-              <div className="mb-4">
-                <img
-                  src="https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/07662369-c03c-4cb9-b942-839aad61017e.png"
-                  alt="EVRAZ SteelBox"
-                  className="h-10 w-auto"
-                />
-              </div>
-              <p className="font-ibm text-sm text-evraz-gray leading-relaxed">
-                Быстровозводимые стальные здания. Сталь EVRAZ — надёжность,
-                проверенная временем.
+
+          {/* Верхняя часть: лого + описание */}
+          <div className="mb-10">
+            <div className="mb-4">
+              <img
+                src="https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/07662369-c03c-4cb9-b942-839aad61017e.png"
+                alt="EVRAZ SteelBox"
+                className="h-10 w-auto"
+              />
+            </div>
+            <p className="font-ibm text-sm text-evraz-gray leading-relaxed max-w-xs">
+              EVRAZ STEEL BOX — высокотехнологичный поставщик быстровозводимых зданий
+            </p>
+          </div>
+
+          {/* Колонки меню */}
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+            {/* Продукция */}
+            <div>
+              <h5 className="font-oswald text-xs tracking-widest text-evraz-dark uppercase mb-4">Продукция</h5>
+              <ul className="space-y-2">
+                {["BOX 2.0", "Склады и ангары", "Быстровозводимые здания", "Магазины и торговые здания", "Здания для транспорта", "Спортивные сооружения", "Сельхозяйственные здания"].map((item) => (
+                  <li key={item}>
+                    <span className="font-ibm text-sm text-evraz-gray hover:text-evraz-dark cursor-pointer transition-colors">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* О компании */}
+            <div>
+              <h5 className="font-oswald text-xs tracking-widest text-evraz-dark uppercase mb-4">О компании</h5>
+              <ul className="space-y-2">
+                {["О компании", "Контакты", "Наше производство", "Этапы реализации", "Готовые проекты"].map((item) => (
+                  <li key={item}>
+                    <span className="font-ibm text-sm text-evraz-gray hover:text-evraz-dark cursor-pointer transition-colors">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Пресс-центр */}
+            <div>
+              <h5 className="font-oswald text-xs tracking-widest text-evraz-dark uppercase mb-4">Пресс-центр</h5>
+              <ul className="space-y-2">
+                {["Новости", "Статьи", "База знаний", "FAQ"].map((item) => (
+                  <li key={item}>
+                    <span className="font-ibm text-sm text-evraz-gray hover:text-evraz-dark cursor-pointer transition-colors">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Головной офис */}
+            <div>
+              <h5 className="font-oswald text-xs tracking-widest text-evraz-dark uppercase mb-4">Головной офис</h5>
+              <p className="font-ibm text-sm text-evraz-gray leading-relaxed mb-3">
+                г. Москва, ул. Авиаконструктора Микояна, д. 12
+              </p>
+              <p className="font-ibm text-xs text-evraz-gray mb-1">Мы открыты</p>
+              <p className="font-ibm text-xs text-evraz-dark font-medium">09:30 — 18:00</p>
+              <p className="font-ibm text-xs text-evraz-gray mt-3">
+                Наши офисы расположены по всей России
               </p>
             </div>
 
-            {[
-              {
-                title: "Решения",
-                items: [
-                  "Склады и логистика",
-                  "Производство",
-                  "Торговые центры",
-                  "Агро объекты",
-                  "Спорт сооружения",
-                ],
-              },
-              {
-                title: "Компания",
-                items: ["О компании", "Кейсы", "Партнёры", "Блог", "Гарантии"],
-              },
-              {
-                title: "Контакты",
-                items: [
-                  "8 800 123-45-67",
-                  "info@evraz-buildings.ru",
-                  "Москва, Дубининская 21",
-                  "Пн–Пт 9:00–18:00",
-                ],
-              },
-            ].map((col) => (
-              <div key={col.title}>
-                <h5 className="font-oswald text-sm tracking-widest text-evraz-dark uppercase mb-4">
-                  {col.title}
-                </h5>
-                <ul className="space-y-2">
-                  {col.items.map((item) => (
-                    <li key={item}>
-                      <span className="font-ibm text-sm text-evraz-gray hover:text-evraz-dark cursor-pointer transition-colors">
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            {/* Контакты */}
+            <div>
+              <h5 className="font-oswald text-xs tracking-widest text-evraz-dark uppercase mb-4">Контакты</h5>
+              <p className="font-ibm text-xs text-evraz-gray mb-1">Телефон</p>
+              <a
+                href="tel:88003029686"
+                className="font-ibm text-sm text-evraz-dark hover:text-evraz-red transition-colors block mb-1"
+              >
+                8 800 302 96 86
+              </a>
+              <p className="font-ibm text-xs text-evraz-gray mb-3">звонок по России бесплатный</p>
+              <p className="font-ibm text-xs text-evraz-gray mb-1">Email</p>
+              <a
+                href="mailto:info.box@evrazsteel.ru"
+                className="font-ibm text-sm text-evraz-dark hover:text-evraz-red transition-colors"
+              >
+                info.box@evrazsteel.ru
+              </a>
+            </div>
           </div>
 
+          {/* Нижняя строка */}
           <div className="border-t border-evraz-border pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="font-ibm text-xs text-evraz-gray">
-              © 2026 EVRAZ Steel BOX. Все права защищены.
+              © {new Date().getFullYear()} EVRAZ Steel BOX. Все права защищены.
             </p>
             <div className="flex gap-6">
               <span className="font-ibm text-xs text-evraz-gray hover:text-evraz-dark cursor-pointer transition-colors">
@@ -933,6 +964,7 @@ export function ContentSections({
               </span>
             </div>
           </div>
+
         </div>
       </footer>
     </>
