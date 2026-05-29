@@ -140,25 +140,22 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
               {/* Затемнение: лёгкое по умолчанию, сильное при наведении */}
               <div className="absolute inset-0 bg-evraz-dark/30 group-hover:bg-evraz-dark/80 transition-colors duration-300" />
 
-              {/* Заголовок — виден всегда, внизу */}
-              <div className="absolute bottom-0 left-0 right-0 z-10 p-8 md:p-10">
-                <h3 className="font-oswald text-2xl font-semibold leading-tight text-white">
-                  {card.title}
-                </h3>
-              </div>
-
-              {/* Hover-слой: весь текст как раньше */}
-              <div className="absolute inset-0 z-20 flex flex-col justify-end p-8 md:p-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span className="font-oswald text-xs tracking-[0.2em] uppercase px-2 py-1 bg-evraz-red text-white self-start mb-4">
+              {/* Контент: всегда в одной позиции, hover докидывает остальное */}
+              <div className="absolute inset-0 z-20 flex flex-col justify-end p-8 md:p-10">
+                {/* Тег — появляется при наведении */}
+                <span className="font-oswald text-xs tracking-[0.2em] uppercase px-2 py-1 bg-evraz-red text-white self-start mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   {card.tag}
                 </span>
+                {/* Заголовок — виден всегда */}
                 <h3 className="font-oswald text-2xl font-semibold leading-tight text-white mb-3">
                   {card.title}
                 </h3>
-                <p className="font-ibm text-sm leading-relaxed text-white/80 mb-8">
+                {/* Описание — появляется при наведении */}
+                <p className="font-ibm text-sm leading-relaxed text-white/80 mb-8 max-h-0 overflow-hidden group-hover:max-h-32 transition-all duration-300">
                   {card.desc}
                 </p>
-                <div className="flex items-center gap-2 font-oswald text-sm tracking-wider uppercase text-white">
+                {/* CTA — появляется при наведении */}
+                <div className="flex items-center gap-2 font-oswald text-sm tracking-wider uppercase text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   {card.cta}
                   <Icon
                     name="ArrowRight"
