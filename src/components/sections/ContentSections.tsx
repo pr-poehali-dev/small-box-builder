@@ -119,11 +119,6 @@ const ADVANTAGES = [
     desc: "Полный цикл от концепции до ввода в эксплуатацию",
   },
   {
-    icon: "Wrench",
-    title: "Техподдержка",
-    desc: "Сервисное обслуживание по всей России и СНГ",
-  },
-  {
     icon: "Globe",
     title: "Сеть партнёров",
     desc: "Более 180 аккредитованных исполнителей в 45 регионах",
@@ -469,32 +464,41 @@ export function ContentSections({
                   металлургической компании, лидера на рынке стального проката и
                   готовых решений для инфраструктурных проектов.
                 </p>
-                <div className="grid grid-cols-2 gap-6 mb-8">
+                <div className="grid grid-cols-3 gap-4 mb-4">
                   {[
                     {
                       n: "400+",
-                      l: "реализованных проектов промышленных и коммерческих зданий по всей России",
+                      l: "реализованных проектов по всей России",
                     },
                     {
                       n: "45 дней",
-                      l: "всего за 6 недель мы обеспечиваем поставку и монтаж быстровозводимых серийных зданий для малого и среднего бизнеса",
-                    },
-                    {
-                      n: "500 000 м²",
-                      l: "запроектированных объектов в нашем портфеле и более 300 000 м² простроенных индивидуальных объектов",
+                      l: "поставка и монтаж серийных зданий",
                     },
                     {
                       n: "60+",
-                      l: "Запроектировали многоуровневых паркингов на 50 000 машиномест и построили более 20 паркингов на 9 000машиномест",
+                      l: "многоуровневых паркингов на 50 000 машиномест",
                     },
                   ].map((s) => (
                     <div key={s.l} className="border-l-2 border-evraz-red pl-4">
-                      <div className="font-oswald text-3xl text-evraz-dark font-bold">
-                        {s.n}
-                      </div>
-                      <div className="font-ibm text-sm text-evraz-gray mt-1">
-                        {s.l}
-                      </div>
+                      <div className="font-oswald text-3xl text-evraz-dark font-bold">{s.n}</div>
+                      <div className="font-ibm text-sm text-evraz-gray mt-1">{s.l}</div>
+                    </div>
+                  ))}
+                </div>
+                <div className="grid grid-cols-2 gap-4 mb-8">
+                  {[
+                    {
+                      n: "500 000 м²",
+                      l: "запроектированных объектов в нашем портфеле",
+                    },
+                    {
+                      n: "300 000 м²",
+                      l: "построенных индивидуальных объектов",
+                    },
+                  ].map((s) => (
+                    <div key={s.l} className="border-l-2 border-evraz-red pl-4">
+                      <div className="font-oswald text-3xl text-evraz-dark font-bold">{s.n}</div>
+                      <div className="font-ibm text-sm text-evraz-gray mt-1">{s.l}</div>
                     </div>
                   ))}
                 </div>
@@ -508,7 +512,7 @@ export function ContentSections({
             </AnimSection>
 
             <AnimSection>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-3 gap-4">
                 {ADVANTAGES.map((adv) => (
                   <div
                     key={adv.title}
