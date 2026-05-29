@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import { AnimSection } from "@/components/shared/AnimSection";
@@ -269,6 +269,146 @@ const BLOG_POSTS = [
     desc: "Рассказываем о нашей новой технологической платформе BOX EXPRESS",
   },
 ];
+
+function PartnersSection({ onContact }: { onContact: () => void }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const CARD_WIDTH = 320 + 16; // width + gap
+
+  const scroll = (dir: "left" | "right") => {
+    if (!scrollRef.current) return;
+    scrollRef.current.scrollBy({ left: dir === "right" ? CARD_WIDTH * 2 : -CARD_WIDTH * 2, behavior: "smooth" });
+  };
+
+  return (
+    <section id="partners" className="py-24 bg-evraz-light">
+      <div className="container mx-auto">
+        <AnimSection>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+            <div>
+              <div className="flex justify-center mb-4 justify-start">
+                <div className="w-12 h-0.5 bg-evraz-red" />
+              </div>
+              <h2 className="font-oswald text-4xl md:text-5xl text-evraz-dark font-semibold">
+                СЕТЬ ПАРТНЁРОВ
+              </h2>
+              <p className="font-ibm text-evraz-gray mt-4 max-w-xl text-base leading-relaxed">
+                Сертифицированные строительные организации EVRAZ STEEL BOX.
+                Гарантия качества монтажа по всей России.
+              </p>
+            </div>
+            {/* Стрелки */}
+            <div className="flex gap-2 shrink-0">
+              <button
+                onClick={() => scroll("left")}
+                className="w-10 h-10 border border-evraz-border bg-white flex items-center justify-center hover:border-evraz-red hover:text-evraz-red transition-all"
+              >
+                <Icon name="ChevronLeft" size={18} />
+              </button>
+              <button
+                onClick={() => scroll("right")}
+                className="w-10 h-10 border border-evraz-border bg-white flex items-center justify-center hover:border-evraz-red hover:text-evraz-red transition-all"
+              >
+                <Icon name="ChevronRight" size={18} />
+              </button>
+            </div>
+          </div>
+        </AnimSection>
+
+        <div
+          ref={scrollRef}
+          className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide"
+          style={{ scrollSnapType: "x mandatory" }}
+        >
+          {PARTNERS.map((p) => (
+            <div
+              key={p.name}
+              className="bg-white border border-evraz-border p-6 hover:border-evraz-red/40 transition-all duration-300 flex flex-col flex-shrink-0"
+              style={{ width: "320px", scrollSnapAlign: "start" }}
+            >
+              <div className="flex items-start justify-between mb-4">
+                <div>
+                  <h4 className="font-oswald text-lg text-evraz-dark font-semibold">{p.name}</h4>
+                  <div className="flex items-center gap-1.5 mt-1">
+                    <Icon name="MapPin" size={12} className="text-evraz-steel" />
+                    <span className="font-ibm text-sm text-evraz-gray">{p.region}</span>
+                  </div>
+                </div>
+                <span className="font-oswald text-xs tracking-widest text-evraz-steel uppercase bg-evraz-light px-2 py-1 shrink-0 border border-evraz-border">
+                  Серт.
+                </span>
+              </div>
+
+              <div className="flex flex-wrap gap-1.5 mb-4">
+                {p.services.map((s) => (
+                  <span
+                    key={s}
+                    className={`font-oswald text-xs tracking-wider uppercase px-2.5 py-1 ${
+                      s === "Проектирование"
+                        ? "bg-evraz-charcoal text-evraz-steel border border-evraz-border"
+                        : "bg-evraz-red/10 text-evraz-red border border-evraz-red/30"
+                    }`}
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
+
+              {p.review && (
+                <div className="bg-evraz-light border-l-2 border-evraz-red px-4 py-3 mb-4 flex-1">
+                  <p className="font-ibm text-xs text-evraz-dark leading-relaxed italic">
+                    «{p.review.text}»
+                  </p>
+                  <p className="font-ibm text-xs text-evraz-gray mt-2">— {p.review.author}</p>
+                  <div className="flex items-center gap-3 mt-3 flex-wrap">
+                    <Link
+                      to={`/partners/${p.slug}`}
+                      className="font-ibm text-xs text-evraz-red hover:underline flex items-center gap-1"
+                    >
+                      <Icon name="ChevronRight" size={12} />
+                      Подробнее
+                    </Link>
+                    {p.review.videoUrl && (
+                      <a
+                        href={p.review.videoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-ibm text-xs text-evraz-red hover:underline flex items-center gap-1"
+                      >
+                        <Icon name="Play" size={12} />
+                        Видеоотзыв
+                      </a>
+                    )}
+                  </div>
+                </div>
+              )}
+              {!p.review && <div className="flex-1" />}
+
+              <div className="border-t border-evraz-border pt-4">
+                <span className="font-ibm text-sm text-evraz-gray">{p.projects} проектов</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <AnimSection>
+          <div className="mt-10 border border-evraz-steel/30 bg-evraz-charcoal p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+              <h3 className="font-oswald text-2xl text-evraz-dark font-semibold">
+                Хотите стать партнёром?
+              </h3>
+              <p className="font-ibm text-evraz-gray mt-2 text-sm">
+                Присоединяйтесь к сети из 180+ сертифицированных партнёров EVRAZ STEEL BOX
+              </p>
+            </div>
+            <button onClick={onContact} className="btn-primary whitespace-nowrap">
+              Подать заявку
+            </button>
+          </div>
+        </AnimSection>
+      </div>
+    </section>
+  );
+}
 
 const CASE_CATEGORIES: CaseCategory[] = [
   "Серийные здания",
@@ -544,126 +684,7 @@ export function ContentSections({
       </section>
 
       {/* PARTNERS */}
-      <section id="partners" className="py-24 bg-evraz-light">
-        <div className="container mx-auto">
-          <AnimSection>
-            <div className="text-center mb-16">
-              <div className="flex justify-center mb-4">
-                <div className="w-12 h-0.5 bg-evraz-steel" />
-              </div>
-              <h2 className="font-oswald text-4xl md:text-5xl text-evraz-dark font-semibold">
-                СЕТЬ ПАРТНЁРОВ
-              </h2>
-              <p className="font-ibm text-evraz-gray mt-4 max-w-xl mx-auto text-base leading-relaxed">
-                Сертифицированные строительные организации EVRAZ STEEL BOX.
-                Гарантия качества монтажа по всей России.
-              </p>
-            </div>
-          </AnimSection>
-
-          <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide" style={{ scrollSnapType: "x mandatory" }}>
-            {PARTNERS.map((p) => (
-                <div
-                  key={p.name}
-                  className="bg-white border border-evraz-border p-6 hover:border-evraz-red/40 transition-all duration-300 flex flex-col flex-shrink-0"
-                  style={{ width: "320px", scrollSnapAlign: "start" }}
-                >
-                  {/* Шапка */}
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <h4 className="font-oswald text-lg text-evraz-dark font-semibold">
-                        {p.name}
-                      </h4>
-                      <div className="flex items-center gap-1.5 mt-1">
-                        <Icon name="MapPin" size={12} className="text-evraz-steel" />
-                        <span className="font-ibm text-sm text-evraz-gray">{p.region}</span>
-                      </div>
-                    </div>
-                    <span className="font-oswald text-xs tracking-widest text-evraz-steel uppercase bg-evraz-light px-2 py-1 shrink-0">
-                      Сертифицирован
-                    </span>
-                  </div>
-
-                  {/* Услуги */}
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {p.services.map((s) => (
-                      <span
-                        key={s}
-                        className={`font-oswald text-xs tracking-wider uppercase px-2.5 py-1 ${
-                          s === "Проектирование"
-                            ? "bg-evraz-charcoal text-evraz-steel border border-evraz-border"
-                            : "bg-evraz-red/10 text-evraz-red border border-evraz-red/30"
-                        }`}
-                      >
-                        {s}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Отзыв */}
-                  {p.review && (
-                    <div className="bg-evraz-light border-l-2 border-evraz-red px-4 py-3 mb-4 flex-1">
-                      <p className="font-ibm text-xs text-evraz-dark leading-relaxed italic">
-                        «{p.review.text}»
-                      </p>
-                      <p className="font-ibm text-xs text-evraz-gray mt-2">
-                        — {p.review.author}
-                      </p>
-                      <div className="flex items-center gap-3 mt-3 flex-wrap">
-                        <Link
-                          to={`/partners/${p.slug}`}
-                          className="font-ibm text-xs text-evraz-red hover:underline flex items-center gap-1"
-                        >
-                          <Icon name="ChevronRight" size={12} />
-                          Смотреть полностью
-                        </Link>
-                        {p.review.videoUrl && (
-                          <a
-                            href={p.review.videoUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="font-ibm text-xs text-evraz-red hover:underline flex items-center gap-1"
-                          >
-                            <Icon name="Play" size={12} />
-                            Видеоотзыв
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  )}
-                  {!p.review && <div className="flex-1" />}
-
-                  {/* Футер */}
-                  <div className="border-t border-evraz-border pt-4 flex items-center justify-between">
-                    <span className="font-ibm text-sm text-evraz-gray">
-                      {p.projects} проектов
-                    </span>
-                  </div>
-                </div>
-            ))}
-          </div>
-
-          <AnimSection>
-            <div className="mt-12 border border-evraz-steel/30 bg-evraz-charcoal p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-              <div>
-                <h3 className="font-oswald text-2xl text-evraz-dark font-semibold">
-                  Хотите стать партнёром?
-                </h3>
-                <p className="font-ibm text-evraz-gray mt-2 text-sm">
-                  Присоединяйтесь к сети из 180+ сертифицированных партнеров
-                  EVRAZ STEEL BOX
-                </p>
-              </div>
-              <button
-                onClick={() => scrollTo("contacts")}
-                className="btn-primary whitespace-nowrap"
-              >
-                Подать заявку
-              </button>
-            </div>
-          </AnimSection>
-        </div>
-      </section>
+      <PartnersSection onContact={() => scrollTo("contacts")} />
 
       {/* BLOG */}
       <section id="blog" className="py-24 bg-white">
