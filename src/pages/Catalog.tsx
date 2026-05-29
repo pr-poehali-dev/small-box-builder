@@ -21,7 +21,7 @@ const BUILDING_IMAGES: Record<BuildingTag, string> = {
     "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/2fb164ba-da93-460e-9469-f460552a8183.jpg",
   Производство:
     "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/944172ff-60bb-4a97-a5fa-67449c85e5cf.jpg",
-  Агро: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/4928399c-e5aa-4af6-8121-e9d16add6eef.jpg",
+  Авто: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/4928399c-e5aa-4af6-8121-e9d16add6eef.jpg",
   Торговля:
     "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/files/939b90d2-2c41-4b4d-b6c9-c8bf06a0068a.jpg",
   "Паддл-центр":
@@ -450,7 +450,7 @@ function calcLeasing(price: number) {
 const TAG_TO_CALC_TYPE: Record<BuildingTag, string> = {
   Склад: "warehouse",
   Производство: "production",
-  Агро: "agro",
+  Авто: "avto",
   Торговля: "trade",
   Спорт: "sport",
   Паркинг: "warehouse",
