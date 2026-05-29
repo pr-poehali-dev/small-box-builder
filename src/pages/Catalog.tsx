@@ -1167,48 +1167,87 @@ export default function Catalog() {
             {[
               {
                 step: "01",
-                phase: "Недели 1–2",
-                icon: "FileText",
-                title: "Геология и проектирование",
-                client:
-                  "Предоставить отчёт по геологии участка (или заказать через нас). Согласовать планировочное решение и подписать проект.",
-                us: "Разрабатываем рабочую документацию, рассчитываем фундамент под геологию участка.",
+                phase: "1–3 месяца",
+                icon: "MapPin",
+                title: "Участок и концепция",
+                client: [
+                  "Подбирает и оформляет земельный участок",
+                  "Определяет назначение будущего здания",
+                ],
+                us: [
+                  "Консультируем по ограничениям участка (по кадастровому номеру)",
+                  "Помогаем выбрать формат: капитальный или некапитальный объект",
+                  "Даём предварительный диапазон бюджета для разных габаритов здания",
+                ],
               },
               {
                 step: "02",
-                phase: "Недели 3–4",
+                phase: "от 30 дней",
                 icon: "Layers",
-                title: "Фундамент",
-                client:
-                  "Обеспечить доступ спецтехники на участок. Назначить ответственного представителя для приёмки фундамента.",
-                us: "Устройство фундамента по проекту. Приёмка — только после соответствия геометрии допускам.",
+                title: "Подготовка участка и сбор ИРД",
+                client: [
+                  "Заказывает ГПЗУ и инженерные изыскания (геология, геодезия)",
+                  "Получает технические условия на подключение к сетям",
+                ],
+                us: [
+                  "Выдаём чек-лист ИРД и подключаем партнёров (геологов и геодезистов)",
+                  "Рекомендуем партнёра-проектировщика, который рассчитает нагрузки (ТЭП) для получения ТУ",
+                  "Предоставляем несколько предложений по стоимости строительства от аккредитованных партнёров",
+                ],
               },
               {
                 step: "03",
-                phase: "Недели 5–6",
-                icon: "Zap",
-                title: "Монтаж каркаса",
-                client:
-                  "Подвести временное электричество 380В для монтажного оборудования на площадку.",
-                us: "Монтаж металлокаркаса из стали EVRAZ. Сварка, болтовые соединения, контроль качества.",
+                phase: "от нескольких недель",
+                icon: "FileText",
+                title: "Проектирование и экспертиза",
+                client: [
+                  "Формирует техническое задание",
+                  "Согласовывает архитектурный облик (при необходимости)",
+                ],
+                us: [
+                  "Выпускаем АР+КР за 7 рабочих дней (от 9 998 ₽)",
+                  "Партнёр-проектировщик выпускает полный комплект проектной документации",
+                  "Партнёр-проектировщик сопровождает прохождение экспертизы",
+                ],
               },
               {
                 step: "04",
-                phase: "Недели 7–8",
-                icon: "Package",
-                title: "Ограждающие конструкции",
-                client:
-                  "Промежуточная приёмка каркаса — подпись акта выполненных работ.",
-                us: "Монтаж сэндвич-панелей, кровли, ворот, окон и фасадных элементов.",
+                phase: "~30 рабочих дней",
+                icon: "ClipboardCheck",
+                title: "Разрешение на строительство",
+                client: [
+                  "Подаёт заявление через Госуслуги или МФЦ",
+                ],
+                us: [
+                  "Партнёр-проектировщик собирает и проверяет полный пакет документов",
+                  "Помогаем выбрать подходящего партнёра на строительство",
+                ],
               },
               {
                 step: "05",
-                phase: "Неделя 9+",
+                phase: "8–10 недель (склад 1 500 м²)",
+                icon: "Zap",
+                title: "Строительство и контроль",
+                client: [
+                  "Принимает работы и контролирует ход стройки через единое окно",
+                ],
+                us: [
+                  "Производим и поставляем комплект здания",
+                  "Партнёр-строитель ведёт монтаж и предоставляет исполнительную документацию",
+                ],
+              },
+              {
+                step: "06",
+                phase: "~30 дней",
                 icon: "CheckSquare",
-                title: "Сдача объекта",
-                client:
-                  "Финальная приёмка: проверка комплектности, подписание акта КС-2/КС-3, оплата оставшейся части по договору.",
-                us: "Передаём исполнительную документацию, паспорта на конструкции и гарантийное письмо на 25 лет.",
+                title: "Ввод в эксплуатацию",
+                client: [
+                  "Подаёт заявление на ввод объекта",
+                  "Регистрирует право собственности в ЕГРН",
+                ],
+                us: [
+                  "Партнёр-строитель готовит пакет документов для ввода",
+                ],
               },
             ].map((s, i, arr) => (
               <div key={s.step} className="flex gap-6 relative">
@@ -1223,15 +1262,13 @@ export default function Catalog() {
                   </div>
                 </div>
                 {/* Контент */}
-                <div
-                  className={`pb-10 flex-1 ${i === arr.length - 1 ? "pb-0" : ""}`}
-                >
+                <div className={`pb-10 flex-1 ${i === arr.length - 1 ? "pb-0" : ""}`}>
                   <div className="flex items-center gap-3 mb-3">
                     <span className="font-ibm text-xs text-evraz-red font-medium tracking-widest uppercase">
-                      {s.phase}
+                      ⏱ {s.phase}
                     </span>
                     <span className="font-oswald text-xs text-evraz-border tracking-widest">
-                      ЭТАП {s.step}
+                      ШАГ {s.step}
                     </span>
                   </div>
                   <h4 className="font-oswald text-lg text-evraz-dark font-semibold mb-3">
@@ -1239,34 +1276,36 @@ export default function Catalog() {
                   </h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     <div className="bg-red-50 border border-red-100 p-4">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Icon
-                          name="User"
-                          size={13}
-                          className="text-evraz-red"
-                        />
+                      <div className="flex items-center gap-2 mb-3">
+                        <Icon name="User" size={13} className="text-evraz-red" />
                         <span className="font-oswald text-xs text-evraz-red tracking-wider uppercase">
-                          От вас
+                          Что делает клиент
                         </span>
                       </div>
-                      <p className="font-ibm text-xs text-evraz-dark leading-relaxed">
-                        {s.client}
-                      </p>
+                      <ul className="space-y-1.5">
+                        {s.client.map((item) => (
+                          <li key={item} className="flex gap-2 font-ibm text-xs text-evraz-dark leading-relaxed">
+                            <span className="text-evraz-red mt-0.5 shrink-0">•</span>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                     <div className="bg-evraz-light border border-evraz-border p-4">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Icon
-                          name="Building2"
-                          size={13}
-                          className="text-evraz-steel"
-                        />
+                      <div className="flex items-center gap-2 mb-3">
+                        <Icon name="Building2" size={13} className="text-evraz-steel" />
                         <span className="font-oswald text-xs text-evraz-steel tracking-wider uppercase">
-                          Мы делаем
+                          Что делаем мы
                         </span>
                       </div>
-                      <p className="font-ibm text-xs text-evraz-gray leading-relaxed">
-                        {s.us}
-                      </p>
+                      <ul className="space-y-1.5">
+                        {s.us.map((item) => (
+                          <li key={item} className="flex gap-2 font-ibm text-xs text-evraz-gray leading-relaxed">
+                            <span className="text-evraz-steel mt-0.5 shrink-0">•</span>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
                 </div>
