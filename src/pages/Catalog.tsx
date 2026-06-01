@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import Header from "@/components/shared/Header";
@@ -743,8 +743,19 @@ export default function Catalog() {
   const [activeArea, setActiveArea] = useState<AreaRange | "Все">("Все");
   const [activeHeight, setActiveHeight] = useState<HeightRange | "Все">("Все");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const PAGE_SIZE = 6;
 
-  const filtered = CATALOG.filter(
+  const shuffledCatalog = useMemo(() => {
+    const arr = [...CATALOG];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }, []);
+
+  const filtered = shuffledCatalog.filter(
     (item) => activeTag === "Все" || item.tag === activeTag,
   )
     .filter(
@@ -759,8 +770,14 @@ export default function Catalog() {
       if (activeHeight === "Все") return true;
       const range = HEIGHT_RANGES.find((r) => r.label === activeHeight);
       return range ? range.test(item.height) : true;
-    })
-    .sort((a, b) => a.price - b.price);
+    });
+
+  const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
+  const pagedFiltered = filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeTag, activeRegion, activeArea, activeHeight]);
 
   const faqs = [
     {
@@ -969,8 +986,9 @@ export default function Catalog() {
               </button>
             </div>
           ) : (
+            <>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-              {filtered.map((item) => (
+              {pagedFiltered.map((item) => (
                 <div
                   key={item.id}
                   className="steel-card bg-white border border-evraz-border flex flex-col group"
@@ -1123,6 +1141,38 @@ export default function Catalog() {
                 </div>
               ))}
             </div>
+            {totalPages > 1 && (
+              <div className="flex items-center justify-center gap-2 mt-10">
+                <button
+                  onClick={() => { setCurrentPage((p) => Math.max(1, p - 1)); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                  disabled={currentPage === 1}
+                  className="font-ibm text-xs px-4 py-2 border border-evraz-border text-evraz-steel hover:border-evraz-dark bg-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                >
+                  ←
+                </button>
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  <button
+                    key={page}
+                    onClick={() => { setCurrentPage(page); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                    className={`font-ibm text-xs px-4 py-2 border transition-all ${
+                      currentPage === page
+                        ? "bg-evraz-dark border-evraz-dark text-white"
+                        : "border-evraz-border text-evraz-steel hover:border-evraz-dark bg-white"
+                    }`}
+                  >
+                    {page}
+                  </button>
+                ))}
+                <button
+                  onClick={() => { setCurrentPage((p) => Math.min(totalPages, p + 1)); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                  disabled={currentPage === totalPages}
+                  className="font-ibm text-xs px-4 py-2 border border-evraz-border text-evraz-steel hover:border-evraz-dark bg-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                >
+                  →
+                </button>
+              </div>
+            )}
+            </>
           )}
         </div>
       </section>
