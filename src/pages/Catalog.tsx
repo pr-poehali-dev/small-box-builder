@@ -1169,25 +1169,13 @@ export default function Catalog() {
                 документов для согласования и строительства. Готовим за 7
                 рабочих дней.
               </p>
-              <ul className="mt-4 space-y-1.5">
-                {[
-                  "Рабочая документация для монтажа",
-                  "Соответствие ГОСТ и СП",
-                  "Готово к согласованию в гос. органах",
-                ].map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-center gap-2 font-ibm text-xs text-evraz-steel"
-                  >
-                    <Icon
-                      name="CheckCircle"
-                      size={14}
-                      className="text-evraz-red shrink-0"
-                    />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              <a
+                href="/arkr"
+                className="inline-flex items-center gap-1.5 mt-4 font-ibm text-sm text-evraz-red hover:underline"
+              >
+                Читать подробнее
+                <Icon name="ArrowRight" size={14} />
+              </a>
             </div>
             <div className="flex flex-col items-center md:items-end gap-4 shrink-0">
               <div className="text-center md:text-right">
