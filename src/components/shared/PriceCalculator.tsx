@@ -37,10 +37,8 @@ export function PriceCalculator({ onGetQuote, initialValues }: PriceCalculatorPr
     };
     const base = basePricePerSqm[buildingType] || 12500;
     const heightCoef = height > 8 ? 1.15 : height > 6 ? 1.08 : 1;
-    const gatesCount = gates === 5 ? 6 : gates;
-    const windowsCount = windows === 5 ? 8 : windows;
-    const gatesCost = gatesCount * 185000;
-    const windowsCost = windowsCount * 42000;
+    const gatesCost = gates * 185000;
+    const windowsCost = windows * 42000;
     const craneCost = hasCrane ? area * 3200 : 0;
     return Math.round((area * base * heightCoef + gatesCost + windowsCost + craneCost) / 1000) * 1000;
   };
@@ -78,9 +76,9 @@ export function PriceCalculator({ onGetQuote, initialValues }: PriceCalculatorPr
       {/* Слайдеры */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
         {[
-          { label: "Ширина", val: width, set: setWidth, min: 12, max: 60 },
-          { label: "Длина", val: length, set: setLength, min: 18, max: 200 },
-          { label: "Высота", val: height, set: setHeight, min: 4, max: 20 },
+          { label: "Ширина", val: width, set: setWidth, min: 12, max: 24 },
+          { label: "Длина", val: length, set: setLength, min: 18, max: 96 },
+          { label: "Высота", val: height, set: setHeight, min: 4, max: 12 },
         ].map((s) => (
           <div key={s.label}>
             <div className="flex justify-between mb-3">
@@ -110,23 +108,25 @@ export function PriceCalculator({ onGetQuote, initialValues }: PriceCalculatorPr
           <label className="font-oswald text-sm tracking-widest text-evraz-dark uppercase mb-4 block">
             Ворота
           </label>
-          <div className="flex gap-2">
-            {[1, 2, 3, 4, 5].map((v) => (
-              <button
-                key={v}
-                onClick={() => setGates(v)}
-                className={`flex-1 py-2.5 font-oswald text-sm border transition-all ${
-                  gates === v
-                    ? "bg-evraz-red border-evraz-red text-white"
-                    : "border-evraz-border text-evraz-dark hover:border-evraz-red hover:text-evraz-red"
-                }`}
-              >
-                {v === 5 ? "5+" : v}
-              </button>
-            ))}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setGates(Math.max(0, gates - 1))}
+              className="w-10 h-10 flex items-center justify-center border border-evraz-border text-evraz-dark font-oswald text-xl hover:border-evraz-red hover:text-evraz-red transition-all"
+            >−</button>
+            <input
+              type="number"
+              min={0}
+              value={gates}
+              onChange={(e) => setGates(Math.max(0, +e.target.value))}
+              className="flex-1 h-10 text-center font-oswald text-lg border border-evraz-border text-evraz-dark focus:outline-none focus:border-evraz-red"
+            />
+            <button
+              onClick={() => setGates(gates + 1)}
+              className="w-10 h-10 flex items-center justify-center border border-evraz-border text-evraz-dark font-oswald text-xl hover:border-evraz-red hover:text-evraz-red transition-all"
+            >+</button>
           </div>
           <div className="font-ibm text-xs text-evraz-gray mt-2">
-            +{((gates === 5 ? 6 : gates) * 185000).toLocaleString("ru-RU")} ₽
+            +{(gates * 185000).toLocaleString("ru-RU")} ₽
           </div>
         </div>
 
@@ -135,23 +135,25 @@ export function PriceCalculator({ onGetQuote, initialValues }: PriceCalculatorPr
           <label className="font-oswald text-sm tracking-widest text-evraz-dark uppercase mb-4 block">
             Оконные блоки
           </label>
-          <div className="flex gap-2">
-            {[0, 2, 4, 6, 5].map((v, idx) => (
-              <button
-                key={idx}
-                onClick={() => setWindows(v === 5 ? 5 : v)}
-                className={`flex-1 py-2.5 font-oswald text-sm border transition-all ${
-                  windows === (v === 5 ? 5 : v)
-                    ? "bg-evraz-red border-evraz-red text-white"
-                    : "border-evraz-border text-evraz-dark hover:border-evraz-red hover:text-evraz-red"
-                }`}
-              >
-                {idx === 4 ? "8+" : v}
-              </button>
-            ))}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setWindows(Math.max(0, windows - 1))}
+              className="w-10 h-10 flex items-center justify-center border border-evraz-border text-evraz-dark font-oswald text-xl hover:border-evraz-red hover:text-evraz-red transition-all"
+            >−</button>
+            <input
+              type="number"
+              min={0}
+              value={windows}
+              onChange={(e) => setWindows(Math.max(0, +e.target.value))}
+              className="flex-1 h-10 text-center font-oswald text-lg border border-evraz-border text-evraz-dark focus:outline-none focus:border-evraz-red"
+            />
+            <button
+              onClick={() => setWindows(windows + 1)}
+              className="w-10 h-10 flex items-center justify-center border border-evraz-border text-evraz-dark font-oswald text-xl hover:border-evraz-red hover:text-evraz-red transition-all"
+            >+</button>
           </div>
           <div className="font-ibm text-xs text-evraz-gray mt-2">
-            +{((windows === 5 ? 8 : windows) * 42000).toLocaleString("ru-RU")} ₽
+            +{(windows * 42000).toLocaleString("ru-RU")} ₽
           </div>
         </div>
 
