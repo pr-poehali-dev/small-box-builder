@@ -250,7 +250,7 @@ const CATALOG: CatalogItem[] = [
   },
   {
     id: "a-18-54-5",
-    tag: "Агро",
+    tag: "Авто",
     name: "Зернохранилище 18×54 м",
     width: 18,
     length: 54,
@@ -280,7 +280,7 @@ const CATALOG: CatalogItem[] = [
   },
   {
     id: "a-24-72-7",
-    tag: "Агро",
+    tag: "Авто",
     name: "Склад удобрений 24×72 м",
     width: 24,
     length: 72,
@@ -406,7 +406,7 @@ const CATALOG: CatalogItem[] = [
 const TAGS: BuildingTag[] = [
   "Склад",
   "Производство",
-  "Агро",
+  "Авто",
   "Торговля",
   "Паддл-центр",
 ];
@@ -1215,9 +1215,7 @@ export default function Catalog() {
                 phase: "~30 рабочих дней",
                 icon: "ClipboardCheck",
                 title: "Разрешение на строительство",
-                client: [
-                  "Подаёт заявление через Госуслуги или МФЦ",
-                ],
+                client: ["Подаёт заявление через Госуслуги или МФЦ"],
                 us: [
                   "Партнёр-проектировщик собирает и проверяет полный пакет документов",
                   "Помогаем выбрать подходящего партнёра на строительство",
@@ -1245,9 +1243,7 @@ export default function Catalog() {
                   "Подаёт заявление на ввод объекта",
                   "Регистрирует право собственности в ЕГРН",
                 ],
-                us: [
-                  "Партнёр-строитель готовит пакет документов для ввода",
-                ],
+                us: ["Партнёр-строитель готовит пакет документов для ввода"],
               },
             ].map((s, i, arr) => (
               <div key={s.step} className="flex gap-6 relative">
@@ -1262,7 +1258,9 @@ export default function Catalog() {
                   </div>
                 </div>
                 {/* Контент */}
-                <div className={`pb-10 flex-1 ${i === arr.length - 1 ? "pb-0" : ""}`}>
+                <div
+                  className={`pb-10 flex-1 ${i === arr.length - 1 ? "pb-0" : ""}`}
+                >
                   <div className="flex items-center gap-3 mb-3">
                     <span className="font-ibm text-xs text-evraz-red font-medium tracking-widest uppercase">
                       ⏱ {s.phase}
@@ -1277,15 +1275,24 @@ export default function Catalog() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     <div className="bg-red-50 border border-red-100 p-4">
                       <div className="flex items-center gap-2 mb-3">
-                        <Icon name="User" size={13} className="text-evraz-red" />
+                        <Icon
+                          name="User"
+                          size={13}
+                          className="text-evraz-red"
+                        />
                         <span className="font-oswald text-xs text-evraz-red tracking-wider uppercase">
                           Что делает клиент
                         </span>
                       </div>
                       <ul className="space-y-1.5">
                         {s.client.map((item) => (
-                          <li key={item} className="flex gap-2 font-ibm text-xs text-evraz-dark leading-relaxed">
-                            <span className="text-evraz-red mt-0.5 shrink-0">•</span>
+                          <li
+                            key={item}
+                            className="flex gap-2 font-ibm text-xs text-evraz-dark leading-relaxed"
+                          >
+                            <span className="text-evraz-red mt-0.5 shrink-0">
+                              •
+                            </span>
                             {item}
                           </li>
                         ))}
@@ -1293,15 +1300,24 @@ export default function Catalog() {
                     </div>
                     <div className="bg-evraz-light border border-evraz-border p-4">
                       <div className="flex items-center gap-2 mb-3">
-                        <Icon name="Building2" size={13} className="text-evraz-steel" />
+                        <Icon
+                          name="Building2"
+                          size={13}
+                          className="text-evraz-steel"
+                        />
                         <span className="font-oswald text-xs text-evraz-steel tracking-wider uppercase">
                           Что делаем мы
                         </span>
                       </div>
                       <ul className="space-y-1.5">
                         {s.us.map((item) => (
-                          <li key={item} className="flex gap-2 font-ibm text-xs text-evraz-gray leading-relaxed">
-                            <span className="text-evraz-steel mt-0.5 shrink-0">•</span>
+                          <li
+                            key={item}
+                            className="flex gap-2 font-ibm text-xs text-evraz-gray leading-relaxed"
+                          >
+                            <span className="text-evraz-steel mt-0.5 shrink-0">
+                              •
+                            </span>
                             {item}
                           </li>
                         ))}
@@ -1314,8 +1330,6 @@ export default function Catalog() {
           </div>
         </div>
       </section>
-
-
 
       {/* CONTACT CTA */}
       <section id="contacts-section" className="py-16 bg-evraz-dark">
