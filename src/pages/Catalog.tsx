@@ -975,7 +975,6 @@ export default function Catalog() {
                     {/* Комплектация + технические параметры */}
                     <div className="mb-5 divide-y divide-evraz-border border border-evraz-border">
                       {[
-                        { icon: "Tag", label: "Серия", value: item.series },
                         {
                           icon: "RectangleHorizontal",
                           label: "Ворота",
@@ -1004,7 +1003,6 @@ export default function Catalog() {
                           highlight: !!item.stripGlazing,
                         },
                         { icon: "Hammer", label: "Кран-балка", value: item.crane, highlight: item.crane !== "Нет" },
-                        { icon: "Layers", label: "Антресоль", value: item.mezzanine },
                         { icon: "MapPin", label: "Регион", value: item.region },
                       ].map((row) => (
                         <div key={row.label} className="flex items-center gap-3 px-3 py-2">
