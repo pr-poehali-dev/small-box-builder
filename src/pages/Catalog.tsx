@@ -1082,7 +1082,7 @@ export default function Catalog() {
         </div>
       </section>
 
-      {/* КМ+АР SPECIAL OFFER */}
+      {/* КP+АР SPECIAL OFFER */}
       <section className="py-12 bg-evraz-light border-t border-evraz-border">
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row items-center gap-8 bg-white border border-evraz-border p-8 md:p-10 relative overflow-hidden">
@@ -1092,11 +1092,11 @@ export default function Catalog() {
                 Специальное предложение
               </div>
               <h2 className="font-oswald text-2xl md:text-3xl text-evraz-dark font-bold leading-tight">
-                Комплект документации КМ + АР
+                Комплект документации КР + АР
               </h2>
               <p className="font-ibm text-sm text-evraz-steel mt-3 leading-relaxed max-w-lg">
-                Конструктивные решения (КР) и архитектурные решения (АР) —
-                полный пакет для согласования и строительства. Готовим за 5
+                Конструктивные решения (КР) и архитектурные решения (АР) — пакет
+                документов для согласования и строительства. Готовим за 7
                 рабочих дней.
               </p>
               <ul className="mt-4 space-y-1.5">
