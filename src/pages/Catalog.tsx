@@ -1095,9 +1095,9 @@ export default function Catalog() {
                 Комплект документации КМ + АР
               </h2>
               <p className="font-ibm text-sm text-evraz-steel mt-3 leading-relaxed max-w-lg">
-                Конструктивные решения металлокаркаса (КМ) и архитектурные
-                решения (АР) — полный пакет для согласования и строительства.
-                Готовим за 5 рабочих дней.
+                Конструктивные решения (КР) и архитектурные решения (АР) —
+                полный пакет для согласования и строительства. Готовим за 5
+                рабочих дней.
               </p>
               <ul className="mt-4 space-y-1.5">
                 {[
@@ -1136,7 +1136,7 @@ export default function Catalog() {
                 }
                 className="btn-primary font-oswald tracking-wider uppercase px-8 py-3 text-sm whitespace-nowrap"
               >
-                Заказать КМ + АР
+                Заказать КР + АР
               </button>
               <p className="font-ibm text-xs text-evraz-gray text-center">
                 Менеджер свяжется в течение 1 часа
