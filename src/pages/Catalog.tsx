@@ -1338,8 +1338,8 @@ export default function Catalog() {
             ОСТАЛИСЬ ВОПРОСЫ?
           </h2>
           <p className="font-ibm text-gray-400 mb-8 text-sm leading-relaxed">
-            Отправьте заявку — менеджер пришлёт полное КП с точной стоимостью,
-            сроками и условиями гарантии в течение 2 часов.
+            Проект АР+КР для типовых зданий 200–3 000 м² за 9 998 ₽ вместо 150
+            000 ₽. Готово за 2 рабочих дня. Подпись инженеров EVRAZ STEEL BOX.
           </p>
           <div className="bg-white/5 border border-white/10 p-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
