@@ -415,8 +415,8 @@ const CITIES = [...new Set(CATALOG.map((c) => c.city))].sort();
 
 const AREA_RANGES: { label: AreaRange; test: (a: number) => boolean }[] = [
   { label: "до 1000 м²", test: (a) => a < 1000 },
-  { label: "1000–3000 м²", test: (a) => a >= 1000 && a <= 3000 },
-  { label: "свыше 3000 м²", test: (a) => a > 3000 },
+  { label: "1000–1500 м²", test: (a) => a >= 1000 && a <= 1500 },
+  { label: "свыше 1500 м²", test: (a) => a > 1500 },
 ];
 
 const HEIGHT_RANGES: { label: HeightRange; test: (h: number) => boolean }[] = [
@@ -549,12 +549,12 @@ export default function Catalog() {
           {/* Quick stats */}
           <div className="flex flex-wrap gap-8">
             {[
-              { v: "45 дней", l: "Срок монтажа" },
+              { v: "45 дней", l: "Поставка и монтаж" },
               {
                 v: "Предварительный КМ+АР за час",
                 l: "С помощью автоматического проектирования",
               },
-              { v: "Фикс. цена", l: "Без скрытых доплат" },
+              { v: "Точная цена", l: "Без скрытых доплат" },
             ].map((s) => (
               <div key={s.l}>
                 <div className="font-oswald text-2xl text-evraz-dark font-bold">
