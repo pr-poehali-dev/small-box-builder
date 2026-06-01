@@ -30,7 +30,10 @@ interface CatalogItem {
   crane: string;
   mezzanine: string;
   region: string;
-  params: string[];
+  gates: { count: number; size: string; wicket?: boolean } | null;
+  doors: { count: number; size: string }[];
+  windows: { count: number; size: string }[];
+  stripGlazing?: string;
   popular?: boolean;
 }
 
@@ -48,11 +51,10 @@ const CATALOG: CatalogItem[] = [
     crane: "Нет",
     mezzanine: "Нет",
     region: "Владимирская область",
-    params: [
-      "Ленточное остекление 68 пог. м",
-      "Дверь 1000×2100 мм",
-      "Ворота 3000×3000 мм без калитки",
-    ],
+    stripGlazing: "68 пог. м",
+    doors: [{ count: 1, size: "1000×2100 мм" }],
+    gates: { count: 1, size: "3000×3000 мм", wicket: false },
+    windows: [],
   },
   {
     id: "2",
@@ -67,11 +69,9 @@ const CATALOG: CatalogItem[] = [
     crane: "Нет",
     mezzanine: "Нет",
     region: "Московская область",
-    params: [
-      "2 окна 3600×1170 мм",
-      "Дверь 1400×2100 мм",
-      "Ворота 4000×4000 мм без калитки",
-    ],
+    doors: [{ count: 1, size: "1400×2100 мм" }],
+    gates: { count: 1, size: "4000×4000 мм", wicket: false },
+    windows: [{ count: 2, size: "3600×1170 мм" }],
   },
   {
     id: "3",
@@ -86,11 +86,10 @@ const CATALOG: CatalogItem[] = [
     crane: "Нет",
     mezzanine: "Нет",
     region: "Московская область",
-    params: [
-      "Ленточное остекление 60 пог. м",
-      "Дверь 1000×2100 мм",
-      "Ворота 3000×3000 мм без калитки",
-    ],
+    stripGlazing: "60 пог. м",
+    doors: [{ count: 1, size: "1000×2100 мм" }],
+    gates: { count: 1, size: "3000×3000 мм", wicket: false },
+    windows: [],
   },
   {
     id: "4",
@@ -105,9 +104,9 @@ const CATALOG: CatalogItem[] = [
     crane: "Нет",
     mezzanine: "Нет",
     region: "Московская область",
-    params: [
-      "2 ворот 4000×4000 мм без калитки",
-    ],
+    doors: [],
+    gates: { count: 2, size: "4000×4000 мм", wicket: false },
+    windows: [],
   },
   {
     id: "5",
@@ -122,11 +121,9 @@ const CATALOG: CatalogItem[] = [
     crane: "Нет",
     mezzanine: "Нет",
     region: "Московская область",
-    params: [
-      "2 ворот 3000×3000 мм без калитки",
-      "2 двери 900×2100 мм",
-      "28 окон 3600×1170 мм",
-    ],
+    doors: [{ count: 2, size: "900×2100 мм" }],
+    gates: { count: 2, size: "3000×3000 мм", wicket: false },
+    windows: [{ count: 28, size: "3600×1170 мм" }],
     popular: true,
   },
   {
@@ -142,10 +139,11 @@ const CATALOG: CatalogItem[] = [
     crane: "3,2 т",
     mezzanine: "Нет",
     region: "Московская область",
-    params: [
-      "2 ворот 4000×4000 мм с калиткой",
-      "Окна нестандартных размеров 60 кв. м",
-      "8 окон 3600×1170 мм",
+    doors: [],
+    gates: { count: 2, size: "4000×4000 мм", wicket: true },
+    windows: [
+      { count: 8, size: "3600×1170 мм" },
+      { count: 1, size: "нестандарт 60 кв. м" },
     ],
   },
 ];
@@ -481,27 +479,44 @@ export default function Catalog() {
 
                   {/* Specs */}
                   <div className="p-6 flex flex-col flex-1">
-                    {/* Параметры комплектации */}
-                    <div className="mb-4 divide-y divide-evraz-border border border-evraz-border">
-                      {item.params.map((p) => (
-                        <div key={p} className="flex items-center gap-2 px-3 py-2">
-                          <Icon name="Check" size={12} className="text-evraz-red shrink-0" />
-                          <span className="font-ibm text-xs text-evraz-dark">{p}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Техническая таблица */}
+                    {/* Комплектация + технические параметры */}
                     <div className="mb-5 divide-y divide-evraz-border border border-evraz-border">
                       {[
                         { icon: "Tag", label: "Серия", value: item.series },
+                        {
+                          icon: "RectangleHorizontal",
+                          label: "Ворота",
+                          value: item.gates
+                            ? `${item.gates.count} шт. (${item.gates.size}${item.gates.wicket ? ", с калиткой" : ", без калитки"})`
+                            : "Нет",
+                        },
+                        {
+                          icon: "DoorOpen",
+                          label: "Двери",
+                          value: item.doors.length > 0
+                            ? item.doors.map(d => `${d.count} шт. (${d.size})`).join(", ")
+                            : "Нет",
+                        },
+                        {
+                          icon: "AppWindow",
+                          label: "Окна",
+                          value: item.windows.length > 0
+                            ? item.windows.map(w => `${w.count} шт. (${w.size})`).join(", ")
+                            : "Нет",
+                        },
+                        {
+                          icon: "Columns2",
+                          label: "Лент. остекление",
+                          value: item.stripGlazing ?? "Нет",
+                          highlight: !!item.stripGlazing,
+                        },
                         { icon: "Hammer", label: "Кран-балка", value: item.crane, highlight: item.crane !== "Нет" },
                         { icon: "Layers", label: "Антресоль", value: item.mezzanine },
                         { icon: "MapPin", label: "Регион", value: item.region },
                       ].map((row) => (
                         <div key={row.label} className="flex items-center gap-3 px-3 py-2">
                           <Icon name={row.icon as "Tag"} size={12} className="text-evraz-steel shrink-0" />
-                          <span className="font-ibm text-xs text-evraz-gray w-24 shrink-0">{row.label}</span>
+                          <span className="font-ibm text-xs text-evraz-gray w-28 shrink-0">{row.label}</span>
                           <span className={`font-ibm text-xs font-medium ml-auto text-right ${row.highlight ? "text-evraz-red" : "text-evraz-dark"}`}>
                             {row.value}
                           </span>
