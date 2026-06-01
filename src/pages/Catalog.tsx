@@ -739,6 +739,7 @@ export default function Catalog() {
     PriceCalculatorInitial | undefined
   >(undefined);
   const [activeRegion, setActiveRegion] = useState<string>("Все");
+  const [customRegion, setCustomRegion] = useState<string>("");
   const [activeArea, setActiveArea] = useState<AreaRange | "Все">("Все");
   const [activeHeight, setActiveHeight] = useState<HeightRange | "Все">("Все");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -747,7 +748,7 @@ export default function Catalog() {
     (item) => activeTag === "Все" || item.tag === activeTag,
   )
     .filter(
-      (item) => activeRegion === "Все" || item.region === activeRegion,
+      (item) => activeRegion === "Все" || item.region.toLowerCase().includes(activeRegion.toLowerCase()),
     )
     .filter((item) => {
       if (activeArea === "Все") return true;
@@ -860,13 +861,13 @@ export default function Catalog() {
             <span className="font-ibm text-xs text-evraz-gray w-36 shrink-0">
               Регион:
             </span>
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex flex-wrap gap-1.5 items-center">
               {["Все", ...REGIONS].map((r) => (
                 <button
                   key={r}
-                  onClick={() => setActiveRegion(r)}
+                  onClick={() => { setActiveRegion(r); setCustomRegion(""); }}
                   className={`font-ibm text-xs px-3 py-1.5 border transition-all ${
-                    activeRegion === r
+                    activeRegion === r && !customRegion
                       ? "bg-evraz-dark border-evraz-dark text-white"
                       : "border-evraz-border text-evraz-steel hover:border-evraz-dark bg-white"
                   }`}
@@ -874,6 +875,20 @@ export default function Catalog() {
                   {r}
                 </button>
               ))}
+              <input
+                type="text"
+                placeholder="Другой город..."
+                value={customRegion}
+                onChange={(e) => {
+                  setCustomRegion(e.target.value);
+                  setActiveRegion(e.target.value.trim() || "Все");
+                }}
+                className={`font-ibm text-xs px-3 py-1.5 border transition-all outline-none w-36 ${
+                  customRegion
+                    ? "bg-evraz-dark border-evraz-dark text-white placeholder-white/50"
+                    : "border-evraz-border text-evraz-steel bg-white placeholder-evraz-gray/60"
+                }`}
+              />
             </div>
           </div>
 
