@@ -315,7 +315,7 @@ function PartnersSection({ onContact }: { onContact: () => void }) {
                   </div>
                 </div>
                 <span className="font-oswald text-xs tracking-widest text-evraz-steel uppercase bg-evraz-light px-2 py-1 shrink-0 border border-evraz-border">
-                  Аккредитован.
+                  Аккредитован
                 </span>
               </div>
 
