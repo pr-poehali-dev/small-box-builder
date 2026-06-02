@@ -98,7 +98,8 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
               target: "solutions",
               accent: false,
               route: "/catalog",
-              image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/02b7701e-8f0d-4d16-8e31-51e2632569a9.png",
+              image:
+                "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/02b7701e-8f0d-4d16-8e31-51e2632569a9.png",
             },
             {
               icon: "PenRuler",
@@ -108,8 +109,9 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
               cta: "Обсудить проект",
               target: "contacts",
               accent: true,
-              route: "/BigBox2",
-              image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/a183d3e6-91ce-4d88-a8bb-785b392733e8.jpg",
+
+              image:
+                "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/a183d3e6-91ce-4d88-a8bb-785b392733e8.jpg",
             },
             {
               icon: "Car",
@@ -119,8 +121,9 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
               cta: "Узнать подробнее",
               target: "calculator",
               accent: false,
-              route: "/parking",
-              image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/c5af765d-44ea-4928-b299-a722ed76e5e8.png",
+
+              image:
+                "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/c5af765d-44ea-4928-b299-a722ed76e5e8.png",
             },
           ].map((card) => (
             <div
