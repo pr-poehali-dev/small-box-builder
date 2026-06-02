@@ -109,7 +109,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
               cta: "Обсудить проект",
               target: "contacts",
               accent: true,
-
+              route: "",
               image:
                 "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/a183d3e6-91ce-4d88-a8bb-785b392733e8.jpg",
             },
@@ -121,7 +121,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
               cta: "Узнать подробнее",
               target: "calculator",
               accent: false,
-
+              route: "",
               image:
                 "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/c5af765d-44ea-4928-b299-a722ed76e5e8.png",
             },
