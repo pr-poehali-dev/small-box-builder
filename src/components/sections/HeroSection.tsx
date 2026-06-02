@@ -140,8 +140,8 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
                 style={{ backgroundImage: `url(${card.image})` }}
               />
 
-              {/* Затемнение: лёгкое по умолчанию, сильное при наведении */}
-              <div className="absolute inset-0 bg-evraz-dark/30 group-hover:bg-evraz-dark/80 transition-colors duration-300" />
+              {/* Затемнение: достаточное по умолчанию, сильное при наведении */}
+              <div className="absolute inset-0 bg-gradient-to-t from-evraz-dark/80 via-evraz-dark/50 to-evraz-dark/20 group-hover:from-evraz-dark/90 group-hover:via-evraz-dark/80 group-hover:to-evraz-dark/50 transition-colors duration-300" />
 
               {/* Контент: всегда в одной позиции, hover докидывает остальное */}
               <div className="absolute inset-0 z-20 flex flex-col justify-end p-8 md:p-10">
