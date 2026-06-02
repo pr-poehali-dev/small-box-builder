@@ -27,7 +27,7 @@ const CASES: {
     tag: "Производство",
     dims: { width: "54 м", length: "100 м", height: "10,3 м" },
     partner: "СтальСтрой",
-    review: "https://ozon.ru",
+    review: "stalstroy",
     category: "Индивидуальные проекты",
   },
   {
@@ -40,7 +40,7 @@ const CASES: {
     tag: "Торговый центр",
     dims: { width: "24 м", length: "60 м", height: "5 м" },
     partner: "УралМеталлМонтаж",
-    review: "https://metallurg.ru",
+    review: "uralmontazh",
     category: "Серийные здания",
   },
   {
@@ -618,16 +618,14 @@ export function ContentSections({
                     {/* Отзыв + стрелка */}
                     <div className="flex items-center justify-between mt-auto pt-4 border-t border-evraz-border">
                       {c.review ? (
-                        <a
-                          href={c.review}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                        <Link
+                          to={`/partners/${c.review}`}
                           className="flex items-center gap-1.5 font-oswald text-xs tracking-wider uppercase text-evraz-red hover:text-evraz-dark transition-colors"
                           onClick={(e) => e.stopPropagation()}
                         >
                           <Icon name="MessageSquareQuote" size={13} />
                           Отзыв клиента
-                        </a>
+                        </Link>
                       ) : (
                         <div />
                       )}
