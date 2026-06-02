@@ -9,10 +9,7 @@ import {
 
 // ─── Данные каталога ────────────────────────────────────────────────────────
 
-type BuildingTag =
-  | "Склад"
-  | "Производство"
-  | "Производственно-складское";
+type BuildingTag = "Склад" | "Производство" | "Производственно-складское";
 
 type AreaRange = "до 1000 м²" | "1000–3000 м²" | "свыше 3000 м²";
 type HeightRange = "до 5 м" | "5–8 м" | "свыше 8 м";
@@ -40,7 +37,8 @@ const CATALOG: CatalogItem[] = [
     id: "1",
     tag: "Склад",
     name: "Склад стеклопластиковых изделий",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/30129fd9-b514-4aac-a522-fb7a7285b25b.jpg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/30129fd9-b514-4aac-a522-fb7a7285b25b.jpg",
     width: 12,
     length: 36,
     height: 5,
@@ -56,7 +54,8 @@ const CATALOG: CatalogItem[] = [
     id: "2",
     tag: "Производство",
     name: "Производственное здание",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/7ccc2058-0835-490c-a393-eb0bf6d86339.jpg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/7ccc2058-0835-490c-a393-eb0bf6d86339.jpg",
     width: 18,
     length: 24,
     height: 6,
@@ -71,7 +70,8 @@ const CATALOG: CatalogItem[] = [
     id: "3",
     tag: "Склад",
     name: "Склад запчастей",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/64232a50-29a2-4074-9bf3-50ff6af24508.jpeg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/64232a50-29a2-4074-9bf3-50ff6af24508.jpeg",
     width: 24,
     length: 32,
     height: 6.5,
@@ -87,7 +87,8 @@ const CATALOG: CatalogItem[] = [
     id: "4",
     tag: "Склад",
     name: "Склад кухонных изделий",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/d36954e1-ad33-4afb-922d-2c819bd74d93.jpeg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/d36954e1-ad33-4afb-922d-2c819bd74d93.jpeg",
     width: 16,
     length: 32,
     height: 5,
@@ -102,7 +103,8 @@ const CATALOG: CatalogItem[] = [
     id: "5",
     tag: "Производственно-складское",
     name: "Производственно-складское здание",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/209c297a-0b7d-474b-9f17-6ca586225745.jpg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/209c297a-0b7d-474b-9f17-6ca586225745.jpg",
     width: 24,
     length: 60,
     height: 6,
@@ -118,7 +120,8 @@ const CATALOG: CatalogItem[] = [
     id: "6",
     tag: "Склад",
     name: "Склад запчастей",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/025a17c6-78d4-42b0-9894-42306c3d2365.jpg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/025a17c6-78d4-42b0-9894-42306c3d2365.jpg",
     width: 24,
     length: 60,
     height: 7.5,
@@ -136,7 +139,8 @@ const CATALOG: CatalogItem[] = [
     id: "7",
     tag: "Склад",
     name: "Склад строительных материалов",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/30129fd9-b514-4aac-a522-fb7a7285b25b.jpg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/30129fd9-b514-4aac-a522-fb7a7285b25b.jpg",
     width: 12,
     length: 36,
     height: 5,
@@ -152,7 +156,8 @@ const CATALOG: CatalogItem[] = [
     id: "8",
     tag: "Производство",
     name: "Цех металлообработки",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/7a64fdb4-0ecb-4615-9445-9995e738e8f0.jpeg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/7a64fdb4-0ecb-4615-9445-9995e738e8f0.jpeg",
     width: 18,
     length: 24,
     height: 6,
@@ -167,7 +172,8 @@ const CATALOG: CatalogItem[] = [
     id: "9",
     tag: "Склад",
     name: "Склад автокомпонентов",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/1ab3b76f-955e-40c9-a4e6-970db07c7bfd.jpeg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/1ab3b76f-955e-40c9-a4e6-970db07c7bfd.jpeg",
     width: 24,
     length: 32,
     height: 6.5,
@@ -183,7 +189,8 @@ const CATALOG: CatalogItem[] = [
     id: "10",
     tag: "Склад",
     name: "Склад мебельного производства",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/482c77f8-e87b-46c3-9d21-a5ec9617fcf2.jpeg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/482c77f8-e87b-46c3-9d21-a5ec9617fcf2.jpeg",
     width: 16,
     length: 32,
     height: 5,
@@ -198,7 +205,8 @@ const CATALOG: CatalogItem[] = [
     id: "11",
     tag: "Производственно-складское",
     name: "Производственно-складской комплекс",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/209c297a-0b7d-474b-9f17-6ca586225745.jpg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/209c297a-0b7d-474b-9f17-6ca586225745.jpg",
     width: 24,
     length: 60,
     height: 6,
@@ -214,7 +222,8 @@ const CATALOG: CatalogItem[] = [
     id: "12",
     tag: "Склад",
     name: "Склад продуктов питания",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/025a17c6-78d4-42b0-9894-42306c3d2365.jpg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/025a17c6-78d4-42b0-9894-42306c3d2365.jpg",
     width: 24,
     length: 60,
     height: 7.5,
@@ -232,7 +241,8 @@ const CATALOG: CatalogItem[] = [
     id: "13",
     tag: "Склад",
     name: "Склад электрооборудования",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/93e86475-b421-46fc-bfc7-b8bf931f70a0.jpg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/93e86475-b421-46fc-bfc7-b8bf931f70a0.jpg",
     width: 12,
     length: 36,
     height: 5,
@@ -248,7 +258,8 @@ const CATALOG: CatalogItem[] = [
     id: "14",
     tag: "Производство",
     name: "Цех деревообработки",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/12eab8cd-8653-452c-91b9-5ee7c10089f7.jpeg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/12eab8cd-8653-452c-91b9-5ee7c10089f7.jpeg",
     width: 18,
     length: 24,
     height: 6,
@@ -263,7 +274,8 @@ const CATALOG: CatalogItem[] = [
     id: "15",
     tag: "Производственно-складское",
     name: "База стройматериалов с производством",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/209c297a-0b7d-474b-9f17-6ca586225745.jpg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/209c297a-0b7d-474b-9f17-6ca586225745.jpg",
     width: 24,
     length: 60,
     height: 6,
@@ -278,7 +290,8 @@ const CATALOG: CatalogItem[] = [
     id: "16",
     tag: "Склад",
     name: "Склад полимерной продукции",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/47933245-245a-4c21-8cc6-391d8846bc5f.jpeg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/47933245-245a-4c21-8cc6-391d8846bc5f.jpeg",
     width: 24,
     length: 32,
     height: 6.5,
@@ -294,7 +307,8 @@ const CATALOG: CatalogItem[] = [
     id: "17",
     tag: "Склад",
     name: "Склад текстильной продукции",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/30129fd9-b514-4aac-a522-fb7a7285b25b.jpg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/30129fd9-b514-4aac-a522-fb7a7285b25b.jpg",
     width: 12,
     length: 36,
     height: 5,
@@ -310,7 +324,8 @@ const CATALOG: CatalogItem[] = [
     id: "18",
     tag: "Производство",
     name: "Цех пластиковых изделий",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/166570fe-71b5-486f-8bd4-3fb61a420255.jpeg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/166570fe-71b5-486f-8bd4-3fb61a420255.jpeg",
     width: 18,
     length: 24,
     height: 6,
@@ -325,7 +340,8 @@ const CATALOG: CatalogItem[] = [
     id: "19",
     tag: "Склад",
     name: "Склад бытовой техники",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/17e85484-dd4c-4856-a76a-df36c1ab9a50.jpeg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/17e85484-dd4c-4856-a76a-df36c1ab9a50.jpeg",
     width: 24,
     length: 32,
     height: 6.5,
@@ -341,7 +357,8 @@ const CATALOG: CatalogItem[] = [
     id: "20",
     tag: "Склад",
     name: "Склад упаковочных материалов",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/767bcb6b-8016-43d0-a19f-465e82a2d174.jpeg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/767bcb6b-8016-43d0-a19f-465e82a2d174.jpeg",
     width: 16,
     length: 32,
     height: 5,
@@ -356,7 +373,8 @@ const CATALOG: CatalogItem[] = [
     id: "21",
     tag: "Производственно-складское",
     name: "Производственная база с цехом",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/209c297a-0b7d-474b-9f17-6ca586225745.jpg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/209c297a-0b7d-474b-9f17-6ca586225745.jpg",
     width: 24,
     length: 60,
     height: 6,
@@ -371,7 +389,8 @@ const CATALOG: CatalogItem[] = [
     id: "22",
     tag: "Склад",
     name: "Склад химической продукции",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/025a17c6-78d4-42b0-9894-42306c3d2365.jpg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/025a17c6-78d4-42b0-9894-42306c3d2365.jpg",
     width: 24,
     length: 60,
     height: 7.5,
@@ -389,7 +408,8 @@ const CATALOG: CatalogItem[] = [
     id: "23",
     tag: "Склад",
     name: "Склад сантехники",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/b32f34de-edf4-4d1e-8a09-5bc52de33a91.jpg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/b32f34de-edf4-4d1e-8a09-5bc52de33a91.jpg",
     width: 12,
     length: 36,
     height: 5,
@@ -405,7 +425,8 @@ const CATALOG: CatalogItem[] = [
     id: "24",
     tag: "Производство",
     name: "Цех пищевого производства",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/c3127ee9-3f0c-4282-aedc-3ec91b68ec60.jpeg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/c3127ee9-3f0c-4282-aedc-3ec91b68ec60.jpeg",
     width: 18,
     length: 24,
     height: 6,
@@ -420,7 +441,8 @@ const CATALOG: CatalogItem[] = [
     id: "25",
     tag: "Склад",
     name: "Склад инструментов",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/f9b692ac-341a-409c-a5a3-53174ee9b88b.jpeg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/f9b692ac-341a-409c-a5a3-53174ee9b88b.jpeg",
     width: 24,
     length: 32,
     height: 6.5,
@@ -436,7 +458,8 @@ const CATALOG: CatalogItem[] = [
     id: "26",
     tag: "Склад",
     name: "Склад спортивных товаров",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/23727fe0-309e-4228-9382-b26e8b1576b4.jpeg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/23727fe0-309e-4228-9382-b26e8b1576b4.jpeg",
     width: 16,
     length: 32,
     height: 5,
@@ -451,7 +474,8 @@ const CATALOG: CatalogItem[] = [
     id: "27",
     tag: "Производственно-складское",
     name: "Логистический терминал",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/209c297a-0b7d-474b-9f17-6ca586225745.jpg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/209c297a-0b7d-474b-9f17-6ca586225745.jpg",
     width: 24,
     length: 60,
     height: 6,
@@ -466,7 +490,8 @@ const CATALOG: CatalogItem[] = [
     id: "28",
     tag: "Склад",
     name: "Склад медицинских изделий",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/025a17c6-78d4-42b0-9894-42306c3d2365.jpg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/025a17c6-78d4-42b0-9894-42306c3d2365.jpg",
     width: 24,
     length: 60,
     height: 7.5,
@@ -484,7 +509,8 @@ const CATALOG: CatalogItem[] = [
     id: "29",
     tag: "Склад",
     name: "Склад канцелярских товаров",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/cb769bb0-8ecc-47b9-a7d9-e40a6f7e9c97.jpg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/cb769bb0-8ecc-47b9-a7d9-e40a6f7e9c97.jpg",
     width: 12,
     length: 36,
     height: 5,
@@ -500,7 +526,8 @@ const CATALOG: CatalogItem[] = [
     id: "30",
     tag: "Производство",
     name: "Цех упаковки",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/7ccc2058-0835-490c-a393-eb0bf6d86339.jpg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/7ccc2058-0835-490c-a393-eb0bf6d86339.jpg",
     width: 18,
     length: 24,
     height: 6,
@@ -515,7 +542,8 @@ const CATALOG: CatalogItem[] = [
     id: "31",
     tag: "Склад",
     name: "Склад керамической плитки",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/1afc4d38-e45b-4640-b4c8-7fc9abdef17d.jpg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/1afc4d38-e45b-4640-b4c8-7fc9abdef17d.jpg",
     width: 24,
     length: 32,
     height: 6.5,
@@ -531,7 +559,8 @@ const CATALOG: CatalogItem[] = [
     id: "32",
     tag: "Склад",
     name: "Склад садовой техники",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/ccc2c668-94a3-4309-ba5c-7606d09f1e63.jpeg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/ccc2c668-94a3-4309-ba5c-7606d09f1e63.jpeg",
     width: 16,
     length: 32,
     height: 5,
@@ -546,7 +575,8 @@ const CATALOG: CatalogItem[] = [
     id: "33",
     tag: "Производственно-складское",
     name: "Распределительный центр",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/209c297a-0b7d-474b-9f17-6ca586225745.jpg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/209c297a-0b7d-474b-9f17-6ca586225745.jpg",
     width: 24,
     length: 60,
     height: 6,
@@ -561,7 +591,8 @@ const CATALOG: CatalogItem[] = [
     id: "34",
     tag: "Склад",
     name: "Склад светотехники",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/025a17c6-78d4-42b0-9894-42306c3d2365.jpg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/025a17c6-78d4-42b0-9894-42306c3d2365.jpg",
     width: 24,
     length: 60,
     height: 7.5,
@@ -579,7 +610,8 @@ const CATALOG: CatalogItem[] = [
     id: "35",
     tag: "Склад",
     name: "Склад автомасел",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/5f3b9a3b-6252-4f07-b65b-837659325c80.jpg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/5f3b9a3b-6252-4f07-b65b-837659325c80.jpg",
     width: 12,
     length: 36,
     height: 5,
@@ -595,7 +627,8 @@ const CATALOG: CatalogItem[] = [
     id: "36",
     tag: "Производство",
     name: "Цех сборки оборудования",
-    image: "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/7ccc2058-0835-490c-a393-eb0bf6d86339.jpg",
+    image:
+      "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/7ccc2058-0835-490c-a393-eb0bf6d86339.jpg",
     width: 18,
     length: 24,
     height: 6,
@@ -681,11 +714,12 @@ export default function Catalog() {
     return arr;
   }, []);
 
-  const filtered = shuffledCatalog.filter(
-    (item) => activeTag === "Все" || item.tag === activeTag,
-  )
+  const filtered = shuffledCatalog
+    .filter((item) => activeTag === "Все" || item.tag === activeTag)
     .filter(
-      (item) => activeRegion === "Все" || item.region.toLowerCase().includes(activeRegion.toLowerCase()),
+      (item) =>
+        activeRegion === "Все" ||
+        item.region.toLowerCase().includes(activeRegion.toLowerCase()),
     )
     .filter((item) => {
       if (activeArea === "Все") return true;
@@ -699,7 +733,10 @@ export default function Catalog() {
     });
 
   const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
-  const pagedFiltered = filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+  const pagedFiltered = filtered.slice(
+    (currentPage - 1) * PAGE_SIZE,
+    currentPage * PAGE_SIZE,
+  );
 
   useEffect(() => {
     setCurrentPage(1);
@@ -808,7 +845,10 @@ export default function Catalog() {
               {["Все", ...REGIONS].map((r) => (
                 <button
                   key={r}
-                  onClick={() => { setActiveRegion(r); setCustomRegion(""); }}
+                  onClick={() => {
+                    setActiveRegion(r);
+                    setCustomRegion("");
+                  }}
                   className={`font-ibm text-xs px-3 py-1.5 border transition-all ${
                     activeRegion === r && !customRegion
                       ? "bg-evraz-dark border-evraz-dark text-white"
@@ -842,7 +882,12 @@ export default function Catalog() {
                 Площадь здания:
               </span>
               <div className="flex gap-1.5">
-                {(["Все", ...AREA_RANGES.map((r) => r.label)] as (AreaRange | "Все")[]).map((a) => (
+                {(
+                  ["Все", ...AREA_RANGES.map((r) => r.label)] as (
+                    | AreaRange
+                    | "Все"
+                  )[]
+                ).map((a) => (
                   <button
                     key={a}
                     onClick={() => setActiveArea(a)}
@@ -863,7 +908,12 @@ export default function Catalog() {
                 Высота здания:
               </span>
               <div className="flex gap-1.5">
-                {(["Все", ...HEIGHT_RANGES.map((r) => r.label)] as (HeightRange | "Все")[]).map((h) => (
+                {(
+                  ["Все", ...HEIGHT_RANGES.map((r) => r.label)] as (
+                    | HeightRange
+                    | "Все"
+                  )[]
+                ).map((h) => (
                   <button
                     key={h}
                     onClick={() => setActiveHeight(h)}
@@ -913,189 +963,247 @@ export default function Catalog() {
             </div>
           ) : (
             <>
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-              {pagedFiltered.map((item) => (
-                <div
-                  key={item.id}
-                  className="steel-card bg-white border border-evraz-border flex flex-col group"
-                >
-                  {/* Header */}
-                  <div className="bg-evraz-dark px-6 py-5 flex items-start justify-between">
-                    <div>
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <span className="font-oswald text-xs tracking-widest text-evraz-red uppercase bg-white/5 px-2 py-0.5">
-                          {item.tag}
-                        </span>
-                        {item.popular && (
-                          <span className="font-oswald text-xs text-white tracking-widest uppercase bg-evraz-red px-2 py-0.5">
-                            Популярный
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                {pagedFiltered.map((item) => (
+                  <div
+                    key={item.id}
+                    className="steel-card bg-white border border-evraz-border flex flex-col group"
+                  >
+                    {/* Header */}
+                    <div className="bg-evraz-dark px-6 py-5 flex items-start justify-between">
+                      <div>
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="font-oswald text-xs tracking-widest text-evraz-red uppercase bg-white/5 px-2 py-0.5">
+                            {item.tag}
                           </span>
-                        )}
+                          {item.popular && (
+                            <span className="font-oswald text-xs text-white tracking-widest uppercase bg-evraz-red px-2 py-0.5">
+                              Популярный
+                            </span>
+                          )}
+                        </div>
+                        <h3 className="font-oswald text-xl text-white font-semibold mt-2 leading-tight">
+                          {item.name}
+                        </h3>
                       </div>
-                      <h3 className="font-oswald text-xl text-white font-semibold mt-2 leading-tight">
-                        {item.name}
-                      </h3>
+                      <div className="text-right shrink-0 ml-4">
+                        <div className="font-oswald text-2xl text-evraz-red font-bold">
+                          {FORMAT_RUB(item.price)}
+                        </div>
+                        <div className="font-ibm text-xs text-gray-400 mt-0.5">
+                          {Math.round(
+                            item.price / (item.width * item.length),
+                          ).toLocaleString("ru-RU")}{" "}
+                          ₽/м²
+                        </div>
+                      </div>
                     </div>
-                    <div className="text-right shrink-0 ml-4">
-                      <div className="font-oswald text-2xl text-evraz-red font-bold">
-                        {FORMAT_RUB(item.price)}
-                      </div>
-                      <div className="font-ibm text-xs text-gray-400 mt-0.5">
-                        {Math.round(item.price / (item.width * item.length)).toLocaleString("ru-RU")} ₽/м²
-                      </div>
+
+                    {/* Image */}
+                    <div className="overflow-hidden h-52 bg-evraz-light">
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
                     </div>
-                  </div>
 
-                  {/* Image */}
-                  <div className="overflow-hidden h-52 bg-evraz-light">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-
-                  {/* Dimensions */}
-                  <div className="grid grid-cols-4 divide-x divide-evraz-border border-b border-evraz-border">
-                    {[
-                      { label: "Ширина", value: `${item.width} м` },
-                      { label: "Длина", value: `${item.length} м` },
-                      { label: "Высота", value: `${item.height} м` },
-                      { label: "Площадь", value: `${(item.width * item.length).toLocaleString("ru-RU")} м²` },
-                    ].map((d) => (
-                      <div key={d.label} className="py-3 px-3 text-center">
-                        <div className="font-oswald text-sm text-evraz-dark font-semibold">{d.value}</div>
-                        <div className="font-ibm text-xs text-evraz-gray mt-0.5">{d.label}</div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Specs */}
-                  <div className="p-6 flex flex-col flex-1">
-                    {/* Комплектация + технические параметры */}
-                    <div className="mb-5 divide-y divide-evraz-border border border-evraz-border">
+                    {/* Dimensions */}
+                    <div className="grid grid-cols-4 divide-x divide-evraz-border border-b border-evraz-border">
                       {[
+                        { label: "Ширина", value: `${item.width} м` },
+                        { label: "Длина", value: `${item.length} м` },
+                        { label: "Высота", value: `${item.height} м` },
                         {
-                          icon: "RectangleHorizontal",
-                          label: "Ворота",
-                          value: item.gates
-                            ? `${item.gates.count} шт. (${item.gates.size}${item.gates.wicket ? ", с калиткой" : ", без калитки"})`
-                            : "Нет",
+                          label: "Площадь",
+                          value: `${(item.width * item.length).toLocaleString("ru-RU")} м²`,
                         },
-                        {
-                          icon: "DoorOpen",
-                          label: "Двери",
-                          value: item.doors.length > 0
-                            ? item.doors.map(d => `${d.count} шт. (${d.size})`).join(", ")
-                            : "Нет",
-                        },
-                        {
-                          icon: "AppWindow",
-                          label: "Окна",
-                          value: item.windows.length > 0
-                            ? item.windows.map(w => `${w.count} шт. (${w.size})`).join(", ")
-                            : "Нет",
-                        },
-                        {
-                          icon: "Columns2",
-                          label: "Лент. остекление",
-                          value: item.stripGlazing ?? "Нет",
-                          highlight: !!item.stripGlazing,
-                        },
-                        { icon: "Hammer", label: "Кран-балка", value: item.crane, highlight: item.crane !== "Нет" },
-                        { icon: "MapPin", label: "Регион", value: item.region },
-                      ].map((row) => (
-                        <div key={row.label} className="flex items-center gap-3 px-3 py-2">
-                          <Icon name={row.icon as "Tag"} size={12} className="text-evraz-steel shrink-0" />
-                          <span className="font-ibm text-xs text-evraz-gray w-28 shrink-0">{row.label}</span>
-                          <span className={`font-ibm text-xs font-medium ml-auto text-right ${row.highlight ? "text-evraz-red" : "text-evraz-dark"}`}>
-                            {row.value}
-                          </span>
+                      ].map((d) => (
+                        <div key={d.label} className="py-3 px-3 text-center">
+                          <div className="font-oswald text-sm text-evraz-dark font-semibold">
+                            {d.value}
+                          </div>
+                          <div className="font-ibm text-xs text-evraz-gray mt-0.5">
+                            {d.label}
+                          </div>
                         </div>
                       ))}
                     </div>
 
-                    {/* Лизинг */}
-                    {(() => {
-                      const { advance, payment } = calcLeasing(item.price);
-                      return (
-                        <div className="border border-evraz-red/20 bg-evraz-red/5 px-4 py-3 mb-5">
-                          <div className="flex items-center gap-1.5 mb-2">
-                            <Icon name="CreditCard" size={13} className="text-evraz-red shrink-0" />
-                            <span className="font-oswald text-xs tracking-widest uppercase text-evraz-red">Лизинг</span>
+                    {/* Specs */}
+                    <div className="p-6 flex flex-col flex-1">
+                      {/* Комплектация + технические параметры */}
+                      <div className="mb-5 divide-y divide-evraz-border border border-evraz-border">
+                        {[
+                          {
+                            icon: "RectangleHorizontal",
+                            label: "Ворота",
+                            value: item.gates
+                              ? `${item.gates.count} шт. (${item.gates.size}${item.gates.wicket ? ", с калиткой" : ", без калитки"})`
+                              : "Нет",
+                          },
+                          {
+                            icon: "DoorOpen",
+                            label: "Двери",
+                            value:
+                              item.doors.length > 0
+                                ? item.doors
+                                    .map((d) => `${d.count} шт. (${d.size})`)
+                                    .join(", ")
+                                : "Нет",
+                          },
+                          {
+                            icon: "AppWindow",
+                            label: "Окна",
+                            value:
+                              item.windows.length > 0
+                                ? item.windows
+                                    .map((w) => `${w.count} шт. (${w.size})`)
+                                    .join(", ")
+                                : "Нет",
+                          },
+                          {
+                            icon: "Columns2",
+                            label: "Лент. остекление",
+                            value: item.stripGlazing ?? "Нет",
+                            highlight: !!item.stripGlazing,
+                          },
+                          {
+                            icon: "Hammer",
+                            label: "Кран-балка",
+                            value: item.crane,
+                            highlight: item.crane !== "Нет",
+                          },
+                          {
+                            icon: "MapPin",
+                            label: "Регион",
+                            value: item.region,
+                          },
+                        ].map((row) => (
+                          <div
+                            key={row.label}
+                            className="flex items-center gap-3 px-3 py-2"
+                          >
+                            <Icon
+                              name={row.icon as "Tag"}
+                              size={12}
+                              className="text-evraz-steel shrink-0"
+                            />
+                            <span className="font-ibm text-xs text-evraz-gray w-28 shrink-0">
+                              {row.label}
+                            </span>
+                            <span
+                              className={`font-ibm text-xs font-medium ml-auto text-right ${row.highlight ? "text-evraz-red" : "text-evraz-dark"}`}
+                            >
+                              {row.value}
+                            </span>
                           </div>
-                          <div className="font-oswald text-lg text-evraz-dark font-bold leading-none">
-                            {FORMAT_RUB(Math.round(payment))}/мес.
-                          </div>
-                          <div className="font-ibm text-xs text-evraz-gray mt-1">
-                            Аванс {FORMAT_RUB(Math.round(advance))} · 36 мес. · 16,5%
-                          </div>
-                        </div>
-                      );
-                    })()}
+                        ))}
+                      </div>
 
-                    {/* CTA */}
-                    <div className="flex gap-3 mt-auto">
-                      <button
-                        onClick={() => {
-                          setCalcInitial({
-                            width: item.width,
-                            length: item.length,
-                            height: Math.min(12, item.height),
-                            buildingType: TAG_TO_CALC_TYPE[item.tag],
-                          });
-                          setTimeout(() => {
-                            document.getElementById("calc-section")?.scrollIntoView({ behavior: "smooth" });
-                          }, 50);
-                        }}
-                        className="flex-1 text-center font-oswald text-sm tracking-wider uppercase py-3 border-2 border-evraz-dark text-evraz-dark hover:bg-evraz-dark hover:text-white transition-all"
-                      >
-                        Изменить размер
-                      </button>
-                      <button
-                        onClick={() =>
-                          document.getElementById("contacts-section")?.scrollIntoView({ behavior: "smooth" })
-                        }
-                        className="flex-1 btn-primary text-sm text-center"
-                      >
-                        Получить КП
-                      </button>
+                      {/* Лизинг */}
+                      {(() => {
+                        const { advance, payment } = calcLeasing(item.price);
+                        return (
+                          <div className="border border-evraz-red/20 bg-evraz-red/5 px-4 py-3 mb-5">
+                            <div className="flex items-center gap-1.5 mb-2">
+                              <Icon
+                                name="CreditCard"
+                                size={13}
+                                className="text-evraz-red shrink-0"
+                              />
+                              <span className="font-oswald text-xs tracking-widest uppercase text-evraz-red">
+                                Лизинг
+                              </span>
+                            </div>
+                            <div className="font-oswald text-lg text-evraz-dark font-bold leading-none">
+                              {FORMAT_RUB(Math.round(payment))}/мес.
+                            </div>
+                            <div className="font-ibm text-xs text-evraz-gray mt-1">
+                              Аванс {FORMAT_RUB(Math.round(advance))} · 36 мес.
+                              · 16,5%
+                            </div>
+                          </div>
+                        );
+                      })()}
+
+                      {/* CTA */}
+                      <div className="flex gap-3 mt-auto">
+                        <button
+                          onClick={() => {
+                            setCalcInitial({
+                              width: item.width,
+                              length: item.length,
+                              height: Math.min(12, item.height),
+                              buildingType: TAG_TO_CALC_TYPE[item.tag],
+                            });
+                            setTimeout(() => {
+                              document
+                                .getElementById("calc-section")
+                                ?.scrollIntoView({ behavior: "smooth" });
+                            }, 50);
+                          }}
+                          className="flex-1 text-center font-oswald text-sm tracking-wider uppercase py-3 border-2 border-evraz-dark text-evraz-dark hover:bg-evraz-dark hover:text-white transition-all"
+                        >
+                          Изменить размер
+                        </button>
+                        <button
+                          onClick={() =>
+                            document
+                              .getElementById("contacts-section")
+                              ?.scrollIntoView({ behavior: "smooth" })
+                          }
+                          className="flex-1 btn-primary text-sm text-center"
+                        >
+                          Получить КП
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-            {totalPages > 1 && (
-              <div className="flex items-center justify-center gap-2 mt-10">
-                <button
-                  onClick={() => { setCurrentPage((p) => Math.max(1, p - 1)); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                  disabled={currentPage === 1}
-                  className="font-ibm text-xs px-4 py-2 border border-evraz-border text-evraz-steel hover:border-evraz-dark bg-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
-                >
-                  ←
-                </button>
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                  <button
-                    key={page}
-                    onClick={() => { setCurrentPage(page); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                    className={`font-ibm text-xs px-4 py-2 border transition-all ${
-                      currentPage === page
-                        ? "bg-evraz-dark border-evraz-dark text-white"
-                        : "border-evraz-border text-evraz-steel hover:border-evraz-dark bg-white"
-                    }`}
-                  >
-                    {page}
-                  </button>
                 ))}
-                <button
-                  onClick={() => { setCurrentPage((p) => Math.min(totalPages, p + 1)); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                  disabled={currentPage === totalPages}
-                  className="font-ibm text-xs px-4 py-2 border border-evraz-border text-evraz-steel hover:border-evraz-dark bg-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
-                >
-                  →
-                </button>
               </div>
-            )}
+              {totalPages > 1 && (
+                <div className="flex items-center justify-center gap-2 mt-10">
+                  <button
+                    onClick={() => {
+                      setCurrentPage((p) => Math.max(1, p - 1));
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                    disabled={currentPage === 1}
+                    className="font-ibm text-xs px-4 py-2 border border-evraz-border text-evraz-steel hover:border-evraz-dark bg-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                  >
+                    ←
+                  </button>
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                    (page) => (
+                      <button
+                        key={page}
+                        onClick={() => {
+                          setCurrentPage(page);
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                        }}
+                        className={`font-ibm text-xs px-4 py-2 border transition-all ${
+                          currentPage === page
+                            ? "bg-evraz-dark border-evraz-dark text-white"
+                            : "border-evraz-border text-evraz-steel hover:border-evraz-dark bg-white"
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    ),
+                  )}
+                  <button
+                    onClick={() => {
+                      setCurrentPage((p) => Math.min(totalPages, p + 1));
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                    disabled={currentPage === totalPages}
+                    className="font-ibm text-xs px-4 py-2 border border-evraz-border text-evraz-steel hover:border-evraz-dark bg-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                  >
+                    →
+                  </button>
+                </div>
+              )}
             </>
           )}
         </div>
@@ -1396,8 +1504,7 @@ export default function Catalog() {
             ОСТАЛИСЬ ВОПРОСЫ?
           </h2>
           <p className="font-ibm text-gray-400 mb-8 text-sm leading-relaxed">
-            Проект АР+КР для типовых зданий 200–3 000 м² за 9 998 ₽ вместо 150
-            000 ₽. Готово за 2 рабочих дня. Подпись инженеров EVRAZ STEEL BOX.
+            Оставьте заявку и наш менеджер свяжется с вами в течении 1 часа
           </p>
           <div className="bg-white/5 border border-white/10 p-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
