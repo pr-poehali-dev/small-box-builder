@@ -242,7 +242,7 @@ export function PriceCalculator({
         {/* Окна */}
         <div>
           <label className="font-oswald text-sm tracking-widest text-evraz-dark uppercase mb-4 block">
-            Оконные блоки
+            Оконные блоки 3600×1170
           </label>
           <div className="flex items-center gap-2">
             <button
