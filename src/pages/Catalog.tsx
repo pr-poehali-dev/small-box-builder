@@ -996,6 +996,9 @@ export default function Catalog() {
                           ).toLocaleString("ru-RU")}{" "}
                           ₽/м²
                         </div>
+                        <div className="font-ibm text-xs text-gray-400 mt-1">
+                          цена актуальна на 03.06.2026
+                        </div>
                       </div>
                     </div>
 
