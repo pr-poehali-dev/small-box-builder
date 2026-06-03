@@ -328,7 +328,7 @@ export function PriceCalculator({
         {buildingType === "production" && (
           <div>
             <label className="font-oswald text-sm tracking-widest text-evraz-dark uppercase mb-4 block">
-              Мостовой кран
+              Мостовой кран, 5тн
             </label>
             <div className="flex gap-2">
               {[
