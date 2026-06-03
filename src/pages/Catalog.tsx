@@ -984,11 +984,11 @@ export default function Catalog() {
                     className="steel-card bg-white border border-evraz-border flex flex-col group"
                   >
                     {/* Header */}
-                    <div className="bg-evraz-dark px-6 py-5 flex items-start justify-between">
-                      <div>
+                    <div className="bg-evraz-dark px-6 py-5 flex items-start justify-between min-h-[120px]">
+                      <div className="flex flex-col">
                         <div className="flex items-center gap-2 flex-wrap">
                           <span className="font-oswald text-xs tracking-widest text-evraz-red uppercase bg-white/5 px-2 py-0.5">
-                            {item.tag}
+                            #{item.sku}
                           </span>
                           {item.popular && (
                             <span className="font-oswald text-xs text-white tracking-widest uppercase bg-evraz-red px-2 py-0.5">
@@ -996,12 +996,9 @@ export default function Catalog() {
                             </span>
                           )}
                         </div>
-                        <h3 className="font-oswald text-xl text-white font-semibold mt-2 leading-tight">
+                        <h3 className="font-oswald text-xl text-white font-semibold mt-2 leading-tight line-clamp-2">
                           {item.name}
                         </h3>
-                        <div className="font-ibm text-xs text-white/40 mt-1 tracking-widest">
-                          #{item.sku}
-                        </div>
                       </div>
                       <div className="text-right shrink-0 ml-4">
                         <div className="font-oswald text-2xl text-evraz-red font-bold">
