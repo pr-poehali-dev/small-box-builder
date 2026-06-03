@@ -382,8 +382,7 @@ function PartnersSection({ onContact }: { onContact: () => void }) {
                 Хотите стать партнёром?
               </h3>
               <p className="font-ibm text-evraz-gray mt-2 text-sm">
-                Присоединяйтесь к сети из 180+ сертифицированных партнёров EVRAZ
-                STEEL BOX
+                Присоединяйтесь к сети из 180+ партнёров EVRAZ STEEL BOX
               </p>
             </div>
             <button
