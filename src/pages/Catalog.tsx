@@ -44,7 +44,7 @@ const CATALOG: CatalogItem[] = [
     height: 5,
     price: 7_366_616,
     crane: "Нет",
-    region: "Владимир",
+    region: "Москва",
     stripGlazing: "68 пог. м",
     doors: [{ count: 1, size: "1000×2100 мм" }],
     gates: { count: 1, size: "3000×3000 мм", wicket: false },
