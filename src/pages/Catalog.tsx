@@ -1281,6 +1281,56 @@ export default function Catalog() {
                 ?.scrollIntoView({ behavior: "smooth" })
             }
           />
+
+          {/* Состав цены */}
+          <div className="mt-0 grid grid-cols-1 md:grid-cols-2 border border-t-0 border-evraz-border">
+            <div className="px-8 py-7 border-b md:border-b-0 md:border-r border-evraz-border">
+              <div className="flex items-center gap-2 mb-5">
+                <div className="w-3 h-3 bg-evraz-red shrink-0" />
+                <span className="font-oswald text-sm tracking-widest text-evraz-dark uppercase">Входит в стоимость</span>
+              </div>
+              <ul className="space-y-2.5">
+                {[
+                  "Металлический каркас здания",
+                  "Стеновые и кровельные сэндвич-панели",
+                  "Торцевые и боковые ограждающие конструкции",
+                  "Ворота и двери (согласно комплектации)",
+                  "Оконные блоки (согласно комплектации)",
+                  "Доборные элементы и крепёж",
+                  "Проектная документация КМД",
+                  "Доставка на объект",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2.5">
+                    <span className="text-evraz-red font-bold font-ibm text-sm leading-5 shrink-0">✓</span>
+                    <span className="font-ibm text-sm text-evraz-steel leading-5">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="px-8 py-7 bg-evraz-light">
+              <div className="flex items-center gap-2 mb-5">
+                <div className="w-3 h-3 border-2 border-evraz-gray shrink-0" />
+                <span className="font-oswald text-sm tracking-widest text-evraz-dark uppercase">Не входит в стоимость</span>
+              </div>
+              <ul className="space-y-2.5">
+                {[
+                  "Фундамент и земляные работы",
+                  "Электроснабжение и электромонтаж",
+                  "Отопление и вентиляция",
+                  "Водоснабжение и канализация",
+                  "Пожарная сигнализация и автоматика",
+                  "Внутренняя отделка и перегородки",
+                  "Монтаж здания (доступен отдельно)",
+                  "Геодезия и согласования",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2.5">
+                    <span className="text-evraz-gray font-bold font-ibm text-sm leading-5 shrink-0">—</span>
+                    <span className="font-ibm text-sm text-evraz-gray leading-5">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
