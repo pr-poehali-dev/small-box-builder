@@ -1422,7 +1422,7 @@ export default function Catalog() {
               <div className="accent-line mx-auto" />
             </div>
             <h2 className="font-oswald text-3xl md:text-4xl text-evraz-dark font-semibold">
-              ЧТО НУЖНО ОТ ВАС
+              Цикл строительства здания
             </h2>
             <p className="font-ibm text-evraz-gray mt-3 max-w-xl mx-auto text-sm leading-relaxed">
               Мы берём на себя максимум. Ниже — таймлайн стройки и что требуется
