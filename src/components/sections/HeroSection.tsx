@@ -92,7 +92,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
             {
               icon: "Package",
               tag: "Серийные здания до 3000м²",
-              title: "Готовые решения за 45 дней",
+              title: "Готовые решения за 50 дней",
               desc: "Типовые склады, цеха, ангары, магазины. Минимальные сроки, предсказуемая цена.",
               cta: "Смотреть каталог",
               target: "solutions",
