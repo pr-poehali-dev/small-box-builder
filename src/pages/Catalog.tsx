@@ -647,6 +647,20 @@ const TAGS: BuildingTag[] = [
   "Производственно-складское",
 ];
 
+const TAG_TO_FRAME: Record<BuildingTag, string> = {
+  "Склад": "Р1",
+  "Производство": "Р2",
+  "Производственно-складское": "Р4",
+};
+
+const CATALOG_WITH_SKU = (() => {
+  let iterator = 1;
+  return CATALOG.map((item) => ({
+    ...item,
+    sku: `${TAG_TO_FRAME[item.tag]}-${item.width * item.length}-${iterator++}`,
+  }));
+})();
+
 const REGIONS = [...new Set(CATALOG.map((c) => c.region))].sort();
 
 const AREA_RANGES: { label: AreaRange; test: (a: number) => boolean }[] = [
@@ -706,7 +720,7 @@ export default function Catalog() {
   const PAGE_SIZE = 6;
 
   const shuffledCatalog = useMemo(() => {
-    const arr = [...CATALOG];
+    const arr = [...CATALOG_WITH_SKU];
     for (let i = arr.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [arr[i], arr[j]] = [arr[j], arr[i]];
@@ -985,6 +999,9 @@ export default function Catalog() {
                         <h3 className="font-oswald text-xl text-white font-semibold mt-2 leading-tight">
                           {item.name}
                         </h3>
+                        <div className="font-ibm text-xs text-white/40 mt-1 tracking-widest">
+                          #{item.sku}
+                        </div>
                       </div>
                       <div className="text-right shrink-0 ml-4">
                         <div className="font-oswald text-2xl text-evraz-red font-bold">
