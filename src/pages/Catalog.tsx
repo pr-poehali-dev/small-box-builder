@@ -1124,7 +1124,6 @@ export default function Catalog() {
                             </div>
                             <div className="font-ibm text-xs text-evraz-gray mt-1">
                               Аванс {FORMAT_RUB(Math.round(advance))} · 36 мес.
-                              · 16,5%
                             </div>
                           </div>
                         );
