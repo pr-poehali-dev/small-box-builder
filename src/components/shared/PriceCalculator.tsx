@@ -216,7 +216,7 @@ export function PriceCalculator({
             <label className="font-oswald text-sm tracking-widest text-evraz-dark uppercase">
               Ворота
             </label>
-            <span className="font-ibm text-xs text-evraz-gray">{gateSize} мм</span>
+            <span className="font-ibm text-xs text-evraz-gray">{gateSize.replace(/\s*мм$/i, "")} мм</span>
           </div>
           <div className="flex items-center gap-2">
             <button
