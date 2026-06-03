@@ -832,19 +832,26 @@ export default function Catalog() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 py-7">
             <div className="flex items-center gap-5">
               <div className="w-12 h-12 bg-evraz-dark flex items-center justify-center shrink-0">
-                <span className="text-evraz-red font-oswald text-xl font-bold">?</span>
+                <span className="text-evraz-red font-oswald text-xl font-bold">
+                  ?
+                </span>
               </div>
               <div>
                 <div className="font-oswald text-lg md:text-xl text-evraz-dark font-semibold leading-tight">
                   Не знаете, что ждать от строительства?
                 </div>
                 <div className="font-ibm text-sm text-evraz-gray mt-0.5">
-                  Объясняем цикл стройки и что потребуется от вас на каждом этапе
+                  Объясняем цикл стройки и что потребуется от вас на каждом
+                  этапе
                 </div>
               </div>
             </div>
             <button
-              onClick={() => document.getElementById("construction-cycle")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() =>
+                document
+                  .getElementById("construction-cycle")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
               className="shrink-0 font-oswald text-sm tracking-wider uppercase px-7 py-3 border-2 border-evraz-dark text-evraz-dark hover:bg-evraz-dark hover:text-white transition-all whitespace-nowrap"
             >
               Читать про цикл стройки →
@@ -1341,7 +1348,7 @@ export default function Catalog() {
                   "Ворота и двери согласно комплектации",
                   "Оконные блоки согласно комплектации",
                   "Доборные элементы и крепёж",
-                  "Проектная документация КМД",
+                  "Проектная документация КМ и монтажные чертежи",
                   "Доставка на объект",
                 ].map((text) => (
                   <li key={text} className="flex items-center gap-4 px-8 py-4">
@@ -1371,7 +1378,7 @@ export default function Catalog() {
                   "Электроснабжение и электромонтаж",
                   "Отопление и вентиляция",
                   "Водоснабжение и канализация",
-                  "Пожарная сигнализация и автоматика",
+                  "Аксессуары: водосточная система, снегодержатели, пожарная сигнализация, автоматика и т.д.",
                   "Внутренняя отделка и перегородки",
                   "Монтаж здания (доступен отдельно)",
                   "Геодезия и согласования",
@@ -1495,7 +1502,7 @@ export default function Catalog() {
                 step: "03",
                 phase: "от 2х месяцев",
                 icon: "FileText",
-                title: "Проектирование и экспертиза",
+                title: "Проектирование",
                 client: [
                   "Формирует техническое задание",
                   "Согласовывает архитектурный облик (при необходимости)",
@@ -1513,8 +1520,7 @@ export default function Catalog() {
                 title: "Разрешение на строительство",
                 client: ["Подаёт заявление через Госуслуги или МФЦ"],
                 us: [
-                  "Партнёр-проектировщик собирает и проверяет полный пакет документов",
-                  "(опционально) Подаёт по доверенности заявление через Госуслуги или МФЦ",
+                  "Партнёр-проектировщик собирает и проверяет полный пакет документов, а также сопровождает прохождение экспертизы. При необходимости, может подать по доверенности заявление через Госуслуги или МФЦ",
                   "Помогаем выбрать подходящего партнёра на строительство",
                 ],
               },
