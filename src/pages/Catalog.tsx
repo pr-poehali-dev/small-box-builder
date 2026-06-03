@@ -1282,37 +1282,52 @@ export default function Catalog() {
             }
           />
 
-          {/* Состав цены */}
-          <div className="mt-0 grid grid-cols-1 md:grid-cols-2 border border-t-0 border-evraz-border">
-            <div className="px-8 py-7 border-b md:border-b-0 md:border-r border-evraz-border">
-              <div className="flex items-center gap-2 mb-5">
-                <div className="w-3 h-3 bg-evraz-red shrink-0" />
-                <span className="font-oswald text-sm tracking-widest text-evraz-dark uppercase">Входит в стоимость</span>
+        </div>
+      </section>
+
+      {/* СОСТАВ ЦЕНЫ */}
+      <section className="py-16 bg-white border-t border-evraz-border">
+        <div className="container mx-auto">
+          <div className="mb-10">
+            <div className="font-oswald text-xs tracking-widest text-evraz-red uppercase mb-3">Прозрачное ценообразование</div>
+            <h2 className="font-oswald text-3xl md:text-4xl text-evraz-dark font-bold">Что включено в расчёт</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Входит */}
+            <div className="border border-evraz-border">
+              <div className="bg-evraz-dark px-8 py-5 flex items-center gap-3">
+                <div className="w-5 h-5 bg-evraz-red flex items-center justify-center shrink-0">
+                  <span className="text-white text-xs font-bold">✓</span>
+                </div>
+                <span className="font-oswald text-base tracking-widest text-white uppercase">Входит в стоимость</span>
               </div>
-              <ul className="space-y-2.5">
+              <ul className="divide-y divide-evraz-border">
                 {[
                   "Металлический каркас здания",
                   "Стеновые и кровельные сэндвич-панели",
                   "Торцевые и боковые ограждающие конструкции",
-                  "Ворота и двери (согласно комплектации)",
-                  "Оконные блоки (согласно комплектации)",
+                  "Ворота и двери согласно комплектации",
+                  "Оконные блоки согласно комплектации",
                   "Доборные элементы и крепёж",
                   "Проектная документация КМД",
                   "Доставка на объект",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5">
-                    <span className="text-evraz-red font-bold font-ibm text-sm leading-5 shrink-0">✓</span>
-                    <span className="font-ibm text-sm text-evraz-steel leading-5">{item}</span>
+                ].map((text) => (
+                  <li key={text} className="flex items-center gap-4 px-8 py-4">
+                    <div className="w-1.5 h-1.5 bg-evraz-red rounded-full shrink-0" />
+                    <span className="font-ibm text-sm text-evraz-dark">{text}</span>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="px-8 py-7 bg-evraz-light">
-              <div className="flex items-center gap-2 mb-5">
-                <div className="w-3 h-3 border-2 border-evraz-gray shrink-0" />
-                <span className="font-oswald text-sm tracking-widest text-evraz-dark uppercase">Не входит в стоимость</span>
+            {/* Не входит */}
+            <div className="border border-evraz-border">
+              <div className="bg-evraz-light px-8 py-5 flex items-center gap-3 border-b border-evraz-border">
+                <div className="w-5 h-5 border-2 border-evraz-gray flex items-center justify-center shrink-0">
+                  <span className="text-evraz-gray text-xs font-bold leading-none">—</span>
+                </div>
+                <span className="font-oswald text-base tracking-widest text-evraz-dark uppercase">Не входит в стоимость</span>
               </div>
-              <ul className="space-y-2.5">
+              <ul className="divide-y divide-evraz-border">
                 {[
                   "Фундамент и земляные работы",
                   "Электроснабжение и электромонтаж",
@@ -1322,10 +1337,10 @@ export default function Catalog() {
                   "Внутренняя отделка и перегородки",
                   "Монтаж здания (доступен отдельно)",
                   "Геодезия и согласования",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5">
-                    <span className="text-evraz-gray font-bold font-ibm text-sm leading-5 shrink-0">—</span>
-                    <span className="font-ibm text-sm text-evraz-gray leading-5">{item}</span>
+                ].map((text) => (
+                  <li key={text} className="flex items-center gap-4 px-8 py-4">
+                    <div className="w-1.5 h-1.5 bg-evraz-gray/40 rounded-full shrink-0" />
+                    <span className="font-ibm text-sm text-evraz-gray">{text}</span>
                   </li>
                 ))}
               </ul>
