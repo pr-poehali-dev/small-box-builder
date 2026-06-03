@@ -6,6 +6,7 @@ export interface PriceCalculatorInitial {
   height?: number;
   buildingType?: string;
   gates?: number;
+  gateSize?: string;
   windows?: number;
   region?: string;
 }
@@ -35,6 +36,7 @@ export function PriceCalculator({
     initialValues?.buildingType ?? "warehouse",
   );
   const [gates, setGates] = useState(initialValues?.gates ?? 1);
+  const [gateSize, setGateSize] = useState(initialValues?.gateSize ?? "4000×4000");
   const [windows, setWindows] = useState(initialValues?.windows ?? 0);
   const [hasCrane, setHasCrane] = useState(false);
   const [isWarm, setIsWarm] = useState(false);
@@ -210,9 +212,12 @@ export function PriceCalculator({
       >
         {/* Ворота */}
         <div>
-          <label className="font-oswald text-sm tracking-widest text-evraz-dark uppercase mb-4 block">
-            Ворота
-          </label>
+          <div className="flex items-baseline gap-2 mb-4">
+            <label className="font-oswald text-sm tracking-widest text-evraz-dark uppercase">
+              Ворота
+            </label>
+            <span className="font-ibm text-xs text-evraz-gray">{gateSize} мм</span>
+          </div>
           <div className="flex items-center gap-2">
             <button
               onClick={() => setGates(Math.max(0, gates - 1))}

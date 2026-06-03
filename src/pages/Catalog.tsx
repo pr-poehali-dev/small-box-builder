@@ -1188,6 +1188,7 @@ export default function Catalog() {
                               height: Math.min(12, item.height),
                               buildingType: TAG_TO_CALC_TYPE[item.tag],
                               gates: item.gates?.count ?? 0,
+                              gateSize: item.gates?.size ?? "4000×4000",
                               windows: item.windows.reduce(
                                 (acc, w) => acc + w.count,
                                 0,
