@@ -1350,7 +1350,6 @@ export default function Catalog() {
                   "Оконные блоки согласно комплектации",
                   "Доборные элементы и крепёж",
                   "Проектная документация КМ и монтажные чертежи",
-                  "Доставка на объект",
                 ].map((text) => (
                   <li key={text} className="flex items-center gap-4 px-8 py-4">
                     <div className="w-1.5 h-1.5 bg-evraz-red rounded-full shrink-0" />
