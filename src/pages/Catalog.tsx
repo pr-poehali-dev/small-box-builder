@@ -826,6 +826,33 @@ export default function Catalog() {
         </div>
       </section>
 
+      {/* CONSTRUCTION CYCLE PROMO */}
+      <section className="bg-white border-b border-evraz-border">
+        <div className="container mx-auto">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 py-7">
+            <div className="flex items-center gap-5">
+              <div className="w-12 h-12 bg-evraz-dark flex items-center justify-center shrink-0">
+                <span className="text-evraz-red font-oswald text-xl font-bold">?</span>
+              </div>
+              <div>
+                <div className="font-oswald text-lg md:text-xl text-evraz-dark font-semibold leading-tight">
+                  Не знаете, что ждать от строительства?
+                </div>
+                <div className="font-ibm text-sm text-evraz-gray mt-0.5">
+                  Объясняем цикл стройки и что потребуется от вас на каждом этапе
+                </div>
+              </div>
+            </div>
+            <button
+              onClick={() => document.getElementById("construction-cycle")?.scrollIntoView({ behavior: "smooth" })}
+              className="shrink-0 font-oswald text-sm tracking-wider uppercase px-7 py-3 border-2 border-evraz-dark text-evraz-dark hover:bg-evraz-dark hover:text-white transition-all whitespace-nowrap"
+            >
+              Читать про цикл стройки →
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* FILTER BAR */}
       <section className="bg-evraz-light border-b border-evraz-border py-5">
         <div className="container mx-auto space-y-4">
@@ -1415,7 +1442,7 @@ export default function Catalog() {
       </section>
 
       {/* WHAT'S NEEDED FROM CLIENT */}
-      <section className="py-16 bg-white">
+      <section id="construction-cycle" className="py-16 bg-white">
         <div className="container mx-auto">
           <div className="mb-12 text-center">
             <div className="flex justify-center mb-4">
