@@ -17,13 +17,23 @@ interface PriceCalculatorProps {
 }
 
 const FORMAT_RUB = (n: number) =>
-  new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", maximumFractionDigits: 0 }).format(n);
+  new Intl.NumberFormat("ru-RU", {
+    style: "currency",
+    currency: "RUB",
+    maximumFractionDigits: 0,
+  }).format(n);
 
-export function PriceCalculator({ onGetQuote, initialValues, regions = [] }: PriceCalculatorProps) {
+export function PriceCalculator({
+  onGetQuote,
+  initialValues,
+  regions = [],
+}: PriceCalculatorProps) {
   const [width, setWidth] = useState(initialValues?.width ?? 24);
   const [length, setLength] = useState(initialValues?.length ?? 48);
   const [height, setHeight] = useState(initialValues?.height ?? 6);
-  const [buildingType, setBuildingType] = useState(initialValues?.buildingType ?? "warehouse");
+  const [buildingType, setBuildingType] = useState(
+    initialValues?.buildingType ?? "warehouse",
+  );
   const [gates, setGates] = useState(initialValues?.gates ?? 1);
   const [windows, setWindows] = useState(initialValues?.windows ?? 0);
   const [hasCrane, setHasCrane] = useState(false);
@@ -49,7 +59,18 @@ export function PriceCalculator({ onGetQuote, initialValues, regions = [] }: Pri
     const warmCost = isWarm ? area * 2800 : 0;
     const vitrageCost = hasVitrage ? area * 1500 : 0;
     const stripGlazingCost = hasStripGlazingOption ? area * 900 : 0;
-    return Math.round((area * base * heightCoef + gatesCost + windowsCost + craneCost + warmCost + vitrageCost + stripGlazingCost) / 1000) * 1000;
+    return (
+      Math.round(
+        (area * base * heightCoef +
+          gatesCost +
+          windowsCost +
+          craneCost +
+          warmCost +
+          vitrageCost +
+          stripGlazingCost) /
+          1000,
+      ) * 1000
+    );
   };
 
   return (
@@ -69,7 +90,10 @@ export function PriceCalculator({ onGetQuote, initialValues, regions = [] }: Pri
           ].map((t) => (
             <button
               key={t.key}
-              onClick={() => { setBuildingType(t.key); if (t.key !== "production") setHasCrane(false); }}
+              onClick={() => {
+                setBuildingType(t.key);
+                if (t.key !== "production") setHasCrane(false);
+              }}
               className={`font-oswald text-sm tracking-wider uppercase py-3 px-4 border transition-all ${
                 buildingType === t.key
                   ? "bg-evraz-red border-evraz-red text-white"
@@ -112,7 +136,8 @@ export function PriceCalculator({ onGetQuote, initialValues, regions = [] }: Pri
         </div>
         {region && (
           <div className="font-ibm text-xs text-evraz-gray mt-2">
-            Регион: <span className="text-evraz-dark font-semibold">{region}</span>
+            Регион:{" "}
+            <span className="text-evraz-dark font-semibold">{region}</span>
           </div>
         )}
       </div>
@@ -141,7 +166,9 @@ export function PriceCalculator({ onGetQuote, initialValues, regions = [] }: Pri
           ))}
         </div>
         {isWarm && (
-          <div className="font-ibm text-xs text-evraz-gray mt-2">+{(width * length * 2800).toLocaleString("ru-RU")} ₽</div>
+          <div className="font-ibm text-xs text-evraz-gray mt-2">
+            +{(width * length * 2800).toLocaleString("ru-RU")} ₽
+          </div>
         )}
       </div>
 
@@ -154,8 +181,12 @@ export function PriceCalculator({ onGetQuote, initialValues, regions = [] }: Pri
         ].map((s) => (
           <div key={s.label}>
             <div className="flex justify-between mb-3">
-              <label className="font-oswald text-sm tracking-widest text-evraz-dark uppercase">{s.label}</label>
-              <span className="font-oswald text-evraz-red font-semibold">{s.val} м</span>
+              <label className="font-oswald text-sm tracking-widest text-evraz-dark uppercase">
+                {s.label}
+              </label>
+              <span className="font-oswald text-evraz-red font-semibold">
+                {s.val} м
+              </span>
             </div>
             <input
               type="range"
@@ -174,7 +205,9 @@ export function PriceCalculator({ onGetQuote, initialValues, regions = [] }: Pri
       </div>
 
       {/* Опции */}
-      <div className={`grid grid-cols-1 gap-6 mb-10 pt-8 border-t border-evraz-border ${buildingType === "production" || buildingType === "trade" ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
+      <div
+        className={`grid grid-cols-1 gap-6 mb-10 pt-8 border-t border-evraz-border ${buildingType === "production" || buildingType === "trade" ? "md:grid-cols-3" : "md:grid-cols-2"}`}
+      >
         {/* Ворота */}
         <div>
           <label className="font-oswald text-sm tracking-widest text-evraz-dark uppercase mb-4 block">
@@ -184,7 +217,9 @@ export function PriceCalculator({ onGetQuote, initialValues, regions = [] }: Pri
             <button
               onClick={() => setGates(Math.max(0, gates - 1))}
               className="w-10 h-10 flex items-center justify-center border border-evraz-border text-evraz-dark font-oswald text-xl hover:border-evraz-red hover:text-evraz-red transition-all"
-            >−</button>
+            >
+              −
+            </button>
             <input
               type="number"
               min={0}
@@ -195,7 +230,9 @@ export function PriceCalculator({ onGetQuote, initialValues, regions = [] }: Pri
             <button
               onClick={() => setGates(gates + 1)}
               className="w-10 h-10 flex items-center justify-center border border-evraz-border text-evraz-dark font-oswald text-xl hover:border-evraz-red hover:text-evraz-red transition-all"
-            >+</button>
+            >
+              +
+            </button>
           </div>
           <div className="font-ibm text-xs text-evraz-gray mt-2">
             +{(gates * 185000).toLocaleString("ru-RU")} ₽
@@ -211,7 +248,9 @@ export function PriceCalculator({ onGetQuote, initialValues, regions = [] }: Pri
             <button
               onClick={() => setWindows(Math.max(0, windows - 1))}
               className="w-10 h-10 flex items-center justify-center border border-evraz-border text-evraz-dark font-oswald text-xl hover:border-evraz-red hover:text-evraz-red transition-all"
-            >−</button>
+            >
+              −
+            </button>
             <input
               type="number"
               min={0}
@@ -222,7 +261,9 @@ export function PriceCalculator({ onGetQuote, initialValues, regions = [] }: Pri
             <button
               onClick={() => setWindows(windows + 1)}
               className="w-10 h-10 flex items-center justify-center border border-evraz-border text-evraz-dark font-oswald text-xl hover:border-evraz-red hover:text-evraz-red transition-all"
-            >+</button>
+            >
+              +
+            </button>
           </div>
           <div className="font-ibm text-xs text-evraz-gray mt-2">
             +{(windows * 42000).toLocaleString("ru-RU")} ₽
@@ -237,17 +278,34 @@ export function PriceCalculator({ onGetQuote, initialValues, regions = [] }: Pri
             </label>
             <div className="flex flex-col gap-3">
               {[
-                { val: hasVitrage, set: setHasVitrage, label: "Витраж", cost: width * length * 1500 },
-                { val: hasStripGlazingOption, set: setHasStripGlazingOption, label: "Ленточное остекление", cost: width * length * 900 },
+                {
+                  val: hasVitrage,
+                  set: setHasVitrage,
+                  label: "Витраж",
+                  cost: width * length * 1500,
+                },
+                {
+                  val: hasStripGlazingOption,
+                  set: setHasStripGlazingOption,
+                  label: "Ленточное остекление",
+                  cost: width * length * 900,
+                },
               ].map((opt) => (
-                <label key={opt.label} className="flex items-center gap-3 cursor-pointer group">
+                <label
+                  key={opt.label}
+                  className="flex items-center gap-3 cursor-pointer group"
+                >
                   <div
                     onClick={() => opt.set(!opt.val)}
                     className={`w-5 h-5 border-2 flex items-center justify-center transition-all cursor-pointer ${
-                      opt.val ? "bg-evraz-red border-evraz-red" : "border-evraz-border group-hover:border-evraz-red"
+                      opt.val
+                        ? "bg-evraz-red border-evraz-red"
+                        : "border-evraz-border group-hover:border-evraz-red"
                     }`}
                   >
-                    {opt.val && <span className="text-white text-xs font-bold">✓</span>}
+                    {opt.val && (
+                      <span className="text-white text-xs font-bold">✓</span>
+                    )}
                   </div>
                   <span
                     onClick={() => opt.set(!opt.val)}
@@ -256,7 +314,9 @@ export function PriceCalculator({ onGetQuote, initialValues, regions = [] }: Pri
                     {opt.label}
                   </span>
                   {opt.val && (
-                    <span className="font-ibm text-xs text-evraz-gray ml-auto">+{opt.cost.toLocaleString("ru-RU")} ₽</span>
+                    <span className="font-ibm text-xs text-evraz-gray ml-auto">
+                      +{opt.cost.toLocaleString("ru-RU")} ₽
+                    </span>
                   )}
                 </label>
               ))}
@@ -289,7 +349,9 @@ export function PriceCalculator({ onGetQuote, initialValues, regions = [] }: Pri
               ))}
             </div>
             <div className="font-ibm text-xs text-evraz-gray mt-2">
-              {hasCrane ? `+${(width * length * 3200).toLocaleString("ru-RU")} ₽` : "Без доплаты"}
+              {hasCrane
+                ? `+${(width * length * 3200).toLocaleString("ru-RU")} ₽`
+                : "Без доплаты"}
             </div>
           </div>
         )}
@@ -297,18 +359,30 @@ export function PriceCalculator({ onGetQuote, initialValues, regions = [] }: Pri
 
       {/* Справочные характеристики */}
       {(() => {
-        const wallThickness = buildingType === "sport" || buildingType === "trade" ? 150 : 100;
+        const wallThickness =
+          buildingType === "sport" || buildingType === "trade" ? 150 : 100;
         const roofThickness = buildingType === "agro" ? 100 : 150;
-        const roofType = height > 8 ? "Скатная двускатная" : "Скатная однопролётная";
-        const roofPanel = buildingType === "agro" ? "Профнастил" : "Сэндвич-панель";
-        const wallPanel = buildingType === "agro" ? "Профнастил" : "Сэндвич-панель";
-        const hasStripGlazing = buildingType === "sport" || (buildingType === "trade" && hasStripGlazingOption);
+        const roofType =
+          height > 8 ? "Скатная двускатная" : "Скатная однопролётная";
+        const roofPanel =
+          buildingType === "agro" ? "Профнастил" : "Сэндвич-панель";
+        const wallPanel =
+          buildingType === "agro" ? "Профнастил" : "Сэндвич-панель";
+        const hasStripGlazing =
+          buildingType === "sport" ||
+          (buildingType === "trade" && hasStripGlazingOption);
         const doorsCount = buildingType === "production" ? 4 : 2;
 
         const specs = [
           { label: "Стены", value: `${wallPanel}, ${wallThickness} мм` },
-          { label: "Кровля", value: `${roofType}, ${roofPanel} ${roofThickness} мм` },
-          { label: "Ленточное остекление", value: hasStripGlazing ? "Да" : "Нет" },
+          {
+            label: "Кровля",
+            value: `${roofType}, ${roofPanel} ${roofThickness} мм`,
+          },
+          {
+            label: "Ленточное остекление",
+            value: hasStripGlazing ? "Да" : "Нет",
+          },
           { label: "Двери", value: `${doorsCount} шт.` },
         ];
 
@@ -320,8 +394,12 @@ export function PriceCalculator({ onGetQuote, initialValues, regions = [] }: Pri
             <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-3">
               {specs.map((s) => (
                 <div key={s.label} className="flex flex-col gap-0.5">
-                  <span className="font-ibm text-xs text-evraz-gray">{s.label}</span>
-                  <span className="font-oswald text-sm text-evraz-dark font-semibold">{s.value}</span>
+                  <span className="font-ibm text-xs text-evraz-gray">
+                    {s.label}
+                  </span>
+                  <span className="font-oswald text-sm text-evraz-dark font-semibold">
+                    {s.value}
+                  </span>
                 </div>
               ))}
             </div>
@@ -332,18 +410,26 @@ export function PriceCalculator({ onGetQuote, initialValues, regions = [] }: Pri
       {/* Итог */}
       <div className="bg-evraz-charcoal border border-t-0 border-evraz-border p-6 flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
-          <div className="font-ibm text-xs text-evraz-gray uppercase tracking-wider mb-1">Площадь здания</div>
-          <div className="font-oswald text-2xl text-evraz-dark">{(width * length).toLocaleString("ru-RU")} м²</div>
+          <div className="font-ibm text-xs text-evraz-gray uppercase tracking-wider mb-1">
+            Площадь здания
+          </div>
+          <div className="font-oswald text-2xl text-evraz-dark">
+            {(width * length).toLocaleString("ru-RU")} м²
+          </div>
         </div>
         <div className="text-center md:text-right">
           <div className="font-ibm text-xs text-evraz-gray uppercase tracking-wider mb-1">
             Ориентировочная стоимость
           </div>
-          <div className="font-oswald text-4xl text-evraz-red font-bold">{FORMAT_RUB(calcPrice())}</div>
-          <div className="font-ibm text-xs text-evraz-gray mt-1">*без учёта инженерных сетей и фундамента</div>
+          <div className="font-oswald text-4xl text-evraz-red font-bold">
+            {FORMAT_RUB(calcPrice())}
+          </div>
+          <div className="font-ibm text-xs text-evraz-gray mt-1">
+            *без учёта инженерных сетей и фундамента
+          </div>
         </div>
         <button onClick={onGetQuote} className="btn-primary whitespace-nowrap">
-          Получить смету
+          Получить расчет
         </button>
       </div>
     </div>
