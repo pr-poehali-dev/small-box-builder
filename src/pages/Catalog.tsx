@@ -1131,7 +1131,7 @@ export default function Catalog() {
                                 className="text-evraz-red shrink-0"
                               />
                               <span className="font-oswald text-xs tracking-widest uppercase text-evraz-red">
-                                Лизинг
+                                Лизинг от банка-партнера
                               </span>
                             </div>
                             <div className="font-oswald text-lg text-evraz-dark font-bold leading-none">
@@ -1281,7 +1281,6 @@ export default function Catalog() {
                 ?.scrollIntoView({ behavior: "smooth" })
             }
           />
-
         </div>
       </section>
 
@@ -1289,8 +1288,12 @@ export default function Catalog() {
       <section className="py-16 bg-white border-t border-evraz-border">
         <div className="container mx-auto">
           <div className="mb-10">
-            <div className="font-oswald text-xs tracking-widest text-evraz-red uppercase mb-3">Прозрачное ценообразование</div>
-            <h2 className="font-oswald text-3xl md:text-4xl text-evraz-dark font-bold">Что включено в расчёт</h2>
+            <div className="font-oswald text-xs tracking-widest text-evraz-red uppercase mb-3">
+              Прозрачное ценообразование
+            </div>
+            <h2 className="font-oswald text-3xl md:text-4xl text-evraz-dark font-bold">
+              Что включено в расчёт
+            </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Входит */}
@@ -1299,7 +1302,9 @@ export default function Catalog() {
                 <div className="w-5 h-5 bg-evraz-red flex items-center justify-center shrink-0">
                   <span className="text-white text-xs font-bold">✓</span>
                 </div>
-                <span className="font-oswald text-base tracking-widest text-white uppercase">Входит в стоимость</span>
+                <span className="font-oswald text-base tracking-widest text-white uppercase">
+                  Входит в стоимость
+                </span>
               </div>
               <ul className="divide-y divide-evraz-border">
                 {[
@@ -1314,7 +1319,9 @@ export default function Catalog() {
                 ].map((text) => (
                   <li key={text} className="flex items-center gap-4 px-8 py-4">
                     <div className="w-1.5 h-1.5 bg-evraz-red rounded-full shrink-0" />
-                    <span className="font-ibm text-sm text-evraz-dark">{text}</span>
+                    <span className="font-ibm text-sm text-evraz-dark">
+                      {text}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -1323,9 +1330,13 @@ export default function Catalog() {
             <div className="border border-evraz-border">
               <div className="bg-evraz-light px-8 py-5 flex items-center gap-3 border-b border-evraz-border">
                 <div className="w-5 h-5 border-2 border-evraz-gray flex items-center justify-center shrink-0">
-                  <span className="text-evraz-gray text-xs font-bold leading-none">—</span>
+                  <span className="text-evraz-gray text-xs font-bold leading-none">
+                    —
+                  </span>
                 </div>
-                <span className="font-oswald text-base tracking-widest text-evraz-dark uppercase">Не входит в стоимость</span>
+                <span className="font-oswald text-base tracking-widest text-evraz-dark uppercase">
+                  Не входит в стоимость
+                </span>
               </div>
               <ul className="divide-y divide-evraz-border">
                 {[
@@ -1340,7 +1351,9 @@ export default function Catalog() {
                 ].map((text) => (
                   <li key={text} className="flex items-center gap-4 px-8 py-4">
                     <div className="w-1.5 h-1.5 bg-evraz-gray/40 rounded-full shrink-0" />
-                    <span className="font-ibm text-sm text-evraz-gray">{text}</span>
+                    <span className="font-ibm text-sm text-evraz-gray">
+                      {text}
+                    </span>
                   </li>
                 ))}
               </ul>
