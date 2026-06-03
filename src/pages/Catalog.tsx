@@ -1138,6 +1138,9 @@ export default function Catalog() {
                               length: item.length,
                               height: Math.min(12, item.height),
                               buildingType: TAG_TO_CALC_TYPE[item.tag],
+                              gates: item.gates?.count ?? 0,
+                              windows: item.windows.reduce((acc, w) => acc + w.count, 0),
+                              region: item.region,
                             });
                             setTimeout(() => {
                               document
@@ -1253,6 +1256,7 @@ export default function Catalog() {
           <PriceCalculator
             key={JSON.stringify(calcInitial)}
             initialValues={calcInitial}
+            regions={REGIONS}
             onGetQuote={() =>
               document
                 .getElementById("contacts-section")

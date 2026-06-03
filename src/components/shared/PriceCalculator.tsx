@@ -7,17 +7,19 @@ export interface PriceCalculatorInitial {
   buildingType?: string;
   gates?: number;
   windows?: number;
+  region?: string;
 }
 
 interface PriceCalculatorProps {
   onGetQuote: () => void;
   initialValues?: PriceCalculatorInitial;
+  regions?: string[];
 }
 
 const FORMAT_RUB = (n: number) =>
   new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", maximumFractionDigits: 0 }).format(n);
 
-export function PriceCalculator({ onGetQuote, initialValues }: PriceCalculatorProps) {
+export function PriceCalculator({ onGetQuote, initialValues, regions = [] }: PriceCalculatorProps) {
   const [width, setWidth] = useState(initialValues?.width ?? 24);
   const [length, setLength] = useState(initialValues?.length ?? 48);
   const [height, setHeight] = useState(initialValues?.height ?? 6);
@@ -28,6 +30,7 @@ export function PriceCalculator({ onGetQuote, initialValues }: PriceCalculatorPr
   const [isWarm, setIsWarm] = useState(false);
   const [hasVitrage, setHasVitrage] = useState(false);
   const [hasStripGlazingOption, setHasStripGlazingOption] = useState(false);
+  const [region, setRegion] = useState(initialValues?.region ?? "");
 
   const calcPrice = () => {
     const area = width * length;
@@ -77,6 +80,41 @@ export function PriceCalculator({ onGetQuote, initialValues }: PriceCalculatorPr
             </button>
           ))}
         </div>
+      </div>
+
+      {/* Регион */}
+      <div className="mb-10">
+        <label className="font-oswald text-sm tracking-widest text-evraz-dark uppercase mb-4 block">
+          Регион строительства
+        </label>
+        <div className="relative max-w-xs">
+          <input
+            list="calc-regions-list"
+            type="text"
+            placeholder="Начните вводить город..."
+            value={region}
+            onChange={(e) => setRegion(e.target.value)}
+            className="w-full h-11 px-4 font-ibm text-sm border border-evraz-border text-evraz-dark focus:outline-none focus:border-evraz-red bg-white placeholder-evraz-gray/60 pr-10"
+          />
+          <datalist id="calc-regions-list">
+            {regions.map((r) => (
+              <option key={r} value={r} />
+            ))}
+          </datalist>
+          {region && (
+            <button
+              onClick={() => setRegion("")}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-evraz-gray hover:text-evraz-dark transition-colors font-ibm text-lg leading-none"
+            >
+              ×
+            </button>
+          )}
+        </div>
+        {region && (
+          <div className="font-ibm text-xs text-evraz-gray mt-2">
+            Регион: <span className="text-evraz-dark font-semibold">{region}</span>
+          </div>
+        )}
       </div>
 
       {/* Холодное / Тёплое */}
