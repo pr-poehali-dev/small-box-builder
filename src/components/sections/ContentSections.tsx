@@ -672,10 +672,7 @@ export function ContentSections({
                   },
                   { n: "20 дней", l: "монтаж серийных зданий" },
                 ].map((s, i) => (
-                  <div
-                    key={s.n}
-                    className={`bg-white px-6 py-5 ${i === 4 ? "col-span-2 border-t border-evraz-border" : ""}`}
-                  >
+                  <div key={s.n} className={`bg-white px-6 py-5`}>
                     <div className="font-oswald text-3xl text-evraz-dark font-bold leading-none mb-1">
                       {s.n}
                     </div>
