@@ -648,8 +648,8 @@ const TAGS: BuildingTag[] = [
 ];
 
 const TAG_TO_FRAME: Record<BuildingTag, string> = {
-  "Склад": "Р1",
-  "Производство": "Р2",
+  Склад: "Р1",
+  Производство: "Р2",
   "Производственно-складское": "Р4",
 };
 
@@ -805,7 +805,8 @@ export default function Catalog() {
           {/* Quick stats */}
           <div className="flex flex-wrap gap-8">
             {[
-              { v: "45 дней", l: "Поставка и монтаж" },
+              { v: "30 дней", l: "Производство и поставка" },
+              { v: "20 дней", l: "Монтаж" },
               {
                 v: "Предварительный КМ+ОК за час",
                 l: "С помощью автоматического проектирования",
@@ -1153,7 +1154,10 @@ export default function Catalog() {
                               height: Math.min(12, item.height),
                               buildingType: TAG_TO_CALC_TYPE[item.tag],
                               gates: item.gates?.count ?? 0,
-                              windows: item.windows.reduce((acc, w) => acc + w.count, 0),
+                              windows: item.windows.reduce(
+                                (acc, w) => acc + w.count,
+                                0,
+                              ),
                               region: item.region,
                             });
                             setTimeout(() => {
@@ -1174,7 +1178,7 @@ export default function Catalog() {
                           }
                           className="flex-1 btn-primary text-sm text-center"
                         >
-                          Получить КП
+                          Получить расчет
                         </button>
                       </div>
                     </div>
@@ -1383,7 +1387,7 @@ export default function Catalog() {
               },
               {
                 step: "03",
-                phase: "от нескольких недель",
+                phase: "от 2х месяцев",
                 icon: "FileText",
                 title: "Проектирование и экспертиза",
                 client: [
