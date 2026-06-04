@@ -753,6 +753,10 @@ export default function Catalog() {
   );
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, []);
+
+  useEffect(() => {
     setCurrentPage(1);
   }, [activeTag, activeRegion, activeArea, activeHeight]);
 
