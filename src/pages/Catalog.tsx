@@ -9,7 +9,7 @@ import {
 
 // ─── Данные каталога ────────────────────────────────────────────────────────
 
-type BuildingTag = "Склад" | "Производство" | "Производственно-складское";
+type BuildingTag = "Склад" | "Производство" | "Логистика";
 
 type AreaRange = "до 1000 м²" | "1000–3000 м²" | "свыше 3000 м²";
 type HeightRange = "до 5 м" | "5–8 м" | "свыше 8 м";
@@ -101,8 +101,8 @@ const CATALOG: CatalogItem[] = [
   },
   {
     id: "5",
-    tag: "Производственно-складское",
-    name: "Производственно-складское здание",
+    tag: "Логистика",
+    name: "Логистика здание",
     image:
       "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/209c297a-0b7d-474b-9f17-6ca586225745.jpg",
     width: 24,
@@ -203,7 +203,7 @@ const CATALOG: CatalogItem[] = [
   },
   {
     id: "11",
-    tag: "Производственно-складское",
+    tag: "Логистика",
     name: "Производственно-складской комплекс",
     image:
       "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/209c297a-0b7d-474b-9f17-6ca586225745.jpg",
@@ -272,7 +272,7 @@ const CATALOG: CatalogItem[] = [
   },
   {
     id: "15",
-    tag: "Производственно-складское",
+    tag: "Логистика",
     name: "База стройматериалов с производством",
     image:
       "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/209c297a-0b7d-474b-9f17-6ca586225745.jpg",
@@ -371,7 +371,7 @@ const CATALOG: CatalogItem[] = [
   },
   {
     id: "21",
-    tag: "Производственно-складское",
+    tag: "Логистика",
     name: "Производственная база с цехом",
     image:
       "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/209c297a-0b7d-474b-9f17-6ca586225745.jpg",
@@ -472,7 +472,7 @@ const CATALOG: CatalogItem[] = [
   },
   {
     id: "27",
-    tag: "Производственно-складское",
+    tag: "Логистика",
     name: "Логистический терминал",
     image:
       "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/209c297a-0b7d-474b-9f17-6ca586225745.jpg",
@@ -573,7 +573,7 @@ const CATALOG: CatalogItem[] = [
   },
   {
     id: "33",
-    tag: "Производственно-складское",
+    tag: "Логистика",
     name: "Распределительный центр",
     image:
       "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/209c297a-0b7d-474b-9f17-6ca586225745.jpg",
@@ -644,13 +644,13 @@ const CATALOG: CatalogItem[] = [
 const TAGS: BuildingTag[] = [
   "Склад",
   "Производство",
-  "Производственно-складское",
+  "Логистика",
 ];
 
 const TAG_TO_FRAME: Record<BuildingTag, string> = {
   Склад: "Р1",
   Производство: "Р2",
-  "Производственно-складское": "Р4",
+  "Логистика": "Р4",
 };
 
 const CATALOG_WITH_SKU = (() => {
@@ -700,7 +700,7 @@ function calcLeasing(price: number) {
 const TAG_TO_CALC_TYPE: Record<BuildingTag, string> = {
   Склад: "warehouse",
   Производство: "production",
-  "Производственно-складское": "production",
+  "Логистика": "production",
 };
 
 // ─── Компонент ──────────────────────────────────────────────────────────────
