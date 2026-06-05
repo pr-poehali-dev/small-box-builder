@@ -265,7 +265,7 @@ function PartnersSection({ onContact }: { onContact: () => void }) {
                 СЕТЬ ПАРТНЁРОВ
               </h2>
               <p className="font-ibm text-evraz-gray mt-4 max-w-xl text-base leading-relaxed">
-                Аккредитованные строительные и проектные организации Гарантия
+                Аккредитованные строительные и проектные организации. Гарантия
                 качества монтажа по всей России.
               </p>
             </div>
