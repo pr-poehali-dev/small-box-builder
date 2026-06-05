@@ -864,45 +864,6 @@ export default function Catalog() {
         </div>
       </section>
 
-      {/* Строка 2: Регион */}
-      <div className="flex flex-wrap items-center gap-2">
-        <span className="font-ibm text-xs text-evraz-gray w-36 shrink-0">
-          Регион:
-        </span>
-        <div className="flex flex-wrap gap-1.5 items-center">
-          {["Все", ...REGIONS].map((r) => (
-            <button
-              key={r}
-              onClick={() => {
-                setActiveRegion(r);
-                setCustomRegion("");
-              }}
-              className={`font-ibm text-xs px-3 py-1.5 border transition-all ${
-                activeRegion === r && !customRegion
-                  ? "bg-evraz-dark border-evraz-dark text-white"
-                  : "border-evraz-border text-evraz-steel hover:border-evraz-dark bg-white"
-              }`}
-            >
-              {r}
-            </button>
-          ))}
-          <input
-            type="text"
-            placeholder="Другой город..."
-            value={customRegion}
-            onChange={(e) => {
-              setCustomRegion(e.target.value);
-              setActiveRegion(e.target.value.trim() || "Все");
-            }}
-            className={`font-ibm text-xs px-3 py-1.5 border transition-all outline-none w-36 ${
-              customRegion
-                ? "bg-evraz-dark border-evraz-dark text-white placeholder-white/50"
-                : "border-evraz-border text-evraz-steel bg-white placeholder-evraz-gray/60"
-            }`}
-          />
-        </div>
-      </div>
-
       {/* FILTER BAR */}
       <section className="bg-evraz-light border-b border-evraz-border py-5">
         <div className="container mx-auto space-y-4">
@@ -925,6 +886,45 @@ export default function Catalog() {
                   {tag}
                 </button>
               ))}
+            </div>
+          </div>
+
+          {/* Строка 2: Регион */}
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="font-ibm text-xs text-evraz-gray w-36 shrink-0">
+              Регион:
+            </span>
+            <div className="flex flex-wrap gap-1.5 items-center">
+              {["Все", ...REGIONS].map((r) => (
+                <button
+                  key={r}
+                  onClick={() => {
+                    setActiveRegion(r);
+                    setCustomRegion("");
+                  }}
+                  className={`font-ibm text-xs px-3 py-1.5 border transition-all ${
+                    activeRegion === r && !customRegion
+                      ? "bg-evraz-dark border-evraz-dark text-white"
+                      : "border-evraz-border text-evraz-steel hover:border-evraz-dark bg-white"
+                  }`}
+                >
+                  {r}
+                </button>
+              ))}
+              <input
+                type="text"
+                placeholder="Другой город..."
+                value={customRegion}
+                onChange={(e) => {
+                  setCustomRegion(e.target.value);
+                  setActiveRegion(e.target.value.trim() || "Все");
+                }}
+                className={`font-ibm text-xs px-3 py-1.5 border transition-all outline-none w-36 ${
+                  customRegion
+                    ? "bg-evraz-dark border-evraz-dark text-white placeholder-white/50"
+                    : "border-evraz-border text-evraz-steel bg-white placeholder-evraz-gray/60"
+                }`}
+              />
             </div>
           </div>
 
