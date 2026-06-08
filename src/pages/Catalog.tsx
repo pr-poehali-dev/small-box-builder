@@ -2,10 +2,7 @@ import { useState, useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import Header from "@/components/shared/Header";
-import {
-  PriceCalculator,
-  PriceCalculatorInitial,
-} from "@/components/shared/PriceCalculator";
+
 
 
 // ─── Данные каталога ────────────────────────────────────────────────────────
@@ -696,22 +693,12 @@ function calcLeasing(price: number) {
   return { advance, payment };
 }
 
-// ─── Маппинг тега → тип калькулятора ────────────────────────────────────────
-
-const TAG_TO_CALC_TYPE: Record<BuildingTag, string> = {
-  Склад: "warehouse",
-  Производство: "production",
-  "Логистика": "production",
-};
 
 // ─── Компонент ──────────────────────────────────────────────────────────────
 
 export default function Catalog() {
   const navigate = useNavigate();
   const [activeTag, setActiveTag] = useState<BuildingTag | "Все">("Все");
-  const [calcInitial, setCalcInitial] = useState<
-    PriceCalculatorInitial | undefined
-  >(undefined);
   const [activeRegion, setActiveRegion] = useState<string>("Все");
   const [customRegion, setCustomRegion] = useState<string>("");
   const [activeArea, setActiveArea] = useState<AreaRange | "Все">("Все");
@@ -1189,24 +1176,7 @@ export default function Catalog() {
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
-                            setCalcInitial({
-                              width: item.width,
-                              length: item.length,
-                              height: Math.min(12, item.height),
-                              buildingType: TAG_TO_CALC_TYPE[item.tag],
-                              gates: item.gates?.count ?? 0,
-                              gateSize: item.gates?.size ?? "4000×4000",
-                              windows: item.windows.reduce(
-                                (acc, w) => acc + w.count,
-                                0,
-                              ),
-                              region: item.region,
-                            });
-                            setTimeout(() => {
-                              document
-                                .getElementById("calc-section")
-                                ?.scrollIntoView({ behavior: "smooth" });
-                            }, 50);
+                            navigate(`/catalog/${item.id}?edit=1`);
                           }}
                           className="flex-1 text-center font-oswald text-sm tracking-wider uppercase py-3 border-2 border-evraz-dark text-evraz-dark hover:bg-evraz-dark hover:text-white transition-all"
                         >
@@ -1275,57 +1245,7 @@ export default function Catalog() {
         </div>
       </section>
 
-      {/* MINI CALCULATOR */}
-      <section
-        id="calc-section"
-        className="py-16 bg-evraz-dark relative overflow-hidden"
-      >
-        <div className="absolute right-0 top-0 bottom-0 w-1 bg-evraz-red" />
-        <div className="container mx-auto">
-          <div className="max-w-3xl mx-auto text-center mb-10">
-            <div className="flex justify-center mb-4">
-              <div className="w-10 h-0.5 bg-evraz-red" />
-            </div>
-            <h2 className="font-oswald text-3xl md:text-4xl text-white font-semibold">
-              НЕТ НУЖНОГО РАЗМЕРА?
-            </h2>
-            <p className="font-ibm text-gray-400 mt-3 text-sm leading-relaxed">
-              Введите свои параметры — получите мгновенную оценку стоимости.
-            </p>
-          </div>
-          {calcInitial && (
-            <div className="max-w-3xl mx-auto mb-4">
-              <div className="flex items-center gap-3 bg-evraz-red/10 border border-evraz-red/30 px-4 py-3">
-                <Icon
-                  name="Info"
-                  size={14}
-                  className="text-evraz-red shrink-0"
-                />
-                <span className="font-ibm text-xs text-evraz-red">
-                  Параметры загружены из карточки: {calcInitial.width}×
-                  {calcInitial.length} м, высота {calcInitial.height} м
-                </span>
-                <button
-                  onClick={() => setCalcInitial(undefined)}
-                  className="ml-auto text-evraz-red hover:opacity-70"
-                >
-                  <Icon name="X" size={14} />
-                </button>
-              </div>
-            </div>
-          )}
-          <PriceCalculator
-            key={JSON.stringify(calcInitial)}
-            initialValues={calcInitial}
-            regions={REGIONS}
-            onGetQuote={() =>
-              document
-                .getElementById("contacts-section")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-          />
-        </div>
-      </section>
+
 
       {/* СОСТАВ ЦЕНЫ */}
       <section className="py-16 bg-white border-t border-evraz-border">

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import Header from "@/components/shared/Header";
 
@@ -83,17 +83,22 @@ interface Props {
 export default function CatalogItemPage({ catalog }: Props) {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const item = catalog.find(c => c.id === id);
 
-  const [width,    setWidth]    = useState(0);
-  const [length,   setLength]   = useState(0);
-  const [height,   setHeight]   = useState(0);
+  const editing = searchParams.get("edit") === "1";
+
+  const [width,        setWidth]        = useState(0);
+  const [length,       setLength]       = useState(0);
+  const [height,       setHeight]       = useState(0);
   const [gatesCount,   setGatesCount]   = useState(0);
   const [doorsCount,   setDoorsCount]   = useState(0);
   const [windowsCount, setWindowsCount] = useState(0);
-  const [editingSize, setEditingSize] = useState(false);
-  const [checked,  setChecked]  = useState<Set<OptionKey>>(new Set());
-  const [extraOpen, setExtraOpen] = useState(false);
+  const [checked,      setChecked]      = useState<Set<OptionKey>>(new Set());
+  const [extraOpen,    setExtraOpen]    = useState(false);
+
+  const startEditing = () => setSearchParams({ edit: "1" });
+  const stopEditing  = () => setSearchParams({});
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
@@ -163,19 +168,6 @@ export default function CatalogItemPage({ catalog }: Props) {
   const hasExtra = checked.size > 0;
   const total    = scaledPrice + extraTotal;
 
-  const goToCalc = () => {
-    navigate("/catalog", { state: {
-      calcInitial: {
-        width, length, height,
-        buildingType: item.tag === "Склад" ? "warehouse" : "production",
-        gates: gatesCount,
-        gateSize: item.gates?.size ?? "4000×4000",
-        windows: windowsCount,
-        region: item.region,
-      }
-    }});
-  };
-
   return (
     <div className="min-h-screen bg-white font-ibm">
       <Header backButton={{ label: "Каталог", onClick: () => navigate("/catalog") }} />
@@ -215,16 +207,25 @@ export default function CatalogItemPage({ catalog }: Props) {
         <div className="border-r border-gray-200 p-5 flex flex-col gap-4">
           <div className="flex items-center justify-between">
             <span className="font-oswald text-xs uppercase tracking-wider text-gray-500">Характеристики</span>
-            <button
-              onClick={() => setEditingSize(e => !e)}
-              className="font-oswald text-xs uppercase tracking-wider border border-evraz-dark text-evraz-dark px-2 py-1 hover:bg-evraz-dark hover:text-white transition-all"
-            >
-              {editingSize ? "Готово" : "Изменить размер"}
-            </button>
+            {editing ? (
+              <button
+                onClick={stopEditing}
+                className="font-oswald text-xs uppercase tracking-wider border border-evraz-red text-evraz-red px-2 py-1 hover:bg-evraz-red hover:text-white transition-all"
+              >
+                Готово
+              </button>
+            ) : (
+              <button
+                onClick={startEditing}
+                className="font-oswald text-xs uppercase tracking-wider border border-evraz-dark text-evraz-dark px-2 py-1 hover:bg-evraz-dark hover:text-white transition-all"
+              >
+                Изменить размер
+              </button>
+            )}
           </div>
 
           {/* Габариты */}
-          {editingSize ? (
+          {editing ? (
             <div className="space-y-2">
               <p className="font-ibm text-xs text-gray-400">Цена пересчитывается пропорционально площади</p>
               <div className="grid grid-cols-3 gap-2">
@@ -292,7 +293,10 @@ export default function CatalogItemPage({ catalog }: Props) {
                   <span className="text-gray-700 font-medium">{label}</span>
                   {detail && <span className="text-gray-400 text-xs ml-1">({detail})</span>}
                 </div>
-                <Counter value={count} onChange={setCount} />
+                {editing
+                  ? <Counter value={count} onChange={setCount} />
+                  : <span className="font-medium text-evraz-dark">{count} шт.</span>
+                }
               </div>
             ))}
 
@@ -304,12 +308,14 @@ export default function CatalogItemPage({ catalog }: Props) {
             )}
           </div>
 
-          <button
-            onClick={goToCalc}
-            className="mt-auto font-oswald text-xs uppercase tracking-wider py-2.5 bg-evraz-dark text-white hover:bg-evraz-red transition-colors text-center"
-          >
-            Открыть калькулятор
-          </button>
+          {!editing && (
+            <button
+              onClick={startEditing}
+              className="mt-auto font-oswald text-xs uppercase tracking-wider py-2.5 bg-evraz-dark text-white hover:bg-evraz-red transition-colors text-center"
+            >
+              Изменить размер
+            </button>
+          )}
         </div>
 
         {/* ─── Колонка 3: Стоимость ─── */}
