@@ -270,8 +270,14 @@ function PartnersSection({ onContact }: { onContact: () => void }) {
                 строителя под ваш проект любого масштаба.
               </p>
             </div>
-            {/* Стрелки */}
-            <div className="flex gap-2 shrink-0">
+            {/* Кнопка + Стрелки */}
+            <div className="flex items-center gap-2 shrink-0">
+              <a
+                href="/partners"
+                className="font-oswald text-sm uppercase tracking-wider border-2 border-evraz-dark text-evraz-dark px-4 py-2 hover:bg-evraz-dark hover:text-white transition-all whitespace-nowrap"
+              >
+                Все партнёры
+              </a>
               <button
                 onClick={() => scroll("left")}
                 className="w-10 h-10 border border-evraz-border bg-white flex items-center justify-center hover:border-evraz-red hover:text-evraz-red transition-all"
