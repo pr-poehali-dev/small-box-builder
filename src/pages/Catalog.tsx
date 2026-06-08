@@ -6,7 +6,7 @@ import {
   PriceCalculator,
   PriceCalculatorInitial,
 } from "@/components/shared/PriceCalculator";
-import BuildingDetailModal, { BuildingModalItem } from "@/components/shared/BuildingDetailModal";
+
 
 // ─── Данные каталога ────────────────────────────────────────────────────────
 
@@ -718,7 +718,6 @@ export default function Catalog() {
   const [activeHeight, setActiveHeight] = useState<HeightRange | "Все">("Все");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [modalItem, setModalItem] = useState<BuildingModalItem | null>(null);
   const PAGE_SIZE = 6;
 
   const shuffledCatalog = useMemo(() => {
@@ -781,30 +780,8 @@ export default function Catalog() {
     },
   ];
 
-  const handleModalResize = (item: BuildingModalItem) => {
-    setModalItem(null);
-    setCalcInitial({
-      width: item.width,
-      length: item.length,
-      height: Math.min(12, item.height),
-      buildingType: TAG_TO_CALC_TYPE[item.tag as BuildingTag],
-      gates: item.gates?.count ?? 0,
-      gateSize: item.gates?.size ?? "4000×4000",
-      windows: item.windows.reduce((acc, w) => acc + w.count, 0),
-      region: item.region,
-    });
-    setTimeout(() => {
-      document.getElementById("calc-section")?.scrollIntoView({ behavior: "smooth" });
-    }, 100);
-  };
-
   return (
     <div className="min-h-screen bg-white font-ibm">
-      <BuildingDetailModal
-        item={modalItem}
-        onClose={() => setModalItem(null)}
-        onResize={handleModalResize}
-      />
       {/* HEADER */}
       <Header
         backButton={{ label: "На главную", onClick: () => navigate("/") }}
@@ -1045,7 +1022,7 @@ export default function Catalog() {
                   <div
                     key={item.id}
                     className="steel-card bg-white border border-evraz-border flex flex-col group cursor-pointer"
-                    onClick={() => setModalItem(item)}
+                    onClick={() => navigate(`/catalog/${item.id}`)}
                   >
                     {/* Header */}
                     <div className="bg-evraz-dark px-6 py-5 flex items-start justify-between min-h-[120px]">

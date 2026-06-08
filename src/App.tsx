@@ -12,6 +12,8 @@ import Parking from "./pages/Parking";
 import PartnerReview from "./pages/PartnerReview";
 import ArKr from "./pages/ArKr";
 import CatalogV1 from "./pages/CatalogV1";
+import CatalogItemPage from "./pages/CatalogItem";
+import { CATALOG_WITH_SKU } from "./data/catalogData";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +34,7 @@ const App = () => (
           <Route path="/partners/:slug" element={<PartnerReview />} />
           <Route path="/arkr" element={<ArKr />} />
           <Route path="/catalogv1" element={<CatalogV1 />} />
+          <Route path="/catalog/:id" element={<CatalogItemPage catalog={CATALOG_WITH_SKU} />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
