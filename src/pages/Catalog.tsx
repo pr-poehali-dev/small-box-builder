@@ -1234,7 +1234,7 @@ export default function Catalog() {
         </div>
       </section>
       {/* СОСТАВ ЦЕНЫ */}
-      /*{" "}
+      {/*
       <section className="py-16 bg-white border-t border-evraz-border">
         <div className="container mx-auto">
           <div className="mb-10">
@@ -1309,7 +1309,7 @@ export default function Catalog() {
           </div>
         </div>
       </section>
-      */
+      */}
       {/* WHAT'S NEEDED FROM CLIENT */}
       <section id="construction-cycle" className="py-16 bg-white">
         <div className="container mx-auto">
