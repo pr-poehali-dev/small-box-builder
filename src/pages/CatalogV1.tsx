@@ -1246,6 +1246,21 @@ export default function Catalog() {
                               <span className="font-medium text-evraz-dark">{FORMAT_RUB(extraTotal)}</span>
                             </div>
                           )}
+                          {/* Лизинг */}
+                          {(() => {
+                            const { advance, payment } = calcLeasing(grandTotal);
+                            return (
+                              <div className="border border-evraz-red/20 bg-evraz-red/5 px-4 py-3">
+                                <div className="flex items-center gap-1.5 mb-1">
+                                  <Icon name="CreditCard" size={13} className="text-evraz-red shrink-0" />
+                                  <span className="font-oswald text-xs tracking-widest uppercase text-evraz-red">Лизинг от банка-партнера</span>
+                                </div>
+                                <div className="font-oswald text-lg text-evraz-dark font-bold leading-none">{FORMAT_RUB(Math.round(payment))}/мес.</div>
+                                <div className="font-ibm text-xs text-evraz-gray mt-1">Аванс {FORMAT_RUB(Math.round(advance))} · 36 мес.</div>
+                              </div>
+                            );
+                          })()}
+
                           <div className="mt-auto border-t-2 border-evraz-red pt-3">
                             <div className="flex justify-between items-baseline">
                               <span className="font-oswald text-xs uppercase tracking-wider text-gray-500">Итого</span>
