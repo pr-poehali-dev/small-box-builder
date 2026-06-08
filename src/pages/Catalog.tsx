@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import Header from "@/components/shared/Header";
 
-
-
 // ─── Данные каталога ────────────────────────────────────────────────────────
 
 type BuildingTag = "Склад" | "Производство" | "Логистика";
@@ -639,16 +637,12 @@ const CATALOG: CatalogItem[] = [
   },
 ];
 
-const TAGS: BuildingTag[] = [
-  "Склад",
-  "Производство",
-  "Логистика",
-];
+const TAGS: BuildingTag[] = ["Склад", "Производство", "Логистика"];
 
 const TAG_TO_FRAME: Record<BuildingTag, string> = {
   Склад: "Р1",
   Производство: "Р2",
-  "Логистика": "Р4",
+  Логистика: "Р4",
 };
 
 const CATALOG_WITH_SKU = (() => {
@@ -692,7 +686,6 @@ function calcLeasing(price: number) {
     (body * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -LEASING_MONTHS));
   return { advance, payment };
 }
-
 
 // ─── Компонент ──────────────────────────────────────────────────────────────
 
@@ -773,7 +766,6 @@ export default function Catalog() {
       <Header
         backButton={{ label: "На главную", onClick: () => navigate("/") }}
       />
-
       {/* HERO */}
       <section className="bg-evraz-charcoal relative overflow-hidden py-16 md:py-20">
         <div className="absolute left-0 top-0 bottom-0 w-1 bg-evraz-red" />
@@ -817,7 +809,6 @@ export default function Catalog() {
           </div>
         </div>
       </section>
-
       {/* CONSTRUCTION CYCLE PROMO */}
       <section className="bg-white border-b border-evraz-border">
         <div className="container mx-auto">
@@ -851,7 +842,6 @@ export default function Catalog() {
           </div>
         </div>
       </section>
-
       {/* FILTER BAR */}
       <section className="bg-evraz-light border-b border-evraz-border py-5">
         <div className="container mx-auto space-y-4">
@@ -976,7 +966,6 @@ export default function Catalog() {
           </div>
         </div>
       </section>
-
       {/* CATALOG GRID */}
       <section className="py-12 bg-white">
         <div className="container mx-auto">
@@ -1244,10 +1233,8 @@ export default function Catalog() {
           )}
         </div>
       </section>
-
-
-
       {/* СОСТАВ ЦЕНЫ */}
+      /*{" "}
       <section className="py-16 bg-white border-t border-evraz-border">
         <div className="container mx-auto">
           <div className="mb-10">
@@ -1259,7 +1246,6 @@ export default function Catalog() {
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Входит */}
             <div className="border border-evraz-border">
               <div className="bg-evraz-dark px-8 py-5 flex items-center gap-3">
                 <div className="w-5 h-5 bg-evraz-red flex items-center justify-center shrink-0">
@@ -1288,7 +1274,7 @@ export default function Catalog() {
                 ))}
               </ul>
             </div>
-            {/* Не входит */}
+
             <div className="border border-evraz-border">
               <div className="bg-evraz-light px-8 py-5 flex items-center gap-3 border-b border-evraz-border">
                 <div className="w-5 h-5 border-2 border-evraz-gray flex items-center justify-center shrink-0">
@@ -1323,59 +1309,7 @@ export default function Catalog() {
           </div>
         </div>
       </section>
-
-      {/* КP+АР SPECIAL OFFER */}
-      <section className="py-12 bg-evraz-light border-t border-evraz-border">
-        <div className="container mx-auto">
-          <div className="flex flex-col md:flex-row items-center gap-8 bg-white border border-evraz-border p-8 md:p-10 relative overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-1 bg-evraz-red" />
-            <div className="flex-1 pl-4">
-              <div className="font-oswald text-xs tracking-widest text-evraz-red uppercase mb-2">
-                Специальное предложение
-              </div>
-              <h2 className="font-oswald text-2xl md:text-3xl text-evraz-dark font-bold leading-tight">
-                Комплект документации КР + АР
-              </h2>
-              <p className="font-ibm text-sm text-evraz-steel mt-3 leading-relaxed max-w-lg">
-                Конструктивные решения (КР) и архитектурные решения (АР) — пакет
-                документов для согласования и строительства. Готовим за 7
-                рабочих дней.
-              </p>
-              <a
-                href="/arkr"
-                className="inline-flex items-center gap-1.5 mt-4 font-ibm text-sm text-evraz-red hover:underline"
-              >
-                Читать подробнее
-                <Icon name="ArrowRight" size={14} />
-              </a>
-            </div>
-            <div className="flex flex-col items-center md:items-end gap-4 shrink-0">
-              <div className="text-center md:text-right">
-                <div className="font-oswald text-4xl font-bold text-evraz-red">
-                  9 998 ₽
-                </div>
-                <div className="font-ibm text-xs text-evraz-gray mt-1">
-                  вместо 25 000 ₽ · ограниченное предложение
-                </div>
-              </div>
-              <button
-                onClick={() =>
-                  document
-                    .getElementById("contacts-section")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="btn-primary font-oswald tracking-wider uppercase px-8 py-3 text-sm whitespace-nowrap"
-              >
-                Заказать КР + АР
-              </button>
-              <p className="font-ibm text-xs text-evraz-gray text-center">
-                Менеджер свяжется в течение 1 часа
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      */
       {/* WHAT'S NEEDED FROM CLIENT */}
       <section id="construction-cycle" className="py-16 bg-white">
         <div className="container mx-auto">
@@ -1411,7 +1345,7 @@ export default function Catalog() {
               },
               {
                 step: "02",
-                phase: "от 30 дней",
+                phase: "от 1 месяца",
                 icon: "Layers",
                 title: "Подготовка участка и сбор ИРД",
                 client: [
@@ -1443,7 +1377,7 @@ export default function Catalog() {
               },
               {
                 step: "04",
-                phase: "~30 рабочих дней",
+                phase: "примерно 1 месяц",
                 icon: "ClipboardCheck",
                 title: "Разрешение на строительство",
                 client: ["Подаёт заявление через Госуслуги или МФЦ"],
@@ -1454,7 +1388,7 @@ export default function Catalog() {
               },
               {
                 step: "05",
-                phase: "8–10 недель (склад 1 500 м²)",
+                phase: "2-3 месяца",
                 icon: "Zap",
                 title: "Строительство и контроль",
                 client: ["Принимает работы и контролирует ход стройки"],
@@ -1465,7 +1399,7 @@ export default function Catalog() {
               },
               {
                 step: "06",
-                phase: "~30 дней",
+                phase: "примерно 1 месяц",
                 icon: "CheckSquare",
                 title: "Ввод в эксплуатацию",
                 client: [
@@ -1562,7 +1496,6 @@ export default function Catalog() {
           </div>
         </div>
       </section>
-
       {/* CONTACT CTA */}
       <section id="contacts-section" className="py-16 bg-evraz-dark">
         <div className="container mx-auto max-w-2xl text-center">
