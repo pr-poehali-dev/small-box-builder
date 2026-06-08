@@ -360,7 +360,11 @@ export default function CatalogItemPage({ catalog }: Props) {
             ))}
           </div>
 
-          {!editing && (
+          {editing ? (
+            <button onClick={stopEditing} className="mt-auto font-oswald text-xs uppercase tracking-wider py-2.5 bg-evraz-red text-white hover:bg-evraz-dark transition-colors text-center">
+              Готово
+            </button>
+          ) : (
             <button onClick={startEditing} className="mt-auto font-oswald text-xs uppercase tracking-wider py-2.5 bg-evraz-dark text-white hover:bg-evraz-red transition-colors text-center">
               Изменить размер
             </button>
