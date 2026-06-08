@@ -1147,21 +1147,6 @@ export default function Catalog() {
                             ))}
                           </div>
 
-                          {/* Материалы */}
-                          <div className="border-t border-gray-100 pt-3 space-y-1.5">
-                            <span className="font-oswald text-xs uppercase tracking-wider text-gray-500">Материалы</span>
-                            {[
-                              { label: "Каркас",    val: "Сталь EVRAZ, С255/С345"  },
-                              { label: "Стены",     val: "Сэндвич-панели 100 мм"   },
-                              { label: "Кровля",    val: "Профлист Н60 + утеплитель" },
-                              { label: "Фундамент", val: "Свайный (по ТЗ)"         },
-                            ].map(({ label, val }) => (
-                              <div key={label} className="flex justify-between text-sm border-b border-gray-50 pb-1">
-                                <span className="text-gray-500">{label}</span>
-                                <span className="font-medium text-evraz-dark text-right max-w-[55%]">{val}</span>
-                              </div>
-                            ))}
-                          </div>
                         </div>
 
                         {/* Колонка 2: Характеристики */}
@@ -1200,6 +1185,22 @@ export default function Catalog() {
                               </div>
                             ))}
                           </div>
+                          {/* Материалы */}
+                          <div className="border-t border-gray-100 pt-3 space-y-1.5">
+                            <span className="font-oswald text-xs uppercase tracking-wider text-gray-500">Материалы</span>
+                            {[
+                              { label: "Каркас",    val: "Сталь EVRAZ, С255/С345"    },
+                              { label: "Стены",     val: "Сэндвич-панели 100 мм"     },
+                              { label: "Кровля",    val: "Профлист Н60 + утеплитель" },
+                              { label: "Фундамент", val: "Свайный (по ТЗ)"           },
+                            ].map(({ label, val }) => (
+                              <div key={label} className="flex justify-between text-sm border-b border-gray-50 pb-1">
+                                <span className="text-gray-500">{label}</span>
+                                <span className="font-medium text-evraz-dark text-right max-w-[55%]">{val}</span>
+                              </div>
+                            ))}
+                          </div>
+
                           <button onClick={closeExpanded} className="mt-auto font-oswald text-xs uppercase tracking-wider py-2.5 bg-evraz-red text-white hover:bg-evraz-dark transition-colors text-center">
                             Готово
                           </button>
