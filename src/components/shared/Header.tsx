@@ -153,9 +153,9 @@ export default function Header({
         {backButton && (
           <button
             onClick={backButton.onClick}
-            className="flex items-center gap-2 font-ibm text-sm text-evraz-gray hover:text-evraz-dark transition-colors"
+            className="flex items-center gap-2 font-oswald text-sm uppercase tracking-wider bg-evraz-red text-white px-4 py-2 hover:bg-evraz-dark transition-colors"
           >
-            <Icon name="ArrowLeft" size={16} />
+            <Icon name="ArrowLeft" size={15} />
             {backButton.label}
           </button>
         )}
