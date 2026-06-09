@@ -780,6 +780,7 @@ export default function Catalog() {
   const [expWindows, setExpWindows] = useState(0);
   const [expChecked, setExpChecked] = useState<Set<OptionKey>>(new Set());
   const [expExtraOpen, setExpExtraOpen] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
 
   const openExpanded = (item: (typeof CATALOG_WITH_SKU)[0]) => {
     setExpandedId(item.id);
@@ -791,6 +792,7 @@ export default function Catalog() {
     setExpWindows(item.windows.reduce((a, w) => a + w.count, 0));
     setExpChecked(new Set());
     setExpExtraOpen(false);
+    setIsEditing(true);
   };
 
   const closeExpanded = () => setExpandedId(null);
@@ -1270,99 +1272,125 @@ export default function Catalog() {
                               <span className="font-oswald text-xs uppercase tracking-wider text-gray-500">
                                 Характеристики
                               </span>
-                              <p className="font-ibm text-xs text-gray-400">
-                                Цена пересчитывается пропорционально площади
-                              </p>
-                              <div className="grid grid-cols-3 gap-2">
-                                {[
-                                  {
-                                    label: "Ширина, м",
-                                    val: expWidth,
-                                    set: setExpWidth,
-                                    min: 6,
-                                    max: 48,
-                                    step: 3,
-                                  },
-                                  {
-                                    label: "Длина, м",
-                                    val: expLength,
-                                    set: setExpLength,
-                                    min: 6,
-                                    max: 120,
-                                    step: 6,
-                                  },
-                                  {
-                                    label: "Высота, м",
-                                    val: expHeight,
-                                    set: setExpHeight,
-                                    min: 3,
-                                    max: 12,
-                                    step: 0.5,
-                                  },
-                                ].map(({ label, val, set, min, max, step }) => (
-                                  <div
-                                    key={label}
-                                    className="flex flex-col gap-1"
-                                  >
-                                    <span className="font-ibm text-xs text-gray-500">
-                                      {label}
-                                    </span>
-                                    <input
-                                      type="number"
-                                      value={val}
-                                      min={min}
-                                      max={max}
-                                      step={step}
-                                      onChange={(e) =>
-                                        set(Number(e.target.value))
-                                      }
-                                      className="border border-gray-300 px-2 py-1.5 text-sm w-full focus:border-evraz-red focus:outline-none"
-                                    />
-                                  </div>
-                                ))}
-                              </div>
-                              <div className="space-y-2 border-t border-gray-100 pt-3">
-                                <span className="font-oswald text-xs uppercase tracking-wider text-gray-500">
-                                  Проёмы
-                                </span>
-                                {[
-                                  {
-                                    label: "Ворота",
-                                    val: expGates,
-                                    set: setExpGates,
-                                    detail: item.gates ? item.gates.size : null,
-                                  },
-                                  {
-                                    label: "Двери",
-                                    val: expDoors,
-                                    set: setExpDoors,
-                                    detail: item.doors[0]?.size ?? null,
-                                  },
-                                  {
-                                    label: "Окна",
-                                    val: expWindows,
-                                    set: setExpWindows,
-                                    detail: item.windows[0]?.size ?? null,
-                                  },
-                                ].map(({ label, val, set, detail }) => (
-                                  <div
-                                    key={label}
-                                    className="flex items-center justify-between text-sm"
-                                  >
-                                    <div>
-                                      <span className="text-gray-700 font-medium">
-                                        {label}
-                                      </span>
-                                      {detail && (
-                                        <span className="text-gray-400 text-xs ml-1">
-                                          ({detail})
+                              {isEditing ? (
+                                <>
+                                  <p className="font-ibm text-xs text-gray-400">
+                                    Цена пересчитывается пропорционально площади
+                                  </p>
+                                  <div className="grid grid-cols-3 gap-2">
+                                    {[
+                                      {
+                                        label: "Ширина, м",
+                                        val: expWidth,
+                                        set: setExpWidth,
+                                        min: 6,
+                                        max: 48,
+                                        step: 3,
+                                      },
+                                      {
+                                        label: "Длина, м",
+                                        val: expLength,
+                                        set: setExpLength,
+                                        min: 6,
+                                        max: 120,
+                                        step: 6,
+                                      },
+                                      {
+                                        label: "Высота, м",
+                                        val: expHeight,
+                                        set: setExpHeight,
+                                        min: 3,
+                                        max: 12,
+                                        step: 0.5,
+                                      },
+                                    ].map(({ label, val, set, min, max, step }) => (
+                                      <div
+                                        key={label}
+                                        className="flex flex-col gap-1"
+                                      >
+                                        <span className="font-ibm text-xs text-gray-500">
+                                          {label}
                                         </span>
-                                      )}
-                                    </div>
-                                    <Counter value={val} onChange={set} />
+                                        <input
+                                          type="number"
+                                          value={val}
+                                          min={min}
+                                          max={max}
+                                          step={step}
+                                          onChange={(e) =>
+                                            set(Number(e.target.value))
+                                          }
+                                          className="border border-gray-300 px-2 py-1.5 text-sm w-full focus:border-evraz-red focus:outline-none"
+                                        />
+                                      </div>
+                                    ))}
                                   </div>
-                                ))}
-                              </div>
+                                  <div className="space-y-2 border-t border-gray-100 pt-3">
+                                    <span className="font-oswald text-xs uppercase tracking-wider text-gray-500">
+                                      Проёмы
+                                    </span>
+                                    {[
+                                      {
+                                        label: "Ворота",
+                                        val: expGates,
+                                        set: setExpGates,
+                                        detail: item.gates ? item.gates.size : null,
+                                      },
+                                      {
+                                        label: "Двери",
+                                        val: expDoors,
+                                        set: setExpDoors,
+                                        detail: item.doors[0]?.size ?? null,
+                                      },
+                                      {
+                                        label: "Окна",
+                                        val: expWindows,
+                                        set: setExpWindows,
+                                        detail: item.windows[0]?.size ?? null,
+                                      },
+                                    ].map(({ label, val, set, detail }) => (
+                                      <div
+                                        key={label}
+                                        className="flex items-center justify-between text-sm"
+                                      >
+                                        <div>
+                                          <span className="text-gray-700 font-medium">
+                                            {label}
+                                          </span>
+                                          {detail && (
+                                            <span className="text-gray-400 text-xs ml-1">
+                                              ({detail})
+                                            </span>
+                                          )}
+                                        </div>
+                                        <Counter value={val} onChange={set} />
+                                      </div>
+                                    ))}
+                                  </div>
+                                </>
+                              ) : (
+                                <div className="space-y-2">
+                                  {[
+                                    { label: "Ширина", val: `${expWidth} м` },
+                                    { label: "Длина", val: `${expLength} м` },
+                                    { label: "Высота", val: `${expHeight} м` },
+                                    { label: "Ворота", val: `${expGates} шт.` },
+                                    { label: "Двери", val: `${expDoors} шт.` },
+                                    { label: "Окна", val: `${expWindows} шт.` },
+                                  ].map(({ label, val }) => (
+                                    <div key={label} className="flex justify-between text-sm border-b border-gray-50 pb-1">
+                                      <span className="text-gray-500">{label}</span>
+                                      <span className="font-medium text-evraz-dark">{val}</span>
+                                    </div>
+                                  ))}
+                                  <button
+                                    onClick={() => setIsEditing(true)}
+                                    className="w-full mt-1 font-oswald text-xs uppercase tracking-wider py-2 border border-evraz-red text-evraz-red hover:bg-evraz-red hover:text-white transition-colors text-center"
+                                  >
+                                    Изменить размер
+                                  </button>
+                                </div>
+                              )}
                               {/* Материалы */}
                               <div className="border-t border-gray-100 pt-3 space-y-1.5">
                                 <span className="font-oswald text-xs uppercase tracking-wider text-gray-500">
@@ -1400,12 +1428,14 @@ export default function Catalog() {
                                 ))}
                               </div>
 
-                              <button
-                                onClick={closeExpanded}
-                                className="mt-auto font-oswald text-xs uppercase tracking-wider py-2.5 bg-evraz-red text-white hover:bg-evraz-dark transition-colors text-center"
-                              >
-                                Готово
-                              </button>
+                              {isEditing && (
+                                <button
+                                  onClick={() => setIsEditing(false)}
+                                  className="mt-auto font-oswald text-xs uppercase tracking-wider py-2.5 bg-evraz-red text-white hover:bg-evraz-dark transition-colors text-center"
+                                >
+                                  Готово
+                                </button>
+                              )}
                             </div>
 
                             {/* Колонка 3: Стоимость */}
@@ -1537,6 +1567,16 @@ export default function Catalog() {
                                   </div>
                                 </div>
                               </div>
+                              <button
+                                onClick={() =>
+                                  document
+                                    .getElementById("contacts-section")
+                                    ?.scrollIntoView({ behavior: "smooth" })
+                                }
+                                className="w-full font-oswald text-sm uppercase tracking-wider py-3 bg-evraz-red text-white hover:bg-evraz-dark transition-colors text-center"
+                              >
+                                Получить расчёт
+                              </button>
                             </div>
                           </div>
                         </>
