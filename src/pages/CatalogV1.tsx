@@ -689,32 +689,69 @@ function calcLeasing(price: number) {
 
 // ─── Расчёт стоимости (для раскрытой карточки) ──────────────────────────────
 
-const FRAME_RATIO    = 0.45;
-const OK_RATIO       = 0.40;
+const FRAME_RATIO = 0.45;
+const OK_RATIO = 0.4;
 const OPENINGS_RATIO = 0.15;
 
 const EXTRA_OPTIONS = [
-  { key: "del_mk",     label: "Доставка МК",                         base: "frame",    pct: 0.05 },
-  { key: "del_ok",     label: "Доставка ОК",                         base: "ok",       pct: 0.05 },
-  { key: "del_ezp",    label: "Доставка ЭЗП",                        base: "query",    pct: 0 },
-  { key: "light",      label: "Расчёт освещения от ЭТМ",             base: "query",    pct: 0 },
-  { key: "found_calc", label: "Расчёт фундамента",                   base: "query",    pct: 0 },
-  { key: "ar_print",   label: "Печатная форма АР",                   base: "query",    pct: 0 },
-  { key: "shelves",    label: "Расчёт стоимости стеллажей",          base: "query",    pct: 0 },
-  { key: "found_work", label: "Устройство фундаментов",              base: "frame",    pct: 0.12 },
-  { key: "mount_mk",   label: "Монтаж МК",                           base: "frame",    pct: 0.15 },
-  { key: "mount_ok",   label: "Монтаж ОК",                           base: "ok",       pct: 0.12 },
-  { key: "mount_ezp",  label: "Монтаж ЭЗП",                          base: "openings", pct: 0.15 },
-  { key: "floor",      label: "Устройство ж/б плиты пола по грунту", base: "frame",    pct: 0.20 },
+  { key: "del_mk", label: "Доставка МК", base: "frame", pct: 0.05 },
+  { key: "del_ok", label: "Доставка ОК", base: "ok", pct: 0.05 },
+  { key: "del_ezp", label: "Доставка ЭЗП", base: "query", pct: 0 },
+  { key: "light", label: "Расчёт освещения от ЭТМ", base: "query", pct: 0 },
+  { key: "found_calc", label: "Расчёт фундамента", base: "query", pct: 0 },
+  { key: "ar_print", label: "Печатная форма АР", base: "query", pct: 0 },
+  {
+    key: "shelves",
+    label: "Расчёт стоимости стеллажей",
+    base: "query",
+    pct: 0,
+  },
+  {
+    key: "found_work",
+    label: "Устройство фундаментов",
+    base: "frame",
+    pct: 0.12,
+  },
+  { key: "mount_mk", label: "Монтаж МК", base: "frame", pct: 0.15 },
+  { key: "mount_ok", label: "Монтаж ОК", base: "ok", pct: 0.12 },
+  { key: "mount_ezp", label: "Монтаж ЭЗП", base: "openings", pct: 0.15 },
+  {
+    key: "floor",
+    label: "Устройство ж/б плиты пола по грунту",
+    base: "frame",
+    pct: 0.2,
+  },
 ] as const;
 type OptionKey = (typeof EXTRA_OPTIONS)[number]["key"];
 
-function Counter({ value, onChange, min = 0, max = 20 }: { value: number; onChange: (v: number) => void; min?: number; max?: number }) {
+function Counter({
+  value,
+  onChange,
+  min = 0,
+  max = 20,
+}: {
+  value: number;
+  onChange: (v: number) => void;
+  min?: number;
+  max?: number;
+}) {
   return (
     <div className="flex items-center gap-1">
-      <button onClick={() => onChange(Math.max(min, value - 1))} className="w-6 h-6 flex items-center justify-center border border-gray-300 text-gray-600 hover:border-evraz-red hover:text-evraz-red transition-colors text-sm font-bold">−</button>
-      <span className="w-6 text-center font-ibm text-sm text-evraz-dark">{value}</span>
-      <button onClick={() => onChange(Math.min(max, value + 1))} className="w-6 h-6 flex items-center justify-center border border-gray-300 text-gray-600 hover:border-evraz-red hover:text-evraz-red transition-colors text-sm font-bold">+</button>
+      <button
+        onClick={() => onChange(Math.max(min, value - 1))}
+        className="w-6 h-6 flex items-center justify-center border border-gray-300 text-gray-600 hover:border-evraz-red hover:text-evraz-red transition-colors text-sm font-bold"
+      >
+        −
+      </button>
+      <span className="w-6 text-center font-ibm text-sm text-evraz-dark">
+        {value}
+      </span>
+      <button
+        onClick={() => onChange(Math.min(max, value + 1))}
+        className="w-6 h-6 flex items-center justify-center border border-gray-300 text-gray-600 hover:border-evraz-red hover:text-evraz-red transition-colors text-sm font-bold"
+      >
+        +
+      </button>
     </div>
   );
 }
@@ -734,16 +771,16 @@ export default function Catalog() {
 
   // ── Раскрытая карточка ──
   const [expandedId, setExpandedId] = useState<string | null>(null);
-  const [expWidth,   setExpWidth]   = useState(0);
-  const [expLength,  setExpLength]  = useState(0);
-  const [expHeight,  setExpHeight]  = useState(0);
-  const [expGates,   setExpGates]   = useState(0);
-  const [expDoors,   setExpDoors]   = useState(0);
+  const [expWidth, setExpWidth] = useState(0);
+  const [expLength, setExpLength] = useState(0);
+  const [expHeight, setExpHeight] = useState(0);
+  const [expGates, setExpGates] = useState(0);
+  const [expDoors, setExpDoors] = useState(0);
   const [expWindows, setExpWindows] = useState(0);
   const [expChecked, setExpChecked] = useState<Set<OptionKey>>(new Set());
   const [expExtraOpen, setExpExtraOpen] = useState(false);
 
-  const openExpanded = (item: typeof CATALOG_WITH_SKU[0]) => {
+  const openExpanded = (item: (typeof CATALOG_WITH_SKU)[0]) => {
     setExpandedId(item.id);
     setExpWidth(item.width);
     setExpLength(item.length);
@@ -758,9 +795,13 @@ export default function Catalog() {
   const closeExpanded = () => setExpandedId(null);
 
   const toggleExpOption = (key: OptionKey) => {
-    setExpChecked(prev => {
+    setExpChecked((prev) => {
       const next = new Set(prev);
-      if (next.has(key)) { next.delete(key); } else { next.add(key); }
+      if (next.has(key)) {
+        next.delete(key);
+      } else {
+        next.add(key);
+      }
       return next;
     });
   };
@@ -831,7 +872,6 @@ export default function Catalog() {
       <Header
         backButton={{ label: "На главную", onClick: () => navigate("/") }}
       />
-
       {/* HERO */}
       <section className="bg-evraz-charcoal relative overflow-hidden py-16 md:py-20">
         <div className="absolute left-0 top-0 bottom-0 w-1 bg-evraz-red" />
@@ -875,7 +915,6 @@ export default function Catalog() {
           </div>
         </div>
       </section>
-
       {/* CONSTRUCTION CYCLE PROMO */}
       <section className="bg-white border-b border-evraz-border">
         <div className="container mx-auto">
@@ -909,7 +948,6 @@ export default function Catalog() {
           </div>
         </div>
       </section>
-
       {/* FILTER BAR */}
       <section className="bg-evraz-light border-b border-evraz-border py-5">
         <div className="container mx-auto space-y-4">
@@ -1034,7 +1072,6 @@ export default function Catalog() {
           </div>
         </div>
       </section>
-
       {/* CATALOG GRID */}
       <section className="py-12 bg-white">
         <div className="container mx-auto">
@@ -1067,316 +1104,622 @@ export default function Catalog() {
                   const isExpanded = expandedId === item.id;
 
                   // Расчёт для раскрытой карточки
-                  const origArea     = item.width * item.length;
-                  const newArea      = expWidth * expLength;
-                  const areaScale    = isExpanded && origArea > 0 ? newArea / origArea : 1;
-                  const origOp       = (item.gates?.count ?? 0) + item.doors.reduce((a,d)=>a+d.count,0) + item.windows.reduce((a,w)=>a+w.count,0);
-                  const newOp        = expGates + expDoors + expWindows;
-                  const opScale      = origOp > 0 ? newOp / origOp : 1;
-                  const baseP        = Math.round(item.price * areaScale);
-                  const frameP       = Math.round(baseP * FRAME_RATIO);
-                  const okP          = Math.round(baseP * OK_RATIO);
-                  const openingsP    = Math.round(baseP * OPENINGS_RATIO * (origOp > 0 ? opScale : 1));
-                  const scaledTotal  = frameP + okP + openingsP;
-                  const pricePerM2   = newArea > 0 ? Math.round(scaledTotal / newArea) : 0;
-                  const extraTotal   = EXTRA_OPTIONS.reduce((sum, opt) => {
-                    if (!expChecked.has(opt.key) || opt.base === "query") return sum;
-                    const b = opt.base === "frame" ? frameP : opt.base === "ok" ? okP : openingsP;
+                  const origArea = item.width * item.length;
+                  const newArea = expWidth * expLength;
+                  const areaScale =
+                    isExpanded && origArea > 0 ? newArea / origArea : 1;
+                  const origOp =
+                    (item.gates?.count ?? 0) +
+                    item.doors.reduce((a, d) => a + d.count, 0) +
+                    item.windows.reduce((a, w) => a + w.count, 0);
+                  const newOp = expGates + expDoors + expWindows;
+                  const opScale = origOp > 0 ? newOp / origOp : 1;
+                  const baseP = Math.round(item.price * areaScale);
+                  const frameP = Math.round(baseP * FRAME_RATIO);
+                  const okP = Math.round(baseP * OK_RATIO);
+                  const openingsP = Math.round(
+                    baseP * OPENINGS_RATIO * (origOp > 0 ? opScale : 1),
+                  );
+                  const scaledTotal = frameP + okP + openingsP;
+                  const pricePerM2 =
+                    newArea > 0 ? Math.round(scaledTotal / newArea) : 0;
+                  const extraTotal = EXTRA_OPTIONS.reduce((sum, opt) => {
+                    if (!expChecked.has(opt.key) || opt.base === "query")
+                      return sum;
+                    const b =
+                      opt.base === "frame"
+                        ? frameP
+                        : opt.base === "ok"
+                          ? okP
+                          : openingsP;
                     return sum + Math.round(b * opt.pct);
                   }, 0);
-                  const grandTotal   = scaledTotal + extraTotal;
-                  const getOptP = (opt: typeof EXTRA_OPTIONS[number]) => {
+                  const grandTotal = scaledTotal + extraTotal;
+                  const getOptP = (opt: (typeof EXTRA_OPTIONS)[number]) => {
                     if (opt.base === "query") return "По запросу";
-                    const b = opt.base === "frame" ? frameP : opt.base === "ok" ? okP : openingsP;
+                    const b =
+                      opt.base === "frame"
+                        ? frameP
+                        : opt.base === "ok"
+                          ? okP
+                          : openingsP;
                     return FORMAT_RUB(Math.round(b * opt.pct));
                   };
 
                   return (
-                  <div
-                    key={item.id}
-                    className={`steel-card bg-white border border-evraz-border transition-all duration-300 ${isExpanded ? "col-span-1 md:col-span-2 xl:col-span-3" : "flex flex-col group"}`}
-                  >
-                  {isExpanded ? (
-                    /* ── Раскрытый вид: три колонки ── */
-                    <>
-                      {/* Шапка раскрытой карточки */}
-                      <div className="bg-evraz-dark px-6 py-4 flex items-center justify-between">
-                        <div className="flex items-center gap-3 flex-wrap">
-                          <span className="font-oswald text-xs tracking-widest text-evraz-red uppercase">#{item.sku}</span>
-                          <span className="font-oswald text-white text-base uppercase tracking-wide">{item.name}</span>
-                          {item.popular && <span className="font-oswald text-xs text-white bg-evraz-red px-2 py-0.5 uppercase">Популярный</span>}
-                        </div>
-                        <button onClick={closeExpanded} className="font-oswald text-xs uppercase tracking-wider border border-evraz-red text-evraz-red px-3 py-1.5 hover:bg-evraz-red hover:text-white transition-all shrink-0 ml-4">
-                          Свернуть
-                        </button>
-                      </div>
-
-                      {/* Три колонки */}
-                      <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200">
-
-                        {/* Колонка 1: Общая инфо */}
-                        <div className="p-5 flex flex-col gap-3">
-                          <span className="font-oswald text-xs uppercase tracking-wider text-gray-500">Общая информация</span>
-                          <img src={item.image} alt={item.name} className="w-full aspect-video object-cover" />
-                          <div className="space-y-1.5">
-                            {[
-                              { label: "Назначение", val: item.tag },
-                              { label: "Регион",     val: item.region },
-                              { label: "Площадь",    val: `${(item.width * item.length).toLocaleString("ru-RU")} м²` },
-                              { label: "Кран-балка", val: item.crane, accent: item.crane !== "Нет" },
-                            ].map(({ label, val, accent }) => (
-                              <div key={label} className="flex justify-between text-sm border-b border-gray-100 pb-1.5">
-                                <span className="text-gray-500">{label}</span>
-                                <span className={`font-medium ${accent ? "text-evraz-red" : "text-evraz-dark"}`}>{val}</span>
-                              </div>
-                            ))}
-                          </div>
-
-                          {/* Нагрузки */}
-                          <div className="border-t border-gray-100 pt-3 space-y-1.5">
-                            <span className="font-oswald text-xs uppercase tracking-wider text-gray-500">Нагрузки</span>
-                            {[
-                              { label: "Снеговой район", val: "III (1,8 кПа)" },
-                              { label: "Ветровой район", val: "II (0,30 кПа)" },
-                              { label: "Сейсмика",       val: "до 6 баллов"   },
-                            ].map(({ label, val }) => (
-                              <div key={label} className="flex justify-between text-sm">
-                                <span className="text-gray-500">{label}</span>
-                                <span className="font-medium text-evraz-dark">{val}</span>
-                              </div>
-                            ))}
-                          </div>
-
-                        </div>
-
-                        {/* Колонка 2: Характеристики */}
-                        <div className="p-5 flex flex-col gap-3">
-                          <span className="font-oswald text-xs uppercase tracking-wider text-gray-500">Характеристики</span>
-                          <p className="font-ibm text-xs text-gray-400">Цена пересчитывается пропорционально площади</p>
-                          <div className="grid grid-cols-3 gap-2">
-                            {[
-                              { label: "Ширина, м", val: expWidth,  set: setExpWidth,  min: 6,   max: 48,  step: 3   },
-                              { label: "Длина, м",  val: expLength, set: setExpLength, min: 6,   max: 120, step: 6   },
-                              { label: "Высота, м", val: expHeight, set: setExpHeight, min: 3,   max: 12,  step: 0.5 },
-                            ].map(({ label, val, set, min, max, step }) => (
-                              <div key={label} className="flex flex-col gap-1">
-                                <span className="font-ibm text-xs text-gray-500">{label}</span>
-                                <input
-                                  type="number" value={val} min={min} max={max} step={step}
-                                  onChange={e => set(Number(e.target.value))}
-                                  className="border border-gray-300 px-2 py-1.5 text-sm w-full focus:border-evraz-red focus:outline-none"
-                                />
-                              </div>
-                            ))}
-                          </div>
-                          <div className="space-y-2 border-t border-gray-100 pt-3">
-                            <span className="font-oswald text-xs uppercase tracking-wider text-gray-500">Проёмы</span>
-                            {[
-                              { label: "Ворота",  val: expGates,   set: setExpGates,   detail: item.gates ? item.gates.size : null },
-                              { label: "Двери",   val: expDoors,   set: setExpDoors,   detail: item.doors[0]?.size ?? null },
-                              { label: "Окна",    val: expWindows, set: setExpWindows, detail: item.windows[0]?.size ?? null },
-                            ].map(({ label, val, set, detail }) => (
-                              <div key={label} className="flex items-center justify-between text-sm">
-                                <div>
-                                  <span className="text-gray-700 font-medium">{label}</span>
-                                  {detail && <span className="text-gray-400 text-xs ml-1">({detail})</span>}
-                                </div>
-                                <Counter value={val} onChange={set} />
-                              </div>
-                            ))}
-                          </div>
-                          {/* Материалы */}
-                          <div className="border-t border-gray-100 pt-3 space-y-1.5">
-                            <span className="font-oswald text-xs uppercase tracking-wider text-gray-500">Материалы</span>
-                            {[
-                              { label: "Каркас",    val: "Сталь EVRAZ, С255/С345"    },
-                              { label: "Стены",     val: "Сэндвич-панели 100 мм"     },
-                              { label: "Кровля",    val: "Профлист Н60 + утеплитель" },
-                              { label: "Фундамент", val: "Свайный (по ТЗ)"           },
-                            ].map(({ label, val }) => (
-                              <div key={label} className="flex justify-between text-sm border-b border-gray-50 pb-1">
-                                <span className="text-gray-500">{label}</span>
-                                <span className="font-medium text-evraz-dark text-right max-w-[55%]">{val}</span>
-                              </div>
-                            ))}
-                          </div>
-
-                          <button onClick={closeExpanded} className="mt-auto font-oswald text-xs uppercase tracking-wider py-2.5 bg-evraz-red text-white hover:bg-evraz-dark transition-colors text-center">
-                            Готово
-                          </button>
-                        </div>
-
-                        {/* Колонка 3: Стоимость */}
-                        <div className="p-5 flex flex-col gap-3">
-                          <span className="font-oswald text-xs uppercase tracking-wider text-gray-500">Стоимость</span>
-                          <div className="space-y-1.5">
-                            {[
-                              { label: "Каркас МК",               val: frameP    },
-                              { label: "Ограждающие конструкции",  val: okP       },
-                              { label: "Окна, двери, ворота",      val: openingsP },
-                            ].map(({ label, val }) => (
-                              <div key={label} className="flex justify-between text-sm border-b border-gray-100 pb-1.5">
-                                <span className="text-gray-500">{label}</span>
-                                <span className="font-medium text-evraz-dark">{FORMAT_RUB(val)}</span>
-                              </div>
-                            ))}
-                          </div>
-                          <div className="border border-gray-200">
-                            <button onClick={() => setExpExtraOpen(o => !o)} className="w-full flex items-center justify-between px-3 py-2.5 hover:bg-gray-50 transition-colors">
-                              <span className="font-oswald text-xs uppercase tracking-wider text-gray-600">Доп. опции</span>
-                              <Icon name={expExtraOpen ? "ChevronUp" : "ChevronDown"} size={16} className="text-gray-400" />
+                    <div
+                      key={item.id}
+                      className={`steel-card bg-white border border-evraz-border transition-all duration-300 ${isExpanded ? "col-span-1 md:col-span-2 xl:col-span-3" : "flex flex-col group"}`}
+                    >
+                      {isExpanded ? (
+                        /* ── Раскрытый вид: три колонки ── */
+                        <>
+                          {/* Шапка раскрытой карточки */}
+                          <div className="bg-evraz-dark px-6 py-4 flex items-center justify-between">
+                            <div className="flex items-center gap-3 flex-wrap">
+                              <span className="font-oswald text-xs tracking-widest text-evraz-red uppercase">
+                                #{item.sku}
+                              </span>
+                              <span className="font-oswald text-white text-base uppercase tracking-wide">
+                                {item.name}
+                              </span>
+                              {item.popular && (
+                                <span className="font-oswald text-xs text-white bg-evraz-red px-2 py-0.5 uppercase">
+                                  Популярный
+                                </span>
+                              )}
+                            </div>
+                            <button
+                              onClick={closeExpanded}
+                              className="font-oswald text-xs uppercase tracking-wider border border-evraz-red text-evraz-red px-3 py-1.5 hover:bg-evraz-red hover:text-white transition-all shrink-0 ml-4"
+                            >
+                              Свернуть
                             </button>
-                            {expExtraOpen && (
-                              <div className="px-3 pb-3 space-y-1.5 border-t border-gray-100">
-                                {EXTRA_OPTIONS.map(opt => (
-                                  <label key={opt.key} className="flex items-start gap-2 cursor-pointer pt-1.5">
-                                    <input type="checkbox" className="mt-0.5 accent-evraz-red shrink-0" checked={expChecked.has(opt.key)} onChange={() => toggleExpOption(opt.key)} />
-                                    <div className="flex flex-1 justify-between gap-2 min-w-0">
-                                      <span className="font-ibm text-xs text-gray-700 leading-tight">{opt.label}</span>
-                                      <span className="font-ibm text-xs text-gray-500 shrink-0 whitespace-nowrap">{getOptP(opt)}</span>
-                                    </div>
-                                  </label>
+                          </div>
+
+                          {/* Три колонки */}
+                          <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200">
+                            {/* Колонка 1: Общая инфо */}
+                            <div className="p-5 flex flex-col gap-3">
+                              <span className="font-oswald text-xs uppercase tracking-wider text-gray-500">
+                                Общая информация
+                              </span>
+                              <img
+                                src={item.image}
+                                alt={item.name}
+                                className="w-full aspect-video object-cover"
+                              />
+                              <div className="space-y-1.5">
+                                {[
+                                  { label: "Назначение", val: item.tag },
+                                  { label: "Регион", val: item.region },
+                                  {
+                                    label: "Площадь",
+                                    val: `${(item.width * item.length).toLocaleString("ru-RU")} м²`,
+                                  },
+                                  {
+                                    label: "Кран-балка",
+                                    val: item.crane,
+                                    accent: item.crane !== "Нет",
+                                  },
+                                ].map(({ label, val, accent }) => (
+                                  <div
+                                    key={label}
+                                    className="flex justify-between text-sm border-b border-gray-100 pb-1.5"
+                                  >
+                                    <span className="text-gray-500">
+                                      {label}
+                                    </span>
+                                    <span
+                                      className={`font-medium ${accent ? "text-evraz-red" : "text-evraz-dark"}`}
+                                    >
+                                      {val}
+                                    </span>
+                                  </div>
                                 ))}
                               </div>
-                            )}
-                          </div>
-                          {expChecked.size > 0 && extraTotal > 0 && (
-                            <div className="flex justify-between text-sm bg-gray-50 px-3 py-2">
-                              <span className="text-gray-500">Итого доп. опций</span>
-                              <span className="font-medium text-evraz-dark">{FORMAT_RUB(extraTotal)}</span>
+
+                              {/* Нагрузки */}
+                              <div className="border-t border-gray-100 pt-3 space-y-1.5">
+                                <span className="font-oswald text-xs uppercase tracking-wider text-gray-500">
+                                  Нагрузки
+                                </span>
+                                {[
+                                  {
+                                    label: "Снеговой район",
+                                    val: "III (1,8 кПа)",
+                                  },
+                                  {
+                                    label: "Ветровой район",
+                                    val: "II (0,30 кПа)",
+                                  },
+                                  { label: "Сейсмика", val: "до 6 баллов" },
+                                ].map(({ label, val }) => (
+                                  <div
+                                    key={label}
+                                    className="flex justify-between text-sm"
+                                  >
+                                    <span className="text-gray-500">
+                                      {label}
+                                    </span>
+                                    <span className="font-medium text-evraz-dark">
+                                      {val}
+                                    </span>
+                                  </div>
+                                ))}
+                              </div>
                             </div>
-                          )}
-                          {/* Лизинг */}
-                          {(() => {
-                            const { advance, payment } = calcLeasing(grandTotal);
-                            return (
-                              <div className="border border-evraz-red/20 bg-evraz-red/5 px-4 py-3">
-                                <div className="flex items-center gap-1.5 mb-1">
-                                  <Icon name="CreditCard" size={13} className="text-evraz-red shrink-0" />
-                                  <span className="font-oswald text-xs tracking-widest uppercase text-evraz-red">Лизинг от банка-партнера</span>
+
+                            {/* Колонка 2: Характеристики */}
+                            <div className="p-5 flex flex-col gap-3">
+                              <span className="font-oswald text-xs uppercase tracking-wider text-gray-500">
+                                Характеристики
+                              </span>
+                              <p className="font-ibm text-xs text-gray-400">
+                                Цена пересчитывается пропорционально площади
+                              </p>
+                              <div className="grid grid-cols-3 gap-2">
+                                {[
+                                  {
+                                    label: "Ширина, м",
+                                    val: expWidth,
+                                    set: setExpWidth,
+                                    min: 6,
+                                    max: 48,
+                                    step: 3,
+                                  },
+                                  {
+                                    label: "Длина, м",
+                                    val: expLength,
+                                    set: setExpLength,
+                                    min: 6,
+                                    max: 120,
+                                    step: 6,
+                                  },
+                                  {
+                                    label: "Высота, м",
+                                    val: expHeight,
+                                    set: setExpHeight,
+                                    min: 3,
+                                    max: 12,
+                                    step: 0.5,
+                                  },
+                                ].map(({ label, val, set, min, max, step }) => (
+                                  <div
+                                    key={label}
+                                    className="flex flex-col gap-1"
+                                  >
+                                    <span className="font-ibm text-xs text-gray-500">
+                                      {label}
+                                    </span>
+                                    <input
+                                      type="number"
+                                      value={val}
+                                      min={min}
+                                      max={max}
+                                      step={step}
+                                      onChange={(e) =>
+                                        set(Number(e.target.value))
+                                      }
+                                      className="border border-gray-300 px-2 py-1.5 text-sm w-full focus:border-evraz-red focus:outline-none"
+                                    />
+                                  </div>
+                                ))}
+                              </div>
+                              <div className="space-y-2 border-t border-gray-100 pt-3">
+                                <span className="font-oswald text-xs uppercase tracking-wider text-gray-500">
+                                  Проёмы
+                                </span>
+                                {[
+                                  {
+                                    label: "Ворота",
+                                    val: expGates,
+                                    set: setExpGates,
+                                    detail: item.gates ? item.gates.size : null,
+                                  },
+                                  {
+                                    label: "Двери",
+                                    val: expDoors,
+                                    set: setExpDoors,
+                                    detail: item.doors[0]?.size ?? null,
+                                  },
+                                  {
+                                    label: "Окна",
+                                    val: expWindows,
+                                    set: setExpWindows,
+                                    detail: item.windows[0]?.size ?? null,
+                                  },
+                                ].map(({ label, val, set, detail }) => (
+                                  <div
+                                    key={label}
+                                    className="flex items-center justify-between text-sm"
+                                  >
+                                    <div>
+                                      <span className="text-gray-700 font-medium">
+                                        {label}
+                                      </span>
+                                      {detail && (
+                                        <span className="text-gray-400 text-xs ml-1">
+                                          ({detail})
+                                        </span>
+                                      )}
+                                    </div>
+                                    <Counter value={val} onChange={set} />
+                                  </div>
+                                ))}
+                              </div>
+                              {/* Материалы */}
+                              <div className="border-t border-gray-100 pt-3 space-y-1.5">
+                                <span className="font-oswald text-xs uppercase tracking-wider text-gray-500">
+                                  Материалы
+                                </span>
+                                {[
+                                  {
+                                    label: "Каркас",
+                                    val: "Сталь EVRAZ, С255/С345",
+                                  },
+                                  {
+                                    label: "Стены",
+                                    val: "Сэндвич-панели 100 мм",
+                                  },
+                                  {
+                                    label: "Кровля",
+                                    val: "Профлист Н60 + утеплитель",
+                                  },
+                                  {
+                                    label: "Фундамент",
+                                    val: "Свайный (по ТЗ)",
+                                  },
+                                ].map(({ label, val }) => (
+                                  <div
+                                    key={label}
+                                    className="flex justify-between text-sm border-b border-gray-50 pb-1"
+                                  >
+                                    <span className="text-gray-500">
+                                      {label}
+                                    </span>
+                                    <span className="font-medium text-evraz-dark text-right max-w-[55%]">
+                                      {val}
+                                    </span>
+                                  </div>
+                                ))}
+                              </div>
+
+                              <button
+                                onClick={closeExpanded}
+                                className="mt-auto font-oswald text-xs uppercase tracking-wider py-2.5 bg-evraz-red text-white hover:bg-evraz-dark transition-colors text-center"
+                              >
+                                Готово
+                              </button>
+                            </div>
+
+                            {/* Колонка 3: Стоимость */}
+                            <div className="p-5 flex flex-col gap-3">
+                              <span className="font-oswald text-xs uppercase tracking-wider text-gray-500">
+                                Стоимость
+                              </span>
+                              <div className="space-y-1.5">
+                                {[
+                                  { label: "Каркас МК", val: frameP },
+                                  {
+                                    label: "Ограждающие конструкции",
+                                    val: okP,
+                                  },
+                                  {
+                                    label: "Окна, двери, ворота",
+                                    val: openingsP,
+                                  },
+                                ].map(({ label, val }) => (
+                                  <div
+                                    key={label}
+                                    className="flex justify-between text-sm border-b border-gray-100 pb-1.5"
+                                  >
+                                    <span className="text-gray-500">
+                                      {label}
+                                    </span>
+                                    <span className="font-medium text-evraz-dark">
+                                      {FORMAT_RUB(val)}
+                                    </span>
+                                  </div>
+                                ))}
+                              </div>
+                              <div className="border border-gray-200">
+                                <button
+                                  onClick={() => setExpExtraOpen((o) => !o)}
+                                  className="w-full flex items-center justify-between px-3 py-2.5 hover:bg-gray-50 transition-colors"
+                                >
+                                  <span className="font-oswald text-xs uppercase tracking-wider text-gray-600">
+                                    Доп. опции
+                                  </span>
+                                  <Icon
+                                    name={
+                                      expExtraOpen ? "ChevronUp" : "ChevronDown"
+                                    }
+                                    size={16}
+                                    className="text-gray-400"
+                                  />
+                                </button>
+                                {expExtraOpen && (
+                                  <div className="px-3 pb-3 space-y-1.5 border-t border-gray-100">
+                                    {EXTRA_OPTIONS.map((opt) => (
+                                      <label
+                                        key={opt.key}
+                                        className="flex items-start gap-2 cursor-pointer pt-1.5"
+                                      >
+                                        <input
+                                          type="checkbox"
+                                          className="mt-0.5 accent-evraz-red shrink-0"
+                                          checked={expChecked.has(opt.key)}
+                                          onChange={() =>
+                                            toggleExpOption(opt.key)
+                                          }
+                                        />
+                                        <div className="flex flex-1 justify-between gap-2 min-w-0">
+                                          <span className="font-ibm text-xs text-gray-700 leading-tight">
+                                            {opt.label}
+                                          </span>
+                                          <span className="font-ibm text-xs text-gray-500 shrink-0 whitespace-nowrap">
+                                            {getOptP(opt)}
+                                          </span>
+                                        </div>
+                                      </label>
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
+                              {expChecked.size > 0 && extraTotal > 0 && (
+                                <div className="flex justify-between text-sm bg-gray-50 px-3 py-2">
+                                  <span className="text-gray-500">
+                                    Итого доп. опций
+                                  </span>
+                                  <span className="font-medium text-evraz-dark">
+                                    {FORMAT_RUB(extraTotal)}
+                                  </span>
                                 </div>
-                                <div className="font-oswald text-lg text-evraz-dark font-bold leading-none">{FORMAT_RUB(Math.round(payment))}/мес.</div>
-                                <div className="font-ibm text-xs text-evraz-gray mt-1">Аванс {FORMAT_RUB(Math.round(advance))} · 36 мес.</div>
-                              </div>
-                            );
-                          })()}
+                              )}
+                              {/* Лизинг */}
+                              {(() => {
+                                const { advance, payment } =
+                                  calcLeasing(grandTotal);
+                                return (
+                                  <div className="border border-evraz-red/20 bg-evraz-red/5 px-4 py-3">
+                                    <div className="flex items-center gap-1.5 mb-1">
+                                      <Icon
+                                        name="CreditCard"
+                                        size={13}
+                                        className="text-evraz-red shrink-0"
+                                      />
+                                      <span className="font-oswald text-xs tracking-widest uppercase text-evraz-red">
+                                        Лизинг от банка-партнера
+                                      </span>
+                                    </div>
+                                    <div className="font-oswald text-lg text-evraz-dark font-bold leading-none">
+                                      {FORMAT_RUB(Math.round(payment))}/мес.
+                                    </div>
+                                    <div className="font-ibm text-xs text-evraz-gray mt-1">
+                                      Аванс {FORMAT_RUB(Math.round(advance))} ·
+                                      36 мес.
+                                    </div>
+                                  </div>
+                                );
+                              })()}
 
-                          <div className="mt-auto border-t-2 border-evraz-red pt-3">
-                            <div className="flex justify-between items-baseline">
-                              <span className="font-oswald text-xs uppercase tracking-wider text-gray-500">Итого</span>
-                              <div className="text-right">
-                                <div className="font-oswald text-2xl text-evraz-red font-bold">{FORMAT_RUB(grandTotal)}</div>
-                                {newArea > 0 && <div className="font-ibm text-xs text-gray-400">{pricePerM2.toLocaleString("ru-RU")} ₽/м²</div>}
+                              <div className="mt-auto border-t-2 border-evraz-red pt-3">
+                                <div className="flex justify-between items-baseline">
+                                  <span className="font-oswald text-xs uppercase tracking-wider text-gray-500">
+                                    Итого
+                                  </span>
+                                  <div className="text-right">
+                                    <div className="font-oswald text-2xl text-evraz-red font-bold">
+                                      {FORMAT_RUB(grandTotal)}
+                                    </div>
+                                    {newArea > 0 && (
+                                      <div className="font-ibm text-xs text-gray-400">
+                                        {pricePerM2.toLocaleString("ru-RU")}{" "}
+                                        ₽/м²
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </>
-                  ) : (
-                    /* ── Обычный вид карточки ── */
-                    <>
-                    {/* Header */}
-                    <div className="bg-evraz-dark px-6 py-5 flex items-start justify-between min-h-[120px]">
-                      <div className="flex flex-col">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <span className="font-oswald text-xs tracking-widest text-evraz-red uppercase bg-white/5 px-2 py-0.5">
-                            #{item.sku}
-                          </span>
-                          {item.popular && (
-                            <span className="font-oswald text-xs text-white tracking-widest uppercase bg-evraz-red px-2 py-0.5">
-                              Популярный
-                            </span>
-                          )}
-                        </div>
-                        <h3 className="font-oswald text-xl text-white font-semibold mt-2 leading-tight line-clamp-2">
-                          {item.name}
-                        </h3>
-                      </div>
-                      <div className="text-right shrink-0 ml-4">
-                        <div className="font-oswald text-2xl text-evraz-red font-bold">
-                          {FORMAT_RUB(item.price)}
-                        </div>
-                        <div className="font-ibm text-xs text-gray-400 mt-0.5">
-                          {Math.round(item.price / (item.width * item.length)).toLocaleString("ru-RU")} ₽/м²
-                        </div>
-                        <div className="font-ibm text-xs text-gray-400 mt-1">цена актуальна на 03.06.2026</div>
-                      </div>
-                    </div>
-
-                    {/* Image */}
-                    <div className="overflow-hidden h-52 bg-evraz-light">
-                      <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    </div>
-
-                    {/* Dimensions */}
-                    <div className="grid grid-cols-4 divide-x divide-evraz-border border-b border-evraz-border">
-                      {[
-                        { label: "Ширина", value: `${item.width} м` },
-                        { label: "Длина",  value: `${item.length} м` },
-                        { label: "Высота", value: `${item.height} м` },
-                        { label: "Площадь", value: `${(item.width * item.length).toLocaleString("ru-RU")} м²` },
-                      ].map((d) => (
-                        <div key={d.label} className="py-3 px-3 text-center">
-                          <div className="font-oswald text-sm text-evraz-dark font-semibold">{d.value}</div>
-                          <div className="font-ibm text-xs text-evraz-gray mt-0.5">{d.label}</div>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Specs */}
-                    <div className="p-6 flex flex-col flex-1">
-                      <div className="mb-5 divide-y divide-evraz-border border border-evraz-border">
-                        {[
-                          { icon: "RectangleHorizontal", label: "Ворота",           value: item.gates ? `${item.gates.count} шт. (${item.gates.size}${item.gates.wicket ? ", с калиткой" : ", без калитки"})` : "Нет" },
-                          { icon: "DoorOpen",            label: "Двери",            value: item.doors.length > 0 ? item.doors.map((d) => `${d.count} шт. (${d.size})`).join(", ") : "Нет" },
-                          { icon: "AppWindow",           label: "Окна",             value: item.windows.length > 0 ? item.windows.map((w) => `${w.count} шт. (${w.size})`).join(", ") : "Нет" },
-                          { icon: "Columns2",            label: "Лент. остекление", value: item.stripGlazing ?? "Нет", highlight: !!item.stripGlazing },
-                          { icon: "Hammer",              label: "Кран-балка",       value: item.crane, highlight: item.crane !== "Нет" },
-                          { icon: "MapPin",              label: "Регион",           value: item.region },
-                        ].map((row) => (
-                          <div key={row.label} className="flex items-center gap-3 px-3 py-2">
-                            <Icon name={row.icon as "Tag"} size={12} className="text-evraz-steel shrink-0" />
-                            <span className="font-ibm text-xs text-evraz-gray w-28 shrink-0">{row.label}</span>
-                            <span className={`font-ibm text-xs font-medium ml-auto text-right ${row.highlight ? "text-evraz-red" : "text-evraz-dark"}`}>{row.value}</span>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* Лизинг */}
-                      {(() => {
-                        const { advance, payment } = calcLeasing(item.price);
-                        return (
-                          <div className="border border-evraz-red/20 bg-evraz-red/5 px-4 py-3 mb-5">
-                            <div className="flex items-center gap-1.5 mb-2">
-                              <Icon name="CreditCard" size={13} className="text-evraz-red shrink-0" />
-                              <span className="font-oswald text-xs tracking-widest uppercase text-evraz-red">Лизинг от банка-партнера</span>
+                        </>
+                      ) : (
+                        /* ── Обычный вид карточки ── */
+                        <>
+                          {/* Header */}
+                          <div className="bg-evraz-dark px-6 py-5 flex items-start justify-between min-h-[120px]">
+                            <div className="flex flex-col">
+                              <div className="flex items-center gap-2 flex-wrap">
+                                <span className="font-oswald text-xs tracking-widest text-evraz-red uppercase bg-white/5 px-2 py-0.5">
+                                  #{item.sku}
+                                </span>
+                                {item.popular && (
+                                  <span className="font-oswald text-xs text-white tracking-widest uppercase bg-evraz-red px-2 py-0.5">
+                                    Популярный
+                                  </span>
+                                )}
+                              </div>
+                              <h3 className="font-oswald text-xl text-white font-semibold mt-2 leading-tight line-clamp-2">
+                                {item.name}
+                              </h3>
                             </div>
-                            <div className="font-oswald text-lg text-evraz-dark font-bold leading-none">{FORMAT_RUB(Math.round(payment))}/мес.</div>
-                            <div className="font-ibm text-xs text-evraz-gray mt-1">Аванс {FORMAT_RUB(Math.round(advance))} · 36 мес.</div>
+                            <div className="text-right shrink-0 ml-4">
+                              <div className="font-oswald text-2xl text-evraz-red font-bold">
+                                {FORMAT_RUB(item.price)}
+                              </div>
+                              <div className="font-ibm text-xs text-gray-400 mt-0.5">
+                                {Math.round(
+                                  item.price / (item.width * item.length),
+                                ).toLocaleString("ru-RU")}{" "}
+                                ₽/м²
+                              </div>
+                              <div className="font-ibm text-xs text-gray-400 mt-1">
+                                цена актуальна на 03.06.2026
+                              </div>
+                            </div>
                           </div>
-                        );
-                      })()}
 
-                      {/* CTA */}
-                      <div className="flex gap-3 mt-auto">
-                        <button
-                          onClick={() => openExpanded(item)}
-                          className="flex-1 text-center font-oswald text-sm tracking-wider uppercase py-3 border-2 border-evraz-dark text-evraz-dark hover:bg-evraz-dark hover:text-white transition-all"
-                        >
-                          Изменить размер
-                        </button>
-                        <button
-                          onClick={() => document.getElementById("contacts-section")?.scrollIntoView({ behavior: "smooth" })}
-                          className="flex-1 btn-primary text-sm text-center"
-                        >
-                          Получить расчет
-                        </button>
-                      </div>
+                          {/* Image */}
+                          <div className="overflow-hidden h-52 bg-evraz-light">
+                            <img
+                              src={item.image}
+                              alt={item.name}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            />
+                          </div>
+
+                          {/* Dimensions */}
+                          <div className="grid grid-cols-4 divide-x divide-evraz-border border-b border-evraz-border">
+                            {[
+                              { label: "Ширина", value: `${item.width} м` },
+                              { label: "Длина", value: `${item.length} м` },
+                              { label: "Высота", value: `${item.height} м` },
+                              {
+                                label: "Площадь",
+                                value: `${(item.width * item.length).toLocaleString("ru-RU")} м²`,
+                              },
+                            ].map((d) => (
+                              <div
+                                key={d.label}
+                                className="py-3 px-3 text-center"
+                              >
+                                <div className="font-oswald text-sm text-evraz-dark font-semibold">
+                                  {d.value}
+                                </div>
+                                <div className="font-ibm text-xs text-evraz-gray mt-0.5">
+                                  {d.label}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+
+                          {/* Specs */}
+                          <div className="p-6 flex flex-col flex-1">
+                            <div className="mb-5 divide-y divide-evraz-border border border-evraz-border">
+                              {[
+                                {
+                                  icon: "RectangleHorizontal",
+                                  label: "Ворота",
+                                  value: item.gates
+                                    ? `${item.gates.count} шт. (${item.gates.size}${item.gates.wicket ? ", с калиткой" : ", без калитки"})`
+                                    : "Нет",
+                                },
+                                {
+                                  icon: "DoorOpen",
+                                  label: "Двери",
+                                  value:
+                                    item.doors.length > 0
+                                      ? item.doors
+                                          .map(
+                                            (d) => `${d.count} шт. (${d.size})`,
+                                          )
+                                          .join(", ")
+                                      : "Нет",
+                                },
+                                {
+                                  icon: "AppWindow",
+                                  label: "Окна",
+                                  value:
+                                    item.windows.length > 0
+                                      ? item.windows
+                                          .map(
+                                            (w) => `${w.count} шт. (${w.size})`,
+                                          )
+                                          .join(", ")
+                                      : "Нет",
+                                },
+                                {
+                                  icon: "Columns2",
+                                  label: "Лент. остекление",
+                                  value: item.stripGlazing ?? "Нет",
+                                  highlight: !!item.stripGlazing,
+                                },
+                                {
+                                  icon: "Hammer",
+                                  label: "Кран-балка",
+                                  value: item.crane,
+                                  highlight: item.crane !== "Нет",
+                                },
+                                {
+                                  icon: "MapPin",
+                                  label: "Регион",
+                                  value: item.region,
+                                },
+                              ].map((row) => (
+                                <div
+                                  key={row.label}
+                                  className="flex items-center gap-3 px-3 py-2"
+                                >
+                                  <Icon
+                                    name={row.icon as "Tag"}
+                                    size={12}
+                                    className="text-evraz-steel shrink-0"
+                                  />
+                                  <span className="font-ibm text-xs text-evraz-gray w-28 shrink-0">
+                                    {row.label}
+                                  </span>
+                                  <span
+                                    className={`font-ibm text-xs font-medium ml-auto text-right ${row.highlight ? "text-evraz-red" : "text-evraz-dark"}`}
+                                  >
+                                    {row.value}
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
+
+                            {/* Лизинг */}
+                            {(() => {
+                              const { advance, payment } = calcLeasing(
+                                item.price,
+                              );
+                              return (
+                                <div className="border border-evraz-red/20 bg-evraz-red/5 px-4 py-3 mb-5">
+                                  <div className="flex items-center gap-1.5 mb-2">
+                                    <Icon
+                                      name="CreditCard"
+                                      size={13}
+                                      className="text-evraz-red shrink-0"
+                                    />
+                                    <span className="font-oswald text-xs tracking-widest uppercase text-evraz-red">
+                                      Лизинг от банка-партнера
+                                    </span>
+                                  </div>
+                                  <div className="font-oswald text-lg text-evraz-dark font-bold leading-none">
+                                    {FORMAT_RUB(Math.round(payment))}/мес.
+                                  </div>
+                                  <div className="font-ibm text-xs text-evraz-gray mt-1">
+                                    Аванс {FORMAT_RUB(Math.round(advance))} · 36
+                                    мес.
+                                  </div>
+                                </div>
+                              );
+                            })()}
+
+                            {/* CTA */}
+                            <div className="flex gap-3 mt-auto">
+                              <button
+                                onClick={() => openExpanded(item)}
+                                className="flex-1 text-center font-oswald text-sm tracking-wider uppercase py-3 border-2 border-evraz-dark text-evraz-dark hover:bg-evraz-dark hover:text-white transition-all"
+                              >
+                                Изменить размер
+                              </button>
+                              <button
+                                onClick={() =>
+                                  document
+                                    .getElementById("contacts-section")
+                                    ?.scrollIntoView({ behavior: "smooth" })
+                                }
+                                className="flex-1 btn-primary text-sm text-center"
+                              >
+                                Получить расчет
+                              </button>
+                            </div>
+                          </div>
+                        </>
+                      )}
                     </div>
-                    </>
-                  )}
-                  </div>
                   );
                 })}
               </div>
@@ -1426,12 +1769,8 @@ export default function Catalog() {
           )}
         </div>
       </section>
-
-
-
-
-
       {/* КP+АР SPECIAL OFFER */}
+      /*{" "}
       <section className="py-12 bg-evraz-light border-t border-evraz-border">
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row items-center gap-8 bg-white border border-evraz-border p-8 md:p-10 relative overflow-hidden">
@@ -1482,7 +1821,7 @@ export default function Catalog() {
           </div>
         </div>
       </section>
-
+      */
       {/* WHAT'S NEEDED FROM CLIENT */}
       <section id="construction-cycle" className="py-16 bg-white">
         <div className="container mx-auto">
@@ -1669,7 +2008,6 @@ export default function Catalog() {
           </div>
         </div>
       </section>
-
       {/* CONTACT CTA */}
       <section id="contacts-section" className="py-16 bg-evraz-dark">
         <div className="container mx-auto max-w-2xl text-center">
