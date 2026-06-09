@@ -1769,59 +1769,7 @@ export default function Catalog() {
           )}
         </div>
       </section>
-      {/* КP+АР SPECIAL OFFER */}
-      /*{" "}
-      <section className="py-12 bg-evraz-light border-t border-evraz-border">
-        <div className="container mx-auto">
-          <div className="flex flex-col md:flex-row items-center gap-8 bg-white border border-evraz-border p-8 md:p-10 relative overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-1 bg-evraz-red" />
-            <div className="flex-1 pl-4">
-              <div className="font-oswald text-xs tracking-widest text-evraz-red uppercase mb-2">
-                Специальное предложение
-              </div>
-              <h2 className="font-oswald text-2xl md:text-3xl text-evraz-dark font-bold leading-tight">
-                Комплект документации КР + АР
-              </h2>
-              <p className="font-ibm text-sm text-evraz-steel mt-3 leading-relaxed max-w-lg">
-                Конструктивные решения (КР) и архитектурные решения (АР) — пакет
-                документов для согласования и строительства. Готовим за 7
-                рабочих дней.
-              </p>
-              <a
-                href="/arkr"
-                className="inline-flex items-center gap-1.5 mt-4 font-ibm text-sm text-evraz-red hover:underline"
-              >
-                Читать подробнее
-                <Icon name="ArrowRight" size={14} />
-              </a>
-            </div>
-            <div className="flex flex-col items-center md:items-end gap-4 shrink-0">
-              <div className="text-center md:text-right">
-                <div className="font-oswald text-4xl font-bold text-evraz-red">
-                  9 998 ₽
-                </div>
-                <div className="font-ibm text-xs text-evraz-gray mt-1">
-                  вместо 25 000 ₽ · ограниченное предложение
-                </div>
-              </div>
-              <button
-                onClick={() =>
-                  document
-                    .getElementById("contacts-section")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="btn-primary font-oswald tracking-wider uppercase px-8 py-3 text-sm whitespace-nowrap"
-              >
-                Заказать КР + АР
-              </button>
-              <p className="font-ibm text-xs text-evraz-gray text-center">
-                Менеджер свяжется в течение 1 часа
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-      */
+
       {/* WHAT'S NEEDED FROM CLIENT */}
       <section id="construction-cycle" className="py-16 bg-white">
         <div className="container mx-auto">
