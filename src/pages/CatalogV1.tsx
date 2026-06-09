@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import Header from "@/components/shared/Header";
@@ -771,6 +771,7 @@ export default function Catalog() {
 
   // ── Раскрытая карточка ──
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const expandedRef = useRef<HTMLDivElement | null>(null);
   const [expWidth, setExpWidth] = useState(0);
   const [expLength, setExpLength] = useState(0);
   const [expHeight, setExpHeight] = useState(0);
@@ -793,6 +794,19 @@ export default function Catalog() {
   };
 
   const closeExpanded = () => setExpandedId(null);
+
+  useEffect(() => {
+    if (!expandedId) return;
+    const timer = setTimeout(() => {
+      if (expandedRef.current) {
+        const el = expandedRef.current;
+        const elRect = el.getBoundingClientRect();
+        const scrollTop = window.scrollY + elRect.top - (window.innerHeight - elRect.height) / 2;
+        window.scrollTo({ top: Math.max(0, scrollTop), behavior: "smooth" });
+      }
+    }, 50);
+    return () => clearTimeout(timer);
+  }, [expandedId]);
 
   const toggleExpOption = (key: OptionKey) => {
     setExpChecked((prev) => {
@@ -1149,6 +1163,7 @@ export default function Catalog() {
                   return (
                     <div
                       key={item.id}
+                      ref={isExpanded ? expandedRef : null}
                       className={`steel-card bg-white border border-evraz-border transition-all duration-300 ${isExpanded ? "col-span-1 md:col-span-2 xl:col-span-3" : "flex flex-col group"}`}
                     >
                       {isExpanded ? (
