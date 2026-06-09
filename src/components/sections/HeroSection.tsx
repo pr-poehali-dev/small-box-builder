@@ -97,7 +97,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
               cta: "Смотреть каталог",
               target: "solutions",
               accent: false,
-              route: "/catalog",
+              route: "/catalogv1",
               image:
                 "https://cdn.poehali.dev/projects/ab2b7839-0d92-4b8e-819f-853ca03a6009/bucket/02b7701e-8f0d-4d16-8e31-51e2632569a9.png",
             },
